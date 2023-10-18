@@ -261,6 +261,13 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("chkauto", chkauto.isChecked());
 
 
+
+
+
+
+
+        ///test
+
         editor.commit();	//commit
     }
 

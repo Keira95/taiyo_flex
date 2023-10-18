@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.erp.taiyo">
+    package="com.erp.Taiyo">
 
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -31,27 +31,25 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m"
         >
-        <activity android:name="com.erp.taiyo.SplashActivity"
+        <activity android:name="com.erp.Taiyo.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:usesCleartextTraffic="true"
             android:theme="@style/SplashTheme"
-
             >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.erp.taiyo.LoginActivity"
+        <activity android:name="com.erp.Taiyo.LoginActivity"
             android:screenOrientation="portrait"
             />
 
 
-        <activity android:name="com.erp.taiyo.MenuActivity"
+        <activity android:name="com.erp.Taiyo.MenuActivity"
             android:screenOrientation="portrait"
             />
 

@@ -18,17 +18,19 @@
             android:background="#ffffff"
             app:theme="@style/AppTheme_NO"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DRK_OS"
-                android:layout_gravity="center"
-                android:id="@+id/toolbar_title"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                />
 
+            <ImageView
+                android:layout_width="280sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image_desc"
+                android:cropToPadding="false"
+                android:src="@drawable/taiyo_menu"
+                android:scaleType="fitCenter"
+
+                android:visibility="visible" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -80,28 +82,29 @@
                 android:text="실적등록"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
-     <!--       <Button
-                android:layout_weight="1"
-                android:id="@+id/btn_ware"
-                android:text="MOBF0002"
-                android:background="@drawable/buttonshape"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:layout_width="130dp"
-                android:layout_height="80dp"
-                android:layout_margin="5sp"
-                />
-            <Button
-                android:layout_weight="1"
-                android:id="@+id/btn_Oem"
-                android:text="MOBF0003"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:background="@drawable/buttonshape"
-                android:layout_width="130dp"
-                android:layout_height="80dp"
-                android:layout_margin="5sp"
-                />-->
+
+            <!--       <Button
+                       android:layout_weight="1"
+                       android:id="@+id/btn_ware"
+                       android:text="MOBF0002"
+                       android:background="@drawable/buttonshape"
+                       android:textColor="#FFFFFF"
+                       android:textSize="15sp"
+                       android:layout_width="130dp"
+                       android:layout_height="80dp"
+                       android:layout_margin="5sp"
+                       />
+                   <Button
+                       android:layout_weight="1"
+                       android:id="@+id/btn_Oem"
+                       android:text="MOBF0003"
+                       android:textColor="#FFFFFF"
+                       android:textSize="15sp"
+                       android:background="@drawable/buttonshape"
+                       android:layout_width="130dp"
+                       android:layout_height="80dp"
+                       android:layout_margin="5sp"
+                       />-->
 
 
         </LinearLayout>
@@ -124,9 +127,7 @@
                 android:layout_margin="5sp"
                 />
 <!--
-
             <Button
-
                 android:id="@+id/btn_inventory"
                 android:layout_width="130dp"
                 android:layout_height="80dp"
@@ -137,7 +138,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="15sp" />
             <Button
-
                 android:id="@+id/btn_Release"
                 android:layout_width="130dp"
                 android:layout_height="80dp"
@@ -192,7 +192,6 @@
                 android:layout_margin="5sp"
                 android:visibility="invisible"
                 />-->
-
 
         </LinearLayout>
         <LinearLayout

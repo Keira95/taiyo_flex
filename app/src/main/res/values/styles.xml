@@ -33,6 +33,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <item name="android:windowBackground">@drawable/ci01</item>
+        <item name="android:windowBackground">@drawable/taiyo_splash</item>
     </style>
 </resources>

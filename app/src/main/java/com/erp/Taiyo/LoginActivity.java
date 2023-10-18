@@ -266,6 +266,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
+
+
+
         ///test
 
         editor.commit();	//commit

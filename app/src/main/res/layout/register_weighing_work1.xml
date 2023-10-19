@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/main_layout"
+    >
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/AppTheme"
+            app:navigationIcon="?attr/homeAsUpIndicator">
+
+            <TextView
+                android:id="@+id/tv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40sp"
+                android:gravity="center"
+                android:text="계량작업등록"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/layout_logout"
+                android:layout_width="95dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="4dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/user_nm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="사용자"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <!--warehouse-->
+
+    <FrameLayout
+        android:id="@+id/content_log"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scrollbars="vertical"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:scrollbars="vertical"
+            />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="File No"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t1_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/beige"
+            android:layout_weight="1"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10sp"
+        android:layout_weight="0.5"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_t1_work_start_tiem"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/light_green"
+            android:layout_weight="1"
+            android:hint="계량작업시작"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/et_p1_op_groddup_nof"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_weight="1.3"
+            android:hint="재공명"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/et_t1_item_desc"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:background="@drawable/edit_login"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_t1_work_start_tiem"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/et_p1_op_groddfup_nof"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_weight="1.3"
+            android:hint="공정"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/et_t1_operaion_desc"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:background="@drawable/edit_login"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p1_op_grdoup_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="설비 (TANK)"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t1_tank_scan"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@color/beige"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p1_op_ggrdoup_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="액상 작업자"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t1_liqid_person_desc"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/beige"
+            android:layout_weight="1"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10sp"
+        android:layout_weight="0.5"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_t1_riqid_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/light_green"
+            android:layout_weight="1"
+            android:hint="액상작업시작"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/btn_t1_riqid_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/light_green"
+            android:layout_weight="1"
+            android:hint="액상작업종료"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_t1_riqid_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+
+        <EditText
+            android:id="@+id/et_t1_riqid_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p1_op_Fggrdoup_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="분체 작업자"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t1_powder_person_desc"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/beige"
+            android:layout_weight="1"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10sp"
+        android:layout_weight="0.5"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_t1_powder_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/light_green"
+            android:layout_weight="1"
+            android:hint="분체작업시작"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/btn_t1_powder_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/light_green"
+            android:layout_weight="1"
+            android:hint="분체작업종료"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_t1_powder_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/et_t1_powder_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10sp"
+        android:layout_weight="0.5"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_t1_work_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/light_green"
+            android:layout_weight="1"
+            android:hint="계량작업종료"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/et_p1_op_gFDrSodDDup_nof"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_t1_work_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+        <EditText
+            android:id="@+id/et_p1_op_XgrofdDupSD_nof"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+
+            android:layout_weight="1"
+
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+
+
+    <!-- 입고 처리 버튼 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="0"
+            android:layout_gravity="right"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_t1_save"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:layout_marginLeft="10sp"
+                android:background="@color/dark_green"
+                android:text="저장"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                />
+            <EditText
+                android:id="@+id/et_p1_op_group_code"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>

@@ -15,18 +15,18 @@
     <!--</style>-->
 
     <style name="AppTheme_NO" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/light_blue</item>
-        <item name="colorPrimaryDark">@color/light_blue</item>
-        <item name="colorAccent">@color/light_blue</item>
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorPrimaryDark">@color/dark_green</item>
+        <item name="colorAccent">@color/dark_green</item>
         <item name="android:windowDrawsSystemBarBackgrounds" tools:ignore="NewApi">true</item>
-        <item name="android:statusBarColor" tools:ignore="NewApi">@color/light_blue</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/dark_green</item>
         <item name="android:windowTranslucentStatus" tools:ignore="NewApi">false</item>
-        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/light_blue</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/dark_green</item>
         <item name="android:selectableItemBackground">@drawable/pre_lollipop_selectable_item</item>
     </style>
 
     <style name="AppTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlNormal">@color/dark_green</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.DarkActionBar">

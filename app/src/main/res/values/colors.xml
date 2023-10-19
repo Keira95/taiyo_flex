@@ -43,6 +43,8 @@
     <color name="black">#000000</color>
     <color name="orange">#FF8000</color>
     <color name="login_orange">#ED9E3E</color>
+    <color name="beige">#FFF2D1</color>
+
     <color name="ivory"> #FDF4E3</color>
     <color name="light_purple"> #D7B5EB</color>
     <color name="light_gray"> #e8e7e7</color>
@@ -51,7 +53,10 @@
     <color name="light_blue"> #72D4F8</color>
     <color name="ivory_blue"> #DFEEF4</color>
     <color name="mint"> #28f0ad</color>
-    <color name="light_green">#BCF5A9</color>
+    <color name="light_green">#E8F8E1</color>
+    <color name="dark_green">#0B6121</color>
+
+
 
     <!-- 로그인 에디트 관련 -->
     <color name="login_edit_bg">#ffffff</color>

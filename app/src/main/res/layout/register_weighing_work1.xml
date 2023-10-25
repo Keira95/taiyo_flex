@@ -106,7 +106,7 @@
             android:background="@color/beige"
             android:layout_weight="1"
             android:hint="Scan"
-            android:paddingLeft="16dp"
+
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -185,19 +185,20 @@
             android:layout_weight="1"
             android:background="@drawable/edit_login"
             android:enabled="false"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
 
         <TextView
+
             android:id="@+id/et_p1_op_groddfup_nof"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
-            android:layout_weight="1.4"
-            android:hint="  공정"
+            android:layout_weight="1.5"
+            android:hint="공정"
             android:enabled="false"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
@@ -211,7 +212,7 @@
             android:enabled="false"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:paddingLeft="16dp"
+
             android:background="@drawable/edit_login"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
@@ -254,7 +255,7 @@
             android:layout_weight="1"
             android:background="@color/beige"
             android:hint="Scan"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -297,7 +298,7 @@
             android:background="@color/beige"
             android:layout_weight="1"
             android:hint="Scan"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -363,7 +364,7 @@
             android:enabled="false"
             android:background="@drawable/edit_login"
             android:layout_weight="1"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -380,7 +381,7 @@
             android:enabled="false"
             android:layout_weight="1"
             android:background="@drawable/edit_login"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -424,7 +425,7 @@
             android:background="@color/beige"
             android:layout_weight="1"
             android:hint="Scan"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -489,7 +490,7 @@
             android:background="@drawable/edit_login"
             android:layout_weight="1"
             android:enabled="false"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -505,7 +506,7 @@
             android:background="@drawable/edit_login"
             android:layout_weight="1"
             android:enabled="false"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -568,7 +569,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:background="@drawable/edit_login"
-            android:paddingLeft="16dp"
+            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />

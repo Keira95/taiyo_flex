@@ -627,6 +627,7 @@
                 android:background="@color/dark_green"
                 android:textColor="@color/white"
                 android:textSize="23sp"
+
                 />
             <EditText
                 android:id="@+id/et_t1_workcenter_code"

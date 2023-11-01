@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+
+        >
+
+
+        <TextView
+            android:id="@+id/lu_oiller_id"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:textSize="0sp"
+            />
+
+        <TextView
+            android:id="@+id/lu_oiller_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="14sp"
+            android:autoSizeStepGranularity="1px"
+            android:gravity="center|left"
+            android:paddingLeft="2dp"
+            android:background="@drawable/grid_header_border"
+            />
+        <TextView
+            android:id="@+id/lu_oiller_desc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="14sp"
+            android:autoSizeStepGranularity="1px"
+            android:gravity="center|left"
+            android:paddingLeft="2dp"
+            android:background="@drawable/grid_header_border"
+             />
+    </LinearLayout>
+</LinearLayout>

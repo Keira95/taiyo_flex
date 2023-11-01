@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40sp"
                 android:gravity="center"
-                android:text="계량작업등록"
+                android:text="연육작업등록"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="사용자"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -72,8 +72,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_weight="0"
+        android:layout_gravity="right"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_t2_recent"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10sp"
+            android:background="@color/orange"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="최근실적"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
+        android:layout_weight="0.2"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal">
@@ -81,90 +104,166 @@
         <EditText
             android:id="@+id/et_file_no"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
-            android:layout_marginTop="5sp"
-            android:layout_marginRight="10sp"
-            android:layout_weight="1.5"
+
+            android:layout_weight="0.8"
             android:enabled="false"
             android:hint="File No"
             android:inputType="textVisiblePassword"
-            android:paddingLeft="16dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/et_t1_file_no"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginTop="5sp"
-            android:layout_marginRight="10sp"
-            android:background="@color/beige"
-            android:layout_weight="1"
-            android:hint="Scan"
             android:paddingLeft="10dp"
+            android:paddingTop="7dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10sp"
-        android:layout_weight="0.5"
-        android:background="@drawable/border"
-        android:backgroundTint="#ffffff"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_t1_work_start_tiem"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-
-            android:layout_weight="1.3"
-            android:hint="계량작업시작"
-
-            android:background="@drawable/buttonshape2"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="18sp" />
 
 
         <TextView
-            android:id="@+id/et_p1_op_groddup_nof"
+            android:id="@+id/et_p3_op_groddup_nof"
             android:layout_width="match_parent"
+
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_weight="1.6"
-            android:hint="재공명"
-            android:paddingLeft="16dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_marginRight="1sp"
+            android:layout_weight="1.3"
+            android:hint=" 재공명"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="14sp" />
+            android:textSize="12sp"
+
+
+            />
 
         <EditText
-            android:id="@+id/et_t1_item_desc"
+            android:id="@+id/et_t3_item_desc"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginRight="10sp"
-            android:layout_weight="1"
-            android:textSize="14sp"
+            android:layout_weight="0.8"
+            android:textSize="12sp"
             android:background="@drawable/edit_login"
             android:enabled="false"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint" />
 
 
+
+    </LinearLayout>
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/et_t3_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+
+            android:background="@color/beige"
+            android:layout_weight="0.8"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/et_p3_op_groddfup_nof"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_weight="1.3"
+            android:hint="공정"
+            android:enabled="false"
+            android:paddingLeft="5dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="12sp" />
+        <EditText
+            android:id="@+id/et_t3_operaion_desc"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:enabled="false"
+            android:layout_marginRight="10sp"
+            android:layout_weight="0.8"
+            android:paddingLeft="16dp"
+            android:background="@drawable/edit_login"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="14sp" />
+
+     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/et_p3_last_surimi_count"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:hint="최종연육횟수"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="13dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_t3_last_surimi_count"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.4"
+            android:autoSizeMaxTextSize="16sp"
+            android:autoSizeMinTextSize="8sp"
+            android:background="@drawable/edit_login"
+            android:enabled="false"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp"
+            />
+
+
+        <Button
+            android:id="@+id/btn_t3_last_surimi_count"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:hint="연육횟수 추가"
+
+            android:background="@drawable/buttonshape2"
+            android:textColorHint="@color/black"
+            android:textSize="16sp" />
+
+
     </LinearLayout>
 
 
@@ -175,45 +274,32 @@
         android:orientation="horizontal">
 
 
-        <EditText
-            android:id="@+id/et_t1_work_start_tiem"
+        <Button
+            android:id="@+id/btn_t3_surimi1_start_time"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
-
-            android:layout_weight="1"
-            android:background="@drawable/edit_login"
-            android:enabled="false"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="연육작업시작1"
             android:paddingLeft="10dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
+
+            android:background="@drawable/buttonshape2"
+            android:textColorHint="@color/black"
             android:textSize="16sp" />
 
-        <TextView
-
-            android:id="@+id/et_p1_op_groddfup_nof"
+        <EditText
+            android:id="@+id/et_t3_surimi1_start_time"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
-            android:layout_weight="1.5"
-            android:hint="공정"
-            android:enabled="false"
-            android:paddingLeft="16dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
-            android:textSize="14sp" />
-        <EditText
-            android:id="@+id/et_t1_operaion_desc"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:enabled="false"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-
             android:background="@drawable/edit_login"
+            android:enabled="false"
+            android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -228,7 +314,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p1_op_grdoup_no"
+            android:id="@+id/et_p3_op_grdoup_no"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -240,12 +326,11 @@
             android:enabled="false"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
-            android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t1_tank_scan"
+            android:id="@+id/et_t3_tank_scan"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:layout_gravity="center"
@@ -255,12 +340,68 @@
             android:layout_weight="1"
             android:background="@color/beige"
             android:hint="Scan"
-            android:paddingLeft="10dp"
+            android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p3_Oiller"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="Oiller"
+            android:enabled="false"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_t3_oiller_lookup"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/buttonshape2"
+            android:textColorHint="@color/black"
+            android:layout_weight="2"
+            android:hint="..."
+
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t3_oiller_desc"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:enabled="false"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -271,7 +412,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p1_op_ggrdoup_no"
+            android:id="@+id/et_p3_op_ggrdoup_no"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -279,7 +420,7 @@
             android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
-            android:hint="액상 작업자"
+            android:hint="작업자"
             android:enabled="false"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
@@ -288,7 +429,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t1_liqid_person_desc"
+            android:id="@+id/et_t3_liqid_person_desc"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -298,7 +439,7 @@
             android:background="@color/beige"
             android:layout_weight="1"
             android:hint="Scan"
-            android:paddingLeft="10dp"
+            android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -309,42 +450,82 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10sp"
-        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
+        android:layout_marginTop="5sp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t1_riqid_start_time"
+            android:id="@+id/btn_t3_surimi1_end_time"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:background="@drawable/buttonshape2"
             android:layout_weight="1"
-            android:hint="액상작업시작"
-
-            android:textColor="@color/login_edit_text"
+            android:hint="연육작업종료1"
+            android:paddingLeft="10dp"
+            android:background="@drawable/buttonshape2"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
+        <EditText
+            android:id="@+id/et_t3_surimi1_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:enabled="false"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:background="@drawable/edit_login"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t1_riqid_end_time"
+            android:id="@+id/btn_t3_surimi2_start_time"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:background="@drawable/buttonshape2"
             android:layout_weight="1"
-            android:hint="액상작업종료"
-
-            android:textColor="@color/login_edit_text"
+            android:hint="연육작업시작2"
+            android:paddingLeft="10dp"
+            android:background="@drawable/buttonshape2"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t3_surimi2_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:enabled="false"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:background="@drawable/edit_login"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
 
     </LinearLayout>
 
@@ -352,36 +533,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_t1_riqid_start_time"
+        <Button
+            android:id="@+id/btn_t3_surimi2_end_time"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:enabled="false"
-            android:background="@drawable/edit_login"
             android:layout_weight="1"
+            android:hint="연육작업종료2"
             android:paddingLeft="10dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
+            android:background="@drawable/buttonshape2"
+            android:textColorHint="@color/black"
             android:textSize="16sp" />
 
-
-
         <EditText
-            android:id="@+id/et_t1_riqid_end_time"
+            android:id="@+id/et_t3_surimi2_end_time"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
+            android:enabled="false"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:enabled="false"
             android:layout_weight="1"
+            android:paddingLeft="16dp"
             android:background="@drawable/edit_login"
-            android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -389,16 +569,17 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.2"
+        android:layout_weight="0.3"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p1_op_Fggrdoup_no"
+            android:id="@+id/et_p3_list_tank"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -406,7 +587,7 @@
             android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
-            android:hint="분체 작업자"
+            android:hint="최종 Tank"
             android:enabled="false"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
@@ -415,181 +596,25 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t1_powder_person_desc"
+            android:id="@+id/et_t3_last_tank_scan"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="37dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
+            android:layout_weight="1"
             android:background="@color/beige"
-            android:layout_weight="1"
             android:hint="Scan"
-            android:paddingLeft="10dp"
+            android:paddingLeft="13dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
 
-
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10sp"
-        android:layout_weight="0.5"
-        android:background="@drawable/border"
-        android:backgroundTint="#ffffff"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_t1_powder_start_time"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:background="@drawable/buttonshape2"
-            android:layout_weight="1"
-            android:hint="분체작업시작"
-
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/black"
-            android:textSize="18sp" />
-
-
-        <Button
-            android:id="@+id/btn_t1_powder_end_time"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:background="@drawable/buttonshape2"
-            android:layout_weight="1"
-            android:hint="분체작업종료"
-
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/black"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/et_t1_powder_start_time"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:background="@drawable/edit_login"
-            android:layout_weight="1"
-            android:enabled="false"
-            android:paddingLeft="10dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
-
-
-        <EditText
-            android:id="@+id/et_t1_powder_end_time"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:background="@drawable/edit_login"
-            android:layout_weight="1"
-            android:enabled="false"
-            android:paddingLeft="10dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10sp"
-        android:layout_weight="0.5"
-        android:background="@drawable/border"
-        android:backgroundTint="#ffffff"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_t1_work_end_time"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:background="@drawable/buttonshape2"
-            android:layout_weight="1"
-            android:hint="계량작업종료"
-
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/black"
-            android:textSize="18sp" />
-
-
-        <TextView
-            android:id="@+id/et_p1_op_gFDrSodDDup_nof"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:layout_weight="1"
-            android:paddingLeft="16dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/et_t1_work_end_time"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:layout_weight="1"
-            android:enabled="false"
-            android:background="@drawable/edit_login"
-            android:paddingLeft="10dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
-
-
-        <TextView
-            android:id="@+id/et_p1_op_gFDrSodDDup_noDf"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="10sp"
-            android:layout_weight="1"
-            android:paddingLeft="16dp"
-            android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint"
-            android:textSize="18sp" />
-
-
-    </LinearLayout>
 
 
 
@@ -603,61 +628,98 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_t1_save"
+                android:id="@+id/btn_t3_save"
                 android:layout_width="100sp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="center"
                 android:layout_marginLeft="10sp"
-                android:background="@color/dark_green"
                 android:text="저장"
+                android:background="@color/dark_green"
                 android:textColor="@color/white"
                 android:textSize="23sp"
+
                 />
             <EditText
-                android:id="@+id/et_t1_workcenter_code"
+                android:id="@+id/et_t3_workcenter_code"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
             <EditText
-                android:id="@+id/et_t1_workcenter_desc"
+                android:id="@+id/et_t3_workcenter_desc"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
             <EditText
-                android:id="@+id/et_t1_workcenter_id"
-                android:layout_width="0dp"
-                android:layout_height="0dp" />
-
-            <EditText
-                android:id="@+id/et_t1_tank_lcode"
+                android:id="@+id/et_t3_workcenter_id"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
             <EditText
-                android:id="@+id/et_t1_liqid_person_id"
+                android:id="@+id/et_t3_equiment_id"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
             <EditText
-                android:id="@+id/et_t1_powder_person_id"
+                android:id="@+id/et_t3_equiment_code"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
             <EditText
-                android:id="@+id/et_t1_job_id"
+                android:id="@+id/et_t3_equiment_name"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
             <EditText
-                android:id="@+id/et_t1_opration_id"
+                android:id="@+id/et_t3_old_equiment_name"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
 
 
             <EditText
-                android:id="@+id/et_t1_mode_flag"
+                android:id="@+id/et_t3_oiller_id"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
+
+            <EditText
+                android:id="@+id/et_t3_oiller_code"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+
+            <EditText
+                android:id="@+id/et_t3_indicator_user_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <EditText
+                android:id="@+id/et_t3_tank_code"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <EditText
+                android:id="@+id/et_t3_job_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <EditText
+                android:id="@+id/et_t3_mod_flag"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <EditText
+                android:id="@+id/et_t3_operation_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <EditText
+                android:id="@+id/et_t3_liqid_person_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+            <EditText
+                android:id="@+id/et_t3_last_tank_code"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
 
         </LinearLayout>
 

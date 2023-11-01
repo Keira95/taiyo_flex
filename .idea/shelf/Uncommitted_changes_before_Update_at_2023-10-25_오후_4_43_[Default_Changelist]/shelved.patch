@@ -1,0 +1,1544 @@
+Index: app/src/main/res/layout/activity_login2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"fill_parent\"\r\n    android:layout_height=\"fill_parent\"\r\n    android:background=\"@color/white\"\r\n    android:id=\"@+id/main_layout\"\r\n    >\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:focusable=\"true\"\r\n        android:focusableInTouchMode=\"true\"\r\n        android:gravity=\"bottom\"\r\n        android:orientation=\"vertical\">\r\n\r\n\r\n         <ImageView\r\n        android:layout_width=\"280sp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_gravity=\"center\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:adjustViewBounds=\"true\"\r\n        android:contentDescription=\"@string/image_desc\"\r\n        android:cropToPadding=\"false\"\r\n        android:src=\"@drawable/taiyo_menu\"\r\n        android:scaleType=\"fitCenter\"\r\n\r\n        android:visibility=\"visible\" />\r\n\r\n\r\n        <TextView\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"5dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            />\r\n\r\n        <ImageView\r\n            android:layout_width=\"280sp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_gravity=\"center\"\r\n            android:adjustViewBounds=\"true\"\r\n            android:contentDescription=\"@string/image_desc\"\r\n            android:cropToPadding=\"false\"\r\n            android:scaleType=\"fitCenter\"\r\n            android:src=\"@drawable/drk_ptkimg\"\r\n\r\n            android:visibility=\"visible\" />\r\n\r\n    </LinearLayout>\r\n\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/linear_view\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:focusable=\"true\"\r\n        android:focusableInTouchMode=\"true\"\r\n        android:gravity=\"bottom\"\r\n        android:orientation=\"vertical\"\r\n        android:paddingLeft=\"42dp\"\r\n        android:paddingRight=\"42dp\"\r\n        android:paddingBottom=\"50dp\">\r\n        <!-- android:background=\"#F6E3CE\"-->\r\n\r\n        <EditText\r\n            android:id=\"@+id/userip\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginBottom=\"10dp\"\r\n            android:background=\"@drawable/edit_login\"\r\n            android:hint=\"@string/txt_site_ip\"\r\n            android:inputType=\"textVisiblePassword\"\r\n            android:paddingLeft=\"16dp\"\r\n            android:textColor=\"@color/login_edit_text\"\r\n            android:textColorHint=\"@color/login_edit_hint\"\r\n            android:textSize=\"16sp\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/userid\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginBottom=\"10dp\"\r\n            android:background=\"@drawable/edit_login\"\r\n            android:hint=\"@string/txt_your_id\"\r\n            android:inputType=\"textVisiblePassword\"\r\n            android:paddingLeft=\"16dp\"\r\n            android:textColor=\"@color/login_edit_text\"\r\n            android:textColorHint=\"@color/login_edit_hint\"\r\n            android:textSize=\"16sp\"\r\n            tools:ignore=\"Deprecated\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/userpassword\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginBottom=\"10dp\"\r\n            android:background=\"@drawable/edit_login\"\r\n            android:hint=\"@string/txt_your_password\"\r\n            android:imeOptions=\"actionDone\"\r\n            android:inputType=\"textPassword\"\r\n            android:paddingLeft=\"16dp\"\r\n            android:textColor=\"@color/login_edit_text\"\r\n            android:textColorHint=\"@color/login_edit_hint\"\r\n            android:textSize=\"16sp\" />\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_marginBottom=\"10dp\">\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"fill_parent\"\r\n                android:layout_height=\"fill_parent\"\r\n                android:layout_marginLeft=\"5dp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"#00ffffff\"\r\n                android:clickable=\"true\"\r\n                android:gravity=\"center_vertical\">\r\n\r\n                <CheckBox\r\n                    android:id=\"@+id/chk_ip\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:checked=\"false\"\r\n                    android:text=\"IP\"\r\n                    android:textColor=\"#333333\"\r\n                    android:textSize=\"16sp\" />\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:id=\"@+id/LinearLayout_save_area\"\r\n                android:layout_width=\"fill_parent\"\r\n                android:layout_height=\"fill_parent\"\r\n                android:layout_marginLeft=\"5dp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"#00ffffff\"\r\n                android:clickable=\"true\"\r\n                android:gravity=\"center_vertical\">\r\n\r\n                <CheckBox\r\n                    android:id=\"@+id/chk_id\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:checked=\"false\"\r\n                    android:text=\"ID\"\r\n                    android:textColor=\"#333333\"\r\n                    android:textSize=\"16sp\" />\r\n\r\n            </LinearLayout>\r\n\r\n            <LinearLayout\r\n                android:id=\"@+id/LinearLayout_save_area_auto\"\r\n                android:layout_width=\"fill_parent\"\r\n                android:layout_height=\"fill_parent\"\r\n                android:layout_marginLeft=\"5dp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"#00ffffff\"\r\n                android:clickable=\"true\"\r\n                android:gravity=\"center_vertical\">\r\n\r\n                <CheckBox\r\n                    android:id=\"@+id/chk_auto\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginLeft=\"10dp\"\r\n                    android:checked=\"false\"\r\n                    android:text=\"AUTO\"\r\n                    android:textColor=\"#333333\"\r\n                    android:textSize=\"16sp\" />\r\n\r\n            </LinearLayout>\r\n        </LinearLayout>\r\n\r\n        <Button\r\n            android:id=\"@+id/btn_login\"\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"50dp\"\r\n            android:background=\"@color/green\"\r\n            android:text=\"@string/txt_login\"\r\n            android:textColor=\"@color/secondary_text_white_color\"\r\n            android:textSize=\"16sp\" />\r\n    </LinearLayout>\r\n\r\n    <ProgressBar\r\n        android:id=\"@+id/progress\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_centerVertical=\"true\"\r\n        android:visibility=\"gone\"\r\n        />\r\n\r\n    <TextView\r\n        android:id=\"@+id/label_version\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"45dp\"\r\n        android:layout_alignParentBottom=\"true\"\r\n        android:layout_marginBottom=\"5dp\"\r\n        android:paddingLeft=\"42dp\"\r\n        android:paddingRight=\"42dp\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"12sp\" />\r\n\r\n\r\n\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_login2.xml	(revision 87ecab920e18a3bdef7420e5e2d2b456fac3dcd5)
++++ app/src/main/res/layout/activity_login2.xml	(date 1698219263329)
+@@ -24,7 +24,7 @@
+         android:adjustViewBounds="true"
+         android:contentDescription="@string/image_desc"
+         android:cropToPadding="false"
+-        android:src="@drawable/taiyo_menu"
++        android:src="@drawable/logo_taiyoinkkorea_color"
+         android:scaleType="fitCenter"
+ 
+         android:visibility="visible" />
+@@ -45,7 +45,7 @@
+             android:contentDescription="@string/image_desc"
+             android:cropToPadding="false"
+             android:scaleType="fitCenter"
+-            android:src="@drawable/drk_ptkimg"
++            android:src="@drawable/logo_taiyoinkkorea_color"
+ 
+             android:visibility="visible" />
+ 
+@@ -104,7 +104,8 @@
+             android:paddingLeft="16dp"
+             android:textColor="@color/login_edit_text"
+             android:textColorHint="@color/login_edit_hint"
+-            android:textSize="16sp" />
++            android:textSize="16sp"
++            tools:ignore="Deprecated" />
+ 
+         <LinearLayout
+             android:layout_width="match_parent"
+Index: app/src/main/java/com/erp/Taiyo/MenuActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.erp.Taiyo;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.content.pm.PackageManager;\r\nimport android.content.pm.ResolveInfo;\r\nimport android.content.res.Configuration;\r\nimport android.graphics.Color;\r\nimport android.os.AsyncTask;\r\nimport android.os.Bundle;\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\n\r\nimport com.erp.Taiyo.adapter.MenuListAdapter;\r\nimport com.google.android.material.navigation.NavigationView;\r\nimport androidx.core.app.ActivityCompat;\r\nimport androidx.core.view.GravityCompat;\r\nimport androidx.drawerlayout.widget.DrawerLayout;\r\nimport androidx.appcompat.app.ActionBar;\r\nimport androidx.appcompat.app.ActionBarDrawerToggle;\r\nimport androidx.appcompat.app.AlertDialog;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.appcompat.widget.Toolbar;\r\nimport android.view.Menu;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.AdapterView;\r\nimport android.widget.Button;\r\nimport android.widget.GridView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport org.json.JSONArray;\r\nimport org.json.JSONObject;\r\n\r\nimport java.io.BufferedReader;\r\nimport java.io.InputStreamReader;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n\r\nimport cz.msebera.android.httpclient.HttpResponse;\r\nimport cz.msebera.android.httpclient.client.methods.HttpPost;\r\nimport cz.msebera.android.httpclient.impl.client.DefaultHttpClient;\r\n\r\npublic class MenuActivity extends AppCompatActivity {\r\n    DrawerLayout mDrawerLayout;\r\n    Toolbar mToolbar;\r\n    NavigationView mNavigationView;\r\n\r\n    ActionBarDrawerToggle mDrawerToggle;\r\n\r\n    String strUserId, strUserPassword, strUserStatus, strUserName, strSabeon, strVerison, strIp;\r\n    String strSobId = \"80\";\r\n    String strOrgId = \"801\";\r\n\r\n    TextView tvId;\r\n    //버튼\r\n    Button btnWare, btnWait, btnOem, btnMerger, btnInventory , btnRelease, btnMobf0007 , btnSearh;\r\n    GridView gv;\r\n\r\n    MenuItem ItemId;\r\n\r\n    String[] MENU_NAME ;\r\n    String[] MENU_PROMPT ;\r\n    String[] MENU_DESC = new String[2];\r\n    String[] MENU_SHOW_FLAG;\r\n\r\n    ArrayList<String> arr2 = new ArrayList<>();\r\n\r\n    private List<ResolveInfo> menu;\r\n    private PackageManager pm;\r\n    com.erp.Taiyo.item.MenuIListtem menuIListtem;\r\n    MenuListAdapter menuListAdapter;\r\n\r\n    //login\r\n    SharedPreferences appData;\r\n\r\n    private ArrayList<String> arrayListTokens = new ArrayList<>();\r\n\r\n    @Override\r\n    protected void onCreate(@Nullable Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_menu);\r\n\r\n        final Intent intent = getIntent();\r\n        strUserId = intent.getStringExtra(\"O_USER_ID\");\r\n        strUserName = intent.getStringExtra(\"O_USER_NAME\");\r\n        //strSabeon = intent.getStringExtra(\"Sabeon\");\r\n        strVerison = intent.getStringExtra(\"versionString\");\r\n        strIp = intent.getStringExtra(\"Ip\");\r\n        overridePendingTransition(R.anim.silde_in_down, R.anim.silde_out_down);\r\n\r\n\r\n        //로그인 정보\r\n        appData = getSharedPreferences(\"appData\", MODE_PRIVATE);\r\n\r\n        menuListAdapter = new MenuListAdapter();\r\n\r\n\r\n        //그리드뷰\r\n        gv = (GridView) findViewById(R.id.gv_main_menu);\r\n\r\n        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {\r\n            @Override\r\n            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {\r\n                Toast.makeText(MenuActivity.this, \"\"+i, Toast.LENGTH_SHORT).show();\r\n            }\r\n        });\r\n\r\n        //메인\r\n        tvId = (TextView) findViewById(R.id.tv_main_id);\r\n        //tvId.setText(strUserName + \"(\" + strSabeon + \")\");\r\n        tvId.setText(strUserName);\r\n\r\n        //Toolbar 설정\r\n        mToolbar = findViewById(R.id.toolbar);\r\n        mDrawerLayout = findViewById(R.id.drawer_layout);\r\n        mNavigationView = findViewById(R.id.navigation_view);\r\n\r\n\r\n        btnWait = findViewById(R.id.btn_wait);\r\n        btnMerger = findViewById(R.id.btn_Merger);\r\n        btnMobf0007 = findViewById(R.id.btn_mobf0007);\r\n\r\n\r\n        Menu menu =  mNavigationView.getMenu();\r\n\r\n        ItemId = menu.findItem(R.id.user_id);\r\n        ItemId.setTitle(strUserId);\r\n\r\n        MenuItem ItemName = menu.findItem(R.id.user_name);\r\n        ItemName.setTitle(strUserName);\r\n\r\n        //\r\n        MenuItem MOBF0001 = menu.findItem(R.id.MOBF0009);\r\n        MenuItem MOBF0004 = menu.findItem(R.id.MOBF0010);\r\n        MenuItem MOBF0007 = menu.findItem(R.id.MOBF0011);\r\n\r\n        MenuItem logOut   = menu.findItem(R.id.log_out);\r\n        MenuItem appOut   = menu.findItem(R.id.app_out);\r\n\r\n\r\n        MenuItem ItemVerison = menu.findItem(R.id.user_verison);\r\n        ItemVerison.setTitle(strVerison);\r\n\r\n        setSupportActionBar(mToolbar);\r\n        getSupportActionBar().setDisplayShowTitleEnabled(false);\r\n\r\n        final ActionBar actionBar = getSupportActionBar();\r\n        actionBar.setDisplayHomeAsUpEnabled(true); // 햄버거 아이콘 활성화\r\n\r\n        //매뉴\r\n        DB_Menu_Header dbMenuHeader = new DB_Menu_Header();\r\n        dbMenuHeader.execute();\r\n        DB_Menu_Detail dbMenuDetail = new DB_Menu_Detail();\r\n        dbMenuDetail.execute(strUserId);\r\n\r\n        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {\r\n            @SuppressLint(\"NewApi\")\r\n            @Override\r\n            public boolean onNavigationItemSelected(@NonNull MenuItem item) {\r\n                switch (item.getItemId()) {\r\n                    case R.id.user_id:\r\n                        break;\r\n                    case R.id.user_name:\r\n                        break;\r\n                 /*   case R.id.MOBF0009:\r\n                        Intent MOBF0001 = new Intent(MenuActivity.this, MatUseRegisterActivity.class);\r\n                        MOBF0001.putExtra(\"O_USER_ID\", strUserId);\r\n                        MOBF0001.putExtra(\"O_USER_NAME\", strUserName);\r\n                        MOBF0001.putExtra(\"Ip\", strIp);\r\n                        MOBF0001.putExtra(\"TOP_MENU_DESC\", btnWait.getText().toString());\r\n                        startActivity(MOBF0001);\r\n                        break;\r\n                   case R.id.MOBF0010:\r\n                        Intent MOBF0004 = new Intent(MenuActivity.this, MatTransferActivity.class);\r\n                        MOBF0004.putExtra(\"O_USER_ID\", strUserId);\r\n                        MOBF0004.putExtra(\"O_USER_NAME\", strUserName);\r\n                        MOBF0004.putExtra(\"Ip\", strIp);\r\n                        MOBF0004.putExtra(\"TOP_MENU_DESC\", btnMerger.getText().toString());\r\n                        startActivity(MOBF0004);\r\n                        break;\r\n                    case R.id.MOBF0011:\r\n                        Intent MOBF0007 = new Intent(MenuActivity.this, MatSearchOnhandActivity.class);\r\n                        MOBF0007.putExtra(\"O_USER_ID\", strUserId);\r\n                        MOBF0007.putExtra(\"O_USER_NAME\", strUserName);\r\n                        MOBF0007.putExtra(\"Ip\", strIp);\r\n                        MOBF0007.putExtra(\"TOP_MENU_DESC\", btnMobf0007.getText().toString());\r\n                        startActivity(MOBF0007);*/\r\n\r\n                    default:\r\n                        break;\r\n                }\r\n\r\n                return false;\r\n            }\r\n        });\r\n\r\n        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open, R.string.close);\r\n        mDrawerToggle.setDrawerIndicatorEnabled(true);\r\n        mDrawerLayout.setDrawerListener(mDrawerToggle);\r\n\r\n      /* btnWait.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intentMat = new Intent(MenuActivity.this, MatUseRegisterActivity.class);\r\n                intentMat.putExtra(\"O_USER_ID\", strUserId);\r\n                intentMat.putExtra(\"O_USER_NAME\", strUserName);\r\n                intentMat.putExtra(\"Ip\", strIp);\r\n                intentMat.putExtra(\"TOP_MENU_DESC\", btnWait.getText().toString());\r\n                startActivity(intentMat);\r\n            }\r\n        });\r\n\r\n        btnMerger.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intentMat = new Intent(MenuActivity.this, MatTransferActivity.class);\r\n                intentMat.putExtra(\"O_USER_ID\", strUserId);\r\n                intentMat.putExtra(\"O_USER_NAME\", strUserName);\r\n                intentMat.putExtra(\"Ip\", strIp);\r\n                intentMat.putExtra(\"TOP_MENU_DESC\", btnMerger.getText().toString());\r\n                startActivity(intentMat);\r\n            }\r\n        });\r\n\r\n        btnMobf0007.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intentMat = new Intent(MenuActivity.this, MatSearchOnhandActivity.class);\r\n                intentMat.putExtra(\"O_USER_ID\", strUserId);\r\n                intentMat.putExtra(\"O_USER_NAME\", strUserName);\r\n                intentMat.putExtra(\"Ip\", strIp);\r\n                intentMat.putExtra(\"TOP_MENU_DESC\", btnMobf0007.getText().toString());\r\n                startActivity(intentMat);\r\n            }\r\n        });\r\n*/\r\n        logOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {\r\n            @Override\r\n            public boolean onMenuItemClick(MenuItem menuItem) {\r\n                AlertDialog.Builder alert = new AlertDialog.Builder(MenuActivity.this);\r\n                alert.setTitle(\"로그아웃\");\r\n                alert.setMessage(\"로그아웃 하시겠습니까?\");\r\n                alert.setPositiveButton(\"확인\", new DialogInterface.OnClickListener() {\r\n                    @Override\r\n                    public void onClick(DialogInterface dialog, int which) {\r\n                        SharedPreferences.Editor editor = appData.edit();\r\n                        editor.remove(\"chkauto\");\r\n                        Intent intentHome = new Intent(getApplicationContext(), LoginActivity.class);\r\n                        startActivity(intentHome);\r\n                        finish();\r\n                    }\r\n\r\n                });\r\n                alert.show();\r\n\r\n                return false;\r\n            }\r\n        });\r\n\r\n        appOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {\r\n            @Override\r\n            public boolean onMenuItemClick(MenuItem menuItem) {\r\n                AlertDialog.Builder alert = new AlertDialog.Builder(MenuActivity.this);\r\n                alert.setTitle(\"종료\");\r\n                alert.setMessage(\"어플리케이션을 종료 하시겠습니까?\");\r\n                alert.setPositiveButton(\"확인\", new DialogInterface.OnClickListener() {\r\n                    @Override\r\n                    public void onClick(DialogInterface dialog, int which) {\r\n\r\n                        ActivityCompat.finishAffinity(MenuActivity.this);\r\n                        System.exit(0);\r\n\r\n                    }\r\n\r\n                });\r\n                alert.show();\r\n\r\n                return false;\r\n            }\r\n        });\r\n\r\n\r\n        //종합 상황판\r\n      /*  btnTotal.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                  //sendMessage(new JSONArray(arrayListTokens), \"h system utility\", \"test utility\", \"h system\", \"h system\");\r\n                Intent intentMat = new Intent(MenuActivity.this, TotalMultiScreenActivity.class);\r\n                intentMat.putExtra(\"Sabeon\", strSabeon);\r\n                intentMat.putExtra(\"UserName\", strUserName);\r\n                intentMat.putExtra(\"Ip\", strIp);\r\n                startActivity(intentMat);\r\n            }\r\n        });*/\r\n\r\n        //LOG\r\n /*       btnLog.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intentMat = new Intent(MenuActivity.this, LogActivity.class);\r\n                intentMat.putExtra(\"Sabeon\", strSabeon);\r\n                intentMat.putExtra(\"UserName\", strUserName);\r\n                intentMat.putExtra(\"Ip\", strIp);\r\n                startActivity(intentMat);\r\n            }\r\n        });\r\n\r\n        //Token\r\n        btnToken.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Intent intentMat = new Intent(MenuActivity.this, TokenActivity.class);\r\n                intentMat.putExtra(\"Sabeon\", strSabeon);\r\n                intentMat.putExtra(\"UserName\", strUserName);\r\n                intentMat.putExtra(\"Ip\", strIp);\r\n                startActivity(intentMat);\r\n            }\r\n        });*/\r\n\r\n        //버튼 로그아웃\r\n        tvId.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                AlertDialog.Builder alert = new AlertDialog.Builder(MenuActivity.this);\r\n                alert.setTitle(\"로그아웃\");\r\n                alert.setMessage(\"로그아웃 하시겠습니까?\");\r\n                alert.setPositiveButton(\"확인\", new DialogInterface.OnClickListener() {\r\n                    @Override\r\n                    public void onClick(DialogInterface dialog, int which) {\r\n                        SharedPreferences.Editor editor = appData.edit();\r\n                        editor.remove(\"chkauto\");\r\n                        editor.remove(\"pw\");\r\n                        editor.commit();\r\n                        Intent intentHome = new Intent(getApplicationContext(), LoginActivity.class);\r\n                        startActivity(intentHome);\r\n                        finish();\r\n                    }\r\n\r\n                });\r\n                alert.setNegativeButton(\"취소\", new DialogInterface.OnClickListener() {\r\n                    @Override\r\n                    public void onClick(DialogInterface arg0, int arg1) {\r\n                    }\r\n                });\r\n                alert.show();\r\n            }\r\n        });\r\n\r\n    }\r\n\r\n    @Override\r\n    public boolean onOptionsItemSelected(MenuItem item) {\r\n        if (mDrawerToggle.onOptionsItemSelected(item)) {\r\n            return true;\r\n        }\r\n\r\n        switch (item.getItemId()) {\r\n            case android.R.id.home:\r\n                mDrawerLayout.openDrawer(GravityCompat.START);\r\n                return true;\r\n        }\r\n        return super.onOptionsItemSelected(item);\r\n    }\r\n\r\n    @Override\r\n    protected void onPostCreate(Bundle savedInstanceState) {\r\n        super.onPostCreate(savedInstanceState);\r\n        mDrawerToggle.syncState();\r\n    }\r\n\r\n    @Override\r\n    public void onConfigurationChanged(Configuration newConfig) {\r\n        super.onConfigurationChanged(newConfig);\r\n        mDrawerToggle.onConfigurationChanged(newConfig);\r\n    }\r\n\r\n    protected class DB_Menu_Header extends AsyncTask<String, Void, String>\r\n    {\r\n        protected  String doInBackground(String... urls)\r\n        {\r\n            String URL = \"http://\" + strIp + \"/DRK/MenuHeader.jsp\"; //자신의 웹서버 주소를 저장합니다.\r\n            DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.\r\n\r\n            try\r\n            {\r\n                HttpPost post = new HttpPost(URL);\r\n\r\n                HttpResponse response = client.execute(post);\r\n                BufferedReader bufreader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), \"utf-8\"));\r\n\r\n                String line = null;\r\n                String result = \"\";\r\n\r\n                while ((line = bufreader.readLine()) != null) {\r\n                    result += line;\r\n                }\r\n\r\n\r\n                //tvLog.append();\r\n                return result;\r\n\r\n            }catch (Exception e)\r\n            {\r\n                e.printStackTrace();\r\n            }\r\n            return \"\"; //결과값 리턴\r\n        }\r\n\r\n        @Override\r\n        protected void onPostExecute(String result) {\r\n            try{\r\n                JSONObject RESULT = new JSONObject(result);\r\n                JSONArray arr = RESULT.getJSONArray(\"RESULT\");\r\n\r\n                Menu menu =  mNavigationView.getMenu();\r\n\r\n                ItemId = menu.findItem(R.id.user_id);\r\n                ItemId.setTitle(strUserId);\r\n\r\n                MenuItem ItemName = menu.findItem(R.id.user_name);\r\n\r\n                //\r\n                MenuItem MOBF0001 = menu.findItem(R.id.MOBF0009);\r\n               /* MenuItem MOBF0002 = menu.findItem(R.id.MOBF0002);\r\n                MenuItem MOBF0003 = menu.findItem(R.id.MOBF0003);*/\r\n                MenuItem MOBF0004 = menu.findItem(R.id.MOBF0010);\r\n              /*  MenuItem MOBF0005 = menu.findItem(R.id.MOBF0005);\r\n                MenuItem MOBF0006 = menu.findItem(R.id.MOBF0006);*/\r\n                MenuItem MOBF0007 = menu.findItem(R.id.MOBF0011);\r\n               // MenuItem MOBF0008 = menu.findItem(R.id.MOBF0008);\r\n\r\n                for(int i=0; i< arr.length(); i++)\r\n                {\r\n                    JSONObject j_ob = arr.getJSONObject(i);\r\n                    if(j_ob.getString(\"TOP_MENU_NAME\").equals(\"MOBF0009\"))\r\n                    {\r\n                        if(j_ob.getString(\"TOP_MENU_SHOW_FLAG\").equals(\"Y\"))\r\n                        {\r\n                            btnWait.setEnabled(true);\r\n                            btnWait.setText(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                            MOBF0001.setTitle(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                        }\r\n                        else\r\n                        {\r\n                            btnWait.setEnabled(false);\r\n                            btnWait.setText(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                            btnWait.setBackgroundColor(Color.GRAY);\r\n                            MOBF0001.setTitle(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                        }\r\n                    }\r\n\r\n\r\n                    if(j_ob.getString(\"TOP_MENU_NAME\").equals(\"MOBF0010\"))\r\n                    {\r\n                        if(j_ob.getString(\"TOP_MENU_SHOW_FLAG\").equals(\"Y\"))\r\n                        {\r\n                            btnMerger.setEnabled(true);\r\n                            btnMerger.setText(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                            MOBF0004.setTitle(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                        }\r\n                        else\r\n                        {\r\n                            btnMerger.setEnabled(false);\r\n                            btnMerger.setText(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                            btnMerger.setBackgroundColor(Color.GRAY);\r\n                            MOBF0004.setTitle(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                        }\r\n                    }\r\n\r\n\r\n                    if(j_ob.getString(\"TOP_MENU_NAME\").equals(\"MOBF0011\"))\r\n                    {\r\n                        if(j_ob.getString(\"TOP_MENU_SHOW_FLAG\").equals(\"Y\"))\r\n                        {\r\n                            btnMobf0007.setText(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                            btnMobf0007.setEnabled(true);\r\n                            MOBF0007.setTitle(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                        }\r\n                        else\r\n                        {\r\n                            btnMobf0007.setEnabled(false);\r\n                            btnMobf0007.setText(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                            btnMobf0007.setBackgroundColor(Color.GRAY);\r\n                            MOBF0007.setTitle(j_ob.getString(\"TOP_MENU_DESC\"));\r\n                        }\r\n                    }\r\n\r\n\r\n\r\n                }\r\n\r\n//                for(int i = 0; i < arr.length(); i++) {\r\n//                    JSONObject j_ob = arr.getJSONObject(i);\r\n//                    menuIListtem = new MenuIListtem();\r\n//\r\n//                    menuListAdapter.addItem(j_ob.getString(\"TOP_MENU_DESC\"));\r\n//\r\n//                }\r\n\r\n                //gv.setAdapter(menuListAdapter);\r\n\r\n//                for(int i = 0; i < arr.length(); i++) {\r\n//                    JSONObject j_ob = arr.getJSONObject(i);\r\n//                    //MENU_NAME[i] = j_ob.getString(\"TOP_MENU_NAME\");\r\n//                    //MENU_PROMPT[i] = j_ob.getString(\"TOP_MENU_PROMPT\");\r\n//                    MENU_DESC[i] = j_ob.getString(\"TOP_MENU_DESC\");\r\n//                    //MENU_SHOW_FLAG[i] = j_ob.getString(\"TOP_MENU_SHOW_FLAG\");\r\n//\r\n//                }\r\n\r\n                //MenuButtonAdapter buttonAdapter = new MenuButtonAdapter(getApplicationContext(), MENU_DESC);\r\n                //gv.setAdapter(buttonAdapter);\r\n\r\n            }catch (Exception e){\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n    protected class DB_Menu_Detail extends AsyncTask<String, Void, String>\r\n    {\r\n        protected  String doInBackground(String... urls)\r\n        {\r\n            String URL = \"http://\" + strIp + \"/DRK/MenuDetail.jsp\"; //자신의 웹서버 주소를 저장합니다.\r\n            DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.\r\n\r\n            try\r\n            {\r\n                HttpPost post = new HttpPost(URL+ \"?W_USER_ID=\" + urls[0]);\r\n\r\n                HttpResponse response = client.execute(post);\r\n                BufferedReader bufreader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), \"utf-8\"));\r\n\r\n                String line = null;\r\n                String result = \"\";\r\n\r\n                while ((line = bufreader.readLine()) != null) {\r\n                    result += line;\r\n                }\r\n\r\n\r\n                //tvLog.append();\r\n                return result;\r\n\r\n            }catch (Exception e)\r\n            {\r\n                e.printStackTrace();\r\n            }\r\n            return \"\"; //결과값 리턴\r\n        }\r\n\r\n        @Override\r\n        protected void onPostExecute(String result) {\r\n            try{\r\n                JSONObject RESULT = new JSONObject(result);\r\n                JSONArray arr = RESULT.getJSONArray(\"RESULT\");\r\n\r\n\r\n                for(int i=0; i< arr.length(); i++)\r\n                {\r\n                    JSONObject j_ob = arr.getJSONObject(i);\r\n                    if(j_ob.getString(\"TOP_NAME\").equals(\"MOBF0009\"))\r\n                    {\r\n                        if(j_ob.getString(\"AUTHORITY_FLAG\").equals(\"Y\"))\r\n                        {\r\n\r\n                        }\r\n                        else\r\n                        {\r\n                          //  btnWait.setEnabled(false);\r\n                           // btnWait.setBackgroundColor(Color.GRAY);\r\n                        }\r\n                    }\r\n\r\n                    if(j_ob.getString(\"TOP_NAME\").equals(\"MOBF0010\"))\r\n                    {\r\n                        if(j_ob.getString(\"AUTHORITY_FLAG\").equals(\"Y\"))\r\n                        {\r\n                        }\r\n                        else\r\n                        {\r\n                            //btnMerger.setEnabled(false);\r\n                           // btnMerger.setBackgroundColor(Color.GRAY);\r\n                        }\r\n                    }\r\n\r\n\r\n                    if(j_ob.getString(\"TOP_NAME\").equals(\"MOBF0011\"))\r\n                    {\r\n                        if(j_ob.getString(\"AUTHORITY_FLAG\").equals(\"Y\"))\r\n                        {\r\n                        }\r\n                        else\r\n                        {\r\n                           // btnMobf0007.setEnabled(false);\r\n                           // btnMobf0007.setBackgroundColor(Color.GRAY);\r\n                        }\r\n                    }\r\n\r\n                }\r\n\r\n\r\n            }catch (Exception e){\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/erp/Taiyo/MenuActivity.java	(revision 87ecab920e18a3bdef7420e5e2d2b456fac3dcd5)
++++ app/src/main/java/com/erp/Taiyo/MenuActivity.java	(date 1697693593758)
+@@ -13,6 +13,7 @@
+ import androidx.annotation.NonNull;
+ import androidx.annotation.Nullable;
+ 
++import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
+ import com.erp.Taiyo.adapter.MenuListAdapter;
+ import com.google.android.material.navigation.NavigationView;
+ import androidx.core.app.ActivityCompat;
+@@ -58,7 +59,7 @@
+ 
+     TextView tvId;
+     //버튼
+-    Button btnWare, btnWait, btnOem, btnMerger, btnInventory , btnRelease, btnMobf0007 , btnSearh;
++    Button btnWare, btnMenug1, btnOem, btnMerger, btnInventory , btnRelease, btnMobf0007 , btnSearh;
+     GridView gv;
+ 
+     MenuItem ItemId;
+@@ -121,7 +122,7 @@
+         mNavigationView = findViewById(R.id.navigation_view);
+ 
+ 
+-        btnWait = findViewById(R.id.btn_wait);
++        btnMenug1 = findViewById(R.id.btn_menu_g1);
+         btnMerger = findViewById(R.id.btn_Merger);
+         btnMobf0007 = findViewById(R.id.btn_mobf0007);
+ 
+@@ -153,10 +154,10 @@
+         actionBar.setDisplayHomeAsUpEnabled(true); // 햄버거 아이콘 활성화
+ 
+         //매뉴
+-        DB_Menu_Header dbMenuHeader = new DB_Menu_Header();
+-        dbMenuHeader.execute();
+-        DB_Menu_Detail dbMenuDetail = new DB_Menu_Detail();
+-        dbMenuDetail.execute(strUserId);
++       // DB_Menu_Header  dbMenuHeader = new DB_Menu_Header();
++       // dbMenuHeader.execute();
++       // DB_Menu_Detail dbMenuDetail = new DB_Menu_Detail();
++       // dbMenuDetail.execute(strUserId);
+ 
+         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+             @SuppressLint("NewApi")
+@@ -167,15 +168,15 @@
+                         break;
+                     case R.id.user_name:
+                         break;
+-                 /*   case R.id.MOBF0009:
+-                        Intent MOBF0001 = new Intent(MenuActivity.this, MatUseRegisterActivity.class);
++                    case R.id.MOBF0009:
++                        Intent MOBF0001 = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
+                         MOBF0001.putExtra("O_USER_ID", strUserId);
+                         MOBF0001.putExtra("O_USER_NAME", strUserName);
+                         MOBF0001.putExtra("Ip", strIp);
+-                        MOBF0001.putExtra("TOP_MENU_DESC", btnWait.getText().toString());
++                        MOBF0001.putExtra("TOP_MENU_DESC", btnMenug1.getText().toString());
+                         startActivity(MOBF0001);
+                         break;
+-                   case R.id.MOBF0010:
++                 /*  case R.id.MOBF0010:
+                         Intent MOBF0004 = new Intent(MenuActivity.this, MatTransferActivity.class);
+                         MOBF0004.putExtra("O_USER_ID", strUserId);
+                         MOBF0004.putExtra("O_USER_NAME", strUserName);
+@@ -203,19 +204,19 @@
+         mDrawerToggle.setDrawerIndicatorEnabled(true);
+         mDrawerLayout.setDrawerListener(mDrawerToggle);
+ 
+-      /* btnWait.setOnClickListener(new View.OnClickListener() {
++       btnMenug1.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+-                Intent intentMat = new Intent(MenuActivity.this, MatUseRegisterActivity.class);
++                Intent intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
+                 intentMat.putExtra("O_USER_ID", strUserId);
+                 intentMat.putExtra("O_USER_NAME", strUserName);
+                 intentMat.putExtra("Ip", strIp);
+-                intentMat.putExtra("TOP_MENU_DESC", btnWait.getText().toString());
++                intentMat.putExtra("TOP_MENU_DESC", btnMenug1.getText().toString());
+                 startActivity(intentMat);
+             }
+         });
+ 
+-        btnMerger.setOnClickListener(new View.OnClickListener() {
++        /*btnMerger.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intentMat = new Intent(MenuActivity.this, MatTransferActivity.class);
+@@ -441,15 +442,15 @@
+                     {
+                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
+                         {
+-                            btnWait.setEnabled(true);
+-                            btnWait.setText(j_ob.getString("TOP_MENU_DESC"));
++                            btnMenug1.setEnabled(true);
++                            btnMenug1.setText(j_ob.getString("TOP_MENU_DESC"));
+                             MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
+                         }
+                         else
+                         {
+-                            btnWait.setEnabled(false);
+-                            btnWait.setText(j_ob.getString("TOP_MENU_DESC"));
+-                            btnWait.setBackgroundColor(Color.GRAY);
++                            btnMenug1.setEnabled(false);
++                            btnMenug1.setText(j_ob.getString("TOP_MENU_DESC"));
++                            btnMenug1.setBackgroundColor(Color.GRAY);
+                             MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
+                         }
+                     }
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    package=\"com.erp.Taiyo\">\r\n\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\r\n    <uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>\r\n    <uses-permission android:name=\"android.permission.READ_CONTACTS\"/>\r\n\r\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>\r\n    <uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\"/>\r\n\r\n    <uses-permission android:name=\"android.permission.INSTALL_PACKAGES\"\r\n        tools:ignore=\"ProtectedPermissions\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\">\r\n    </uses-permission>\r\n\r\n\r\n    <!--\"@mipmap/ic_launcher\"-->\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@drawable/drk_ico\"\r\n        android:label=\"@string/app_name\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme_NO\"\r\n        android:usesCleartextTraffic=\"true\"\r\n        android:hardwareAccelerated=\"false\"\r\n        android:largeHeap=\"true\"\r\n        android:requestLegacyExternalStorage=\"true\"\r\n        tools:ignore=\"GoogleAppIndexingWarning\"\r\n        tools:targetApi=\"m\"\r\n        >\r\n        <activity android:name=\"com.erp.Taiyo.SplashActivity\"\r\n            android:exported=\"true\"\r\n            android:screenOrientation=\"portrait\"\r\n            android:usesCleartextTraffic=\"true\"\r\n            android:theme=\"@style/SplashTheme\"\r\n            >\r\n\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n        <activity android:name=\"com.erp.Taiyo.LoginActivity\"\r\n            android:screenOrientation=\"portrait\"\r\n            />\r\n\r\n\r\n        <activity android:name=\"com.erp.Taiyo.MenuActivity\"\r\n            android:screenOrientation=\"portrait\"\r\n            />\r\n\r\n\r\n    </application>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 87ecab920e18a3bdef7420e5e2d2b456fac3dcd5)
++++ app/src/main/AndroidManifest.xml	(date 1698219106009)
+@@ -20,7 +20,7 @@
+     <!--"@mipmap/ic_launcher"-->
+     <application
+         android:allowBackup="true"
+-        android:icon="@drawable/drk_ico"
++        android:icon="@drawable/icon"
+         android:label="@string/app_name"
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme_NO"
+@@ -52,6 +52,9 @@
+         <activity android:name="com.erp.Taiyo.MenuActivity"
+             android:screenOrientation="portrait"
+             />
++        <activity android:name="com.erp.Taiyo.activity.RegisterWeighingWorkActivity"
++            android:screenOrientation="portrait"
++            />
+ 
+ 
+     </application>
+Index: app/src/main/java/com/erp/Taiyo/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.erp.Taiyo;\r\n\r\nimport android.app.Activity;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.net.Uri;\r\nimport android.os.Handler;\r\nimport android.os.Message;\r\nimport androidx.appcompat.app.AlertDialog;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport android.os.Bundle;\r\n\r\nimport java.lang.ref.WeakReference;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n    String deviceVersion;\r\n    String storeVersion;\r\n    public static Activity firstActivity;\r\n\r\n\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        setContentView(R.layout.activity_main);\r\n    }\r\n\r\n\r\n\r\n    private final DeviceVersionCheckHandler deviceVersionCheckHandler = new DeviceVersionCheckHandler(this);\r\n\r\n    // 핸들러 객체 만들기\r\n    private static class DeviceVersionCheckHandler extends Handler {\r\n        private final WeakReference<MainActivity> mainActivityWeakReference;\r\n        public DeviceVersionCheckHandler(MainActivity mainActivity) {\r\n            mainActivityWeakReference = new WeakReference<MainActivity>(mainActivity);\r\n        }\r\n        @Override\r\n        public void handleMessage(Message msg) {\r\n            MainActivity activity = mainActivityWeakReference.get();\r\n            if (activity != null) {\r\n\r\n                activity.handleMessage(msg);\r\n                // 핸들메세지로 결과값 전달\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n    private void handleMessage(Message msg) {\r\n        //핸들러에서 넘어온 값 체크\r\n\r\n        if (storeVersion.compareTo(deviceVersion) > 0) {\r\n            // 업데이트 필요\r\n\r\n            AlertDialog.Builder alert = new AlertDialog.Builder(this);\r\n            alert.setTitle(\"최신버전 업데이트\");\r\n            alert.setCancelable(false);\r\n            alert.setMessage(\"최신버전으로 업데이트 해주세요.\");\r\n            alert.setPositiveButton(\"업데이트 이동\",  new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object\r\n                    try {\r\n                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(\"market://details?id=\" + appPackageName)));\r\n                    } catch (android.content.ActivityNotFoundException anfe) {\r\n                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(\"https://play.google.com/store/apps/details?id=\" + appPackageName)));\r\n                    }\r\n                }\r\n            });\r\n            alert.setNegativeButton(\"취소\", new DialogInterface.OnClickListener() {\r\n                @Override\r\n                public void onClick(DialogInterface dialog, int which) {\r\n                    // 업데이트 불필요\r\n                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);\r\n                    intent.putExtra(\"Store_Version\", storeVersion);\r\n                    startActivity(intent);\r\n                    firstActivity = MainActivity.this;\r\n                }\r\n            });\r\n            alert.show();\r\n        } else {\r\n            // 업데이트 불필요\r\n            Intent intent = new Intent(MainActivity.this, LoginActivity.class);\r\n            intent.putExtra(\"Store_Version\", storeVersion);\r\n            startActivity(intent);\r\n            firstActivity = MainActivity.this;\r\n        }\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/erp/Taiyo/MainActivity.java	(revision 87ecab920e18a3bdef7420e5e2d2b456fac3dcd5)
++++ app/src/main/java/com/erp/Taiyo/MainActivity.java	(date 1697616494820)
+@@ -19,7 +19,6 @@
+ 
+ 
+ 
+-
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+Index: app/src/main/java/com/erp/Taiyo/LoginActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.erp.Taiyo;\r\n\r\n\r\nimport android.Manifest;\r\nimport android.content.Context;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.content.SharedPreferences;\r\nimport android.content.pm.PackageManager;\r\nimport android.net.Uri;\r\nimport android.os.AsyncTask;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.os.Environment;\r\nimport androidx.core.app.ActivityCompat;\r\nimport androidx.appcompat.app.AlertDialog;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport android.telephony.TelephonyManager;\r\nimport android.text.InputFilter;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.view.inputmethod.InputMethodManager;\r\nimport android.widget.Button;\r\nimport android.widget.CheckBox;\r\nimport android.widget.RelativeLayout;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\n//import com.google.android.gms.tasks.OnSuccessListener;\r\n//import com.google.firebase.iid.FirebaseInstanceId;\r\n//import com.google.firebase.iid.InstanceIdResult;\r\n\r\nimport org.json.JSONArray;\r\nimport org.json.JSONObject;\r\n\r\nimport java.io.BufferedReader;\r\nimport java.io.File;\r\nimport java.io.FileOutputStream;\r\nimport java.io.IOException;\r\nimport java.io.InputStream;\r\nimport java.io.InputStreamReader;\r\nimport java.net.HttpURLConnection;\r\nimport java.net.MalformedURLException;\r\nimport java.net.URL;\r\n\r\nimport cz.msebera.android.httpclient.HttpResponse;\r\nimport cz.msebera.android.httpclient.client.methods.HttpPost;\r\nimport cz.msebera.android.httpclient.impl.client.DefaultHttpClient;\r\n\r\npublic class LoginActivity extends AppCompatActivity {\r\n\r\n    TextView versionLabel, userIp, userId, userPw ;\r\n    CheckBox chkip, chkid, chkauto;\r\n    Button btnLogin;\r\n    String strUserIp, strUserId, strUserPw; // strUserIp\r\n    String strStatus = \"1\";\r\n    String versionString;\r\n    String newToken;\r\n    String telNumber = \"\";\r\n    String sobId =\"80\";\r\n    String orgId =\"801\";\r\n    String testIp = \"106.251.238.99:8091\";\r\n    String storeVersion = \"\";\r\n    String deviceVersion = \"\";\r\n    RelativeLayout mainLayout;\r\n    //log\r\n    SharedPreferences auto;\r\n    //login\r\n    SharedPreferences appData;\r\n    //키보드\r\n    InputMethodManager imm;\r\n    private boolean saveLoginData;\r\n    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_login2);\r\n        versionLabel = findViewById(R.id.label_version);\r\n        userIp = findViewById(R.id.userip);\r\n        userId = findViewById(R.id.userid);\r\n        userPw = findViewById(R.id.userpassword);\r\n        btnLogin = findViewById(R.id.btn_login);\r\n\r\n        userId.setFilters(new InputFilter[]{new InputFilter.AllCaps()}); // 소문자로 입력된 값을 대문자로 바꿔줌.\r\n\r\n        new InputFilter.AllCaps(); // 소문자로 입력된 값을 대문자로 바꿔 줌.\r\n\r\n\r\n        //체크박스\r\n\r\n        chkip = findViewById(R.id.chk_ip);\r\n        chkid = findViewById(R.id.chk_id);\r\n        chkauto = findViewById(R.id.chk_auto);\r\n\r\n        //메인\r\n        mainLayout = findViewById(R.id.main_layout);\r\n\r\n        //키보드\r\n        imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);\r\n\r\n        //자동로그인\r\n        appData = getSharedPreferences(\"appData\", MODE_PRIVATE);\r\n        load();\r\n\r\n\r\n    /*    FirebaseInstanceId.getInstance().getToken();\r\n        //Log.d(\"태그\", FirebaseInstanceId.getInstance().getToken());\r\n\r\n        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {\r\n            @Override\r\n            public void onSuccess(InstanceIdResult instanceIdResult) {\r\n                newToken = instanceIdResult.getToken();\r\n                Log.e(\"newToken\", newToken);\r\n            }\r\n        });*/\r\n\r\n\r\n        if(chkip.isChecked())\r\n        {\r\n            userIp.setText(strUserIp);\r\n        }\r\n        if(chkid.isChecked())\r\n        {\r\n            userId.setText(strUserId);\r\n        }\r\n        if(chkauto.isChecked())\r\n        {\r\n            userPw.setText(strUserPw);\r\n        }\r\n\r\n        if(chkip.isChecked() && chkid.isChecked() && chkauto.isChecked()) {\r\n            strUserIp = userIp.getText().toString();\r\n            strUserId = userId.getText().toString();\r\n            strUserPw = userPw.getText().toString();\r\n\r\n            DB_Version dbVersion = new DB_Version();\r\n            dbVersion.execute(userIp.getText().toString());\r\n\r\n            //DB_Login dbLogin = new DB_Login();\r\n            //dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);\r\n            // 로그인 성공시 저장 처리, 예제는 무조건 저장\r\n            save();\r\n        }else if(chkauto.isChecked()){\r\n            strUserIp = userIp.getText().toString();\r\n            strUserId = userId.getText().toString();\r\n            strUserPw = userPw.getText().toString();\r\n\r\n            DB_Version dbVersion = new DB_Version();\r\n            dbVersion.execute(userIp.getText().toString());\r\n\r\n            // 로그인 성공시 저장 처리, 예제는 무조건 저장\r\n            save();\r\n        }\r\n\r\n        initializeVersionString();\r\n\r\n\r\n\r\n        //로그인 정보\r\n        auto = getSharedPreferences(\"appData_Log\", Context.MODE_PRIVATE);\r\n        SharedPreferences.Editor editor_save = auto.edit();\r\n        editor_save.clear();\r\n        editor_save.putString(\"log\", \"\");\r\n        editor_save.commit();\r\n\r\n        TelephonyManager mTelephonyManager = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);\r\n        int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;\r\n        int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 1;\r\n        if (mTelephonyManager != null) {\r\n            if (Build.VERSION.SDK_INT >= 23) {\r\n                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {\r\n                    Toast.makeText(this, \"전화 권한이 허용되지 않았습니다.\", Toast.LENGTH_SHORT).show();\r\n\r\n                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);\r\n\r\n//                } else if (mTelephonyManager.getSimState() == TelephonyManager.SIM_STATE_UNKNOWN || mTelephonyManager.getSimState() == TelephonyManager.SIM_STATE_ABSENT) {\r\n//                    Toast.makeText(this, \"유심이 없거나, 알 수 없는 유심입니다.\", Toast.LENGTH_SHORT).show();\r\n//\r\n//                    moveTaskToBack(true);\r\n//                    finish();\r\n//                    android.os.Process.killProcess(android.os.Process.myPid());\r\n                } else {\r\n               //     telNumber = mTelephonyManager.getLine1Number();\r\n                    telNumber = telNumber.replace(\"+82\", \"0\");\r\n                }\r\n            } else {\r\n            //    telNumber = mTelephonyManager.getLine1Number();\r\n                telNumber = telNumber.replace(\"+82\", \"0\");\r\n            }\r\n\r\n        }\r\n\r\n        //로그인 버튼\r\n        btnLogin.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                strUserIp = userIp.getText().toString();\r\n                strUserId = userId.getText().toString();\r\n                strUserPw = userPw.getText().toString();\r\n\r\n\r\n                try{\r\n                    if(strUserIp.equals(\"\")&strUserId.equals(\"\") & strUserPw.equals(\"\"))\r\n                    {\r\n                        Toast.makeText(getApplicationContext(), \"IP, ID, PASSWORD를 제대로 입력해주세요.\", Toast.LENGTH_SHORT).show();\r\n                    }\r\n                    else\r\n                    {\r\n                        DB_Version dbVersion = new DB_Version();\r\n                        dbVersion.execute(userIp.getText().toString());\r\n\r\n                       // DB_Login dbLogin = new DB_Login();\r\n                       // dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);\r\n                        // 로그인 성공시 저장 처리, 예제는 무조건 저장\r\n                        save();\r\n\r\n                        /* DB 대조 */\r\n//                        ContentValues values = new ContentValues();\r\n//                        values.put(\"UserID\", strUserId);\r\n//                        values.put(\"UserPassword\", strUserPw);\r\n//                        values.put(\"UserStatus\", 1);\r\n//\r\n//                        String url = \"http://\" + strUserIp + \"/HW_DB/login.jsp\";\r\n//\r\n//                        NetworkTask networkTask = new NetworkTask(url, values);\r\n//                        networkTask.execute();\r\n                    }\r\n                }catch (Exception e)\r\n                {\r\n                    Toast.makeText(getApplicationContext(), \"IP, ID, PASSWORD를 제대로 입력해주세요.\", Toast.LENGTH_SHORT).show();\r\n                }\r\n\r\n            }\r\n        });\r\n\r\n        mainLayout.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                linearOnClick(view);\r\n            }\r\n        });\r\n\r\n\r\n    }\r\n\r\n    public void linearOnClick(View v) {\r\n        imm.hideSoftInputFromWindow(userIp.getWindowToken(), 0);\r\n        imm.hideSoftInputFromWindow(userId.getWindowToken(), 0);\r\n        imm.hideSoftInputFromWindow(userPw.getWindowToken(), 0);\r\n    }\r\n\r\n    // 설정값을 저장하는 함수\r\n    private void save() {\r\n        SharedPreferences.Editor editor = appData.edit();\r\n        editor.putString(\"ip\", userIp.getText().toString().trim());\r\n        editor.putString(\"id\", userId.getText().toString().trim());\r\n        editor.putString(\"pw\", userPw.getText().toString().trim());\r\n        editor.putBoolean(\"chkip\", chkip.isChecked());\r\n        editor.putBoolean(\"chkid\", chkid.isChecked());\r\n        editor.putBoolean(\"chkauto\", chkauto.isChecked());\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n        ///test\r\n\r\n        editor.commit();\t//commit\r\n    }\r\n\r\n    @Override\r\n    public void onRequestPermissionsResult(int requestCode,\r\n                                           String permissions[], int[] grantResults) {\r\n        TelephonyManager mTelephonyManager = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);\r\n        switch (requestCode) {\r\n            case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {\r\n                // If request is cancelled, the result arrays are empty.\r\n\r\n                if (grantResults.length > 0\r\n                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {\r\n\r\n                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {\r\n                        Toast.makeText(this, \"전화 권한이 허용되지 않았습니다.\", Toast.LENGTH_SHORT).show();\r\n                        return;\r\n                    }else{\r\n                     //   telNumber = mTelephonyManager.getLine1Number();\r\n                        telNumber = telNumber.replace(\"+82\", \"0\");\r\n                    }\r\n\r\n\r\n                } else {\r\n                    Toast.makeText(this,\"전화 권한이 허용되지 않았습니다.\",Toast.LENGTH_LONG).show();\r\n//                    moveTaskToBack(true);\r\n//                    finish();\r\n//                    android.os.Process.killProcess(android.os.Process.myPid());\r\n                }\r\n                return;\r\n            }\r\n\r\n        }\r\n    }\r\n\r\n    // 설정값을 불러오는 함수\r\n    private void load() {\r\n        // SharedPreferences 객체.get타입( 저장된 이름, 기본값 )\r\n        // 저장된 이름이 존재하지 않을 시 기본값\r\n        saveLoginData = appData.getBoolean(\"SAVE_LOGIN_DATA\", false);\r\n\r\n        strUserIp = appData.getString(\"ip\", \"\");\r\n        strUserId = appData.getString(\"id\", \"\");\r\n        strUserPw = appData.getString(\"pw\", \"\");\r\n        chkip.setChecked(appData.getBoolean(\"chkip\", false));\r\n        chkid.setChecked(appData.getBoolean(\"chkid\", false));\r\n        chkauto.setChecked(appData.getBoolean(\"chkauto\", false));\r\n\r\n    }\r\n\r\n    private void initializeVersionString() {\r\n        try\r\n        {\r\n            String packageName = getApplicationContext().getPackageName();\r\n            PackageManager packageManager = getApplicationContext().getPackageManager();\r\n            int appVersionCode = packageManager.getPackageInfo(packageName, 0).versionCode;\r\n            String versionName = packageManager.getPackageInfo(packageName, 0).versionName;\r\n\r\n            String copyRightString = \"Copyright 2021. Infosolution Inc. All rights reserved. \";\r\n            versionString = \"Version \" + versionName + \" VersionCode \" + appVersionCode;\r\n\r\n            versionLabel.setText(copyRightString + versionString);\r\n        }\r\n        catch (Exception e)\r\n        {\r\n\r\n        }\r\n    }\r\n\r\n\r\n    protected class DB_Login extends AsyncTask<String, Void, String>\r\n    {\r\n        protected  String doInBackground(String... urls)\r\n        {\r\n            String URL = \"http://\" + urls[0] + \"/DRK/Login.jsp\"; //자신의 웹서버 주소를 저장합니다.\r\n            DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.\r\n\r\n            try\r\n            {\r\n                HttpPost post = new HttpPost(URL + \"?W_USER_NO=\" + urls[1] +\"&W_PASSWORD=\"+ urls[2] + \"&W_SOB_ID=\" + urls[3]+ \"&W_ORG_ID=\" + urls[4]);\r\n\r\n                //Log 저장\r\n                String log = \"\\n\"+ post.toString() + \"\\n\" +\r\n                        \"W_USER_NO = \" + urls[1] +\"\\n\" +\r\n                        \"W_PASSWORD = \" + urls[2] +\"\\n\" +\r\n                        \"W_SOB_ID = \" + urls[3] +\"\\n\" +\r\n                        \"W_ORG_ID = \" + urls[4] +\"\\n\" ;\r\n\r\n                SharedPreferences.Editor editor_save = auto.edit();\r\n                editor_save.putString(\"log\",log + auto.getString(\"log\", \"\"));\r\n                editor_save.commit();\r\n\r\n                HttpResponse response = client.execute(post);\r\n                BufferedReader bufreader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), \"utf-8\"));\r\n\r\n                String line = null;\r\n                String result = \"\";\r\n\r\n                while ((line = bufreader.readLine()) != null) {\r\n                    result += line;\r\n                }\r\n\r\n                return result;\r\n\r\n            }catch (Exception e)\r\n            {\r\n                e.printStackTrace();\r\n            }\r\n            return \"\"; //결과값 리턴\r\n        }\r\n\r\n        @Override\r\n            protected void onPostExecute(String result) {\r\n            try{\r\n\r\n                JSONObject RESULT = new JSONObject(result);\r\n\r\n                //LOG 저장\r\n                String log = \"\\n\"+ RESULT.getString(\"RESULT\");\r\n                SharedPreferences.Editor editor_save = auto.edit();\r\n                editor_save.putString(\"log\",log + auto.getString(\"log\", \"\"));\r\n                editor_save.commit();\r\n\r\n                JSONArray arr = RESULT.getJSONArray(\"RESULT\");\r\n                final JSONObject j_ob = arr.getJSONObject(0);\r\n\r\n                String Flag = j_ob.getString(\"O_MOBILE_USER_FLAG\");\r\n\r\n                final String O_USER_ID = j_ob.getString(\"O_USER_ID\");\r\n                final String O_USER_NAME = j_ob.getString(\"O_USER_NAME\");\r\n\r\n                if(Flag.equals(\"Y\"))\r\n                {\r\n                    if(j_ob.getString(\"msg1\").equals((\"succed\"))){\r\n\r\n                        //버전체크\r\n                        if (storeVersion.compareTo(deviceVersion) > 0) {\r\n                            // 업데이트 필요\r\n\r\n                            AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);\r\n                            alert.setTitle(\"최신버전 업데이트\");\r\n                            alert.setCancelable(false);\r\n                            alert.setMessage(\"최신버전으로 업데이트 해주세요.\");\r\n                            alert.setPositiveButton(\"업데이트 이동\", new DialogInterface.OnClickListener() {\r\n                                @Override\r\n                                public void onClick(DialogInterface dialog, int which) {\r\n                                    final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object\r\n                                    try {\r\n                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(\"market://details?id=\" + appPackageName)));\r\n                                    } catch (android.content.ActivityNotFoundException anfe) {\r\n                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(\"https://play.google.com/store/apps/details?id=\" + appPackageName)));\r\n                                    }\r\n//                                    UpdateApp atualizaApp = new UpdateApp();\r\n//                                    atualizaApp.setContext(getApplicationContext());\r\n//                                    atualizaApp.execute(\"http://211.253.25.11:90/NBK/flex_drk.apk\"); //http://211.253.25.11:90/NBK/flex_drk.apk\r\n                                   // Test test = new Test();\r\n                                   // test.execute();\r\n                                }\r\n                            });\r\n                            alert.setNegativeButton(\"취소\", new DialogInterface.OnClickListener() {\r\n                                @Override\r\n                                public void onClick(DialogInterface dialog, int which) {\r\n                                    // 업데이트 불필요\r\n                                    //토큰 저장\r\n                                    // 업데이트 불필요\r\n                                    //토큰 저장\r\n                                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);\r\n                                    intent.putExtra(\"O_USER_ID\", O_USER_ID);\r\n                                    intent.putExtra(\"O_USER_NAME\", O_USER_NAME);\r\n                                    // intent.putExtra(\"Sabeon\", j_ob.getString(\"Sabeon\"));\r\n                                    intent.putExtra(\"Ip\", strUserIp);\r\n                                    intent.putExtra(\"versionString\", versionString);\r\n                                    startActivity(intent);\r\n                                }\r\n                            });\r\n                            alert.show();\r\n                        } else {\r\n                            // 업데이트 불필요\r\n                            //토큰 저장\r\n                            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);\r\n                            intent.putExtra(\"O_USER_ID\", O_USER_ID);\r\n                            intent.putExtra(\"O_USER_NAME\", O_USER_NAME);\r\n                            // intent.putExtra(\"Sabeon\", j_ob.getString(\"Sabeon\"));\r\n                            intent.putExtra(\"Ip\", strUserIp);\r\n                            intent.putExtra(\"versionString\", versionString);\r\n                            startActivity(intent);\r\n                        }\r\n\r\n                    }\r\n                    else\r\n                    {\r\n                        Toast.makeText(getApplicationContext(), \"로그인 실패하였습니다. \", Toast.LENGTH_SHORT).show();\r\n                    }\r\n                }\r\n                else\r\n                {\r\n                    Toast.makeText(getApplicationContext(), \"모바일 권한이 없습니다\", Toast.LENGTH_SHORT).show();\r\n                }\r\n\r\n\r\n\r\n            }catch (Exception e){\r\n                Toast.makeText(getApplicationContext(), \"로그인 실패하였습니다.\", Toast.LENGTH_SHORT).show();\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n//    public class NetworkTask extends AsyncTask<Void, Void, String> {\r\n//\r\n//        String url;\r\n//        ContentValues values;\r\n//\r\n//        NetworkTask(String url, ContentValues values){\r\n//            this.url = url;\r\n//            this.values = values;\r\n//        }\r\n//\r\n//        @Override\r\n//        protected void onPreExecute() {\r\n//            super.onPreExecute();\r\n//            //progress bar를 보여주는 등등의 행위\r\n//        }\r\n//\r\n//        @Override\r\n//        protected String doInBackground(Void... params) {\r\n//            String result;\r\n//            ServerActivity requestHttpURLConnection = new ServerActivity();\r\n//            result = requestHttpURLConnection.request(url, values);\r\n//            return result; // 결과가 여기에 담깁니다. 아래 onPostExecute()의 파라미터로 전달됩니다.\r\n//        }\r\n//\r\n//        @Override\r\n//        protected void onPostExecute(String result) {\r\n//            // 통신이 완료되면 호출됩니다.\r\n//            // 결과에 따른 UI 수정 등은 여기서 합니다.\r\n//            //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();\r\n//            try{\r\n//                JSONObject RESULT = new JSONObject(result);\r\n//\r\n//                //LOG 저장\r\n//                String log = \"\\n\"+ RESULT.getString(\"List\");\r\n//                SharedPreferences.Editor editor_save = auto.edit();\r\n//                editor_save.putString(\"log\",log + auto.getString(\"log\", \"\"));\r\n//                editor_save.commit();\r\n//\r\n//                JSONArray arr = RESULT.getJSONArray(\"List\");\r\n//                JSONObject j_ob = arr.getJSONObject(0);\r\n//\r\n//\r\n//                if(j_ob.getString(\"msg1\").equals(\"succed\"))\r\n//                {\r\n//                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);\r\n//                    intent.putExtra(\"UserID\", j_ob.getString(\"UserID\"));\r\n//                    intent.putExtra(\"UserStatus\", j_ob.getString(\"UserStatus\"));\r\n//                    intent.putExtra(\"UserName\", j_ob.getString(\"UserName\"));\r\n//                    intent.putExtra(\"Sabeon\", j_ob.getString(\"Sabeon\"));\r\n//                    intent.putExtra(\"Ip\", strUserIp);\r\n//                    intent.putExtra(\"versionString\", versionString);\r\n//                    startActivity(intent);\r\n//                }\r\n//                else\r\n//                {\r\n//                    Toast.makeText(getApplicationContext(), \"로그인 실패\", Toast.LENGTH_SHORT).show();\r\n//                }\r\n//\r\n//            }catch (Exception e){\r\n//                e.printStackTrace();\r\n//            }\r\n//        }\r\n//    }\r\nprotected class DB_Version extends AsyncTask<String, Void, String>\r\n{\r\n    protected  String doInBackground(String... urls)\r\n    {\r\n\r\n        String URL = \"http://\" + urls[0] + \"/DRK/PtVersion.jsp\"; //자신의 웹서버 주소를 저장합니다.\r\n        DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.\r\n\r\n        try\r\n        {\r\n            HttpPost post = new HttpPost(URL);\r\n\r\n            HttpResponse response = client.execute(post);\r\n            BufferedReader bufreader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), \"utf-8\"));\r\n\r\n            String line = null;\r\n            String result = \"\";\r\n\r\n            while ((line = bufreader.readLine()) != null) {\r\n                result += line;\r\n            }\r\n\r\n            return result;\r\n\r\n        }catch (Exception e)\r\n        {\r\n            e.printStackTrace();\r\n        }\r\n        return \"\"; //결과값 리턴\r\n    }\r\n\r\n    @Override\r\n    protected void onPostExecute(String result) {\r\n        try{\r\n            JSONObject RESULT = new JSONObject(result);\r\n\r\n            JSONArray arr = RESULT.getJSONArray(\"RESULT\");\r\n            JSONObject j_ob = arr.getJSONObject(0);\r\n\r\n            if(j_ob.getString(\"msg1\").equals(\"succed\"))\r\n            {\r\n                storeVersion = j_ob.getString(\"X_MOBILE_VERSION_NAME\");\r\n                deviceVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;\r\n\r\n                DB_Login dbLogin = new DB_Login();\r\n                dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);\r\n            }\r\n            else\r\n            {\r\n\r\n            }\r\n\r\n\r\n        }catch (Exception e){\r\n        e.printStackTrace();\r\n    }\r\n    }\r\n\r\n    }\r\n\r\n    public class UpdateApp extends AsyncTask<String,Void,Void>{\r\n        private Context context;\r\n        public void setContext(Context contextf){\r\n            context = contextf;\r\n        }\r\n\r\n\r\n        @Override\r\n        protected Void doInBackground(String... arg0) {\r\n            try {\r\n                URL url = new URL(arg0[0]);\r\n                HttpURLConnection c = (HttpURLConnection) url.openConnection();\r\n                c.setRequestMethod(\"GET\");\r\n                c.setDoOutput(true);\r\n                c.connect();\r\n\r\n                String PATH = \"/mnt/sdcard/Download/\";\r\n                File file = new File(PATH);\r\n                file.mkdirs();\r\n                File outputFile = new File(file, \"flex_drk.apk\");\r\n                if(outputFile.exists()){\r\n                    outputFile.delete();\r\n                }\r\n                FileOutputStream fos = new FileOutputStream(outputFile);\r\n\r\n                InputStream is = c.getInputStream();\r\n\r\n                byte[] buffer = new byte[1024];\r\n                int len1 = 0;\r\n                while ((len1 = is.read(buffer)) != -1) {\r\n                    fos.write(buffer, 0, len1);\r\n                }\r\n                fos.close();\r\n                is.close();\r\n\r\n                Intent intent = new Intent(Intent.ACTION_VIEW);\r\n                intent.setDataAndType(Uri.fromFile(new File(\"/mnt/sdcard/Download/flex_drk.apk\")), \"application/vnd.android.package-archive\"); ///mnt/sdcard/Download/update.apk\")\r\n                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // without this flag android returned a intent error!\r\n                context.startActivity(intent);\r\n\r\n\r\n            } catch (Exception e) {\r\n                Log.e(\"UpdateAPP\", \"Update error! \" + e.getMessage());\r\n            }\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public class Test extends AsyncTask<String,Void,Void>{\r\n        private Context context;\r\n        public void setContext(Context contextf){\r\n            context = contextf;\r\n        }\r\n\r\n\r\n        @Override\r\n        protected Void doInBackground(String... arg0) {\r\n            try {\r\n                URL url = new URL(\"http://211.253.25.11:90/DRK/flex_drk.apk\");\r\n\r\n                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();\r\n                urlConnection.setRequestMethod(\"GET\");\r\n                urlConnection.setDoOutput(true);\r\n                urlConnection.connect();\r\n\r\n                File SDCardRoot = Environment.getExternalStorageDirectory();\r\n                File file = new File(SDCardRoot,\"Geocoder_Test.apk\");\r\n                FileOutputStream fileOutput = new FileOutputStream(file);\r\n\r\n                InputStream inputStream = urlConnection.getInputStream();\r\n\r\n\r\n\r\n                int totalSize = urlConnection.getContentLength();\r\n                int downloadedSize = 0;\r\n\r\n                byte[] buffer = new byte[1024];\r\n                int bufferLength = 0;\r\n                while ( (bufferLength = inputStream.read(buffer)) > 0 )\r\n                {\r\n                    fileOutput.write(buffer, 0, bufferLength);\r\n                    downloadedSize += bufferLength;\r\n                    //mProgressBar.setProgress(downloadedSize);\r\n                    Log.e(\"DOWNLOAD\", \"saving...\");\r\n                }\r\n                fileOutput.close();\r\n\r\n\r\n            } catch (Exception e) {\r\n                Log.e(\"UpdateAPP\", \"Update error! \" + e.getMessage());\r\n            }\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public void download_WebLink()\r\n    {\r\n        try\r\n        {\r\n            URL url = new URL(\"http://211.253.25.11:90/DRK/flex_drk.apk\");\r\n\r\n            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();\r\n            urlConnection.setRequestMethod(\"GET\");\r\n            urlConnection.setDoOutput(true);\r\n            urlConnection.connect();\r\n\r\n            File SDCardRoot = Environment.getExternalStorageDirectory();\r\n            File file = new File(SDCardRoot,\"Geocoder_Test.apk\");\r\n            FileOutputStream fileOutput = new FileOutputStream(file);\r\n\r\n            InputStream inputStream = urlConnection.getInputStream();\r\n            int totalSize = urlConnection.getContentLength();\r\n            int downloadedSize = 0;\r\n\r\n            byte[] buffer = new byte[2048];\r\n            int bufferLength = 0;\r\n            while ( (bufferLength = inputStream.read(buffer)) > 0 )\r\n            {\r\n                fileOutput.write(buffer, 0, bufferLength);\r\n                downloadedSize += bufferLength;\r\n                //mProgressBar.setProgress(downloadedSize);\r\n                Log.e(\"DOWNLOAD\", \"saving...\");\r\n            }\r\n            fileOutput.close();\r\n\r\n        } catch (MalformedURLException e)\r\n        {\r\n            e.printStackTrace();\r\n        } catch (IOException e)\r\n        {\r\n            e.printStackTrace();\r\n        }\r\n        Log.e(\"DOWNLOAD\", \"end\");\r\n\r\n        Log.e(\"DOWNLOAD\", \"InstallAPK Method Called\");\r\n        installAPK();\r\n    }\r\n\r\n    public void installAPK()\r\n    {\r\n        Log.e(\"InstallApk\", \"Start\");\r\n        File apkFile = new File(\"/sdcard/Geocoder_Test.apk\");\r\n\r\n        Uri apkUri = Uri.fromFile(apkFile);\r\n\r\n        Intent webLinkIntent = new Intent(Intent.ACTION_VIEW);\r\n        webLinkIntent.setDataAndType(Uri.fromFile(apkFile), \"application/vnd.android.package-archive\");\r\n\r\n        startActivity(webLinkIntent);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/erp/Taiyo/LoginActivity.java	(revision 87ecab920e18a3bdef7420e5e2d2b456fac3dcd5)
++++ app/src/main/java/com/erp/Taiyo/LoginActivity.java	(date 1697619319881)
+@@ -57,8 +57,8 @@
+     String versionString;
+     String newToken;
+     String telNumber = "";
+-    String sobId ="80";
+-    String orgId ="801";
++    String sobId ="70";
++    String orgId ="701";
+     String testIp = "106.251.238.99:8091";
+     String storeVersion = "";
+     String deviceVersion = "";
+@@ -86,7 +86,6 @@
+ 
+         new InputFilter.AllCaps(); // 소문자로 입력된 값을 대문자로 바꿔 줌.
+ 
+-
+         //체크박스
+ 
+         chkip = findViewById(R.id.chk_ip);
+@@ -134,11 +133,11 @@
+             strUserId = userId.getText().toString();
+             strUserPw = userPw.getText().toString();
+ 
+-            DB_Version dbVersion = new DB_Version();
+-            dbVersion.execute(userIp.getText().toString());
++            //DB_Version dbVersion = new DB_Version();
++            //dbVersion.execute(userIp.getText().toString());
+ 
+-            //DB_Login dbLogin = new DB_Login();
+-            //dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
++            DB_Login dbLogin = new DB_Login();
++            dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
+             // 로그인 성공시 저장 처리, 예제는 무조건 저장
+             save();
+         }else if(chkauto.isChecked()){
+@@ -170,9 +169,9 @@
+         if (mTelephonyManager != null) {
+             if (Build.VERSION.SDK_INT >= 23) {
+                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+-                    Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
++                   // Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
++                   // ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+ 
+-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+ 
+ //                } else if (mTelephonyManager.getSimState() == TelephonyManager.SIM_STATE_UNKNOWN || mTelephonyManager.getSimState() == TelephonyManager.SIM_STATE_ABSENT) {
+ //                    Toast.makeText(this, "유심이 없거나, 알 수 없는 유심입니다.", Toast.LENGTH_SHORT).show();
+@@ -207,11 +206,11 @@
+                     }
+                     else
+                     {
+-                        DB_Version dbVersion = new DB_Version();
+-                        dbVersion.execute(userIp.getText().toString());
++                        //DB_Version dbVersion = new DB_Version();
++                        //dbVersion.execute(userIp.getText().toString());
+ 
+-                       // DB_Login dbLogin = new DB_Login();
+-                       // dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
++                        DB_Login dbLogin = new DB_Login();
++                        dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
+                         // 로그인 성공시 저장 처리, 예제는 무조건 저장
+                         save();
+ 
+@@ -260,18 +259,6 @@
+         editor.putBoolean("chkid", chkid.isChecked());
+         editor.putBoolean("chkauto", chkauto.isChecked());
+ 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-        ///test
+-
+         editor.commit();	//commit
+     }
+ 
+@@ -330,7 +317,7 @@
+             int appVersionCode = packageManager.getPackageInfo(packageName, 0).versionCode;
+             String versionName = packageManager.getPackageInfo(packageName, 0).versionName;
+ 
+-            String copyRightString = "Copyright 2021. Infosolution Inc. All rights reserved. ";
++            String copyRightString = "Copyright 2023. Infosolution Inc. All rights reserved. ";
+             versionString = "Version " + versionName + " VersionCode " + appVersionCode;
+ 
+             versionLabel.setText(copyRightString + versionString);
+@@ -346,7 +333,7 @@
+     {
+         protected  String doInBackground(String... urls)
+         {
+-            String URL = "http://" + urls[0] + "/DRK/Login.jsp"; //자신의 웹서버 주소를 저장합니다.
++            String URL = "http://" + urls[0] + "/TAIYO/Login.jsp"; //자신의 웹서버 주소를 저장합니다.
+             DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.
+ 
+             try
+@@ -548,7 +535,7 @@
+     protected  String doInBackground(String... urls)
+     {
+ 
+-        String URL = "http://" + urls[0] + "/DRK/PtVersion.jsp"; //자신의 웹서버 주소를 저장합니다.
++        String URL = "http://" + urls[0] + "/TAIYO/PtVersion.jsp"; //자신의 웹서버 주소를 저장합니다.
+         DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.
+ 
+         try
+@@ -661,7 +648,7 @@
+         @Override
+         protected Void doInBackground(String... arg0) {
+             try {
+-                URL url = new URL("http://211.253.25.11:90/DRK/flex_drk.apk");
++                URL url = new URL("http://211.253.25.11:90/TAIYO/flex_drk.apk");
+ 
+                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                 urlConnection.setRequestMethod("GET");
+@@ -702,7 +689,7 @@
+     {
+         try
+         {
+-            URL url = new URL("http://211.253.25.11:90/DRK/flex_drk.apk");
++            URL url = new URL("http://211.253.25.11:90/TAIYO/flex_drk.apk");
+ 
+             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+             urlConnection.setRequestMethod("GET");
+Index: app/src/main/java/com/erp/Taiyo/activity/RegisterWeighingWorkActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/erp/Taiyo/activity/RegisterWeighingWorkActivity.java	(date 1698216759007)
++++ app/src/main/java/com/erp/Taiyo/activity/RegisterWeighingWorkActivity.java	(date 1698216759007)
+@@ -0,0 +1,1151 @@
++package com.erp.Taiyo.activity;
++
++import android.annotation.SuppressLint;
++import android.app.AlertDialog;
++import android.content.Context;
++import android.content.DialogInterface;
++import android.content.Intent;
++import android.content.SharedPreferences;
++import android.graphics.Color;
++import android.graphics.PorterDuff;
++import android.os.AsyncTask;
++import android.os.Bundle;
++import android.text.Editable;
++import android.text.InputType;
++import android.text.TextWatcher;
++import android.view.View;
++import android.view.inputmethod.InputMethodManager;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.FrameLayout;
++import android.widget.LinearLayout;
++import android.widget.ListView;
++import android.widget.TextView;
++import android.widget.Toast;
++
++
++import com.erp.Taiyo.R;
++
++
++import org.json.JSONArray;
++import org.json.JSONException;
++import org.json.JSONObject;
++
++import java.io.BufferedReader;
++import java.io.InputStreamReader;
++import java.io.OutputStream;
++import java.net.HttpURLConnection;
++import java.net.URL;
++import java.text.DateFormat;
++import java.text.SimpleDateFormat;
++import java.time.format.DateTimeFormatter;
++import java.util.Date;
++import java.util.Locale;
++import java.util.TimeZone;
++
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.appcompat.widget.Toolbar;
++
++public class RegisterWeighingWorkActivity extends AppCompatActivity{
++
++    Toolbar toolbar;
++    String strIp, strUserName, strUserId, SDate, strMenuDesc;
++    String filter = null;
++    String strDate;
++
++    EditText t1FileNo,t1ItemDesc ,t1OperaionDesc,t1TankScan,t1LiqidPersonDesc ,t1RiqidStartTime , t1RiqidEndTime,t1PowderStartTime ,t1PowderEndTime ,t1WorkEndTime
++    ,t1WorkcenterCode, t1WorkcenterDesc ,t1WorkcenterId, t1WorkStartTiem ,t1TankLcode ,t1LiqidPersonId, t1PowderPersonId , t1Job_id ,t1OprationId ,t1PowderPersonDesc, t1ModeFlag;
++    String strSobId = "70";
++    String strOrgId = "701";
++    String strAssembly ="PPMF2201";
++
++
++    TextView tvUserGroup;
++    TextView tvUserName;
++    TextView tvMenu;
++    FrameLayout log_panel;
++    ListView lv_Receiving;
++    TextView tvLog;
++    SharedPreferences auto;
++    EditText editTextFilter;
++    LinearLayout mainLayout;
++    ListView lv_log;
++    ListView lvPaldlet, lvInput;
++
++    Button btnt1save;
++    Button btnWorkStartTiem,btnRiqidStartTime, btnRiqidEndTime,btnPowderStartTime,btnPowderEndTime, btnWorkEndTime ;
++    //키보드
++
++    InputMethodManager imm;
++    JSONObject jspSumObject = new JSONObject();
++
++    private boolean ScanModify = true;
++    private boolean Mod_Flag = true;
++
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.register_weighing_work1);
++        Intent intent = getIntent();
++        strIp = intent.getStringExtra("Ip");
++        strUserId = intent.getStringExtra("O_USER_ID");
++        strUserName = intent.getStringExtra("O_USER_NAME");
++        strMenuDesc = intent.getStringExtra("TOP_MENU_DESC");
++
++
++        mainLayout = findViewById(R.id.main_layout);
++        toolbar = (Toolbar) findViewById(R.id.toolbar);
++        tvUserName = (TextView) findViewById(R.id.user_nm);
++        tvMenu = (TextView) findViewById(R.id.tv_menu);
++
++        t1FileNo  = (EditText) findViewById(R.id.et_t1_file_no);
++        t1ItemDesc = (EditText) findViewById(R.id.et_t1_item_desc);
++        t1OperaionDesc = (EditText) findViewById(R.id.et_t1_operaion_desc);
++        t1TankScan = (EditText) findViewById(R.id.et_t1_tank_scan);
++        t1LiqidPersonDesc  = (EditText) findViewById(R.id.et_t1_liqid_person_desc);
++        t1RiqidStartTime  = (EditText) findViewById(R.id.et_t1_riqid_start_time);
++        t1RiqidEndTime = (EditText) findViewById(R.id.et_t1_riqid_end_time);
++        t1PowderStartTime  = (EditText) findViewById(R.id.et_t1_powder_start_time);
++        t1PowderEndTime  = (EditText) findViewById(R.id.et_t1_powder_end_time);
++        t1WorkEndTime = (EditText) findViewById(R.id.et_t1_work_end_time);
++        t1WorkcenterCode = (EditText) findViewById(R.id.et_t1_workcenter_code);
++        t1WorkcenterDesc = (EditText) findViewById(R.id.et_t1_workcenter_desc);
++        t1WorkcenterId = (EditText) findViewById(R.id.et_t1_workcenter_id);
++        t1WorkcenterId = (EditText) findViewById(R.id.et_t1_workcenter_id);
++        t1PowderPersonDesc = (EditText) findViewById(R.id.et_t1_powder_person_desc);
++        t1WorkStartTiem = (EditText) findViewById(R.id.et_t1_work_start_tiem);
++
++        t1TankLcode =(EditText) findViewById(R.id.et_t1_tank_lcode);
++        t1LiqidPersonId =(EditText) findViewById(R.id.et_t1_liqid_person_id);
++        t1PowderPersonId =(EditText) findViewById(R.id.et_t1_powder_person_id);
++        t1Job_id =(EditText) findViewById(R.id.et_t1_job_id);
++        t1OprationId =(EditText) findViewById(R.id.et_t1_opration_id);
++        t1ModeFlag =(EditText) findViewById(R.id.et_t1_mode_flag);
++
++
++        btnWorkStartTiem = (Button) findViewById(R.id.btn_t1_work_start_tiem);
++        btnRiqidStartTime = (Button) findViewById(R.id.btn_t1_riqid_start_time);
++        btnRiqidEndTime = (Button) findViewById(R.id.btn_t1_riqid_end_time);
++        btnPowderStartTime = (Button) findViewById(R.id.btn_t1_powder_start_time);
++        btnPowderEndTime = (Button) findViewById(R.id.btn_t1_powder_end_time);
++        btnWorkEndTime = (Button) findViewById(R.id.btn_t1_work_end_time);
++
++
++        btnt1save  = (Button) findViewById(R.id.btn_t1_save);
++        t1FileNo.requestFocus(); //포커스 자동 스캔으로
++
++        auto = getSharedPreferences("appData_Log", Context.MODE_PRIVATE);
++        //키보드 내리기
++
++        //키보드
++        imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
++
++        //먼저 실행되는 함수
++        GET_WORKCENTER_IN_AUTHORITY gET_WORKCENTER_IN_AUTHORITY = new GET_WORKCENTER_IN_AUTHORITY();
++        gET_WORKCENTER_IN_AUTHORITY.execute(strIp, strSobId,strOrgId ,strUserId, strAssembly);
++
++        initializeToolbar();
++
++
++        //file no scan
++        t1FileNo.addTextChangedListener(new TextWatcher() {
++
++            @Override
++            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
++
++
++            }
++
++            @Override
++            public void onTextChanged(CharSequence s, int start, int before, int count) {
++
++
++            }
++
++            @Override
++            public void afterTextChanged(Editable s) {
++
++                if(getCurrentFocus() == t1FileNo && !s.toString().isEmpty()){
++
++                    FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
++                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t1FileNo.getText().toString(),t1WorkcenterId.getText().toString());
++
++                }else{
++                    return;
++                }
++
++            }
++        });
++        //tank scan
++        t1TankScan.addTextChangedListener(new TextWatcher() {
++
++            @Override
++            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
++
++
++            }
++
++            @Override
++            public void onTextChanged(CharSequence s, int start, int before, int count) {
++                if(ScanModify==false && getCurrentFocus() == t1TankScan){
++                   // btnt1save.setBackgroundColor(Color.YELLOW);
++                   // btnt1save.setTextColor(Color.BLACK);
++                }
++            }
++
++            @Override
++            public void afterTextChanged(Editable s) {
++
++                if(getCurrentFocus() == t1TankScan && !s.toString().isEmpty()){
++
++                    LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
++                    lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, t1TankScan.getText().toString());
++
++                }else{
++                    return;
++                }
++            }
++        });
++
++        //액상작업자
++        t1LiqidPersonDesc.addTextChangedListener(new TextWatcher() {
++            @Override
++            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
++
++            }
++
++            @Override
++            public void onTextChanged(CharSequence s, int start, int before, int count) {
++
++                if(ScanModify==false && getCurrentFocus() == t1LiqidPersonDesc){
++                  //  btnt1save.setBackgroundColor(Color.YELLOW);
++                   // btnt1save.setTextColor(Color.BLACK);
++                }
++            }
++
++            @Override
++            public void afterTextChanged(Editable s) {
++
++                if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty()){
++
++                    LU_RIQID_WORKER lU_RIQID_WORKER = new LU_RIQID_WORKER();
++                    lU_RIQID_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1LiqidPersonDesc.getText().toString());
++
++                }else{
++                    return;
++
++
++                }
++            }
++        });
++
++        //분체작업자
++        t1PowderPersonDesc.addTextChangedListener(new TextWatcher() {
++            @Override
++            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
++
++            }
++
++            @Override
++            public void onTextChanged(CharSequence s, int start, int before, int count) {
++
++                if(ScanModify==false && getCurrentFocus() == t1PowderPersonDesc){
++                   // btnt1save.setBackgroundColor(Color.YELLOW);
++                    //btnt1save.setTextColor(Color.BLACK);
++                }
++            }
++
++            @Override
++            public void afterTextChanged(Editable s) {
++
++                if(getCurrentFocus() == t1PowderPersonDesc && !s.toString().isEmpty()){
++
++                    LU_POWEDR_WORKER lU_POWEDR_WORKER = new LU_POWEDR_WORKER();
++                    lU_POWEDR_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1PowderPersonDesc.getText().toString());
++
++                }else{
++                    return;
++
++                }
++            }
++        });
++
++
++   /*    p3BoxScan.setInputType(0);
++        p3ItemCode.setInputType(0);
++        p3FgWarDesc.setInputType(0);
++*/
++
++        //계량 작업시작
++        btnWorkStartTiem.setOnClickListener(new View.OnClickListener() {
++        @Override
++        public void onClick(View v) {
++
++            if(ScanModify==false){
++                btnt1save.setBackgroundColor(Color.YELLOW);
++                btnt1save.setTextColor(Color.BLACK);
++            }
++
++        t1WorkStartTiem.setText(getNowDate());
++        }
++       });
++
++        // 액상작업시작
++        btnRiqidStartTime.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++
++                if(ScanModify==false){
++                    btnt1save.setBackgroundColor(Color.YELLOW);
++                    btnt1save.setTextColor(Color.BLACK);
++                }
++                t1RiqidStartTime.setText(getNowDate());
++            }
++        });
++
++        //액상 작업종료
++        btnRiqidEndTime.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                if(ScanModify==false){
++                    btnt1save.setBackgroundColor(Color.YELLOW);
++                    btnt1save.setTextColor(Color.BLACK);
++                }
++
++                t1RiqidEndTime.setText(getNowDate());
++            }
++        });
++
++        //분체작업시작
++        btnPowderStartTime.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                if(ScanModify==false){
++                    btnt1save.setBackgroundColor(Color.YELLOW);
++                    btnt1save.setTextColor(Color.BLACK);
++                }
++
++                t1PowderStartTime.setText(getNowDate());
++            }
++        });
++        //분체작업종료
++
++        btnPowderEndTime.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                if(ScanModify==false){
++                    btnt1save.setBackgroundColor(Color.YELLOW);
++                    btnt1save.setTextColor(Color.BLACK);
++                }
++
++                t1PowderEndTime.setText(getNowDate());
++            }
++        });
++        //계량작업종료
++        btnWorkEndTime.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                if(ScanModify==false){
++                    btnt1save.setBackgroundColor(Color.YELLOW);
++                    btnt1save.setTextColor(Color.BLACK);
++                }
++
++                t1WorkEndTime.setText(getNowDate());
++            }
++        });
++
++
++        t1FileNo.setOnLongClickListener(new View.OnLongClickListener() {
++            @Override
++            public boolean onLongClick(View v) {
++                ClearView();
++                return false;
++            }
++        });
++
++        btnt1save.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++
++                AlertDialog.Builder alert = new AlertDialog.Builder(RegisterWeighingWorkActivity.this);
++                alert.setTitle("저장");
++                alert.setMessage("수정한 내역을 저장하시겠습니까?");
++                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
++                    @Override
++                    public void onClick(DialogInterface dialog, int which) {
++                        
++                        if(t1FileNo.getText().toString().isEmpty()){
++                             Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
++                            return;
++                        }
++
++                        GR_UPDATE gr_update = new GR_UPDATE();
++                        gr_update.execute(strIp,t1Job_id.getText().toString(),t1OprationId.getText().toString(),t1WorkcenterId.getText().toString(),strSobId ,strOrgId ,t1WorkStartTiem.getText().toString().replaceAll(" ","")
++                                , t1WorkEndTime.getText().toString().replaceAll(" ",""),t1TankLcode.getText().toString(),t1LiqidPersonId.getText().toString() ,t1PowderPersonId.getText().toString() , strUserId
++                                ,  t1RiqidStartTime.getText().toString().replaceAll(" ",""), t1RiqidEndTime.getText().toString().replaceAll(" ","") , t1PowderStartTime.getText().toString().replaceAll(" ","")
++                                ,t1PowderEndTime.getText().toString().replaceAll(" ",""));
++                               
++
++                    }
++                });
++                alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
++                    @Override
++                    public void onClick(DialogInterface arg0, int arg1) {
++
++
++                    }
++
++                });
++                alert.show();
++
++
++            }
++        });
++
++        t1TankScan.setOnLongClickListener(new View.OnLongClickListener() {
++            @Override
++            public boolean onLongClick(View v) {
++                t1TankScan.setText("");
++                return false;
++            }
++        });
++
++        t1LiqidPersonDesc.setOnLongClickListener(new View.OnLongClickListener() {
++            @Override
++            public boolean onLongClick(View v) {
++                t1LiqidPersonDesc.setText("");
++                return false;
++            }
++        });
++
++        t1PowderPersonDesc.setOnLongClickListener(new View.OnLongClickListener() {
++            @Override
++            public boolean onLongClick(View v) {
++                t1PowderPersonDesc.setText("");
++                return false;
++            }
++        });
++
++
++    }
++
++
++
++
++    private String getNowDate(){
++
++        long now = System.currentTimeMillis();
++        Date date = new Date(now);
++        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss" ,Locale.KOREAN);
++
++        String getTime = sdf.format(date);
++
++        return getTime;
++    }
++
++    private void ClearView(){
++        t1FileNo.setText("");
++        t1ItemDesc.setText("");
++        t1OperaionDesc.setText("");
++        t1WorkStartTiem.setText("");
++        t1TankLcode.setText("");
++        t1TankScan.setText("");
++        t1LiqidPersonId.setText("");
++        t1LiqidPersonDesc .setText("");
++        t1RiqidStartTime .setText("");
++        t1RiqidEndTime.setText("");
++        t1PowderPersonId.setText("");
++        t1PowderPersonDesc.setText("");
++        t1PowderStartTime .setText("");
++        t1PowderEndTime .setText("");
++        t1WorkEndTime.setText("");
++        t1Job_id.setText("");
++        t1OprationId.setText("");
++    }
++
++
++    //Toolbar 정보
++    private void initializeToolbar() {
++        setSupportActionBar(toolbar);
++        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
++        toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
++
++        //toolbar.setNavigationOnClickListener(v -> onBackPressed());
++
++        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                onBackPressed();
++            }
++        });
++
++        toolbar.getNavigationIcon().mutate().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
++
++        toolbar.setOnLongClickListener(new View.OnLongClickListener() {
++            @Override
++            public boolean onLongClick(View view) {
++                if (log_panel.getVisibility() == View.INVISIBLE ||
++                        log_panel.getVisibility() == View.GONE) {
++                    log_panel.setVisibility(View.VISIBLE);
++
++                    if (auto.getString("log", "").length() > 0) {
++                        tvLog.setText(auto.getString("log", ""));
++                    }
++
++//                logFragment.setHasOptionsMenu(true);
++                } else {
++                    log_panel.setVisibility(View.GONE);
++//                logFragment.setHasOptionsMenu(false);
++                }
++                return false;
++            }
++        });
++
++        // 유저 정보 삽입.
++        tvUserName.setText(strUserName);
++
++
++    }
++
++
++    // WORKCENTER_IN_AUTHORITY
++    protected class GET_WORKCENTER_IN_AUTHORITY extends AsyncTask<String, Void, String>
++    {
++        protected  String doInBackground(String... urls)
++        {
++            StringBuffer jsonHtml = new StringBuffer();
++
++            //서버로 보낼 데이터 설정
++            String search_title = "W_SOB_ID=" + urls[1]
++                    + "&W_ORG_ID=" + urls[2]
++                    + "&W_USER_ID=" +urls[3]
++                    + "&W_ASSEMBLY_DESC=" + urls[4]
++                    ;
++
++            try
++            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/WorkCenterInAuthority.jsp"); //주소 지정
++
++                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
++
++                if(conn != null) //
++                {
++                    conn.setReadTimeout(5000);
++                    conn.setConnectTimeout(10000);
++                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
++                    conn.setDoInput(true);
++                    conn.connect(); //???
++
++                    //서버에 데이터 전달
++                    OutputStream out = conn.getOutputStream();
++                    out.write(search_title.getBytes("UTF-8"));
++                    out.flush();
++                    out.close();
++
++                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
++                    {
++                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
++                        while (true)
++                        {
++                            String line = br.readLine();
++                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
++                                break;
++                            jsonHtml.append(line);// + "\n");
++                        }
++                        br.close();
++                    }
++                    conn.disconnect();
++                }
++            }catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++            return  jsonHtml.toString(); //결과값 리턴
++        }
++
++
++        protected void onPostExecute(String result)
++        {
++            //페이지 결과값 파싱
++            try
++            {
++                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
++
++                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
++                JSONObject job = jarrayWorkLevel.getJSONObject(0);
++
++                if(job.getString("Status").equals("S")){
++                    t1WorkcenterCode.setText(job.getString("X_WORKCENTER_CODE"));
++                    t1WorkcenterDesc.setText(job.getString("X_WORKCENTER_DESC"));
++                    t1WorkcenterId.setText(job.getString("X_WORKCENTER_ID"));
++                }
++
++            }catch (JSONException e)
++            {
++                e.printStackTrace();
++            }
++            catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++        }
++    }
++
++
++    // FILE_NO_SCAN
++    protected class FILE_NO_SCAN extends AsyncTask<String, Void, String>
++    {
++        protected  String doInBackground(String... urls)
++        {
++            StringBuffer jsonHtml = new StringBuffer();
++
++            //서버로 보낼 데이터 설정
++            String search_title = "W_SOB_ID=" + urls[1]
++                    + "&W_ORG_ID=" + urls[2]
++                    + "&W_FILE_NO=" +urls[3]
++                    + "&W_WORKCENTER_ID=" +urls[4]
++                    ;
++
++            try
++            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/FileNoScanGR.jsp"); //주소 지정
++
++                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
++
++                if(conn != null) //
++                {
++                    conn.setReadTimeout(5000);
++                    conn.setConnectTimeout(10000);
++                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
++                    conn.setDoInput(true);
++                    conn.connect(); //???
++
++                    //서버에 데이터 전달
++                    OutputStream out = conn.getOutputStream();
++                    out.write(search_title.getBytes("UTF-8"));
++                    out.flush();
++                    out.close();
++
++                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
++                    {
++                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
++                        while (true)
++                        {
++                            String line = br.readLine();
++                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
++                                break;
++                            jsonHtml.append(line);// + "\n");
++                        }
++                        br.close();
++                    }
++                    conn.disconnect();
++                }
++            }catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++            return  jsonHtml.toString(); //결과값 리턴
++        }
++
++
++        protected void onPostExecute(String result)
++        {
++            //페이지 결과값 파싱
++            try
++            {
++                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
++
++                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
++
++
++                if(jarrayWorkLevel.length() < 1){
++                   // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
++                    ScanModify = false;
++                    t1TankScan.requestFocus();
++                    return;
++                }
++
++                JSONObject job = jarrayWorkLevel.getJSONObject(0);
++                if(job.getString("Status").equals("S")){
++                    t1FileNo.setText(job.getString("WORK_ORDER_NO"));
++                    t1ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
++                    t1OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
++                    if(job.getString("WORK_START_DATE").equals("null")){
++                        t1WorkStartTiem.setText("");
++                    }else{
++                        t1WorkStartTiem.setText(job.getString("WORK_START_DATE"));
++                    }
++
++                    t1TankLcode.setText(job.getString("TANK_LCODE"));
++
++                    if(job.getString("TANK_DESC").equals("null")){
++                        t1TankScan.setText("");
++                    }else{
++                        t1TankScan.setText(job.getString("TANK_DESC"));
++                    }
++
++
++
++                    t1LiqidPersonId.setText(job.getString("LIQUID_WORKER_ID"));
++
++                    if(job.getString("LIQUID_WORKER_NAME").equals("null")){
++                        t1LiqidPersonDesc.setText("");
++                    }else{
++                        t1LiqidPersonDesc .setText(job.getString("LIQUID_WORKER_NAME"));
++                    }
++
++
++
++                    if(job.getString("LIQUID_START_DATE").equals("null")){
++                        t1RiqidStartTime.setText("");
++                    }else{
++                        t1RiqidStartTime.setText(job.getString("LIQUID_START_DATE"));
++                    }
++                    if(job.getString("LIQUID_END_DATE").equals("null")){
++                        t1RiqidEndTime.setText("");
++                    }else{
++                        t1RiqidEndTime.setText(job.getString("LIQUID_END_DATE"));
++                    }
++                    if(job.getString("POWDER_WORKER_NAME").equals("null")){
++                        t1PowderPersonDesc.setText("");
++                    }else{
++                        t1PowderPersonDesc.setText(job.getString("POWDER_WORKER_NAME"));
++                    }
++                    if(job.getString("POWDER_START_DATE").equals("null")){
++                        t1PowderStartTime.setText("");
++                    }else{
++                        t1PowderStartTime.setText(job.getString("POWDER_START_DATE"));
++                    }
++                    if(job.getString("POWDER_END_DATE").equals("null")){
++                        t1PowderEndTime.setText("");
++                    }else{
++                        t1PowderEndTime.setText(job.getString("POWDER_END_DATE"));
++                    }
++                    if(job.getString("WORK_END_DATE").equals("null")){
++                        t1WorkEndTime.setText("");
++                    }else{
++                        t1WorkEndTime.setText(job.getString("WORK_END_DATE"));
++                    }
++
++                    t1PowderPersonId.setText(job.getString("POWDER_WORKER_ID"));
++
++
++
++
++
++                    t1Job_id.setText(job.getString("JOB_ID"));
++                    t1OprationId.setText(job.getString("OPERATION_ID"));
++                    t1ModeFlag.setText(job.getString("MOD_FLAG"));
++                }
++
++                t1TankScan.requestFocus();
++
++                ScanModify = false;
++
++                if(!t1ModeFlag.equals("N")){
++
++                    t1FileNo.setInputType(InputType.TYPE_NULL);
++                    t1ItemDesc.setInputType(InputType.TYPE_NULL);
++                    t1OperaionDesc.setInputType(InputType.TYPE_NULL);
++                    t1WorkStartTiem.setInputType(InputType.TYPE_NULL);
++                    t1TankLcode.setInputType(InputType.TYPE_NULL);
++                    t1TankScan.setInputType(InputType.TYPE_NULL);
++                    t1LiqidPersonId.setInputType(InputType.TYPE_NULL);
++                    t1LiqidPersonDesc.setInputType(InputType.TYPE_NULL);
++                    t1RiqidStartTime.setInputType(InputType.TYPE_NULL);
++                    t1RiqidEndTime.setInputType(InputType.TYPE_NULL);
++                    t1PowderPersonId.setInputType(InputType.TYPE_NULL);
++                    t1PowderPersonDesc.setInputType(InputType.TYPE_NULL);
++                    t1PowderStartTime.setInputType(InputType.TYPE_NULL);
++                    t1PowderEndTime.setInputType(InputType.TYPE_NULL);
++                    t1WorkEndTime.setInputType(InputType.TYPE_NULL);
++                    t1Job_id.setInputType(InputType.TYPE_NULL);
++                    t1OprationId.setInputType(InputType.TYPE_NULL);
++                    t1ModeFlag.setInputType(InputType.TYPE_NULL);
++
++                }
++
++            }catch (JSONException e)
++            {
++                e.printStackTrace();
++            }
++            catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++        }
++    }
++    // LU_TANK_TYPE
++    protected class LU_TANK_TYPE extends AsyncTask<String, Void, String>
++    {
++        protected  String doInBackground(String... urls)
++        {
++            StringBuffer jsonHtml = new StringBuffer();
++
++            //서버로 보낼 데이터 설정
++            String search_title = "W_SOB_ID=" + urls[1]
++                    + "&W_ORG_ID=" + urls[2]
++                    + "&W_BARCODE=" +urls[3]
++                    ;
++
++            try
++            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuTankType.jsp"); //주소 지정
++
++                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
++
++                if(conn != null) //
++                {
++                    conn.setReadTimeout(5000);
++                    conn.setConnectTimeout(10000);
++                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
++                    conn.setDoInput(true);
++                    conn.connect(); //???
++
++                    //서버에 데이터 전달
++                    OutputStream out = conn.getOutputStream();
++                    out.write(search_title.getBytes("UTF-8"));
++                    out.flush();
++                    out.close();
++
++                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
++                    {
++                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
++                        while (true)
++                        {
++                            String line = br.readLine();
++                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
++                                break;
++                            jsonHtml.append(line);// + "\n");
++                        }
++                        br.close();
++                    }
++                    conn.disconnect();
++                }
++            }catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++            return  jsonHtml.toString(); //결과값 리턴
++        }
++
++
++        protected void onPostExecute(String result)
++        {
++            //페이지 결과값 파싱
++            try
++            {
++                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
++
++                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
++
++                if(jarrayWorkLevel.length() < 1){
++                    t1LiqidPersonDesc.requestFocus();
++                    return;
++                }
++
++                JSONObject job = jarrayWorkLevel.getJSONObject(0);
++                if(job.getString("Status").equals("S")){
++
++                    t1TankLcode.setText(job.getString("ENTRY_CODE"));
++                    t1TankScan.setText(job.getString("ENTRY_DESCRIPTION"));
++                }
++                t1LiqidPersonDesc.requestFocus();
++
++            }catch (JSONException e)
++            {
++                e.printStackTrace();
++            }
++            catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++        }
++    }
++
++    // LU_WORKER
++    protected class LU_RIQID_WORKER extends AsyncTask<String, Void, String>
++    {
++        protected  String doInBackground(String... urls)
++        {
++            StringBuffer jsonHtml = new StringBuffer();
++
++            //서버로 보낼 데이터 설정
++            String search_title = "W_SOB_ID=" + urls[1]
++                    + "&W_ORG_ID=" + urls[2]
++                    + "&W_WORKCENTER_ID" + urls[3]
++                    + "&W_BARCODE=" +urls[4]
++                    ;
++
++            try
++            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuWorker.jsp"); //주소 지정
++
++                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
++
++                if(conn != null) //
++                {
++                    conn.setReadTimeout(5000);
++                    conn.setConnectTimeout(10000);
++                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
++                    conn.setDoInput(true);
++                    conn.connect(); //???
++
++                    //서버에 데이터 전달
++                    OutputStream out = conn.getOutputStream();
++                    out.write(search_title.getBytes("UTF-8"));
++                    out.flush();
++                    out.close();
++
++                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
++                    {
++                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
++                        while (true)
++                        {
++                            String line = br.readLine();
++                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
++                                break;
++                            jsonHtml.append(line);// + "\n");
++                        }
++                        br.close();
++                    }
++                    conn.disconnect();
++                }
++            }catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++            return  jsonHtml.toString(); //결과값 리턴
++        }
++
++
++        protected void onPostExecute(String result)
++        {
++            //페이지 결과값 파싱
++            try
++            {
++                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
++
++                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
++
++                if(jarrayWorkLevel.length() < 1){
++                    t1PowderPersonDesc.requestFocus();
++                    return;
++                }
++
++                JSONObject job = jarrayWorkLevel.getJSONObject(0);
++                if(job.getString("Status").equals("S")){
++
++                    t1LiqidPersonId.setText(job.getString("USER_ID"));
++                    t1LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
++                }
++                t1PowderPersonDesc.requestFocus();
++
++            }catch (JSONException e)
++            {
++                e.printStackTrace();
++            }
++            catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++        }
++    }
++
++    // LU_WORKER
++    protected class LU_POWEDR_WORKER extends AsyncTask<String, Void, String>
++    {
++        protected  String doInBackground(String... urls)
++        {
++            StringBuffer jsonHtml = new StringBuffer();
++
++            //서버로 보낼 데이터 설정
++            String search_title = "W_SOB_ID=" + urls[1]
++                    + "&W_ORG_ID=" + urls[2]
++                    + "&W_WORKCENTER_ID" + urls[3]
++                    + "&W_BARCODE=" +urls[4]
++                    ;
++
++            try
++            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuWorker.jsp"); //주소 지정
++
++                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
++
++                if(conn != null) //
++                {
++                    conn.setReadTimeout(5000);
++                    conn.setConnectTimeout(10000);
++                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
++                    conn.setDoInput(true);
++                    conn.connect(); //???
++
++                    //서버에 데이터 전달
++                    OutputStream out = conn.getOutputStream();
++                    out.write(search_title.getBytes("UTF-8"));
++                    out.flush();
++                    out.close();
++
++                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
++                    {
++                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
++                        while (true)
++                        {
++                            String line = br.readLine();
++                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
++                                break;
++                            jsonHtml.append(line);// + "\n");
++                        }
++                        br.close();
++                    }
++                    conn.disconnect();
++                }
++            }catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++            return  jsonHtml.toString(); //결과값 리턴
++        }
++
++
++        protected void onPostExecute(String result)
++        {
++            //페이지 결과값 파싱
++            try
++            {
++                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
++
++                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
++                JSONObject job = jarrayWorkLevel.getJSONObject(0);
++
++                if(jarrayWorkLevel.length() < 1){
++                    t1PowderPersonDesc.requestFocus();
++                    return;
++                }
++                if(job.getString("Status").equals("S")){
++
++                    t1PowderPersonId.setText(job.getString("USER_ID"));
++                    t1PowderPersonDesc.setText(job.getString("DESCRIPTION"));
++                }
++                t1PowderPersonDesc.requestFocus();
++
++            }catch (JSONException e)
++            {
++                e.printStackTrace();
++            }
++            catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++        }
++    }
++
++    protected class GR_UPDATE extends AsyncTask<String, Void, String>
++    {
++        //final LuLoctionListAdapter luLoctionListAdapter = new LuLoctionListAdapter();
++        protected  String doInBackground(String... urls)
++        {
++            StringBuffer jsonHtml = new StringBuffer();
++
++            //서버로 보낼 데이터 설정
++            String search_title = "W_JOB_ID=" + urls[1]
++                    + "&W_OPERATION_ID=" + urls[2]
++                    + "&W_WORKCENTER_ID=" + urls[3]
++                    + "&P_SOB_ID=" + urls[4]
++                    + "&P_ORG_ID=" + urls[5]
++                    + "&P_WORK_START_DATE=" + urls[6]
++                    + "&P_WORK_END_DATE=" + urls[7]
++                    + "&P_TANK_LCODE=" + urls[8]
++                    + "&P_LIQUID_WORKER_ID=" + urls[9]
++                    + "&P_POWDER_WORKER_ID=" + urls[10]
++                    + "&P_USER_ID=" + urls[11]
++                    + "&P_LIQUID_START_DATE=" + urls[12]
++                    + "&P_LIQUID_END_DATE=" + urls[13]
++                    + "&P_POWDER_START_DATE=" + urls[14]
++                    + "&P_POWDER_END_DATE=" + urls[15]
++                    ;
++
++            try
++            {
++                //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
++
++                URL obj = new URL("http://" + urls[0] + "/TAIYO/GrUpdate.jsp"); //주소 지정
++
++                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
++
++                if(conn != null) //
++                {
++                    conn.setReadTimeout(5000);
++                    conn.setConnectTimeout(10000);
++                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
++                    conn.setDoInput(true);
++                    conn.connect(); //???
++
++                    //서버에 데이터 전달
++                    OutputStream out = conn.getOutputStream();
++                    out.write(search_title.getBytes("UTF-8"));
++                    out.flush();
++                    out.close();
++
++                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
++                    {
++                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
++                        while (true)
++                        {
++                            String line = br.readLine();
++                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
++                                break;
++                            jsonHtml.append(line);// + "\n");
++                        }
++                        br.close();
++                    }
++                    conn.disconnect();
++                }
++            }catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++            return  jsonHtml.toString(); //결과값 리턴
++        }
++
++        @SuppressLint("ResourceAsColor")
++        protected void onPostExecute(String result)
++        {
++            //페이지 결과값 파싱
++            try
++            {
++                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
++                JSONArray jarray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
++                JSONObject job = jarray.getJSONObject(0); //JSON 오브젝트 파싱
++
++                if(job.getString("P_RESULT_STATUS").equals("S")){
++
++                    Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
++                   // ClearView();
++
++
++                    FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
++                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t1FileNo.getText().toString(),t1WorkcenterId.getText().toString()); //다시 fill
++
++                    btnt1save.setBackgroundColor(R.color.dark_green);
++                    btnt1save.setTextColor(Color.WHITE);
++
++                }else{
++                    Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();
++                    return;
++                }
++
++
++
++            }catch (JSONException e)
++            {
++                e.printStackTrace();
++            }
++            catch (Exception e)
++            {
++                e.printStackTrace();
++            }
++        }
++    }
++
++
++
++}
++
++
+Index: app/src/main/res/layout/activity_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><androidx.drawerlayout.widget.DrawerLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:dandroid=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/drawer_layout\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <!-- 메인 화면의 레이아웃을 자유롭게 구현합니다　-->\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\"\r\n        android:background=\"@android:color/white\">\r\n        <androidx.appcompat.widget.Toolbar\r\n            android:id=\"@+id/toolbar\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"60dp\"\r\n            android:background=\"#ffffff\"\r\n            app:theme=\"@style/AppTheme_NO\"\r\n            >\r\n\r\n            <ImageView\r\n                android:layout_width=\"280sp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"center\"\r\n                android:layout_centerHorizontal=\"true\"\r\n                android:adjustViewBounds=\"true\"\r\n                android:contentDescription=\"@string/image_desc\"\r\n                android:cropToPadding=\"false\"\r\n                android:src=\"@drawable/taiyo_menu\"\r\n                android:scaleType=\"fitCenter\"\r\n\r\n                android:visibility=\"visible\" />\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"match_parent\"\r\n                android:hint=\"아이디\"\r\n                android:layout_gravity=\"right\"\r\n                android:id=\"@+id/tv_main_id\"\r\n                android:textSize=\"10sp\"\r\n                android:textStyle=\"bold\"\r\n                android:textColor=\"@color/black\"\r\n                android:gravity=\"center\"\r\n                />\r\n        </androidx.appcompat.widget.Toolbar>\r\n        <TextView\r\n            android:id=\"@+id/textView1\"\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"5dp\"\r\n            android:layout_marginTop=\"1dp\"\r\n            android:background=\"#FFFFFF\" />\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"fill_parent\"\r\n            android:layout_weight=\"1.2\"\r\n            android:orientation=\"vertical\">\r\n\r\n        </LinearLayout>\r\n        <!--android:background=\"@drawable/menu_img\"-->\r\n        <TextView\r\n            android:id=\"@+id/textView2\"\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"5dp\"\r\n            android:layout_marginTop=\"1dp\"\r\n            android:background=\"#FFFFFF\" />\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"5dp\"\r\n            android:layout_marginBottom=\"5dp\"\r\n            >\r\n\r\n            <Button\r\n                android:id=\"@+id/btn_wait\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:layout_margin=\"5sp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"@drawable/buttonshape\"\r\n                android:text=\"실적등록\"\r\n                android:textColor=\"@color/black\"\r\n                android:textSize=\"15sp\" />\r\n\r\n            <!--       <Button\r\n                       android:layout_weight=\"1\"\r\n                       android:id=\"@+id/btn_ware\"\r\n                       android:text=\"MOBF0002\"\r\n                       android:background=\"@drawable/buttonshape\"\r\n                       android:textColor=\"#FFFFFF\"\r\n                       android:textSize=\"15sp\"\r\n                       android:layout_width=\"130dp\"\r\n                       android:layout_height=\"80dp\"\r\n                       android:layout_margin=\"5sp\"\r\n                       />\r\n                   <Button\r\n                       android:layout_weight=\"1\"\r\n                       android:id=\"@+id/btn_Oem\"\r\n                       android:text=\"MOBF0003\"\r\n                       android:textColor=\"#FFFFFF\"\r\n                       android:textSize=\"15sp\"\r\n                       android:background=\"@drawable/buttonshape\"\r\n                       android:layout_width=\"130dp\"\r\n                       android:layout_height=\"80dp\"\r\n                       android:layout_margin=\"5sp\"\r\n                       />-->\r\n\r\n\r\n        </LinearLayout>\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"5dp\"\r\n            android:layout_marginBottom=\"5dp\"\r\n            >\r\n            <Button\r\n                android:id=\"@+id/btn_Merger\"\r\n                android:layout_weight=\"1\"\r\n                android:textColor=\"@color/black\"\r\n                android:text=\"MOBF0004\"\r\n                android:textSize=\"15sp\"\r\n                android:background=\"@drawable/buttonshape\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:layout_margin=\"5sp\"\r\n                />\r\n<!--\r\n            <Button\r\n                android:id=\"@+id/btn_inventory\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:layout_margin=\"5sp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"@drawable/buttonshape\"\r\n                android:text=\"MOBF0005\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"15sp\" />\r\n            <Button\r\n                android:id=\"@+id/btn_Release\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:layout_margin=\"5sp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"@drawable/buttonshape\"\r\n                android:text=\"MOBF0006\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"15sp\" />\r\n-->\r\n\r\n\r\n        </LinearLayout>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"5dp\"\r\n            android:layout_marginBottom=\"5dp\"\r\n            android:gravity=\"center_vertical\"\r\n            >\r\n            <Button\r\n                android:id=\"@+id/btn_mobf0007\"\r\n                android:layout_weight=\"1\"\r\n                android:textColor=\"@color/black\"\r\n                android:text=\"재고실사\"\r\n                android:textSize=\"15sp\"\r\n                android:background=\"@drawable/buttonshape\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:layout_margin=\"5sp\"\r\n                />\r\n<!--\r\n            <Button\r\n                android:id=\"@+id/btn_Search\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:layout_margin=\"5sp\"\r\n                android:layout_weight=\"1\"\r\n                android:background=\"@drawable/buttonshape\"\r\n                android:text=\"MOBF0008\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"15sp\"\r\n\r\n                />\r\n            <Button\r\n                android:layout_weight=\"1\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"15sp\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:background=\"@drawable/btn_blue_color_nor\"\r\n                android:layout_margin=\"5sp\"\r\n                android:visibility=\"invisible\"\r\n                />-->\r\n\r\n        </LinearLayout>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"5dp\"\r\n            android:layout_marginBottom=\"5dp\"\r\n            >\r\n            <Button\r\n                android:layout_weight=\"1\"\r\n                android:id=\"@+id/btn_mat\"\r\n                android:text=\"구매/자재\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"20sp\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:background=\"@drawable/btn_blue_color_nor\"\r\n                android:layout_margin=\"5sp\"\r\n                android:visibility=\"gone\"\r\n                />\r\n            <Button\r\n                android:layout_weight=\"1\"\r\n                android:id=\"@+id/btn_sal\"\r\n                android:text=\"영업\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"20sp\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:background=\"@drawable/btn_blue_color_nor\"\r\n                android:layout_margin=\"5sp\"\r\n                android:visibility=\"gone\"\r\n                />\r\n            <Button\r\n                android:layout_weight=\"1\"\r\n                android:id=\"@+id/btn_prd\"\r\n                android:text=\"생산\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"20sp\"\r\n                android:layout_width=\"130dp\"\r\n                android:layout_height=\"80dp\"\r\n                android:background=\"@drawable/btn_blue_color_nor\"\r\n                android:layout_margin=\"5sp\"\r\n                android:visibility=\"gone\"\r\n                />\r\n\r\n\r\n        </LinearLayout>\r\n\r\n        <GridView\r\n            android:id=\"@+id/gv_main_menu\"\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"fill_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:horizontalSpacing=\"10dp\"\r\n            android:numColumns=\"3\" >\r\n\r\n        </GridView>\r\n        <TextView\r\n            android:layout_width=\"fill_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"1dp\"\r\n            android:background=\"#ffffff\"\r\n            android:gravity=\"center\"\r\n            android:paddingBottom=\"5dp\"\r\n            android:paddingLeft=\"10dp\"\r\n            android:paddingTop=\"5dp\"\r\n            android:text=\"Copyright Infosolution All Rights Reserved.\"\r\n            android:textColor=\"#333333\"\r\n            android:textSize=\"13sp\" />\r\n    </LinearLayout>\r\n\r\n\r\n    <!-- 내비게이션 드로어의 토대가 되는 NavigationView를 정의합니다　-->\r\n    <com.google.android.material.navigation.NavigationView\r\n        android:id=\"@+id/navigation_view\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_gravity=\"start\"\r\n        app:headerLayout=\"@layout/fragment_navi_header\"\r\n        app:menu=\"@menu/menu_navi\"/>\r\n\r\n</androidx.drawerlayout.widget.DrawerLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_menu.xml	(revision 87ecab920e18a3bdef7420e5e2d2b456fac3dcd5)
++++ app/src/main/res/layout/activity_menu.xml	(date 1697693101149)
+@@ -20,7 +20,7 @@
+             >
+ 
+             <ImageView
+-                android:layout_width="280sp"
++                android:layout_width="250sp"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:layout_centerHorizontal="true"
+@@ -73,13 +73,13 @@
+             >
+ 
+             <Button
+-                android:id="@+id/btn_wait"
++                android:id="@+id/btn_menu_g1"
+                 android:layout_width="130dp"
+                 android:layout_height="80dp"
+                 android:layout_margin="5sp"
+                 android:layout_weight="1"
+                 android:background="@drawable/buttonshape"
+-                android:text="실적등록"
++                android:text="계량작업등록"
+                 android:textColor="@color/black"
+                 android:textSize="15sp" />
+ 
+@@ -119,7 +119,7 @@
+                 android:id="@+id/btn_Merger"
+                 android:layout_weight="1"
+                 android:textColor="@color/black"
+-                android:text="MOBF0004"
++                android:text="배합작업등록"
+                 android:textSize="15sp"
+                 android:background="@drawable/buttonshape"
+                 android:layout_width="130dp"
+@@ -162,7 +162,7 @@
+                 android:id="@+id/btn_mobf0007"
+                 android:layout_weight="1"
+                 android:textColor="@color/black"
+-                android:text="재고실사"
++                android:text="연육작업등록"
+                 android:textSize="15sp"
+                 android:background="@drawable/buttonshape"
+                 android:layout_width="130dp"

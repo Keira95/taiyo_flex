@@ -20,7 +20,7 @@
     <!--"@mipmap/ic_launcher"-->
     <application
         android:allowBackup="true"
-        android:icon="@drawable/drk_ico"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme_NO"
@@ -52,7 +52,15 @@
         <activity android:name="com.erp.Taiyo.MenuActivity"
             android:screenOrientation="portrait"
             />
-
+        <activity android:name="com.erp.Taiyo.activity.RegisterWeighingWorkActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.erp.Taiyo.activity.SurimiWeighingWorkActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.erp.Taiyo.activity.RegisterAdjustmentActivity"
+            android:screenOrientation="portrait"
+            />
 
     </application>
 

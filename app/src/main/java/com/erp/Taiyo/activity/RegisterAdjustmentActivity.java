@@ -48,7 +48,9 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
     String strDate;
 
     EditText t4FileNo,t4ItemDesc, t4OperaionDesc , t4OpOrderSeq , t4Jojung1 ,t4Jojung2,t4OrderQty1 ,t4OrderQty2, t4PoiseSubSeq, t4EquipmentDesc ,t4WorkStartDate , t4WorkEndDate, t4WorkerDesc
-    ,t4EquipmentId, t4WorkerId ,t4OpOrderId, t4JobId ,t4OperationId, t4OpPoiseOrderId,t4ModFlag , t4WorkcenterCode ,t4WorkcenterDesc ,t4WorkcenterId;
+    ,t4EquipmentId, t4WorkerId ,t4OpOrderId, t4JobId ,t4OperationId, t4OpPoiseOrderId,t4ModFlag , t4WorkcenterCode ,t4WorkcenterDesc ,t4WorkcenterId
+    , t4TopEquimentId, t4TopEquimentCode, t4OldEquimentName
+    ;
 
 
     String strSobId = "70";
@@ -119,6 +121,9 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
         t4WorkcenterCode  = (EditText) findViewById(R.id.et_t4_workcenter_code);
         t4WorkcenterDesc = (EditText) findViewById(R.id.et_t4_workcenter_desc);
         t4WorkcenterId = (EditText) findViewById(R.id.et_t4_workcenter_id);
+        t4TopEquimentId = (EditText) findViewById(R.id.et_t4_top_equiment_id);
+        t4TopEquimentCode  = (EditText) findViewById(R.id.et_t4_top_equiment_code);
+        t4OldEquimentName = (EditText) findViewById(R.id.et_t4_old_equiment_name);
 
 
         btnWorkStartDate = (Button) findViewById(R.id.btn_t4_work_start_date);
@@ -228,6 +233,88 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
             }
         });
+
+        t4EquipmentDesc.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == t4EquipmentDesc && !s.toString().isEmpty()){
+
+                    LU_JJ_EQP lU_JJ_EQP = new LU_JJ_EQP();
+                    lU_JJ_EQP.execute(strIp, strSobId,strOrgId, t4WorkcenterId.getText().toString(),t4EquipmentDesc.getText().toString());
+
+                }else{
+                    return;
+                }
+            }
+        });
+
+        t4WorkerDesc.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == t4WorkerDesc && !s.toString().isEmpty()){
+
+                    LU_WORKER lu_worker = new LU_WORKER();
+                    lu_worker.execute(strIp, strSobId,strOrgId, t4WorkcenterId.getText().toString(), t4WorkerDesc.getText().toString());
+
+                }else{
+                    return;
+                }
+            }
+        });
+
+
+
+        t4FileNo.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                t4FileNo.setText("");
+                return false;
+            }
+        });
+        t4WorkerDesc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                t4WorkerDesc.setText("");
+                return false;
+            }
+        });
+        t4EquipmentDesc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                t4EquipmentDesc.setText("");
+                return false;
+            }
+        });
+
+
+
 
         btnWorkStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -458,26 +545,108 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")) {
 
-                    t4FileNo.setText(job.getString("WORK_ORDER_NO"));
-                    t4ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
-                    t4OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
-                    t4OpOrderSeq.setText(job.getString("OP_ORDER_SEQ"));
-                    t4Jojung1.setText(job.getString("JOJUNG_1"));
-                    t4Jojung2.setText(job.getString("JOJUNG_2"));
-                    t4OrderQty1.setText(job.getString("ORDER_QTY_1"));
-                    t4OrderQty2.setText(job.getString("ORDER_QTY_2"));
-                    t4PoiseSubSeq.setText(job.getString("POISE_SUB_SEQ"));
-                    t4EquipmentDesc.setText(job.getString("EQUIPMENT_NAME"));
-                    t4WorkStartDate.setText(job.getString("WORK_START_DATE"));
-                    t4WorkEndDate.setText(job.getString("WORK_END_DATE"));
-                    t4WorkerDesc.setText(job.getString("WORKER_DESC"));
-                    t4EquipmentId.setText(job.getString("MOD_FLAG"));
-                    t4WorkerId.setText(job.getString("WORKER_ID"));
-                    t4OpOrderId.setText(job.getString("OP_ORDER_ID"));
-                    t4JobId.setText(job.getString("JOB_ID"));
-                    t4OperationId.setText(job.getString("OPERAITON_ID"));
-                    t4OpPoiseOrderId.setText(job.getString("OP_POISE_ORDER_ID"));
-                    t4ModFlag.setText(job.getString("MOD_FLAG"));
+                    if(job.getString("WORK_ORDER_NO").equals("null")){
+                        t4FileNo.setText("");
+                    }else{
+                        t4FileNo.setText(job.getString("WORK_ORDER_NO"));
+                    }
+                    if(job.getString("ITEM_DESCRIPTION").equals("null")){
+                        t4ItemDesc.setText("");
+                    }else{
+                        t4ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                    }
+                    if(job.getString("OPERATION_DESCRIPTION").equals("null")){
+                        t4OperaionDesc.setText("");
+                    }else{
+                        t4OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+                    }
+                    if(job.getString("OP_ORDER_SEQ").equals("null")){
+                        t4OpOrderSeq.setText("");
+                    }else{
+                        t4OpOrderSeq.setText(job.getString("OP_ORDER_SEQ"));
+                    }
+                    if(job.getString("JOJUNG_1").equals("null")){
+                        t4Jojung1.setText("");
+                    }else{
+                        t4Jojung1.setText(job.getString("JOJUNG_1"));
+                    }
+                    if(job.getString("JOJUNG_2").equals("null")){
+                        t4Jojung2.setText("");
+                    }else{
+                        t4Jojung2.setText(job.getString("JOJUNG_2"));
+                    }
+                    if(job.getString("ORDER_QTY_1").equals("null" )){
+                        t4OrderQty1.setText("");
+                    }else{
+                        t4OrderQty1.setText(job.getString("ORDER_QTY_1"));
+                    }
+                    if(job.getString("ORDER_QTY_2").equals("null")){
+                        t4OrderQty2.setText("");
+                    }else{
+                        t4OrderQty2.setText(job.getString("ORDER_QTY_2"));
+                    }
+                    if(job.getString("POISE_SUB_SEQ").equals("null")){
+                        t4PoiseSubSeq.setText("");
+                    }else{
+                        t4PoiseSubSeq.setText(job.getString("POISE_SUB_SEQ"));
+                    }
+                    if(job.getString("EQUIPMENT_NAME").equals("null")){
+                        t4EquipmentDesc.setText("");
+                    }else{
+                        t4EquipmentDesc.setText(job.getString("EQUIPMENT_NAME"));
+                    }
+
+                    if(job.getString("WORK_START_DATE").equals("null")){
+                        t4WorkStartDate.setText("");
+                    }else{
+                        t4WorkStartDate.setText(job.getString("WORK_START_DATE"));
+                    }
+                    if(job.getString("WORK_END_DATE").equals("null")){
+                        t4WorkEndDate.setText("");
+                    }else{
+                        t4WorkEndDate.setText(job.getString("WORK_END_DATE"));
+                    }
+                    if(job.getString("WORKER_DESC").equals("null")){
+                        t4WorkerDesc.setText("");
+                    }else{
+                        t4WorkerDesc.setText(job.getString("WORKER_DESC"));
+                    }
+                    if(job.getString("EQUIPMENT_ID").equals("null")){
+                        t4EquipmentId.setText("");
+                    }else{
+                        t4EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                    }
+                    if(job.getString("WORKER_ID").equals("null")){
+                        t4WorkerId.setText("");
+                    }else{
+                        t4WorkerId.setText(job.getString("WORKER_ID"));
+                    }
+                    if(job.getString("OP_ORDER_ID").equals("null")){
+                        t4OpOrderId.setText("");
+                    }else{
+                        t4OpOrderId.setText(job.getString("OP_ORDER_ID"));
+                    }
+                    if(job.getString("JOB_ID").equals("null")){
+                        t4JobId.setText("");
+                    }else{
+                        t4JobId.setText(job.getString("JOB_ID"));
+                    }
+                    if(job.getString("OPERAITON_ID").equals("null")){
+                        t4OperationId.setText("");
+                    }else{
+                        t4OperationId.setText(job.getString("OPERAITON_ID"));
+                    }
+                    if(job.getString("OP_POISE_ORDER_ID").equals("null")){
+                        t4OpPoiseOrderId.setText("");
+                    }else{
+                        t4OpPoiseOrderId.setText(job.getString("OP_POISE_ORDER_ID"));
+                    }
+                    if(job.getString("MOD_FLAG").equals("null")){
+                        t4ModFlag.setText("");
+                    }else{
+                        t4ModFlag.setText(job.getString("MOD_FLAG"));
+                    }
+
 
                 }
 
@@ -605,6 +774,183 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
         }
     }
 
+    // LU_TANK_TYPE
+    protected class LU_JJ_EQP extends AsyncTask<String, Void, String>
+    {
+        protected  String doInBackground(String... urls)
+        {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "W_SOB_ID=" + urls[1]
+                    + "&W_ORG_ID=" + urls[2]
+                    + "&W_WORKCENTER_ID=" + urls[3]
+                    + "&W_BARCODE=" +urls[4]
+                    ;
+
+            try
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuJJEqp.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return  jsonHtml.toString(); //결과값 리턴
+        }
+
+
+        protected void onPostExecute(String result)
+        {
+            //페이지 결과값 파싱
+            try
+            {
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+
+                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+
+                if(jarrayWorkLevel.length() < 1){
+                    t4WorkerDesc.requestFocus();
+                    return;
+                }
+
+                JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                if(job.getString("Status").equals("S")){
+
+                    t4OldEquimentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                    t4EquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                    t4TopEquimentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                    t4TopEquimentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+                }
+                t4WorkerDesc.requestFocus();
+
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // LU_WORKER
+    protected class LU_WORKER extends AsyncTask<String, Void, String>
+    {
+        protected  String doInBackground(String... urls)
+        {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "W_SOB_ID=" + urls[1]
+                    + "&W_ORG_ID=" + urls[2]
+                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_BARCODE=" +urls[4]
+                    ;
+
+            try
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuWorker.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return  jsonHtml.toString(); //결과값 리턴
+        }
+
+
+        protected void onPostExecute(String result)
+        {
+            //페이지 결과값 파싱
+            try
+            {
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+
+                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+
+                if(jarrayWorkLevel.length() < 1){
+                    t4FileNo.requestFocus();
+                    return;
+                }
+
+                JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                if(job.getString("Status").equals("S")){
+
+                    t4WorkerId.setText(job.getString("USER_ID"));
+                    t4WorkerDesc.setText(job.getString("DESCRIPTION"));
+                }
+                t4FileNo.requestFocus();
+
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 
 

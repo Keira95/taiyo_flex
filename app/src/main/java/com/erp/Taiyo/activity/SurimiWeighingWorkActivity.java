@@ -84,7 +84,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_adjustment_work4);
+        setContentView(R.layout.register_surimi_work3);
         Intent intent = getIntent();
         strIp = intent.getStringExtra("Ip");
         strUserId = intent.getStringExtra("O_USER_ID");

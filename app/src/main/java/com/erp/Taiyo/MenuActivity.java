@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.erp.Taiyo.activity.CombinationWorkActivity;
 import com.erp.Taiyo.activity.RegisterAdjustmentActivity;
 import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
 import com.erp.Taiyo.activity.SurimiWeighingWorkActivity;
@@ -179,14 +180,14 @@ public class MenuActivity extends AppCompatActivity {
                         MOBF0001.putExtra("TOP_MENU_DESC", btnMenug1.getText().toString());
                         startActivity(MOBF0001);
                         break;
-              /*    case R.id.MOBF0010:
-                        Intent MOBF0004 = new Intent(MenuActivity.this, MatTransferActivity.class);
+                  case R.id.MOBF0010:
+                        Intent MOBF0004 = new Intent(MenuActivity.this, CombinationWorkActivity.class);
                         MOBF0004.putExtra("O_USER_ID", strUserId);
                         MOBF0004.putExtra("O_USER_NAME", strUserName);
                         MOBF0004.putExtra("Ip", strIp);
                         MOBF0004.putExtra("TOP_MENU_DESC", btnMerger.getText().toString());
                         startActivity(MOBF0004);
-                        break;*/
+                        break;
                     case R.id.MOBF0011:
                         Intent MOBF0007 = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
                         MOBF0007.putExtra("O_USER_ID", strUserId);
@@ -228,10 +229,10 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        /*btnMerger.setOnClickListener(new View.OnClickListener() {
+        btnMerger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, MatTransferActivity.class);
+                Intent intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
                 intentMat.putExtra("O_USER_ID", strUserId);
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
@@ -239,7 +240,7 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intentMat);
             }
         });
-*/
+
         btnMobf0007.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

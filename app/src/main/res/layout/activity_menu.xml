@@ -131,7 +131,7 @@
             android:layout_marginBottom="5dp"
             >
             <Button
-                android:id="@+id/btb_bo"
+                android:id="@+id/btb_yu"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:layout_margin="5sp"
@@ -142,7 +142,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/btb_yu"
+                android:id="@+id/btb_yud"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:layout_margin="5sp"

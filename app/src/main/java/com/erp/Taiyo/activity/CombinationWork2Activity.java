@@ -1,12 +1,9 @@
 package com.erp.Taiyo.activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +22,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,9 +29,15 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import cz.msebera.android.httpclient.protocol.HTTP;
 
-
-public class CombinationWorkActivity extends AppCompatActivity {
+public class CombinationWork2Activity extends AppCompatActivity {
 
     Toolbar toolbar;
     String strIp, strUserName, strUserId, SDate, strMenuDesc;
@@ -44,19 +46,15 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
     EditText etT2FileNoScan, etT2ItemDesc,etT2MixStartTime,etT2OperaionDesc, etT2MixTankDescScan,etT2EquipmentScan,etT2Stir1StartDate , etT2Stir1EndDate,
             etT2Stir1WorkerName, etT2Stir2StartDate, etT2Stir2EndDate,etT2Stir2WorkerName, etT2Stir3StartDate, etT2Stir3EndDate, etT2Stir3WorkerName, etT2MixEndTime,
-            etT2Stir1WorkerNameScan, etT2Stir2WorkerNameScan, etT2Stir3WorkerNameScan,
 
-
-    //숨김값
-    etH2XworkId, etH2XworkCode, etH2XworkDesc,
-    //숨김값 file 스캔
-    etH2JobId, etH2OperationId, etH2ModFlag, etH2TankLcode, etH2Stir1WorkerId, etH2Stir2WorkerId, etH2Stir3WorkerId,
-    //숨김값 탱크
-    etH2EntryCode, etH2LookupEntryId,
-    //숨김값 배합
-    etH2EquipmentId, etH2EquipmentCode, etH2OldEquipmentName,
-    //세이브 숨김값
-    etH2SobId, etH2OrgId, etH2WipJobEntitiesSubId;
+            //숨김값
+            etH2XworkId, etH2XworkCode, etH2XworkDesc,
+            //숨김값 file 스캔
+            etH2JobId, etH2OperationId, etH2ModFlag, etH2TankLcode, etH2Stir1WorkerId, etH2Stir2WorkerId, etH2Stir3WorkerId,
+            //숨김값 탱크
+             etH2EntryCode, etH2LookupEntryId,
+             //숨김값 배합
+             etH2EquipmentId, etH2EquipmentCode, etH2OldEquipmentName;
 
     Button bT2Recent, btnT2MixStartTime, btnT2Stir1StartDate, btnT2Stir1EndDate , btnT2Stir2StartDate, btnT2Stir2EndDate, btnT2Stir3StartDate,
             btnT2Stir3EndDate, btnT2MixEndTime, bT2Save;
@@ -97,9 +95,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
         etT2Stir3EndDate  = (EditText) findViewById(R.id.et_t2_stir_3_end_date);
         etT2Stir3WorkerName  = (EditText) findViewById(R.id.et_t2_stir_3_worker_name);
         etT2MixEndTime  = (EditText) findViewById(R.id.et_t2_mix_end_time);
-        etT2Stir1WorkerNameScan  = (EditText) findViewById(R.id.et_t2_stir_1_worker_name_scan);
-        etT2Stir2WorkerNameScan  = (EditText) findViewById(R.id.et_t2_stir_2_worker_name_scan);
-        etT2Stir3WorkerNameScan  = (EditText) findViewById(R.id.et_t2_stir_3_worker_name_scan);
+
+
 
 
         //WORKCENTER_IN_AUTHORITY 숨김값
@@ -129,13 +126,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
         etH2EquipmentId = (EditText) findViewById(R.id.et_h2_equipment_id);
         etH2EquipmentCode = (EditText) findViewById(R.id.et_h2_equipment_code);
         etH2OldEquipmentName = (EditText) findViewById(R.id.et_h2_old_equipment_name);
-
-
-        //세이브 숨김갑
-        etH2SobId = (EditText) findViewById(R.id.et_h2_sob_id);
-        etH2OrgId = (EditText) findViewById(R.id.et_h2_org_id);
-        etH2WipJobEntitiesSubId = (EditText) findViewById(R.id.et_h2_wip_job_entities_sub_id);
-
 
 
 
@@ -172,10 +162,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (getCurrentFocus() == etT2FileNoScan && !etT2FileNoScan.getText().toString().isEmpty()) {
-                    bT2Save.setBackgroundResource(R.color.dark_green);
-                    FileNoScanBH fileNoScanBH = new FileNoScanBH();
+                    FileNoScanGR fileNoScanGR = new FileNoScanGR();
                     //fileNoScanGR.execute(strSobId, strOrgId, edT2FileNoScan.getText().toString(), strUserId); 기존
-                    fileNoScanBH.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString());
+                    fileNoScanGR.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString());
 
                 }
             }
@@ -208,16 +197,16 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (getCurrentFocus() == etT2EquipmentScan && !etT2EquipmentScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2MixTankDescScan && !etT2EquipmentScan.getText().toString().isEmpty()) {
                     LuBhEQp luBhEQp = new LuBhEQp();
-                    luBhEQp.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2EquipmentScan.getText().toString());   //eth2xworkid를 usrid  etH2XworkId.getText().toString()
+                    luBhEQp.execute(strSobId, strOrgId,strUserId, etT2EquipmentScan.getText().toString());
 
                 }
 
             }
         });
 
-        etT2Stir1WorkerNameScan.addTextChangedListener(new TextWatcher() {
+        etT2Stir1WorkerName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -228,66 +217,13 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (getCurrentFocus() == etT2Stir1WorkerNameScan && !etT2Stir1WorkerNameScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2Stir1WorkerName && !etT2Stir1WorkerName.getText().toString().isEmpty()) {
 
                     LuWorker luWorker = new LuWorker();
-                    luWorker.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
+                    luWorker.execute(strSobId, strOrgId,strUserId, etT2Stir1WorkerName.getText().toString());
 
 
                 }
-            }
-        });
-
-
-        etT2Stir2WorkerNameScan.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if (getCurrentFocus() == etT2Stir2WorkerNameScan && !etT2Stir2WorkerNameScan.getText().toString().isEmpty()) {
-
-                    LuWorker2 luWorker2 = new LuWorker2();
-                    luWorker2.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
-
-
-                }
-            }
-        });
-
-
-        etT2Stir3WorkerNameScan.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if (getCurrentFocus() == etT2Stir3WorkerNameScan && !etT2Stir3WorkerNameScan.getText().toString().isEmpty()) {
-
-                    LuWorker3 luWorker3 = new LuWorker3();
-                    luWorker3.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir3WorkerNameScan.getText().toString());
-
-
-                }
-            }
-        });
-
-
-        etT2FileNoScan.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-
-                return false;
             }
         });
 
@@ -300,11 +236,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateAndTime = sdf.format(new Date());
-               // currentDateAndTime = currentDateAndTime.replaceAll(" ", "");
 
-
-                etT2MixStartTime.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                btnT2MixStartTime.setText(currentDateAndTime);
             }
         });
 
@@ -312,12 +245,11 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 String currentDateAndTime = sdf.format(new Date());
 
+                btnT2Stir1StartDate.setText(currentDateAndTime);
 
-                etT2Stir1StartDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
             }
         });
 
@@ -328,9 +260,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateAndTime = sdf.format(new Date());
 
-
-                etT2Stir1EndDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                btnT2Stir1EndDate.setText(currentDateAndTime);
             }
         });
 
@@ -341,8 +271,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateAndTime = sdf.format(new Date());
 
-                etT2Stir2StartDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                btnT2Stir2StartDate.setText(currentDateAndTime);
             }
         });
         btnT2Stir2EndDate.setOnClickListener(new View.OnClickListener() {
@@ -352,8 +281,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateAndTime = sdf.format(new Date());
 
-                etT2Stir2EndDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);;
+                btnT2Stir2EndDate.setText(currentDateAndTime);
             }
         });
         btnT2Stir3StartDate.setOnClickListener(new View.OnClickListener() {
@@ -363,8 +291,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateAndTime = sdf.format(new Date());
 
-                etT2Stir3StartDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                btnT2Stir3StartDate.setText(currentDateAndTime);
             }
         });
         btnT2Stir3EndDate.setOnClickListener(new View.OnClickListener() {
@@ -374,8 +301,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateAndTime = sdf.format(new Date());
 
-                etT2Stir3EndDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                btnT2Stir3EndDate.setText(currentDateAndTime);
             }
         });
 
@@ -386,19 +312,15 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateAndTime = sdf.format(new Date());
 
-
-                etT2MixEndTime.setText(currentDateAndTime);
-                int yellowColor = getResources().getColor(R.color.yellow);
-                int blackColor = getResources().getColor(android.R.color.black);
-
-                bT2Save.setBackgroundColor(yellowColor);
-                bT2Save.setTextColor(blackColor);
-
-
-//                bT2Save.setBackgroundResource(R.color.yellow); 기존에 만든거
-//                bT2Save.setTextColor(R.color.black);
+                btnT2MixEndTime.setText(currentDateAndTime);
             }
         });
+
+
+
+
+
+
 
 
         //        다이얼로그
@@ -407,50 +329,14 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                LuComLatelyDialog luComLatelyDialog = new LuComLatelyDialog(CombinationWorkActivity.this);
+                LuComLatelyDialog luComLatelyDialog = new LuComLatelyDialog(CombinationWork2Activity.this);
                 luComLatelyDialog.call_Lately_Dialog(strIp, strSobId, strOrgId, etT2FileNoScan);  //가져오는거 다시 보기
             }
         });
 
 
-        bT2Save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(CombinationWorkActivity.this);
-                alert.setTitle("저장");
-                alert.setMessage("저장하시겠습니까?");
-                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
 
-
-                        BhUpdate bhUpdate = new BhUpdate();
-                        bhUpdate.execute(etH2JobId.getText().toString(), etH2OperationId.getText().toString(), etH2XworkId.getText().toString(), strSobId, strOrgId, "", etH2TankLcode.getText().toString(),
-                                etH2EquipmentId.getText().toString(), etT2MixStartTime.getText().toString().replaceAll(" ", ""), etT2Stir1StartDate.getText().toString().replaceAll(" ", ""), etT2Stir1EndDate.getText().toString().replaceAll(" ", ""),
-                                etH2Stir1WorkerId.getText().toString(), etT2Stir2StartDate.getText().toString().replaceAll(" ", ""), etT2Stir2EndDate.getText().toString().replaceAll(" ", ""), etH2Stir2WorkerId.getText().toString(),
-                                etT2Stir3StartDate.getText().toString().replaceAll(" ", ""), etT2Stir3EndDate.getText().toString().replaceAll(" ", ""), etH2Stir3WorkerId.getText().toString(), etT2MixEndTime.getText().toString().replaceAll(" ", ""),
-                                strUserId);
-                    }
-
-                });
-                alert.setNegativeButton("No", new DialogInterface.OnClickListener() { //no
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                    }
-                });
-                alert.show();
-
-            }
-            });
     }
-
-//    private void ClearView()
-//    {
-//
-//        etT2FileNoScan.setText("");
-//        etT2ItemDesc.setText("");
-//
-//    }
 
     protected class WorkCenter extends AsyncTask<String, Void, String> {
 
@@ -531,7 +417,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
     }
 
-    protected class FileNoScanBH extends AsyncTask<String, Void, String> {
+    protected class FileNoScanGR extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... urls) {
             StringBuffer jsonHtml = new StringBuffer();
@@ -598,61 +484,34 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                     String status = job.getString("Status");
 
-                    if (status.equals("S") ) {
-                        etT2FileNoScan.setText(handleStringNull(job.optString("WORK_ORDER_NO")));
-                        etT2ItemDesc.setText(handleStringNull(job.getString("ITEM_DESCRIPTION")));
-                        etT2OperaionDesc.setText(handleStringNull(job.getString("OPERATION_DESCRIPTION")));
-                        etT2MixStartTime.setText(handleStringNull(job.getString("MIX_START_DATE")));
-                        etH2TankLcode.setText(handleStringNull(job.getString("MIX_TANK_LCODE")));
-                        etT2MixTankDescScan.setText(handleStringNull(job.getString("MIX_TANK_DESC")));
-                        etH2EquipmentId.setText(handleStringNull(job.getString("EQUIPMENT_ID")));
-                        etT2EquipmentScan.setText(handleStringNull(job.getString("EQUIPMENT_NAME")));
-                        etT2Stir1StartDate.setText(handleStringNull(job.optString("STIR_1_START_DATE")));
-                        etT2Stir1EndDate.setText(handleStringNull(job.getString("STIR_1_END_DATE")));
-                        etH2Stir1WorkerId.setText(handleStringNull(job.getString("STIR_1_WORKER_ID")));
-                        etT2Stir1WorkerName.setText(handleStringNull(job.getString("STIR_1_WORKER_NAME")));
-                        etT2Stir2StartDate.setText(handleStringNull(job.getString("STIR_2_START_DATE")));
-                        etT2Stir2EndDate.setText(handleStringNull(job.getString("STIR_2_END_DATE")));
-                        etH2Stir2WorkerId.setText(handleStringNull(job.getString("STIR_2_WORKER_ID")));
-                        etT2Stir2WorkerName.setText(handleStringNull(job.getString("STIR_2_WORKER_NAME")));
-                        etT2Stir3StartDate.setText(handleStringNull(job.getString("STIR_3_START_DATE")));
-                        etT2Stir3EndDate.setText(handleStringNull(job.getString("STIR_3_END_DATE")));
-                        etH2Stir3WorkerId.setText(handleStringNull(job.getString("STIR_3_WORKER_ID")));
-                        etT2Stir3WorkerName.setText(handleStringNull(job.getString("STIR_3_WORKER_NAME")));
-                        etT2MixEndTime.setText(handleStringNull(job.getString("MIX_END_DATE")));
-                        etH2JobId.setText(handleStringNull(job.getString("JOB_ID")));
-                        etH2OperationId.setText(handleStringNull(job.getString("OPERATION_ID")));
-                        etH2ModFlag.setText(handleStringNull(job.getString("MOD_FLAG")));
+                    if (status.equals("S")) {
+                        etT2FileNoScan.setText(job.getString("WORK_ORDER_NO"));
+                        etT2ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                        etT2OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+                        etT2MixStartTime.setText(job.getString("MIX_START_DATE"));
+                        etH2TankLcode.setText(job.getString("MIX_TANK_LCODE"));
+                        etT2MixTankDescScan.setText(job.getString("MIX_TANK_DESC"));
+                        etH2EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                        etT2EquipmentScan.setText(job.getString("EQUIPMENT_NAME"));
+                        etT2Stir1StartDate.setText(job.getString("STIR_1_START_DATE"));
+                        etT2Stir1EndDate.setText(job.getString("STIR_1_END_DATE"));
+                        etH2Stir1WorkerId.setText(job.getString("STIR_1_WORKER_ID"));
+                        etT2Stir1WorkerName.setText(job.getString("STIR_1_WORKER_NAME"));
+                        etT2Stir2StartDate.setText(job.getString("STIR_2_START_DATE"));
+                        etT2Stir2EndDate.setText(job.getString("STIR_2_END_DATE"));
+                        etH2Stir2WorkerId.setText(job.getString("STIR_2_WORKER_ID"));
+                        etT2Stir2WorkerName.setText(job.getString("STIR_2_WORKER_NAME"));
+                        etT2Stir3StartDate.setText(job.getString("STIR_3_START_DATE"));
+                        etT2Stir3EndDate.setText(job.getString("STIR_3_END_DATE"));
+                        etH2Stir3WorkerId.setText(job.getString("STIR_3_WORKER_ID"));
+                        etT2Stir3WorkerName.setText(job.getString("STIR_3_WORKER_NAME"));
+                        etT2MixEndTime.setText(job.getString("MIX_END_DATE"));
+                        etH2JobId.setText(job.getString("JOB_ID"));
+                        etH2OperationId.setText(job.getString("OPERATION_ID"));
+                        etH2ModFlag.setText(job.getString("MOD_FLAG"));
 
                     }
                     etT2MixTankDescScan.requestFocus();
-
-                    if(!etH2ModFlag.equals("Y")){  //수정이 가능하지않으면 tape_null
-
-                        etT2FileNoScan.setInputType(InputType.TYPE_NULL);
-                        etT2OperaionDesc.setInputType(InputType.TYPE_NULL);
-                        etT2MixStartTime.setInputType(InputType.TYPE_NULL);
-                        etH2TankLcode.setInputType(InputType.TYPE_NULL);
-                        etT2MixTankDescScan.setInputType(InputType.TYPE_NULL);
-                        etH2EquipmentId.setInputType(InputType.TYPE_NULL);
-                        etT2EquipmentScan.setInputType(InputType.TYPE_NULL);
-                        etT2Stir1StartDate.setInputType(InputType.TYPE_NULL);
-                        etT2Stir1EndDate.setInputType(InputType.TYPE_NULL);
-                        etH2Stir1WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT2Stir1WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT2Stir2StartDate.setInputType(InputType.TYPE_NULL);
-                        etT2Stir2EndDate.setInputType(InputType.TYPE_NULL);
-                        etH2Stir2WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT2Stir2WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT2Stir3StartDate.setInputType(InputType.TYPE_NULL);
-                        etT2Stir3EndDate.setInputType(InputType.TYPE_NULL);
-                        etH2Stir3WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT2Stir3WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT2MixEndTime.setInputType(InputType.TYPE_NULL);
-                        etH2OperationId.setInputType(InputType.TYPE_NULL);
-                        etH2ModFlag.setInputType(InputType.TYPE_NULL);
-                    }
-
 
                 }
 
@@ -665,13 +524,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        // 스트링 null 처리하는 메서드
-        private String handleStringNull(String input) {
-            return "null".equals(input) ? "" : input;
-        }
-
-
-
 
     }
 
@@ -737,7 +589,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     String status = job.getString("Status");
 
                     if (status.equals("S")) {
-                        etH2TankLcode.setText(job.getString("ENTRY_CODE")); // entryDesc
+                        etH2EntryCode.setText(job.getString("ENTRY_CODE")); // entryDesc
                         etT2MixTankDescScan.setText(job.getString("ENTRY_DESCRIPTION")); // edT2TankScan
                         etH2LookupEntryId.setText(job.getString("LOOKUP_ENTRY_ID")); // lookupEntryId
                     }
@@ -819,14 +671,14 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     String status = job.getString("Status");
 
                     if (status.equals("S")) {
-
-                        etH2EquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
-                        etH2EquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                        etT2EquipmentScan.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        //테스트용으로 넣었으니 된다면 다시 수정하기
+                        etH2EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                        etH2EquipmentCode.setText(job.getString("EQUIPMENT_CODE"));
+                        etT2EquipmentScan.setText(job.getString("EQUIPMENT_NAME"));
                         etH2OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
 
                     }
-                    etT2Stir1WorkerNameScan.requestFocus();
+                    etT2Stir1WorkerName.requestFocus();
 
                 }
 
@@ -908,11 +760,11 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                     if (status.equals("S")) {
                         etH2Stir1WorkerId.setText(job.getString("USER_ID"));
-                        etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
+                        etT2Stir1WorkerName.setText(job.getString("DESCRIPTION"));
 
 
                     }
-                    etT2Stir2WorkerNameScan.requestFocus();
+                    etT2Stir2WorkerName.requestFocus();
 
                 }
 
@@ -925,281 +777,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
             }
         }
 
-    }
-
-    protected class LuWorker2 extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... urls) {
-            StringBuffer jsonHtml = new StringBuffer();
-
-            //서버로 보낼 데이터 설정
-            String search_title = "W_SOB_ID=" + urls[0]
-                    + "&W_ORG_ID=" + urls[1]
-                    + "&W_WORKCENTER_ID=" + urls[2]
-                    + "&W_BARCODE=" + urls[3];
-            try {
-                URL obj = new URL("http://"+strIp+"/TAIYO/LuWorker.jsp"); //주소 지정
-
-                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
-
-                if (conn != null) //
-                {
-                    conn.setReadTimeout(5000);
-                    conn.setConnectTimeout(10000);
-                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
-                    conn.setDoInput(true);
-                    conn.connect(); //???
-
-                    //서버에 데이터 전달
-                    OutputStream out = conn.getOutputStream();
-                    out.write(search_title.getBytes("UTF-8"));
-                    out.flush();
-                    out.close();
-
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
-                    {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
-                        while (true) {
-                            String line = br.readLine();
-                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
-                                break;
-                            jsonHtml.append(line);// + "\n");
-                        }
-                        br.close();
-                    }
-                    conn.disconnect();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return jsonHtml.toString(); //결과값 리턴
-        }
-
-        protected void onPostExecute(String result) {
-            //페이지 결과값 파싱
-            try {
-
-                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
-                JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
-
-                //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
-
-
-
-                if (resultArray.length() > 0) {
-                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                    String status = job.getString("Status");
-
-                    if (status.equals("S")) {
-                        etH2Stir2WorkerId.setText(job.getString("USER_ID"));
-                        etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
-
-
-                    }
-                    etT2Stir3WorkerNameScan.requestFocus();
-
-                }
-
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-
-    protected class LuWorker3 extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... urls) {
-            StringBuffer jsonHtml = new StringBuffer();
-
-            //서버로 보낼 데이터 설정
-            String search_title = "W_SOB_ID=" + urls[0]
-                    + "&W_ORG_ID=" + urls[1]
-                    + "&W_WORKCENTER_ID=" + urls[2]
-                    + "&W_BARCODE=" + urls[3];
-            try {
-                URL obj = new URL("http://"+strIp+"/TAIYO/LuWorker.jsp"); //주소 지정
-
-                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
-
-                if (conn != null) //
-                {
-                    conn.setReadTimeout(5000);
-                    conn.setConnectTimeout(10000);
-                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
-                    conn.setDoInput(true);
-                    conn.connect(); //???
-
-                    //서버에 데이터 전달
-                    OutputStream out = conn.getOutputStream();
-                    out.write(search_title.getBytes("UTF-8"));
-                    out.flush();
-                    out.close();
-
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
-                    {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
-                        while (true) {
-                            String line = br.readLine();
-                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
-                                break;
-                            jsonHtml.append(line);// + "\n");
-                        }
-                        br.close();
-                    }
-                    conn.disconnect();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return jsonHtml.toString(); //결과값 리턴
-        }
-
-        protected void onPostExecute(String result) {
-            //페이지 결과값 파싱
-            try {
-
-                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
-                JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
-
-                //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
-
-
-
-                if (resultArray.length() > 0) {
-                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                    String status = job.getString("Status");
-
-                    if (status.equals("S")) {
-                        etH2Stir3WorkerId.setText(job.getString("USER_ID"));
-                        etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
-
-
-                    }
-
-
-                }
-
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-
-    protected class BhUpdate extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... urls) {
-            StringBuffer jsonHtml = new StringBuffer();
-
-            //서버로 보낼 데이터 설정
-            String search_title = "W_JOB_ID=" + urls[0]
-                    + "&W_OPERATION_ID=" + urls[1]
-                    + "&W_WORKCENTER_ID=" + urls[2]
-                    + "&P_SOB_ID=" + urls[3]
-                    + "&P_ORG_ID=" + urls[4]
-                    + "&P_MIX_TANK_LCODE=" + urls[6]
-                    + "&P_EQUIPMENT_ID=" + urls[7]
-                    + "&P_MIX_START_DATE=" + urls[8]
-                    + "&P_STIR_1_START_DATE=" + urls[9]
-                    + "&P_STIR_1_END_DATE=" + urls[10]
-                    + "&P_STIR_1_WORKER_ID=" + urls[11]
-                    + "&P_STIR_2_START_DATE=" + urls[12]
-                    + "&P_STIR_2_END_DATE=" + urls[13]
-                    + "&P_STIR_2_WORKER_ID=" + urls[14]
-                    + "&P_STIR_3_START_DATE=" + urls[15]
-                    + "&P_STIR_3_END_DATE=" + urls[16]
-                    + "&P_STIR_3_WORKER_ID=" + urls[17]
-                    + "&P_MIX_END_DATE=" + urls[18]
-                    + "&P_USER_ID=" + urls[19];
-
-
-            try {
-                URL obj = new URL("http://"+strIp+"/TAIYO/BhUpdate.jsp"); //주소 지정
-
-                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
-
-                if (conn != null) //
-                {
-                    conn.setReadTimeout(5000);
-                    conn.setConnectTimeout(10000);
-                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
-                    conn.setDoInput(true);
-                    conn.connect(); //???
-
-                    //서버에 데이터 전달
-                    OutputStream out = conn.getOutputStream();
-                    out.write(search_title.getBytes("UTF-8"));
-                    out.flush();
-                    out.close();
-
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
-                    {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
-                        while (true) {
-                            String line = br.readLine();
-                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
-                                break;
-                            jsonHtml.append(line);// + "\n");
-                        }
-                        br.close();
-                    }
-                    conn.disconnect();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return jsonHtml.toString(); //결과값 리턴
-        }
-
-        protected void onPostExecute(String result) {
-            try{
-                JSONObject RESULT = new JSONObject(result);
-                JSONArray arr = RESULT.getJSONArray("RESULT");
-
-                try{
-                        JSONObject obj = arr.getJSONObject(0);
-                        String ResultStatus = obj.getString("P_RESULT_STATUS");
-
-                        if(ResultStatus.equals("S")){
-                            //ClearListView();
-                            Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
-
-                            FileNoScanBH fileNoScanBH = new FileNoScanBH();
-                            fileNoScanBH.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString()); //재조회
-
-                        }else{
-
-                            Toast.makeText(getApplicationContext(), "오류입니다", Toast.LENGTH_SHORT).show();
-
-                        }
-
-                }catch(Exception e){
-                    e.printStackTrace();
-
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-
-            }
-        }
     }
 
 }

@@ -133,7 +133,7 @@
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="15sp"
-
+            android:windowSoftInputMode="stateHidden"
             />
 
 

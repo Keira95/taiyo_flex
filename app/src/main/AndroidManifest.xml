@@ -52,7 +52,15 @@
         <activity android:name="com.erp.Taiyo.MenuActivity"
             android:screenOrientation="portrait"
             />
-
+        <activity android:name="com.erp.Taiyo.activity.CombinationWorkActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.erp.Taiyo.activity.SurimiWorkActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.erp.Taiyo.activity.TestActivity"
+            android:screenOrientation="portrait"
+            />
 
     </application>
 

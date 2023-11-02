@@ -80,6 +80,7 @@
         android:choiceMode="singleChoice"
         android:layout_gravity="center"
         android:dividerHeight="1sp"
+
         >
     </ListView>
 </LinearLayout>

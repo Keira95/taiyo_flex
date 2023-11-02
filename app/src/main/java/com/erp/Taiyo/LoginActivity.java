@@ -57,9 +57,8 @@ public class LoginActivity extends AppCompatActivity {
     String versionString;
     String newToken;
     String telNumber = "";
-    String sobId ="80";
-    String orgId ="801";
-    String testIp = "106.251.238.99:8091";
+    String sobId ="70";
+    String orgId ="701";
     String storeVersion = "";
     String deviceVersion = "";
     RelativeLayout mainLayout;
@@ -134,11 +133,11 @@ public class LoginActivity extends AppCompatActivity {
             strUserId = userId.getText().toString();
             strUserPw = userPw.getText().toString();
 
-            DB_Version dbVersion = new DB_Version();
-            dbVersion.execute(userIp.getText().toString());
+          //  DB_Version dbVersion = new DB_Version();
+          //  dbVersion.execute(userIp.getText().toString());
 
-            //DB_Login dbLogin = new DB_Login();
-            //dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
+            DB_Login dbLogin = new DB_Login();
+            dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
             // 로그인 성공시 저장 처리, 예제는 무조건 저장
             save();
         }else if(chkauto.isChecked()){
@@ -146,8 +145,8 @@ public class LoginActivity extends AppCompatActivity {
             strUserId = userId.getText().toString();
             strUserPw = userPw.getText().toString();
 
-            DB_Version dbVersion = new DB_Version();
-            dbVersion.execute(userIp.getText().toString());
+          //  DB_Version dbVersion = new DB_Version();
+          //  dbVersion.execute(userIp.getText().toString());
 
             // 로그인 성공시 저장 처리, 예제는 무조건 저장
             save();
@@ -170,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
         if (mTelephonyManager != null) {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
 
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
 
@@ -207,11 +206,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        DB_Version dbVersion = new DB_Version();
-                        dbVersion.execute(userIp.getText().toString());
+                      //  DB_Version dbVersion = new DB_Version();
+                      //  dbVersion.execute(userIp.getText().toString());
 
-                       // DB_Login dbLogin = new DB_Login();
-                       // dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
+                       DB_Login dbLogin = new DB_Login();
+                       dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
                         // 로그인 성공시 저장 처리, 예제는 무조건 저장
                         save();
 
@@ -259,21 +258,11 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("chkip", chkip.isChecked());
         editor.putBoolean("chkid", chkid.isChecked());
         editor.putBoolean("chkauto", chkauto.isChecked());
-
-
-
-
-
-
-
-
-
-
-
         ///test
-
         editor.commit();	//commit
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -287,7 +276,7 @@ public class LoginActivity extends AppCompatActivity {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                    //    Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
                         return;
                     }else{
                      //   telNumber = mTelephonyManager.getLine1Number();
@@ -296,7 +285,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 } else {
-                    Toast.makeText(this,"전화 권한이 허용되지 않았습니다.",Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(this,"전화 권한이 허용되지 않았습니다.",Toast.LENGTH_LONG).show();
 //                    moveTaskToBack(true);
 //                    finish();
 //                    android.os.Process.killProcess(android.os.Process.myPid());
@@ -346,7 +335,7 @@ public class LoginActivity extends AppCompatActivity {
     {
         protected  String doInBackground(String... urls)
         {
-            String URL = "http://" + urls[0] + "/DRK/Login.jsp"; //자신의 웹서버 주소를 저장합니다.
+            String URL = "http://" + urls[0] + "/TAIYO/Login.jsp"; //자신의 웹서버 주소를 저장합니다.
             DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.
 
             try
@@ -388,6 +377,8 @@ public class LoginActivity extends AppCompatActivity {
             try{
 
                 JSONObject RESULT = new JSONObject(result);
+
+
 
                 //LOG 저장
                 String log = "\n"+ RESULT.getString("RESULT");
@@ -473,7 +464,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-            }catch (Exception e){
+               }catch (Exception e){
                 Toast.makeText(getApplicationContext(), "로그인 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
@@ -543,12 +534,12 @@ public class LoginActivity extends AppCompatActivity {
 //            }
 //        }
 //    }
-protected class DB_Version extends AsyncTask<String, Void, String>
+/*protected class DB_Version extends AsyncTask<String, Void, String>
 {
     protected  String doInBackground(String... urls)
     {
 
-        String URL = "http://" + urls[0] + "/DRK/PtVersion.jsp"; //자신의 웹서버 주소를 저장합니다.
+        String URL = "http://" + urls[0] + "/TAIYO/PtVersion.jsp"; //자신의 웹서버 주소를 저장합니다.
         DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.
 
         try
@@ -752,6 +743,6 @@ protected class DB_Version extends AsyncTask<String, Void, String>
         webLinkIntent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
 
         startActivity(webLinkIntent);
-    }
+    }*/
 
 }

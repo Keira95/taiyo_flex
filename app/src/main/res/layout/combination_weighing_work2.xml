@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginLeft="10sp"
-            android:background="@color/orange"
+            android:background="@color/teal"
             android:gravity="center"
             android:text="최근실적"
             android:textColor="@color/white"

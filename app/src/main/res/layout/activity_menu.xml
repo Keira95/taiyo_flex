@@ -79,7 +79,7 @@
                 android:layout_height="70dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:background="@drawable/button_shape_menu1"
+                android:background="@drawable/buttonshape2"
                 android:text="계량작업등록"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
@@ -92,7 +92,7 @@
                 android:textColor="@color/black"
                 android:text="배합작업등록"
                 android:textSize="15sp"
-                android:background="@drawable/button_shape_menu1"
+                android:background="@drawable/buttonshape2"
 
                 android:layout_margin="5sp"
                 />
@@ -136,21 +136,21 @@
                 android:layout_height="70dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:background="@drawable/button_shape_menu1"
-                android:text="반응작업등록"
+                android:background="@drawable/buttonshape2"
+                android:text="연육작업등록"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
-
             <Button
-                android:id="@+id/btb_yud"
+                android:id="@+id/btn_jj"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:background="@drawable/button_shape_menu1"
-                android:text="연육작업등록"
+                android:background="@drawable/buttonshape2"
+                android:text="조정작업등록"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
+
 <!--
             <Button
                 android:id="@+id/btn_inventory"
@@ -192,17 +192,17 @@
                 android:textColor="@color/black"
                 android:text="탈포작업등록"
                 android:textSize="15sp"
-                android:background="@drawable/button_shape_menu1"
+                android:background="@drawable/buttonshape2"
 
                 />
             <Button
-                android:id="@+id/btn_jj"
+                android:id="@+id/btb_yud"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:background="@drawable/button_shape_menu1"
-                android:text="조정작업등록"
+                android:background="@drawable/buttonshape2"
+                android:text="연육작업등록"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -225,7 +225,7 @@
             android:textColor="@color/black"
             android:text="test"
             android:textSize="15sp"
-            android:background="@drawable/button_shape_menu1"
+            android:background="@drawable/buttonshape2"
 
             />
 <!--        <Button-->
@@ -247,7 +247,7 @@
             android:textColor="#616161"
             android:textSize="15sp"
             android:layout_weight="1"
-            android:background="@drawable/button_shape_menu1"
+            android:background="@drawable/buttonshape2"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"

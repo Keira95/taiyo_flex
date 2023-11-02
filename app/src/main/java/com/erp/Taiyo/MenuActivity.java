@@ -14,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.erp.Taiyo.activity.CombinationWorkActivity;
-import com.erp.Taiyo.activity.SurimiWorkActivity;
-import com.erp.Taiyo.activity.TestActivity;
+
+import com.erp.Taiyo.activity.RegisterAdjustmentActivity;
+import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
+import com.erp.Taiyo.activity.SurimiWeighingWorkActivity;
 import com.erp.Taiyo.adapter.MenuListAdapter;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.app.ActivityCompat;
@@ -61,7 +63,8 @@ public class MenuActivity extends AppCompatActivity {
 
     TextView tvId;
     //버튼
-    Button btnWare, btnWait, btnOem, btnMerger, btnInventory , btnRelease, btnCom , btnSearh, btnSurimi;
+
+    Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO;
     GridView gv;
 
     MenuItem ItemId;
@@ -128,15 +131,15 @@ public class MenuActivity extends AppCompatActivity {
         mNavigationView = findViewById(R.id.navigation_view);
 
 
-        btnWait = findViewById(R.id.btn_gr);
-
-        btnCom = findViewById(R.id.btn_bh);
-        btnSurimi = findViewById(R.id.btb_yu);
-
+        btnGR = findViewById(R.id.btn_gr); //계량
+        btnBH = findViewById(R.id.btn_bh); //배합
+        btnYU = findViewById(R.id.btn_yu); //연육
 
 
-
-
+        btnJJ = findViewById(R.id.btn_jj); //조정
+        btnCJ = findViewById(R.id.btn_cj); //충진
+        btnTP = findViewById(R.id.btn_tp); //탈포
+        btbBO = findViewById(R.id.btb_bo); //반응
 
         Menu menu =  mNavigationView.getMenu();
 
@@ -150,6 +153,7 @@ public class MenuActivity extends AppCompatActivity {
         MenuItem MOBF0001 = menu.findItem(R.id.MOBF0009);
         MenuItem MOBF0004 = menu.findItem(R.id.MOBF0010);
         MenuItem MOBF0007 = menu.findItem(R.id.MOBF0011);
+
 
         MenuItem logOut   = menu.findItem(R.id.log_out);
         MenuItem appOut   = menu.findItem(R.id.app_out);
@@ -165,7 +169,8 @@ public class MenuActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true); // 햄버거 아이콘 활성화
 
         //매뉴
-        //DB_Menu_Header dbMenuHeader = new DB_Menu_Header();
+
+       // DB_Menu_Header  dbMenuHeader = new DB_Menu_Header();
        // dbMenuHeader.execute();
        // DB_Menu_Detail dbMenuDetail = new DB_Menu_Detail();
        // dbMenuDetail.execute(strUserId);
@@ -179,29 +184,39 @@ public class MenuActivity extends AppCompatActivity {
                         break;
                     case R.id.user_name:
                         break;
-                    case R.id.btn_bh:
-                        Intent btn_com = new Intent(MenuActivity.this, CombinationWorkActivity.class);
-                        btn_com.putExtra("O_USER_ID", strUserId);
-                        btn_com.putExtra("O_USER_NAME", strUserName);
-                        btn_com.putExtra("Ip", strIp);
-                        btn_com.putExtra("TOP_MENU_DESC", btnWait.getText().toString());
-                        startActivity(btn_com);
+
+                    case R.id.MOBF0009:
+                        Intent MOBF0001 = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
+                        MOBF0001.putExtra("O_USER_ID", strUserId);
+                        MOBF0001.putExtra("O_USER_NAME", strUserName);
+                        MOBF0001.putExtra("Ip", strIp);
+                        MOBF0001.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
+                        startActivity(MOBF0001);
                         break;
-              /*    case R.id.MOBF0010:
-                        Intent MOBF0004 = new Intent(MenuActivity.this, MatTransferActivity.class);
+                  case R.id.MOBF0010:
+                        Intent MOBF0004 = new Intent(MenuActivity.this, CombinationWorkActivity.class);
                         MOBF0004.putExtra("O_USER_ID", strUserId);
                         MOBF0004.putExtra("O_USER_NAME", strUserName);
                         MOBF0004.putExtra("Ip", strIp);
-                        MOBF0004.putExtra("TOP_MENU_DESC", btnMerger.getText().toString());
+                        MOBF0004.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
                         startActivity(MOBF0004);
                         break;
                     case R.id.MOBF0011:
-                        Intent MOBF0007 = new Intent(MenuActivity.this, MatSearchOnhandActivity.class);
+                        Intent MOBF0007 = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
                         MOBF0007.putExtra("O_USER_ID", strUserId);
                         MOBF0007.putExtra("O_USER_NAME", strUserName);
                         MOBF0007.putExtra("Ip", strIp);
-                        MOBF0007.putExtra("TOP_MENU_DESC", btnMobf0007.getText().toString());
-                        startActivity(MOBF0007);*/
+                        MOBF0007.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
+                        startActivity(MOBF0007);
+             /*       case R.id.MOBF0011:
+                        Intent MOBF0011 = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
+                        MOBF0011.putExtra("O_USER_ID", strUserId);
+                        MOBF0011.putExtra("O_USER_NAME", strUserName);
+                        MOBF0011.putExtra("Ip", strIp);
+                        MOBF0011.putExtra("TOP_MENU_DESC", btnMobf0007.getText().toString());
+                        startActivity(MOBF0011);*/
+
+
 
                     default:
                         break;
@@ -215,47 +230,55 @@ public class MenuActivity extends AppCompatActivity {
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-       btnWait.setOnClickListener(new View.OnClickListener() {
+
+        btnGR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, TestActivity.class);
-
+                Intent intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
                 startActivity(intentMat);
             }
         });
-//
-//        btnMerger.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, MatTransferActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnMerger.getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
 
-        btnCom.setOnClickListener(new View.OnClickListener() {
+        btnBH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
                 intentMat.putExtra("O_USER_ID", strUserId);
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnWait.getText().toString());
-
-
+                intentMat.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
                 startActivity(intentMat);
             }
         });
-        btnSurimi.setOnClickListener(new View.OnClickListener() {
+
+        btnYU.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intentMat = new Intent(MenuActivity.this, SurimiWorkActivity.class);
+            public void onClick(View view) {
+                Intent intentMat = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
                 startActivity(intentMat);
             }
         });
+
+        btnJJ .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMat = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
+                startActivity(intentMat);
+            }
+        });
+
 
         logOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -459,15 +482,15 @@ public class MenuActivity extends AppCompatActivity {
                     {
                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
                         {
-                            btnWait.setEnabled(true);
-                            btnWait.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnGR.setEnabled(true);
+                            btnGR.setText(j_ob.getString("TOP_MENU_DESC"));
                             MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                         else
                         {
-                            btnWait.setEnabled(false);
-                            btnWait.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnWait.setBackgroundColor(Color.GRAY);
+                            btnBH.setEnabled(false);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setBackgroundColor(Color.GRAY);
                             MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                     }
@@ -477,15 +500,15 @@ public class MenuActivity extends AppCompatActivity {
                     {
                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
                         {
-                            btnMerger.setEnabled(true);
-                            btnMerger.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setEnabled(true);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
                             MOBF0004.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                         else
                         {
-                            btnMerger.setEnabled(false);
-                            btnMerger.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnMerger.setBackgroundColor(Color.GRAY);
+                            btnBH.setEnabled(false);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setBackgroundColor(Color.GRAY);
                             MOBF0004.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                     }
@@ -495,15 +518,17 @@ public class MenuActivity extends AppCompatActivity {
                     {
                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
                         {
-                            btnCom.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnCom.setEnabled(true);
+
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setEnabled(true);
                             MOBF0007.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                         else
                         {
-                            btnCom.setEnabled(false);
-                            btnCom.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnCom.setBackgroundColor(Color.GRAY);
+                            btnBH.setEnabled(false);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setBackgroundColor(Color.GRAY);
+
                             MOBF0007.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                     }

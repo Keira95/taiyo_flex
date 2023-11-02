@@ -74,6 +74,7 @@ public class LuOillerDialog {
         btnClose = dialog.findViewById(R.id.btn_close);
         IvItem = dialog.findViewById(R.id.lv_list);
 
+
         Lu_Oiller lu_oiller = new Lu_Oiller();
         lu_oiller.execute(ip.toString(), strSobId, strOrgId);
 
@@ -90,9 +91,9 @@ public class LuOillerDialog {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 LuOillerIListtem luItemListitem = (LuOillerIListtem) parent.getAdapter().getItem(position);
 
-                tvCode.setText(luItemListitem.getStrEquimentCode());
-                tvName.setText(luItemListitem.getStrEquimentDesc());
-                tvId.setText(luItemListitem.getStrEquimentId());
+                tvCode.setText(luItemListitem.getStrItemCode());
+                tvName.setText(luItemListitem.getStrItemDesc());
+                tvId.setText(luItemListitem.getStrItemId());
                 dialog.dismiss();
             }
         });
@@ -188,10 +189,10 @@ public class LuOillerDialog {
 
                     LuOillerIListtem luItemListItem = new LuOillerIListtem();
 
-                    luItemListItem.setStrEquimentCode(job.getString("EQUIPMENT_CODE"));
-                    luItemListItem.setStrEquimentDesc(job.getString("EQUIPMENT_NAME"));
-                    luItemListItem.setStrEquimentId(job.getString("EQUIPMENT_ID"));
-
+                    luItemListItem.setStrItemCode(job.getString("ITEM_CODE"));
+                    luItemListItem.setStrItemDesc(job.getString("ITEM_DESC"));
+                    luItemListItem.setStrItemId(job.getString("INVENTORY_ITEM_ID"));
+                    luItemListItem.setStrYuChkFlag(job.getString("YU_CHECK_FLAG"));
 
                     luItemAdapter.addItem(luItemListItem);
 

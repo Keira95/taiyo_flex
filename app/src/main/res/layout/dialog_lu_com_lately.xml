@@ -26,13 +26,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="6"
             android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeMaxTextSize="16sp"
-            android:autoSizeStepGranularity="1px"
             android:hint="검색할 키워드를 입력하세요."
+            android:textSize="14sp"
             android:id="@+id/et_filter" />
         <Button
-            android:id="@+id/n1_btn_close"
+            android:id="@+id/btn_close"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -69,26 +67,21 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeStepGranularity="1px"
-                android:autoSizeTextType="uniform"
                 android:background="@color/light_green"
                 android:gravity="center"
-                android:text="FileNo" />
+                android:text="FileNo"
+                android:textSize="12sp"
+                />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:autoSizeTextType="uniform"
                 android:text="지시량"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeMaxTextSize="16sp"
                 android:background="@color/light_green"
-                android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="12sp"
                 />
             <FrameLayout
                 android:layout_width="match_parent"
@@ -99,14 +92,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
                 android:text="설비명"
                 android:background="@color/light_green"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="12sp"
                 />
             <FrameLayout
                 android:layout_width="match_parent"
@@ -137,14 +127,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
                 android:background="@color/light_green"
                 android:text="예비교반회전수"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="12sp"
                 />
             <FrameLayout
                 android:layout_width="match_parent"
@@ -155,14 +142,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:autoSizeTextType="uniform"
                 android:text="투입교반 회전수"
-                android:autoSizeMinTextSize="8sp"
                 android:background="@color/light_green"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="12sp"
                 />
             <FrameLayout
                 android:layout_width="match_parent"
@@ -173,12 +157,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
                 android:background="@color/light_green"
                 android:text="본교반 회전수"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeStepGranularity="1px"
+                android:textSize="12sp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 />
@@ -203,6 +184,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="2sp"
             android:layout_weight="1"
             android:orientation="vertical"
             >
@@ -211,13 +193,10 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/light_green"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
                 android:text="예비교반 작업분"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="12sp"
                 />
             <FrameLayout
                 android:layout_width="match_parent"
@@ -228,14 +207,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
                 android:background="@color/light_green"
                 android:text="투입교반 작업분"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="12sp"
                 />
             <FrameLayout
                 android:layout_width="match_parent"
@@ -246,14 +222,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
                 android:background="@color/light_green"
                 android:text="본교반 작업분"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textSize="12sp"
                 />
             <FrameLayout
                 android:layout_width="match_parent"

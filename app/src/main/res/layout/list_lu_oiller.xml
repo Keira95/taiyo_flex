@@ -18,7 +18,13 @@
             android:layout_weight="0"
             android:textSize="0sp"
             />
-
+        <TextView
+            android:id="@+id/lu_chk_flag"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:textSize="0sp"
+            />
         <TextView
             android:id="@+id/lu_oiller_code"
             android:layout_width="0dp"

@@ -148,6 +148,10 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
         initializeToolbar();
 
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        imm.hideSoftInputFromWindow(t1FileNo.getWindowToken(), 0);
+
 
         //file no scan
         t1FileNo.addTextChangedListener(new TextWatcher() {
@@ -384,7 +388,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                         GR_UPDATE gr_update = new GR_UPDATE();
                         gr_update.execute(strIp,t1Job_id.getText().toString(),t1OprationId.getText().toString(),t1WorkcenterId.getText().toString(),strSobId ,strOrgId ,t1WorkStartTiem.getText().toString().replaceAll(" ","")
                                 , t1WorkEndTime.getText().toString().replaceAll(" ",""),t1TankLcode.getText().toString(),t1LiqidPersonId.getText().toString() ,t1PowderPersonId.getText().toString() , strUserId
-                                ,  t1RiqidStartTime.getText().toString().replaceAll(" ",""), t1RiqidEndTime.getText().toString().replaceAll(" ","") , t1PowderStartTime.getText().toString().replaceAll(" ","")
+                                , t1RiqidStartTime.getText().toString().replaceAll(" ",""), t1RiqidEndTime.getText().toString().replaceAll(" ","") , t1PowderStartTime.getText().toString().replaceAll(" ","")
                                 ,t1PowderEndTime.getText().toString().replaceAll(" ",""));
                                
 
@@ -430,6 +434,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
 
     }
+
 
 
 

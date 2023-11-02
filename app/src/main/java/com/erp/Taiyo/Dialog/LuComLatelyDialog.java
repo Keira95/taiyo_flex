@@ -55,7 +55,8 @@ public class LuComLatelyDialog {
         String strOrgId = "701";
 
         // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
-        dialog = new Dialog(context);
+        final Dialog dialog = new Dialog(context);
+        //dialog = new Dialog(context);
 
         // 액티비티의 타이틀바를 숨긴다.
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -77,18 +78,20 @@ public class LuComLatelyDialog {
         lv_lately = dialog.findViewById(R.id.lv_lu_com_lately);
 
 
-        dialog.show();
 
         BhRecentActual bhRecentActual = new BhRecentActual();
         bhRecentActual.execute(ip,strSobId,strOrgId,fileNo.getText().toString());
 
 
-//        btnClose.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog.dismiss();
-//            }
-//        });
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
 
     }
     protected class BhRecentActual extends AsyncTask<String, Void, String>

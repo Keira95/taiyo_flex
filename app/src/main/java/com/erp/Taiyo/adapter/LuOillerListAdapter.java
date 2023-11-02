@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 
 public class LuOillerListAdapter extends BaseAdapter implements Filterable {
-    TextView tvOillerId, tvOillerCode, tvOillerDesc;
+    TextView tvOillerId, tvOillerCode, tvOillerDesc ,tvYuChk;
     Button btnMenu;
     private ArrayList<LuOillerIListtem> ListArray = new ArrayList<>();
     private ArrayList<LuOillerIListtem> FilterListArray = ListArray;
@@ -70,13 +70,14 @@ public class LuOillerListAdapter extends BaseAdapter implements Filterable {
         tvOillerId = (TextView) convertView.findViewById(R.id.lu_oiller_id); //공정명
         tvOillerCode = (TextView) convertView.findViewById(R.id.lu_oiller_code); //ds pnl
         tvOillerDesc = (TextView) convertView.findViewById(R.id.lu_oiller_desc); // ds sqm
+        tvYuChk     = (TextView) convertView.findViewById(R.id.lu_chk_flag); // ds sqm
 
         LuOillerIListtem FilterListArray = getItem(position);
 
-        tvOillerId.setText(FilterListArray.getStrEquimentId());
-        tvOillerCode.setText(FilterListArray.getStrEquimentCode());
-        tvOillerDesc.setText(FilterListArray.getStrEquimentDesc());
-
+        tvOillerId.setText(FilterListArray.getStrItemId());
+        tvOillerCode.setText(FilterListArray.getStrItemCode());
+        tvOillerDesc.setText(FilterListArray.getStrItemDesc());
+        tvYuChk.setText(FilterListArray.getStrYuChkFlag());
         if(FilterListArray != null){
             convertView.setBackgroundColor((position & 1) == 1 ? Color.LTGRAY: Color.WHITE);
         }

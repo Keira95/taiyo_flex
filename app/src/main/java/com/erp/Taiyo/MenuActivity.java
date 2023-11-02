@@ -62,7 +62,7 @@ public class MenuActivity extends AppCompatActivity {
 
     TextView tvId;
     //버튼
-    Button btnWare, btnMenug1, btnOem, btnMerger, btnInventory , btnRelease, btnMobf0007 , btnAdjustment;
+    Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO;
     GridView gv;
 
     MenuItem ItemId;
@@ -125,10 +125,14 @@ public class MenuActivity extends AppCompatActivity {
         mNavigationView = findViewById(R.id.navigation_view);
 
 
-        btnMenug1 = findViewById(R.id.btn_menu_g1);
-        btnMerger = findViewById(R.id.btn_Merger);
-        btnMobf0007 = findViewById(R.id.btn_surimi);
-        btnAdjustment = findViewById(R.id.btn_Adjustment);
+        btnGR = findViewById(R.id.btn_gr); //계량
+        btnBH = findViewById(R.id.btn_bh); //배합
+        btnYU = findViewById(R.id.btn_yu); //연육
+
+        btnJJ = findViewById(R.id.btn_jj); //조정
+        btnCJ = findViewById(R.id.btn_cj); //충진
+        btnTP = findViewById(R.id.btn_tp); //탈포
+        btbBO = findViewById(R.id.btb_bo); //반응
 
         Menu menu =  mNavigationView.getMenu();
 
@@ -177,7 +181,7 @@ public class MenuActivity extends AppCompatActivity {
                         MOBF0001.putExtra("O_USER_ID", strUserId);
                         MOBF0001.putExtra("O_USER_NAME", strUserName);
                         MOBF0001.putExtra("Ip", strIp);
-                        MOBF0001.putExtra("TOP_MENU_DESC", btnMenug1.getText().toString());
+                        MOBF0001.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
                         startActivity(MOBF0001);
                         break;
                   case R.id.MOBF0010:
@@ -185,7 +189,7 @@ public class MenuActivity extends AppCompatActivity {
                         MOBF0004.putExtra("O_USER_ID", strUserId);
                         MOBF0004.putExtra("O_USER_NAME", strUserName);
                         MOBF0004.putExtra("Ip", strIp);
-                        MOBF0004.putExtra("TOP_MENU_DESC", btnMerger.getText().toString());
+                        MOBF0004.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
                         startActivity(MOBF0004);
                         break;
                     case R.id.MOBF0011:
@@ -193,7 +197,7 @@ public class MenuActivity extends AppCompatActivity {
                         MOBF0007.putExtra("O_USER_ID", strUserId);
                         MOBF0007.putExtra("O_USER_NAME", strUserName);
                         MOBF0007.putExtra("Ip", strIp);
-                        MOBF0007.putExtra("TOP_MENU_DESC", btnMobf0007.getText().toString());
+                        MOBF0007.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
                         startActivity(MOBF0007);
              /*       case R.id.MOBF0011:
                         Intent MOBF0011 = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
@@ -217,50 +221,50 @@ public class MenuActivity extends AppCompatActivity {
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-       btnMenug1.setOnClickListener(new View.OnClickListener() {
+        btnGR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
                 intentMat.putExtra("O_USER_ID", strUserId);
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnMenug1.getText().toString());
+                intentMat.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
                 startActivity(intentMat);
             }
         });
 
-        btnMerger.setOnClickListener(new View.OnClickListener() {
+        btnBH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
                 intentMat.putExtra("O_USER_ID", strUserId);
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnMerger.getText().toString());
+                intentMat.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
                 startActivity(intentMat);
             }
         });
 
-        btnMobf0007.setOnClickListener(new View.OnClickListener() {
+        btnYU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentMat = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
                 intentMat.putExtra("O_USER_ID", strUserId);
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnMobf0007.getText().toString());
+                intentMat.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
                 startActivity(intentMat);
             }
         });
 
-        btnAdjustment.setOnClickListener(new View.OnClickListener() {
+        btnJJ .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentMat = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
                 intentMat.putExtra("O_USER_ID", strUserId);
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnAdjustment.getText().toString());
+                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
                 startActivity(intentMat);
             }
         });
@@ -468,15 +472,15 @@ public class MenuActivity extends AppCompatActivity {
                     {
                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
                         {
-                            btnMenug1.setEnabled(true);
-                            btnMenug1.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnGR.setEnabled(true);
+                            btnGR.setText(j_ob.getString("TOP_MENU_DESC"));
                             MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                         else
                         {
-                            btnMenug1.setEnabled(false);
-                            btnMenug1.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnMenug1.setBackgroundColor(Color.GRAY);
+                            btnBH.setEnabled(false);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setBackgroundColor(Color.GRAY);
                             MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                     }
@@ -486,15 +490,15 @@ public class MenuActivity extends AppCompatActivity {
                     {
                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
                         {
-                            btnMerger.setEnabled(true);
-                            btnMerger.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setEnabled(true);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
                             MOBF0004.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                         else
                         {
-                            btnMerger.setEnabled(false);
-                            btnMerger.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnMerger.setBackgroundColor(Color.GRAY);
+                            btnBH.setEnabled(false);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setBackgroundColor(Color.GRAY);
                             MOBF0004.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                     }
@@ -504,15 +508,15 @@ public class MenuActivity extends AppCompatActivity {
                     {
                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
                         {
-                            btnMobf0007.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnMobf0007.setEnabled(true);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setEnabled(true);
                             MOBF0007.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                         else
                         {
-                            btnMobf0007.setEnabled(false);
-                            btnMobf0007.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnMobf0007.setBackgroundColor(Color.GRAY);
+                            btnBH.setEnabled(false);
+                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
+                            btnBH.setBackgroundColor(Color.GRAY);
                             MOBF0007.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
                     }

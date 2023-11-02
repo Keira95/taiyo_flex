@@ -1,29 +1,37 @@
 package com.erp.Taiyo.item;
 
 public class LuOillerIListtem {
-    public String strEquimentId ,strEquimentCode ,strEquimentDesc;
+    public String strYuChkFlag ,strItemCode ,strItemDesc , strItemId;
 
-    public String getStrEquimentId() {
-        return strEquimentId;
+    public String getStrYuChkFlag() {
+        return strYuChkFlag;
     }
 
-    public void setStrEquimentId(String strEquimentId) {
-        this.strEquimentId = strEquimentId;
+    public void setStrYuChkFlag(String strYuChkFlag) {
+        this.strYuChkFlag = strYuChkFlag;
     }
 
-    public String getStrEquimentCode() {
-        return strEquimentCode;
+    public String getStrItemCode() {
+        return strItemCode;
     }
 
-    public void setStrEquimentCode(String strEquimentCode) {
-        this.strEquimentCode = strEquimentCode;
+    public void setStrItemCode(String strItemCode) {
+        this.strItemCode = strItemCode;
     }
 
-    public String getStrEquimentDesc() {
-        return strEquimentDesc;
+    public String getStrItemDesc() {
+        return strItemDesc;
     }
 
-    public void setStrEquimentDesc(String strEquimentDesc) {
-        this.strEquimentDesc = strEquimentDesc;
+    public void setStrItemDesc(String strItemDesc) {
+        this.strItemDesc = strItemDesc;
+    }
+
+    public String getStrItemId() {
+        return strItemId;
+    }
+
+    public void setStrItemId(String strItemId) {
+        this.strItemId = strItemId;
     }
 }

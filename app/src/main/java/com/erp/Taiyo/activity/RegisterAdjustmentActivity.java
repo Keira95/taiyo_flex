@@ -362,7 +362,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                         }
 
                         JJ_UPDATE jj_update = new JJ_UPDATE();
-                        jj_update.execute(strIp,t4JobId.getText().toString(),t4OperationId.getText().toString(),t4WorkcenterId.getText().toString(),strSobId ,strOrgId ,t4EquipmentId.getText().toString()
+                        jj_update.execute(strIp,t4JobId.getText().toString(),t4OperationId.getText().toString(),t4WorkcenterId.getText().toString(),strSobId ,strOrgId ,t4TopEquimentId.getText().toString()
                                 , t4WorkStartDate.getText().toString().replaceAll(" ",""),t4WorkEndDate.getText().toString().replaceAll(" ",""),t4WorkerId.getText().toString()  , strUserId
                                 ,  t4OpPoiseOrderId.getText().toString());
 
@@ -695,7 +695,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             {
                 //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
 
-                URL obj = new URL("http://" + urls[0] + "/TAIYO/GrUpdate.jsp"); //주소 지정
+                URL obj = new URL("http://" + urls[0] + "/TAIYO/JJUpdate.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
@@ -754,6 +754,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t4FileNo.getText().toString(),t4WorkcenterId.getText().toString()); //다시 fill
 
                     btnt4save.setBackgroundColor(R.color.dark_green);
+
                     btnt4save.setTextColor(Color.WHITE);
 
                 }else{

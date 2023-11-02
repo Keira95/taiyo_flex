@@ -135,7 +135,7 @@
             android:background="@drawable/buttonshape2"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
 
         <TextView
@@ -328,7 +328,7 @@
 
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
 
         <Button
@@ -344,7 +344,7 @@
 
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -455,7 +455,7 @@
 
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
 
         <Button
@@ -471,7 +471,7 @@
 
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
     <LinearLayout
@@ -535,7 +535,7 @@
 
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/black"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
 
         <TextView

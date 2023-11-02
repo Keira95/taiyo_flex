@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/teal" />
+            <solid android:color="@color/light_green" />
             <corners android:radius="14dp" />
             <padding
                 android:left="0dp"
@@ -22,7 +22,7 @@
     </item>
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/light_green_1" />
+            <solid android:color="@color/ivory" />
             <corners android:radius="14dp" />
             <padding
                 android:left="0dp"
@@ -36,7 +36,7 @@
                 />
             <stroke
                 android:width="2dp"
-                android:color="@color/light_gray"
+                android:color="@color/ivory"
                 />
         </shape>
     </item>

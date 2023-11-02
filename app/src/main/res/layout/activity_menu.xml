@@ -131,7 +131,76 @@
             android:layout_marginBottom="5dp"
             >
             <Button
-                android:id="@+id/btb_yu"
+                android:id="@+id/btn_yu"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape_menu1"
+                android:text="연육작업등록"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+            <Button
+                android:id="@+id/btn_jj"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape_menu1"
+                android:text="조정작업등록"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+
+            <!--
+                        <Button
+                            android:id="@+id/btn_inventory"
+                            android:layout_width="130dp"
+                            android:layout_height="80dp"
+                            android:layout_margin="5sp"
+                            android:layout_weight="1"
+                            android:background="@drawable/buttonshape"
+                            android:text="MOBF0005"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp" />
+                        <Button
+                            android:id="@+id/btn_Release"
+                            android:layout_width="130dp"
+                            android:layout_height="80dp"
+                            android:layout_margin="5sp"
+                            android:layout_weight="1"
+                            android:background="@drawable/buttonshape"
+                            android:text="MOBF0006"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp" />
+            -->
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            >
+
+            <Button
+
+                android:id="@+id/btn_cj"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:text="충진 작업등록"
+
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape_menu1"
+                android:textColor="@color/black"
+
+                />
+
+            <Button
+                android:id="@+id/btb_bo"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:layout_margin="5sp"
@@ -141,16 +210,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/btb_yud"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:layout_margin="5sp"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape_menu1"
-                android:text="연육작업등록"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
+
 <!--
             <Button
                 android:id="@+id/btn_inventory"
@@ -176,6 +236,7 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -195,70 +256,40 @@
                 android:background="@drawable/button_shape_menu1"
 
                 />
+
+            <!--        <Button-->
+            <!--            android:id="@+id/btn_work8"-->
+            <!--            android:layout_width="100dp"-->
+            <!--            android:layout_height="70dp"-->
+            <!--            android:layout_margin="5sp"-->
+            <!--            android:layout_weight="1"-->
+            <!--            android:background="@drawable/buttonshape"-->
+            <!--            android:text="실적등록"-->
+            <!--            android:textColor="@color/black"-->
+            <!--            android:textSize="15sp"/>-->
+
+
             <Button
-                android:id="@+id/btn_jj"
+
+                android:id="@+id/angry_btn"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
-                android:layout_margin="5sp"
+                android:text="test"
+                android:textColor="#616161"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:background="@drawable/button_shape_menu1"
-                android:text="조정작업등록"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                />
+
+
+
+
 
         </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:gravity="center_vertical"
-        >
-
-        <Button
-            android:id="@+id/btn_work7"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:layout_margin="5sp"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:text="test"
-            android:textSize="15sp"
-            android:background="@drawable/button_shape_menu1"
-
-            />
-<!--        <Button-->
-<!--            android:id="@+id/btn_work8"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="70dp"-->
-<!--            android:layout_margin="5sp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/buttonshape"-->
-<!--            android:text="실적등록"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="15sp"/>-->
-        <Button
-
-            android:id="@+id/angry_btn"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:text="test"
-            android:textColor="#616161"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape_menu1"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-        />
-
-
-
-
-
-    </LinearLayout>
 
         <GridView
             android:id="@+id/gv_main_menu"

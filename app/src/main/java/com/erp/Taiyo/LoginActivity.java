@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     String telNumber = "";
     String sobId ="70";
     String orgId ="701";
+
     String storeVersion = "";
     String deviceVersion = "";
     RelativeLayout mainLayout;
@@ -84,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
         userId.setFilters(new InputFilter[]{new InputFilter.AllCaps()}); // 소문자로 입력된 값을 대문자로 바꿔줌.
 
         new InputFilter.AllCaps(); // 소문자로 입력된 값을 대문자로 바꿔 줌.
-
 
         //체크박스
 
@@ -133,8 +133,10 @@ public class LoginActivity extends AppCompatActivity {
             strUserId = userId.getText().toString();
             strUserPw = userPw.getText().toString();
 
-          //  DB_Version dbVersion = new DB_Version();
-          //  dbVersion.execute(userIp.getText().toString());
+
+            //DB_Version dbVersion = new DB_Version();
+            //dbVersion.execute(userIp.getText().toString());
+
 
             DB_Login dbLogin = new DB_Login();
             dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
@@ -169,9 +171,11 @@ public class LoginActivity extends AppCompatActivity {
         if (mTelephonyManager != null) {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                 //   Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
 
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+                   // Toast.makeText(this, "전화 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                   // ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+
 
 //                } else if (mTelephonyManager.getSimState() == TelephonyManager.SIM_STATE_UNKNOWN || mTelephonyManager.getSimState() == TelephonyManager.SIM_STATE_ABSENT) {
 //                    Toast.makeText(this, "유심이 없거나, 알 수 없는 유심입니다.", Toast.LENGTH_SHORT).show();
@@ -206,11 +210,13 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else
                     {
-                      //  DB_Version dbVersion = new DB_Version();
-                      //  dbVersion.execute(userIp.getText().toString());
 
-                       DB_Login dbLogin = new DB_Login();
-                       dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
+                        //DB_Version dbVersion = new DB_Version();
+                        //dbVersion.execute(userIp.getText().toString());
+
+                        DB_Login dbLogin = new DB_Login();
+                        dbLogin.execute(userIp.getText().toString(), userId.getText().toString(), userPw.getText().toString(), sobId, orgId);
+
                         // 로그인 성공시 저장 처리, 예제는 무조건 저장
                         save();
 
@@ -258,7 +264,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("chkip", chkip.isChecked());
         editor.putBoolean("chkid", chkid.isChecked());
         editor.putBoolean("chkauto", chkauto.isChecked());
-        ///test
+
         editor.commit();	//commit
     }
 
@@ -319,7 +325,7 @@ public class LoginActivity extends AppCompatActivity {
             int appVersionCode = packageManager.getPackageInfo(packageName, 0).versionCode;
             String versionName = packageManager.getPackageInfo(packageName, 0).versionName;
 
-            String copyRightString = "Copyright 2021. Infosolution Inc. All rights reserved. ";
+            String copyRightString = "Copyright 2023. Infosolution Inc. All rights reserved. ";
             versionString = "Version " + versionName + " VersionCode " + appVersionCode;
 
             versionLabel.setText(copyRightString + versionString);
@@ -652,7 +658,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... arg0) {
             try {
-                URL url = new URL("http://211.253.25.11:90/DRK/flex_drk.apk");
+                URL url = new URL("http://211.253.25.11:90/TAIYO/flex_drk.apk");
 
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
@@ -693,7 +699,7 @@ public class LoginActivity extends AppCompatActivity {
     {
         try
         {
-            URL url = new URL("http://211.253.25.11:90/DRK/flex_drk.apk");
+            URL url = new URL("http://211.253.25.11:90/TAIYO/flex_drk.apk");
 
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");

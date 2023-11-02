@@ -1,49 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:id="@+id/lu_order_list"
-    android:background="@drawable/textborder5">
-
-
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/grid_header_border">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="14sp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Filter" />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeMaxTextSize="16sp"
-            android:autoSizeStepGranularity="1px"
-            android:hint="검색할 키워드를 입력하세요."
-            android:id="@+id/et_filter" />
-        <Button
-            android:id="@+id/n1_btn_close"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="닫기"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="80sp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -58,13 +21,8 @@
             android:orientation="vertical"
             >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#12000000"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
             <TextView
+                android:id="@+id/tv_file_no"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -73,36 +31,25 @@
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeStepGranularity="1px"
                 android:autoSizeTextType="uniform"
-                android:background="@color/light_pink"
-                android:gravity="center"
-                android:text="요청번호" />
-
-            <TextView
+                android:gravity="center" />
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:autoSizeTextType="uniform"
-                android:text="요청일자"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeMaxTextSize="16sp"
-                android:background="@color/light_pink"
-                android:autoSizeStepGranularity="1px"
-                android:layout_gravity="center"
-                android:gravity="center"
-                />
+                android:layout_height="1dp"
+                android:background="#12000000"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#12000000"
                 app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
+                android:id="@+id/tv_equipment_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
-                android:text="창고"
-                android:background="@color/light_pink"
                 android:autoSizeMaxTextSize="16sp"
                 android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
@@ -134,13 +81,12 @@
             android:orientation="vertical"
             >
             <TextView
+                android:id="@+id/tv_roll_pressure"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
-                android:background="@color/light_pink"
-                android:text="코드"
                 android:autoSizeMaxTextSize="16sp"
                 android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
@@ -152,13 +98,12 @@
                 android:background="#12000000"
                 app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
+                android:id="@+id/tv_roll_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
-                android:text="명"
                 android:autoSizeMinTextSize="8sp"
-                android:background="@color/light_pink"
                 android:autoSizeMaxTextSize="16sp"
                 android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
@@ -170,13 +115,12 @@
                 android:background="#12000000"
                 app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
+                android:id="@+id/tv_roll_speed"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
-                android:background="@color/light_pink"
-                android:text="규격"
                 android:autoSizeMaxTextSize="16sp"
                 android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
@@ -207,13 +151,12 @@
             android:orientation="vertical"
             >
             <TextView
+                android:id="@+id/tv_particle_diameter"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/light_pink"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
-                android:text="요청량"
                 android:autoSizeMaxTextSize="16sp"
                 android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
@@ -225,13 +168,12 @@
                 android:background="#12000000"
                 app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
+                android:id="@+id/tv_dispersion_degree"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
-                android:background="@color/light_pink"
-                android:text="기출고량"
                 android:autoSizeMaxTextSize="16sp"
                 android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
@@ -243,14 +185,13 @@
                 android:background="#12000000"
                 app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
+                android:id="@+id/tv_item_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
-                android:background="@color/light_pink"
-                android:text="잔량량"
-               android:autoSizeMaxTextSize="16sp"
+                android:autoSizeMaxTextSize="16sp"
                 android:autoSizeStepGranularity="1px"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -262,17 +203,8 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
 
         </LinearLayout>
-
-
 
 
     </LinearLayout>
 
-
-    <ListView
-        android:id="@+id/lv_lu_request"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textFilterEnabled="true">
-    </ListView>
 </LinearLayout>

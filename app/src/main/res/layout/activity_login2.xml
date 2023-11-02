@@ -24,7 +24,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/image_desc"
         android:cropToPadding="false"
-        android:src="@drawable/taiyo_menu"
+        android:src="@drawable/logo_taiyoinkkorea_color"
         android:scaleType="fitCenter"
 
         android:visibility="visible" />
@@ -45,7 +45,7 @@
             android:contentDescription="@string/image_desc"
             android:cropToPadding="false"
             android:scaleType="fitCenter"
-            android:src="@drawable/drk_ptkimg"
+            android:src="@drawable/logo_taiyoinkkorea_color"
 
             android:visibility="visible" />
 
@@ -104,7 +104,8 @@
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="Deprecated" />
 
         <LinearLayout
             android:layout_width="match_parent"

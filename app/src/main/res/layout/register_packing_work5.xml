@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40sp"
                 android:gravity="center"
-                android:text="조정작업등록"
+                android:text="충진작업등록"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -125,12 +125,11 @@
             android:layout_gravity="center"
             android:layout_marginRight="10sp"
             android:layout_weight="0.8"
-            android:textSize="12sp"
             android:background="@drawable/edit_login"
             android:enabled="false"
             android:textColor="@color/login_edit_text"
-            android:textColorHint="@color/login_edit_hint" />
-
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="12sp" />
 
 
     </LinearLayout>
@@ -353,7 +352,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:enabled="false"
             android:hint="수량"
             android:inputType="textVisiblePassword"
@@ -369,7 +368,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:background="@drawable/edit_login"
             android:enabled="false"
             android:paddingLeft="16dp"
@@ -384,14 +383,14 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:enabled="false"
             android:hint="Lot No"
             android:inputType="textVisiblePassword"
             android:paddingLeft="13dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
         <EditText
             android:id="@+id/et_t5_lot_no"
@@ -799,6 +798,60 @@
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
+
+        <EditText
+            android:id="@+id/et_t5_workcenter_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <EditText
+            android:id="@+id/et_t5_workcenter_code"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <EditText
+            android:id="@+id/et_t5_workcenter_desc"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <EditText
+            android:id="@+id/et_t5_stir_equipment_code"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <EditText
+            android:id="@+id/et_t5_stir_old_equipment_code"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <EditText
+            android:id="@+id/et_t5_unit_equipment_code"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <EditText
+            android:id="@+id/et_t5_old_unit_equipment_desc"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <EditText
+            android:id="@+id/et_t5_pump_no_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <EditText
+            android:id="@+id/et_t5_job_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <EditText
+            android:id="@+id/et_t5_operation_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <EditText
+            android:id="@+id/et_t5_op_unit_order_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <EditText
+            android:id="@+id/et_t5_unit_work_date"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
 
     </LinearLayout>

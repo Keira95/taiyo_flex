@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -158,6 +159,14 @@ public class CombinationWorkActivity extends AppCompatActivity {
         workCenter.execute(strSobId, strOrgId,strUserId,strAssemplyDeac);
 
         etT2FileNoScan.requestFocus();
+
+
+        keyboardFocus(etT2FileNoScan);
+        keyboardFocus(etT2MixTankDescScan);
+        keyboardFocus(etT2EquipmentScan);
+        keyboardFocus(etT2Stir1WorkerNameScan);
+        keyboardFocus(etT2Stir2WorkerNameScan);
+        keyboardFocus(etT2Stir3WorkerNameScan);
 
 
         etT2FileNoScan.addTextChangedListener(new TextWatcher() {
@@ -443,14 +452,20 @@ public class CombinationWorkActivity extends AppCompatActivity {
             }
             });
     }
-
-//    private void ClearView()
-//    {
-//
-//        etT2FileNoScan.setText("");
-//        etT2ItemDesc.setText("");
-//
-//    }
+    //키보드 내리고 포커스 주는 함수
+    public void keyboardFocus(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int inType = editText.getInputType(); // 현재 입력 모드 저장
+                editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
+                editText.onTouchEvent(event); // 이벤트 처리
+                editText.setInputType(inType); // 원래 입력 모드를 복구
+                editText.setCursorVisible(true); // 커서 표시
+                return true; // 리턴
+            }
+        });
+    }
 
     protected class WorkCenter extends AsyncTask<String, Void, String> {
 

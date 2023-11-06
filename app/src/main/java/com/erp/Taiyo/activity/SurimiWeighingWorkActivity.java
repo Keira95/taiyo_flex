@@ -11,7 +11,10 @@ import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -99,7 +102,6 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
 
         btnt1save = (Button) findViewById(R.id.btn_t1_save);
-
         t3FileNo  = (EditText) findViewById(R.id.et_t3_file_no);
         t3ItemDesc  = (EditText) findViewById(R.id.et_t3_item_desc);
         t3OperaionDesc  = (EditText) findViewById(R.id.et_t3_operaion_desc);
@@ -136,7 +138,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         //키보드 내리기
 
         //키보드
-        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+       // imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
         btnRecent = (Button) findViewById(R.id.btn_t2_recent);
         btnLastSurimiCount = (Button) findViewById(R.id.btn_t3_last_surimi_count);
@@ -147,7 +149,10 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         btnSurimi2EndTime= (Button) findViewById(R.id.btn_t3_surimi2_end_time);
         btnSave= (Button) findViewById(R.id.btn_t3_save);
 
+
+
         t3FileNo.requestFocus();
+
 
         initializeToolbar();
 
@@ -155,8 +160,29 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         GET_WORKCENTER_IN_AUTHORITY gET_WORKCENTER_IN_AUTHORITY = new GET_WORKCENTER_IN_AUTHORITY();
         gET_WORKCENTER_IN_AUTHORITY.execute(strIp, strSobId,strOrgId ,strUserId, strAssembly);
 
+        //키보드 내리고 포커스 주기
+        keyboardFocus(t3FileNo);
+        keyboardFocus(t3TankScan);
+        keyboardFocus(t3LiqidPersonDesc);
+        keyboardFocus(t3LastTankScan);
+
 
     }
+    //키보드 내리고 포커스 주는 함수
+    public void keyboardFocus(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int inType = editText.getInputType(); // 현재 입력 모드 저장
+                editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
+                editText.onTouchEvent(event); // 이벤트 처리
+                editText.setInputType(inType); // 원래 입력 모드를 복구
+                editText.setCursorVisible(true); // 커서 표시
+                return true; // 리턴
+            }
+        });
+    }
+
 
 
     private String getNowDate(){
@@ -218,20 +244,15 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
                 if(getCurrentFocus() == t3FileNo && !s.toString().isEmpty()){
-
                     FILE_NO_YU_SCAN fILE_NO_SCAN = new FILE_NO_YU_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t3FileNo.getText().toString(),t3WorkcenterId.getText().toString());
 
@@ -501,6 +522,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
     // WORKCENTER_IN_AUTHORITY

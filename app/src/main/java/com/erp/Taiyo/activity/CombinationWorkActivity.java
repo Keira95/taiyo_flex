@@ -1,16 +1,24 @@
 package com.erp.Taiyo.activity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.erp.Taiyo.Dialog.LuComLatelyDialog;
@@ -33,6 +41,8 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+
 
 
 public class CombinationWorkActivity extends AppCompatActivity {
@@ -68,6 +78,12 @@ public class CombinationWorkActivity extends AppCompatActivity {
     String strOrgId = "701";
     String strAssemplyDeac ="";
 
+    FrameLayout log_panel;
+    SharedPreferences auto;
+    TextView tvLog;
+    TextView tvUserName;
+
+    private boolean FileScan = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +95,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
         strUserId = intent.getStringExtra("O_USER_ID");
         strUserName = intent.getStringExtra("O_USER_NAME");
         strAssemplyDeac ="PPMF2202";
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        tvUserName = (TextView) findViewById(R.id.user_nm);
 
 
         etT2FileNoScan  = (EditText) findViewById(R.id.et_t2_file_no_scan);
@@ -100,6 +119,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         etT2Stir1WorkerNameScan  = (EditText) findViewById(R.id.et_t2_stir_1_worker_name_scan);
         etT2Stir2WorkerNameScan  = (EditText) findViewById(R.id.et_t2_stir_2_worker_name_scan);
         etT2Stir3WorkerNameScan  = (EditText) findViewById(R.id.et_t2_stir_3_worker_name_scan);
+
 
 
         //WORKCENTER_IN_AUTHORITY 숨김값
@@ -157,7 +177,24 @@ public class CombinationWorkActivity extends AppCompatActivity {
         WorkCenter workCenter = new WorkCenter();
         workCenter.execute(strSobId, strOrgId,strUserId,strAssemplyDeac);
 
+        auto = getSharedPreferences("appData_Log", Context.MODE_PRIVATE);
+
         etT2FileNoScan.requestFocus();
+
+        initializeToolbar();
+
+        //키보드 내리고 포커스 주기
+        keyboardFocus(etT2FileNoScan);
+        keyboardFocus(etT2MixTankDescScan);
+        keyboardFocus(etT2EquipmentScan);
+        keyboardFocus(etT2Stir1WorkerNameScan);
+        keyboardFocus(etT2Stir2WorkerNameScan);
+        keyboardFocus(etT2Stir3WorkerNameScan);
+
+
+
+
+
 
 
         etT2FileNoScan.addTextChangedListener(new TextWatcher() {
@@ -286,10 +323,50 @@ public class CombinationWorkActivity extends AppCompatActivity {
         etT2FileNoScan.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-
+                etT2FileNoScan.setText("");
                 return false;
             }
         });
+
+        etT2MixTankDescScan.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT2MixTankDescScan.setText("");
+                return false;
+            }
+        });
+
+        etT2EquipmentScan.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT2EquipmentScan.setText("");
+                return false;
+            }
+        });
+
+        etT2Stir1WorkerNameScan.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT2Stir1WorkerNameScan.setText("");
+                return false;
+            }
+        });
+
+        etT2Stir2WorkerNameScan.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT2Stir2WorkerNameScan.setText("");
+                return false;
+            }
+        });
+        etT2Stir3WorkerNameScan.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT2Stir3WorkerNameScan.setText("");
+                return false;
+            }
+        });
+
 
 
 
@@ -304,7 +381,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 etT2MixStartTime.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
             }
         });
 
@@ -317,7 +397,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 etT2Stir1StartDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
             }
         });
 
@@ -330,7 +413,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 etT2Stir1EndDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
             }
         });
 
@@ -342,7 +428,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 String currentDateAndTime = sdf.format(new Date());
 
                 etT2Stir2StartDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
             }
         });
         btnT2Stir2EndDate.setOnClickListener(new View.OnClickListener() {
@@ -353,7 +442,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 String currentDateAndTime = sdf.format(new Date());
 
                 etT2Stir2EndDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);;
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
             }
         });
         btnT2Stir3StartDate.setOnClickListener(new View.OnClickListener() {
@@ -364,7 +456,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 String currentDateAndTime = sdf.format(new Date());
 
                 etT2Stir3StartDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
             }
         });
         btnT2Stir3EndDate.setOnClickListener(new View.OnClickListener() {
@@ -375,7 +470,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 String currentDateAndTime = sdf.format(new Date());
 
                 etT2Stir3EndDate.setText(currentDateAndTime);
-                bT2Save.setBackgroundResource(R.color.yellow);
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
             }
         });
 
@@ -388,11 +486,12 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 etT2MixEndTime.setText(currentDateAndTime);
-                int yellowColor = getResources().getColor(R.color.yellow);
-                int blackColor = getResources().getColor(android.R.color.black);
+                if(FileScan==false){
+                    bT2Save.setBackgroundColor(Color.YELLOW);
+                    bT2Save.setTextColor(Color.BLACK);
+                }
 
-                bT2Save.setBackgroundColor(yellowColor);
-                bT2Save.setTextColor(blackColor);
+
 
 
 //                bT2Save.setBackgroundResource(R.color.yellow); 기존에 만든거
@@ -444,6 +543,22 @@ public class CombinationWorkActivity extends AppCompatActivity {
             });
     }
 
+    //노란색으로 오류 나는 이유는 시각 장애가 있는 사람들에 대해 생각해 보도록 상기시키는 것
+    //키보드 내리고 포커스 주는 함수
+    public void keyboardFocus(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int inType = editText.getInputType(); // 현재 입력 모드 저장
+                editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
+                editText.onTouchEvent(event); // 이벤트 처리
+                editText.setInputType(inType); // 원래 입력 모드를 복구
+                editText.setCursorVisible(true); // 커서 표시
+                return true; // 리턴
+            }
+        });
+    }
+
 //    private void ClearView()
 //    {
 //
@@ -452,6 +567,47 @@ public class CombinationWorkActivity extends AppCompatActivity {
 //
 //    }
 
+    private void initializeToolbar() {
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setSubtitleTextColor(getResources().getColor(R.color.white));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        toolbar.getNavigationIcon().mutate().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+
+        toolbar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (log_panel.getVisibility() == View.INVISIBLE ||
+                        log_panel.getVisibility() == View.GONE) {
+                    log_panel.setVisibility(View.VISIBLE);
+
+                    if (auto.getString("log", "").length() > 0) {
+                        tvLog.setText(auto.getString("log", ""));
+                    }
+
+//                logFragment.setHasOptionsMenu(true);
+                } else {
+                    log_panel.setVisibility(View.GONE);
+//                logFragment.setHasOptionsMenu(false);
+                }
+                return false;
+            }
+        });
+
+        // 유저 정보 삽입.
+        tvUserName.setText(strUserName);
+
+
+    }
+
+    //workcenter
     protected class WorkCenter extends AsyncTask<String, Void, String> {
 
 
@@ -530,7 +686,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
     }
-
+    //파일넘버스캔
     protected class FileNoScanBH extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... urls) {
@@ -595,6 +751,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 if (resultArray.length() > 0) {
+                    FileScan = false;
                     JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                     String status = job.getString("Status");
 
@@ -627,6 +784,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     }
                     etT2MixTankDescScan.requestFocus();
 
+
+                    FileScan = false;
+
                     if(!etH2ModFlag.equals("Y")){  //수정이 가능하지않으면 tape_null
 
                         etT2FileNoScan.setInputType(InputType.TYPE_NULL);
@@ -651,12 +811,13 @@ public class CombinationWorkActivity extends AppCompatActivity {
                         etT2MixEndTime.setInputType(InputType.TYPE_NULL);
                         etH2OperationId.setInputType(InputType.TYPE_NULL);
                         etH2ModFlag.setInputType(InputType.TYPE_NULL);
+
                     }
+                    //etT2MixTankDescScan.requestFocus();
+                    //etT2MixTankDescScan.setFocusableInTouchMode(true);
 
 
                 }
-
-
 
 
             } catch (JSONException e) {
@@ -670,11 +831,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
             return "null".equals(input) ? "" : input;
         }
 
-
-
-
     }
-
+    //lutanktype 설비 탱크
     protected class LuTankType extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... urls) {
@@ -1168,6 +1326,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             return jsonHtml.toString(); //결과값 리턴
         }
 
+        @SuppressLint("ResourceAsColor")
         protected void onPostExecute(String result) {
             try{
                 JSONObject RESULT = new JSONObject(result);
@@ -1184,6 +1343,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                             FileNoScanBH fileNoScanBH = new FileNoScanBH();
                             fileNoScanBH.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString()); //재조회
+
+
+                            bT2Save.setBackgroundColor(R.color.dark_green);
+                            bT2Save.setTextColor(Color.WHITE);
 
                         }else{
 

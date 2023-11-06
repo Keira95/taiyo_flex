@@ -11,7 +11,9 @@ import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -148,6 +150,13 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
         GET_WORKCENTER_IN_AUTHORITY gET_WORKCENTER_IN_AUTHORITY = new GET_WORKCENTER_IN_AUTHORITY();
         gET_WORKCENTER_IN_AUTHORITY.execute(strIp, strSobId,strOrgId ,strUserId, strAssembly);
+
+
+        //키보드 내리고 포커스 주기
+        keyboardFocus(t4FileNo);
+        keyboardFocus(t4EquipmentDesc);
+        keyboardFocus(t4WorkerDesc);
+
 
     }
 
@@ -385,6 +394,21 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
     }
 
+
+    //키보드 내리고 포커스 주는 함수
+    public void keyboardFocus(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int inType = editText.getInputType(); // 현재 입력 모드 저장
+                editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
+                editText.onTouchEvent(event); // 이벤트 처리
+                editText.setInputType(inType); // 원래 입력 모드를 복구
+                editText.setCursorVisible(true); // 커서 표시
+                return true; // 리턴
+            }
+        });
+    }
 
 
 

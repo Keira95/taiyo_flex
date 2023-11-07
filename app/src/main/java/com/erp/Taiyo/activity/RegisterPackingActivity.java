@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -25,8 +24,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.erp.Taiyo.Dialog.LuOillerDialog;
-import com.erp.Taiyo.Dialog.LuYuRecntActualDialog;
 import com.erp.Taiyo.R;
 
 import org.json.JSONArray;
@@ -45,20 +42,21 @@ import java.util.Locale;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class SurimiWeighingWorkActivity extends AppCompatActivity {
+public class RegisterPackingActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     String strIp, strUserName, strUserId, SDate, strMenuDesc;
     String filter = null;
     String strDate;
 
-    EditText t3FileNo ,t3ItemDesc ,t3OperaionDesc ,t3LastSurimiCount ,t3Surimi1StartTime ,t3TankScan,t3OillerDesc
-    ,t3LiqidPersonDesc,t3Suimi1EndTime, t3Surimi2StartTime, t3Surimi2EndTime, t3LastTankScan ,t3WorkcenterCode, t3WorkcenterDesc, t3WorkcenterId , t3Surimi1EndTime
-    ,t3EquimentId, t3OillerId , t3IndicatorUserId , t3TankCode , t3JobId ,t3ModFlag , t3OperationId ,t3OldEquimentName ,t3EquimentName,  t3EquimentCode ,t3OillerCode,
-            t3LiqidPersonId      ,t3LastTankCode;
+    EditText t5FileNo , t5ItemDesc, t5operaionDesc , t5OpOrderSeq , t5OpUnitOrderSeq ,t5PackingUnit, t5Request_qty , t5UnitQty,
+            t5LotNo ,t5StirEquipmentDesc, t5StirStartDate ,t5StirEndDate , t5UnitEquipmentDesc, t5UnitStartDate , t5UnitEndDate ,t5PumpNoDes , t5StirEquipmentId
+            , t5UnitEquipmentId, t5WorkerId ,t5PumpNoCode ,t5WorkerDesc ,t5WorkcenterCode , t5WorkcenterDesc, t5WorkcenterId ,t5StirEquipmentCode ,t5StirOldEquipmentCode
+            ,t5UnitEquipmentCode , t5OldUnitEquipmentDesc , t5PumpNoId , t5JobId ,t5OperationId ,t5OpUnitOrderId ,t5UnitWorkDate
+    ;
     String strSobId = "70";
     String strOrgId = "701";
-    String strAssembly = "PPMF2203";
+    String strAssembly = "PPMF2205";
 
 
     TextView tvUserGroup;
@@ -74,7 +72,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt1save;
-    Button btnRecent ,btnLastSurimiCount ,btnSurimi1StartTime ,btnOillerLookup,btnSurimi1EndTime ,btnSurimi2StartTime, btnSurimi2EndTime, btnSave;
+    Button btnStirStarDate , btnStirEndDate ,  btnUnitStartDate ,btnUnitEndDate , btnSave;
     //키보드
 
     InputMethodManager imm;
@@ -87,7 +85,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_surimi_work3);
+        setContentView(R.layout.register_packing_work5);
         Intent intent = getIntent();
         strIp = intent.getStringExtra("Ip");
         strUserId = intent.getStringExtra("O_USER_ID");
@@ -102,78 +100,345 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
 
         btnt1save = (Button) findViewById(R.id.btn_t1_save);
-        t3FileNo  = (EditText) findViewById(R.id.et_t3_file_no);
-        t3ItemDesc  = (EditText) findViewById(R.id.et_t3_item_desc);
-        t3OperaionDesc  = (EditText) findViewById(R.id.et_t3_operaion_desc);
-        t3LastSurimiCount  = (EditText) findViewById(R.id.et_t3_last_surimi_count);
-        t3Surimi1StartTime  = (EditText) findViewById(R.id.et_t3_surimi1_start_time);
-        t3TankScan = (EditText) findViewById(R.id.et_t3_tank_scan);
-        t3OillerDesc = (EditText) findViewById(R.id.et_t3_oiller_desc);
-        t3LiqidPersonDesc = (EditText) findViewById(R.id.et_t3_liqid_person_desc);
-        t3Surimi1EndTime = (EditText) findViewById(R.id.et_t3_surimi1_end_time);
-        t3Surimi2StartTime = (EditText) findViewById(R.id.et_t3_surimi2_start_time);
-        t3Surimi2EndTime = (EditText) findViewById(R.id.et_t3_surimi2_end_time);
-        t3LastTankScan = (EditText) findViewById(R.id.et_t3_last_tank_scan);
-        t3WorkcenterCode = (EditText) findViewById(R.id.et_t3_workcenter_code);
-        t3WorkcenterDesc = (EditText) findViewById(R.id.et_t3_workcenter_desc);
-        t3WorkcenterId  = (EditText) findViewById(R.id.et_t3_workcenter_id);
-        t3LiqidPersonId = (EditText) findViewById(R.id.et_t3_liqid_person_id);
-        t3EquimentId  = (EditText) findViewById(R.id.et_t3_equiment_id);
-
-        t3OillerId  = (EditText) findViewById(R.id.et_t3_oiller_id);
-        t3IndicatorUserId  = (EditText) findViewById(R.id.et_t3_indicator_user_id);
-        t3TankCode  = (EditText) findViewById(R.id.et_t3_tank_code);
-        t3JobId  = (EditText) findViewById(R.id.et_t3_job_id);
-        t3ModFlag = (EditText) findViewById(R.id.et_t3_mod_flag);
-        t3OperationId= (EditText) findViewById(R.id.et_t3_operation_id);
-
-        t3OldEquimentName= (EditText) findViewById(R.id.et_t3_old_equiment_name);
-        t3EquimentName= (EditText) findViewById(R.id.et_t3_equiment_name);
-        t3EquimentCode= (EditText) findViewById(R.id.et_t3_equiment_code);
-        t3OillerCode =(EditText) findViewById(R.id.et_t3_oiller_code);
-        t3LastTankCode= (EditText) findViewById(R.id.et_t3_last_tank_code);
 
 
         auto = getSharedPreferences("appData_Log", Context.MODE_PRIVATE);
         //키보드 내리기
 
         //키보드
-       // imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
-        btnRecent = (Button) findViewById(R.id.btn_t2_recent);
-        btnLastSurimiCount = (Button) findViewById(R.id.btn_t3_last_surimi_count);
-        btnSurimi1StartTime = (Button) findViewById(R.id.btn_t3_surimi1_start_time);
-        btnOillerLookup= (Button) findViewById(R.id.btn_t3_oiller_lookup);
-        btnSurimi1EndTime = (Button) findViewById(R.id.btn_t3_surimi1_end_time);
-        btnSurimi2StartTime = (Button) findViewById(R.id.btn_t3_surimi2_start_time);
-        btnSurimi2EndTime= (Button) findViewById(R.id.btn_t3_surimi2_end_time);
-        btnSave= (Button) findViewById(R.id.btn_t3_save);
+        t5FileNo = (EditText) findViewById(R.id.et_t5_file_no);
+        t5ItemDesc = (EditText) findViewById(R.id.et_t5_item_desc);
+        t5operaionDesc  = (EditText) findViewById(R.id.et_t5_operaion_desc);
+        t5OpOrderSeq  = (EditText) findViewById(R.id.et_t5_op_order_seq);
+        t5OpUnitOrderSeq  = (EditText) findViewById(R.id.et_t5_op_unit_order_seq);
+        t5PackingUnit = (EditText) findViewById(R.id.et_t5_packing_unit);
+        t5Request_qty  = (EditText) findViewById(R.id.et_t5_request_qty);
+        t5UnitQty = (EditText) findViewById(R.id.et_t5_unit_qty);
+        t5LotNo  = (EditText) findViewById(R.id.et_t5_lot_no);
+        t5StirEquipmentDesc = (EditText) findViewById(R.id.et_t5_stir_equipment_desc);
+        t5StirStartDate  = (EditText) findViewById(R.id.et_t5_stir_start_date);
+        t5StirEndDate  = (EditText) findViewById(R.id.et_t5_stir_end_date);
+        t5UnitEquipmentDesc = (EditText) findViewById(R.id.et_t5_unit_equipment_desc);
+        t5UnitStartDate  = (EditText) findViewById(R.id.et_t5_unit_start_date);
+        t5UnitEndDate  = (EditText) findViewById(R.id.et_t5_unit_end_date);
+        t5WorkerDesc = (EditText) findViewById(R.id.et_t5_worker_desc);
+        t5PumpNoDes  = (EditText) findViewById(R.id.et_t5_pump_no_desc);
+        t5StirEquipmentId = (EditText) findViewById(R.id.et_t5_stir_equipment_id);
+        t5UnitEquipmentId = (EditText) findViewById(R.id.et_t5_unit_equipment_id);
+        t5WorkerId  = (EditText) findViewById(R.id.et_t5_worker_id);
+        t5PumpNoCode = (EditText) findViewById(R.id.et_t5_pump_no_code);
+        t5WorkcenterCode = (EditText) findViewById(R.id.et_t5_workcenter_code);
+        t5WorkcenterDesc = (EditText) findViewById(R.id.et_t5_workcenter_desc);
+        t5WorkcenterId = (EditText) findViewById(R.id.et_t5_workcenter_id);
+        t5StirEquipmentCode = (EditText) findViewById(R.id.et_t5_stir_equipment_code);
+        t5StirOldEquipmentCode = (EditText) findViewById(R.id.et_t5_stir_old_equipment_code);
+        t5UnitEquipmentCode = (EditText) findViewById(R.id.et_t5_unit_equipment_code);
+        t5OldUnitEquipmentDesc = (EditText) findViewById(R.id.et_t5_old_unit_equipment_desc);
+        t5PumpNoId = (EditText) findViewById(R.id.et_t5_pump_no_id);
+        t5JobId = (EditText) findViewById(R.id.et_t5_job_id);
+        t5OperationId =(EditText) findViewById(R.id.et_t5_operation_id);
+        t5OpUnitOrderId = (EditText) findViewById(R.id.et_t5_op_unit_order_id);
+        t5UnitWorkDate   = (EditText) findViewById(R.id.et_t5_unit_work_date);
 
-
-
-        t3FileNo.requestFocus();
+        btnStirStarDate = (Button) findViewById(R.id.btn_t5_stir_start_date);
+        btnStirEndDate  = (Button) findViewById(R.id.btn_t5_stir_end_date);
+        btnUnitStartDate = (Button) findViewById(R.id.btn_t5_unit_start_date);
+        btnUnitEndDate = (Button) findViewById(R.id.btn_t5_unit_end_date);
+        btnSave = (Button) findViewById(R.id.btn_t5_save);
 
 
         initializeToolbar();
 
-        keyboardFocus(t3FileNo);
-        keyboardFocus(t3LiqidPersonDesc);
-        keyboardFocus(t3TankScan);
-        keyboardFocus(t3LastTankScan);
+        t5FileNo.requestFocus();
+
+        keyboardFocus(t5FileNo);
+        keyboardFocus(t5StirEquipmentDesc);
+        keyboardFocus(t5UnitEquipmentDesc);
+        keyboardFocus(t5WorkerDesc);
+        keyboardFocus(t5PumpNoDes);
+
+        t5FileNo.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
 
-        //먼저 실행되는 함수
-        GET_WORKCENTER_IN_AUTHORITY gET_WORKCENTER_IN_AUTHORITY = new GET_WORKCENTER_IN_AUTHORITY();
-        gET_WORKCENTER_IN_AUTHORITY.execute(strIp, strSobId,strOrgId ,strUserId, strAssembly);
+            }
 
-        //키보드 내리고 포커스 주기
-        keyboardFocus(t3FileNo);
-        keyboardFocus(t3TankScan);
-        keyboardFocus(t3LiqidPersonDesc);
-        keyboardFocus(t3LastTankScan);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == t5FileNo && !s.toString().isEmpty()){
+
+                    FILE_NO_CJ_SCAN fILE_NO_SCAN = new FILE_NO_CJ_SCAN();
+                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t5FileNo.getText().toString(),t5WorkcenterId.getText().toString());
+
+                }else{
+                    return;
+                }
+
+            }
+        });
+
+        t5StirEquipmentDesc.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == t5StirEquipmentDesc && !s.toString().isEmpty()){
+
+                    LU_CH_C_S lU_CH_C_S = new LU_CH_C_S();
+                    lU_CH_C_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
+
+                }else{
+                    return;
+                }
+            }
+        });
+        t5UnitEquipmentDesc.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == t5UnitEquipmentDesc && !s.toString().isEmpty()){
+
+                    LU_CH_G_S lU_CH_G_S = new LU_CH_G_S();
+                    lU_CH_G_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
+
+                }else{
+                    return;
+                }
+            }
+        });
+        t5WorkerDesc.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == t5WorkerDesc && !s.toString().isEmpty()){
+
+                    LU_WORKER lU_WORKER = new LU_WORKER();
+                    lU_WORKER.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5WorkerDesc.getText().toString());
+
+                }else{
+                    return;
+                }
+            }
+        });
+
+        t5PumpNoDes.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == t5PumpNoDes && !s.toString().isEmpty()){
+
+                    LU_PUMP_NO lU_PUMP_NO = new LU_PUMP_NO();
+                    lU_PUMP_NO.execute(strIp, strSobId,strOrgId, t5PumpNoDes.getText().toString());
+
+                }else{
+                    return;
+                }
+            }
+        });
+
+
+        t5FileNo.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                t5FileNo.setText("");
+                t5ItemDesc.setText("");
+                t5operaionDesc.setText("");
+                t5OpOrderSeq.setText("");
+                t5PackingUnit.setText("");
+                t5Request_qty.setText("");
+                t5UnitQty.setText("");
+                t5LotNo.setText("");
+                t5StirEquipmentDesc.setText("");
+                t5StirStartDate.setText("");
+                t5StirEndDate.setText("");
+                t5UnitEquipmentDesc.setText("");
+                t5UnitStartDate.setText("");
+                t5UnitEndDate.setText("");
+                t5PumpNoDes.setText("");
+                t5StirEquipmentId.setText("");
+                t5UnitEquipmentId.setText("");
+                t5PumpNoCode.setText("");
+                t5WorkerDesc.setText("");
+
+
+                return false;
+            }
+        });
+
+        t5StirEquipmentDesc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                t5StirEquipmentDesc.setText("");
+                return false;
+            }
+        });
+        t5UnitEquipmentDesc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                t5UnitEquipmentDesc.setText("");
+                return false;
+            }
+        });
+        t5PumpNoDes.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                t5PumpNoDes.setText("");
+                return false;
+            }
+        });
+        t5WorkerDesc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                t5WorkerDesc.setText("");
+                return false;
+            }
+        });
+
+
+        btnStirStarDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ScanModify==false){
+                    btnSave.setBackgroundColor(Color.YELLOW);
+                    btnSave.setTextColor(Color.BLACK);
+                }
+
+                t5StirStartDate.setText(getNowDate());
+            }
+        });
+
+        btnStirEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ScanModify==false){
+                    btnSave.setBackgroundColor(Color.YELLOW);
+                    btnSave.setTextColor(Color.BLACK);
+                }
+
+                t5StirEndDate.setText(getNowDate());
+            }
+        });
+
+        btnUnitStartDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ScanModify==false){
+                    btnSave.setBackgroundColor(Color.YELLOW);
+                    btnSave.setTextColor(Color.BLACK);
+                }
+
+                t5UnitStartDate.setText(getNowDate());
+            }
+        });
+
+        btnUnitEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ScanModify==false){
+                    btnSave.setBackgroundColor(Color.YELLOW);
+                    btnSave.setTextColor(Color.BLACK);
+                }
+
+                t5UnitEndDate.setText(getNowDate());
+            }
+        });
+
+    btnSave.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(RegisterPackingActivity.this);
+            alert.setTitle("저장");
+            alert.setMessage("수정한 내역을 저장하시겠습니까?");
+            alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if(t5FileNo.getText().toString().isEmpty()){
+                        Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    CJ_UPDATE cj_UPDATE = new CJ_UPDATE();
+                    cj_UPDATE.execute(strIp,t5JobId.getText().toString(),t5OperationId.getText().toString(),t5WorkcenterId.getText().toString(),strSobId ,strOrgId ,t5StirEquipmentId.getText().toString(),
+                            t5StirStartDate.getText().toString().replaceAll(" ", ""), t5StirEndDate.getText().toString().replaceAll(" ",""), getNowWorkDate() ,  t5UnitEquipmentId.getText().toString()
+                            , t5UnitStartDate.getText().toString().replaceAll(" ",""),t5UnitEndDate.getText().toString().replaceAll(" ",""), t5WorkerId.getText().toString(),
+                            t5PumpNoCode.getText().toString(), strUserId , t5OpUnitOrderId.getText().toString() , t5OpUnitOrderSeq.getText().toString()
+                    );
+
+
+                }
+            });
+            alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+
+
+                }
+
+            });
+            alert.show();
+
+
+        }
+    });
 
 
     }
+
     //키보드 내리고 포커스 주는 함수
     public void keyboardFocus(final EditText editText) {
         editText.setOnTouchListener(new View.OnTouchListener() {
@@ -186,22 +451,30 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 editText.setCursorVisible(true); // 커서 표시
                 return true; // 리턴
             }
+
         });
     }
 
-
-
-    private String getNowDate(){
+    private String getNowDate() {
 
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss" ,Locale.KOREAN);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss", Locale.KOREAN);
 
         String getTime = sdf.format(date);
 
         return getTime;
     }
+    private String getNowWorkDate() {
 
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREAN);
+
+        String getTime = sdf.format(date);
+
+        return getTime;
+    }
 
     //Toolbar 정보
     private void initializeToolbar() {
@@ -243,289 +516,9 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         // 유저 정보 삽입.
         tvUserName.setText(strUserName);
 
-
-
-        t3FileNo.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if(getCurrentFocus() == t3FileNo && !s.toString().isEmpty()){
-                    FILE_NO_YU_SCAN fILE_NO_SCAN = new FILE_NO_YU_SCAN();
-                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t3FileNo.getText().toString(),t3WorkcenterId.getText().toString());
-
-                }else{
-                    return;
-                }
-
-            }
-        });
-
-        t3LiqidPersonDesc.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if(getCurrentFocus() == t3LiqidPersonDesc && !s.toString().isEmpty()){
-
-                    LU_WORKER lu_worker = new LU_WORKER();
-                    lu_worker.execute(strIp, strSobId,strOrgId, t3WorkcenterId.getText().toString(), t3LiqidPersonDesc.getText().toString());
-
-                }else{
-                    return;
-                }
-            }
-        });
-
-
-
-        t3TankScan.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if(getCurrentFocus() == t3TankScan && !s.toString().isEmpty()){
-
-                    LU_YU_EQP lU_YU_EQP = new LU_YU_EQP();
-                    lU_YU_EQP.execute(strIp, strSobId,strOrgId, t3WorkcenterId.getText().toString(),t3TankScan.getText().toString());
-
-                }else{
-                    return;
-                }
-            }
-        });
-
-        t3LastTankScan.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if(getCurrentFocus() == t3LastTankScan && !s.toString().isEmpty()){
-
-                  LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
-                  lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, t3LastTankScan.getText().toString());
-
-
-                }else{
-                    return;
-                }
-            }
-        });
-
-    btnOillerLookup.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            LuOillerDialog luOillerDialog = new LuOillerDialog(SurimiWeighingWorkActivity.this);
-            luOillerDialog.call_Oiller(strIp ,t3OillerCode, t3OillerDesc ,t3OillerId);
-
-        }
-    });
-        btnRecent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                LuYuRecntActualDialog luYuRecntActualDialog = new LuYuRecntActualDialog(SurimiWeighingWorkActivity.this);
-                luYuRecntActualDialog.call_YuRecent(strIp ,t3FileNo);
-            }
-        });
-
-        btnLastSurimiCount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                YU_ADD yU_ADD = new YU_ADD();
-                yU_ADD.execute(strIp, t3JobId.getText().toString() ,t3OperationId.getText().toString() , t3WorkcenterId.getText().toString(),
-                        strSobId, strOrgId,strUserId);
-            }
-        });
-
-        btnSurimi1StartTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ScanModify==false){
-                    btnSave.setBackgroundColor(Color.YELLOW);
-                    btnSave.setTextColor(Color.BLACK);
-                }
-
-                t3Surimi1StartTime.setText(getNowDate());
-            }
-        });
-
-        btnSurimi1EndTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ScanModify==false){
-                    btnSave.setBackgroundColor(Color.YELLOW);
-                    btnSave.setTextColor(Color.BLACK);
-                }
-
-                t3Surimi1EndTime.setText(getNowDate());
-            }
-        });
-
-        btnSurimi2StartTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ScanModify==false){
-                    btnSave.setBackgroundColor(Color.YELLOW);
-                    btnSave.setTextColor(Color.BLACK);
-                }
-
-                t3Surimi2StartTime.setText(getNowDate());
-            }
-        });
-
-        btnSurimi2EndTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ScanModify==false){
-                    btnSave.setBackgroundColor(Color.YELLOW);
-                    btnSave.setTextColor(Color.BLACK);
-                }
-
-                t3Surimi2EndTime.setText(getNowDate());
-            }
-        });
-
-    btnSave.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            AlertDialog.Builder alert = new AlertDialog.Builder(SurimiWeighingWorkActivity.this);
-            alert.setTitle("저장");
-            alert.setMessage("수정한 내역을 저장하시겠습니까?");
-            alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                    if(t3FileNo.getText().toString().isEmpty()){
-                        Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    YU_UPDATE yU_UPDATE = new YU_UPDATE();
-                    yU_UPDATE.execute(strIp,t3JobId.getText().toString(),t3OperationId.getText().toString(),t3WorkcenterId.getText().toString(),strSobId ,strOrgId ,t3JobId.getText().toString(),
-                            t3LastSurimiCount.getText().toString(), t3EquimentId.getText().toString(), t3OillerId.getText().toString() ,t3Surimi1StartTime.getText().toString().replaceAll(" ",""),
-                            t3Surimi1EndTime.getText().toString().replaceAll(" ",""), t3Surimi2StartTime.getText().toString().replaceAll(" ",""),  t3Surimi2EndTime.getText().toString().replaceAll(" ","") ,
-                            strUserId , t3IndicatorUserId.getText().toString()
-                    );
-
-
-                }
-            });
-            alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-
-
-                }
-
-            });
-            alert.show();
-
-
-        }
-    });
-
-        t3FileNo.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                t3FileNo.setText("");
-                return false;
-            }
-        });
-
-        t3TankScan.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                t3TankScan.setText("");
-                return false;
-            }
-        });
-
-        t3LiqidPersonDesc.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-
-                t3LiqidPersonDesc.setText("");
-                return false;
-            }
-        });
-        t3LastTankScan.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-
-                t3LastTankScan.setText("");
-                return false;
-            }
-        });
-        t3OillerDesc.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                t3OillerDesc.setText("");
-                return false;
-            }
-        });
-        t3Surimi1EndTime.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                t3Surimi1EndTime.setText("");
-                return false;
-            }
-        });
-        t3Surimi2StartTime.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                t3Surimi2StartTime.setText("");
-                return false;
-            }
-        });
-        t3Surimi2EndTime.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                t3Surimi2EndTime.setText("");
-                return false;
-            }
-        });
-
+        //먼저 실행되는 함수
+        GET_WORKCENTER_IN_AUTHORITY gET_WORKCENTER_IN_AUTHORITY = new GET_WORKCENTER_IN_AUTHORITY();
+        gET_WORKCENTER_IN_AUTHORITY.execute(strIp, strSobId,strOrgId ,strUserId, strAssembly);
 
     }
 
@@ -596,9 +589,9 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
 
                 if(job.getString("Status").equals("S")){
-                    t3WorkcenterCode.setText(job.getString("X_WORKCENTER_CODE"));
-                    t3WorkcenterDesc.setText(job.getString("X_WORKCENTER_DESC"));
-                    t3WorkcenterId.setText(job.getString("X_WORKCENTER_ID"));
+                    t5WorkcenterCode.setText(job.getString("X_WORKCENTER_CODE"));
+                    t5WorkcenterDesc.setText(job.getString("X_WORKCENTER_DESC"));
+                    t5WorkcenterId.setText(job.getString("X_WORKCENTER_ID"));
                 }
 
             }catch (JSONException e)
@@ -612,9 +605,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         }
     }
 
-
     // FILE_NO_SCAN
-    protected class FILE_NO_YU_SCAN extends AsyncTask<String, Void, String>
+    protected class FILE_NO_CJ_SCAN extends AsyncTask<String, Void, String>
     {
         protected  String doInBackground(String... urls)
         {
@@ -628,7 +620,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     ;
 
             try
-            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/FileNoScanYU.jsp"); //주소 지정
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/FileNoScanCJ.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
@@ -681,81 +673,128 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 if(jarrayWorkLevel.length() < 1){
                     // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                     ScanModify = false;
-                    t3TankScan.requestFocus();
+                    t5StirEquipmentDesc.requestFocus();
                     return;
                 }
 
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
-                    t3FileNo.setText(job.getString("WORK_ORDER_NO"));
-                    t3ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
-                    t3OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
 
-                    if(job.getString("LINE_NO").equals("null")){
-                        t3LastSurimiCount.setText("");
+                    t5FileNo.setText(job.getString("WORK_ORDER_NO"));
+                    t5ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                    t5operaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+
+                    if(job.getString("OP_ORDER_SEQ").equals("null")){
+                        t5OpOrderSeq.setText("");
                     }else{
-                        t3LastSurimiCount.setText(job.getString("LINE_NO"));
+                        t5OpOrderSeq.setText(job.getString("OP_ORDER_SEQ"));
                     }
-                    if(job.getString("WORKING_START_DATE").equals("null")){
-                        t3Surimi1StartTime.setText("");
+                    if(job.getString("OP_UNIT_ORDER_SEQ").equals("null")){
+                        t5OpUnitOrderSeq.setText("");
                     }else{
-                        t3Surimi1StartTime.setText(job.getString("WORKING_START_DATE"));
+                        t5OpUnitOrderSeq.setText(job.getString("OP_UNIT_ORDER_SEQ"));
                     }
-                    if(job.getString("TANK_DESC").equals("null")){
-                        t3TankScan.setText("");
+                    if(job.getString("PACKING_UNIT").equals("null")){
+                        t5PackingUnit.setText("");
                     }else{
-                        t3TankScan.setText(job.getString("TANK_DESC"));
+                        t5PackingUnit.setText(job.getString("PACKING_UNIT"));
                     }
-                    if(job.getString("OILLER_DESC").equals("null")){
-                        t3OillerDesc.setText("");
+                    if(job.getString("REQUEST_QTY").equals("null")){
+                        t5Request_qty.setText("");
                     }else{
-                        t3OillerDesc.setText(job.getString("OILLER_DESC"));
+                        t5Request_qty.setText(job.getString("REQUEST_QTY"));
+                    }
+                    if(job.getString("UNIT_QTY").equals("null")){
+                        t5UnitQty.setText("");
+                    }else{
+                        t5UnitQty.setText(job.getString("UNIT_QTY"));
+                    }
+                    if(job.getString("LOT_NO").equals("null")){
+                        t5LotNo.setText("");
+                    }else{
+                        t5LotNo.setText(job.getString("LOT_NO"));
+                    }
+                    if(job.getString("STIR_EQUIPMENT_NAME").equals("null")){
+                        t5StirEquipmentDesc.setText("");
+                    }else{
+                        t5StirEquipmentDesc.setText(job.getString("STIR_EQUIPMENT_NAME"));
+                    }
+                    if(job.getString("STIR_START_DATE").equals("null")){
+                        t5StirStartDate.setText("");
+                    }else{
+                        t5StirStartDate.setText(job.getString("STIR_START_DATE"));
+                    }
+                    if(job.getString("STIR_END_DATE").equals("null")){
+                        t5StirEndDate.setText("");
+                    }else{
+                        t5StirEndDate.setText(job.getString("STIR_END_DATE"));
+                    }
+                    if(job.getString("UNIT_EQUIPMENT_NAME").equals("null")){
+                        t5UnitEquipmentDesc.setText("");
+                    }else{
+                        t5UnitEquipmentDesc.setText(job.getString("UNIT_EQUIPMENT_NAME"));
+                    }
+                    if(job.getString("UNIT_START_DATE").equals("null")){
+                        t5UnitStartDate.setText("");
+                    }else{
+                        t5UnitStartDate.setText(job.getString("UNIT_START_DATE"));
+                    }
+                    if(job.getString("UNIT_END_DATE").equals("null")){
+                        t5UnitEndDate.setText("");
+                    }else{
+                        t5UnitEndDate.setText(job.getString("UNIT_END_DATE"));
+                    }
+                    if(job.getString("PUMP_NO_DESC").equals("null")){
+                        t5PumpNoDes.setText("");
+                    }else{
+                        t5PumpNoDes.setText(job.getString("PUMP_NO_DESC"));
+                    }
+                    if(job.getString("STIR_EQUIPMENT_ID").equals("null")){
+                        t5StirEquipmentId.setText("");
+                    }else{
+                        t5StirEquipmentId.setText(job.getString("STIR_EQUIPMENT_ID"));
+                    }
+                    if(job.getString("UNIT_EQUIPMENT_ID").equals("null")){
+                        t5UnitEquipmentId.setText("");
+                    }else{
+                        t5UnitEquipmentId.setText(job.getString("UNIT_EQUIPMENT_ID"));
+                    }
+                    if(job.getString("WORKER_ID").equals("null")){
+                        t5WorkerId.setText("");
+                    }else{
+                        t5WorkerId.setText(job.getString("WORKER_ID"));
+                    }
+                    if(job.getString("PUMP_NO_CODE").equals("null")){
+                        t5PumpNoCode.setText("");
+                    }else{
+                        t5PumpNoCode.setText(job.getString("PUMP_NO_CODE"));
+                    }
+                    if(job.getString("WORKER_DESC").equals("null")){
+                        t5WorkerDesc.setText("");
+                    }else{
+                        t5WorkerDesc.setText(job.getString("WORKER_DESC"));
+                    }
+                    if(job.getString("JOB_ID").equals("null")){
+                        t5JobId.setText("");
+                    }else{
+                        t5JobId.setText(job.getString("JOB_ID"));
+                    }
+                    if(job.getString("OPERAITON_ID").equals("null")){
+                        t5OperationId.setText("");
+                    }else{
+                        t5OperationId.setText(job.getString("OPERAITON_ID"));
+                    }
+                    if(job.getString("OP_UNIT_ORDER_ID").equals("null")){
+                        t5OpUnitOrderId.setText("");
+                    }else{
+                        t5OpUnitOrderId.setText(job.getString("OP_UNIT_ORDER_ID"));
                     }
 
-                    if(job.getString("USER_DESC").equals("null")){
-                        t3LiqidPersonDesc.setText("");
-                    }else{
-                        t3LiqidPersonDesc.setText(job.getString("USER_DESC"));
-                    }
-                    if(job.getString("WORKING_END_DATE").equals("null")){
-                        t3Surimi1EndTime.setText("");
-                    }else{
-                        t3Surimi1EndTime.setText(job.getString("WORKING_END_DATE"));
-                    }
-                    if(job.getString("WORKING_START_DATE2").equals("null")){
-                        t3Surimi2StartTime.setText("");
-                    }else{
-                        t3Surimi2StartTime.setText(job.getString("WORKING_START_DATE2"));
-                    }
-                    if(job.getString("WORKING_END_DATE2").equals("null")){
-                        t3Surimi2EndTime.setText("");
-                    }else{
-                        t3Surimi2EndTime.setText(job.getString("WORKING_END_DATE2"));
-                    }
 
-
-
-                  //  t3LastTankScan.setText(job.getString("POWDER_WORKER_ID"));
-
-                    t3EquimentId.setText(job.getString("EQUIPMENT_ID"));
-                    t3OillerId.setText(job.getString("OILLER_ID"));
-                    if(job.getString("INDICATOR_USER_ID").equals("null")){
-                        t3IndicatorUserId.setText("");
-                    }else{
-                        t3IndicatorUserId.setText(job.getString("INDICATOR_USER_ID"));
-                    }
-
-
-                    t3TankCode.setText(job.getString("TANK_CODE"));
-                    t3JobId.setText(job.getString("JOB_ID"));
-                    t3ModFlag.setText(job.getString("MOD_FLAG"));
-
-                    t3OperationId.setText(job.getString("OPERATION_ID"));
 
                 }
-
-                t3TankScan.requestFocus();
+                t5StirEquipmentDesc.requestFocus();
 
                 ScanModify = false;
 
@@ -776,8 +815,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     }
 
 
-    // LU_TANK_TYPE
-    protected class LU_YU_EQP extends AsyncTask<String, Void, String>
+    protected class LU_CH_C_S extends AsyncTask<String, Void, String>
     {
         protected  String doInBackground(String... urls)
         {
@@ -787,11 +825,10 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
                     + "&W_WORKCENTER_ID=" + urls[3]
-                    + "&W_BARCODE=" +urls[4]
                     ;
 
             try
-            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuYuEqp.jsp"); //주소 지정
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuChCS.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
@@ -841,19 +878,19 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                t3LiqidPersonDesc.requestFocus();
-                 return;
+                    t5UnitEquipmentDesc.requestFocus();
+                    return;
                 }
 
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
-                    t3OldEquimentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                    t3TankScan.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                    t3EquimentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                    t3EquimentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+                    t5StirOldEquipmentCode.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                    t5StirEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                    t5StirEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                    t5StirEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
                 }
-                t3LiqidPersonDesc.requestFocus();
+                t5UnitEquipmentDesc.requestFocus();
 
             }catch (JSONException e)
             {
@@ -865,7 +902,95 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             }
         }
     }
-    // LU_WORKER
+
+    protected class LU_CH_G_S extends AsyncTask<String, Void, String>
+    {
+        protected  String doInBackground(String... urls)
+        {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "W_SOB_ID=" + urls[1]
+                    + "&W_ORG_ID=" + urls[2]
+                    + "&W_WORKCENTER_ID=" + urls[3]
+                    ;
+
+            try
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuChGS.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return  jsonHtml.toString(); //결과값 리턴
+        }
+
+
+        protected void onPostExecute(String result)
+        {
+            //페이지 결과값 파싱
+            try
+            {
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+
+                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+
+                if(jarrayWorkLevel.length() < 1){
+                    t5WorkerDesc.requestFocus();
+                    return;
+                }
+
+                JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                if(job.getString("Status").equals("S")){
+
+                    t5OldUnitEquipmentDesc.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                    t5UnitEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                    t5UnitEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                    t5UnitEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+                }
+                t5WorkerDesc.requestFocus();
+
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
     protected class LU_WORKER extends AsyncTask<String, Void, String>
     {
         protected  String doInBackground(String... urls)
@@ -930,17 +1055,17 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t3LastTankScan.requestFocus();
+                    t5PumpNoDes.requestFocus();
                     return;
                 }
 
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
-                    t3IndicatorUserId.setText(job.getString("USER_ID"));
-                    t3LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
+                    t5WorkerId.setText(job.getString("USER_ID"));
+                    t5WorkerDesc.setText(job.getString("DESCRIPTION"));
                 }
-                t3LastTankScan.requestFocus();
+                t5PumpNoDes.requestFocus();
 
             }catch (JSONException e)
             {
@@ -953,8 +1078,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         }
     }
 
-    // LU_TANK_TYPE
-    protected class LU_TANK_TYPE extends AsyncTask<String, Void, String>
+    protected class LU_PUMP_NO extends AsyncTask<String, Void, String>
     {
         protected  String doInBackground(String... urls)
         {
@@ -963,11 +1087,11 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_BARCODE=" +urls[3]
+                    + "&W_BARCODE=" + urls[3]
                     ;
 
             try
-            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuTankType.jsp"); //주소 지정
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuPumpNo.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
@@ -1017,17 +1141,18 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t3LastTankScan.requestFocus();
+                    t5PumpNoDes.requestFocus();
                     return;
                 }
 
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
-                    t3LastTankCode.setText(job.getString("ENTRY_CODE"));
-                    t3LastTankScan.setText(job.getString("ENTRY_DESCRIPTION"));
+                    t5PumpNoId.setText(job.getString("LOOKUP_ENTRY_ID"));
+                    t5PumpNoCode.setText(job.getString("ENTRY_CODE"));
+                    t5PumpNoDes.setText(job.getString("ENTRY_DESCRIPTION"));
                 }
-                t3FileNo.requestFocus();
+                t5FileNo.requestFocus();
 
             }catch (JSONException e)
             {
@@ -1040,7 +1165,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         }
     }
 
-    protected class YU_ADD extends AsyncTask<String, Void, String>
+    protected class CJ_UPDATE extends AsyncTask<String, Void, String>
     {
         //final LuLoctionListAdapter luLoctionListAdapter = new LuLoctionListAdapter();
         protected  String doInBackground(String... urls)
@@ -1053,120 +1178,26 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     + "&W_WORKCENTER_ID=" + urls[3]
                     + "&P_SOB_ID=" + urls[4]
                     + "&P_ORG_ID=" + urls[5]
-                    + "&P_USER_ID=" + urls[6]
+                    + "&P_STIR_EQUIPMENT_ID=" + urls[6]
+                    + "&P_STIR_START_DATE=" + urls[7]
+                    + "&P_STIR_END_DATE=" + urls[8]
+                    + "&P_UNIT_WORK_DATE=" + urls[9]
+                    + "&P_UNIT_EQUIPMENT_ID=" + urls[10]
+                    + "&P_UNIT_START_DATE=" + urls[11]
+                    + "&P_UNIT_END_DATE=" + urls[12]
+                    + "&P_WORKER_ID=" + urls[13]
+                    + "&P_PUMP_NO_CODE=" + urls[14]
+                    + "&P_USER_ID=" + urls[15]
+                    + "&P_OP_UNIT_ORDER_ID=" + urls[16]
+                    + "&P_SEQ=" + urls[17]
                     ;
+
 
             try
             {
                 //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
 
-                URL obj = new URL("http://" + urls[0] + "/TAIYO/YuAdd.jsp"); //주소 지정
-
-                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
-
-                if(conn != null) //
-                {
-                    conn.setReadTimeout(5000);
-                    conn.setConnectTimeout(10000);
-                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
-                    conn.setDoInput(true);
-                    conn.connect(); //???
-
-                    //서버에 데이터 전달
-                    OutputStream out = conn.getOutputStream();
-                    out.write(search_title.getBytes("UTF-8"));
-                    out.flush();
-                    out.close();
-
-                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
-                    {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
-                        while (true)
-                        {
-                            String line = br.readLine();
-                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
-                                break;
-                            jsonHtml.append(line);// + "\n");
-                        }
-                        br.close();
-                    }
-                    conn.disconnect();
-                }
-            }catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            return  jsonHtml.toString(); //결과값 리턴
-        }
-
-        @SuppressLint("ResourceAsColor")
-        protected void onPostExecute(String result)
-        {
-            //페이지 결과값 파싱
-            try
-            {
-                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
-                JSONArray jarray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
-                JSONObject job = jarray.getJSONObject(0); //JSON 오브젝트 파싱
-
-                if(job.getString("P_RESULT_STATUS").equals("S")){
-
-                    Toast.makeText(getApplicationContext(), "연육횟수가 추가되었습니다.", Toast.LENGTH_SHORT).show();
-                    // ClearView();
-
-                    FILE_NO_YU_SCAN fILE_NO_SCAN = new FILE_NO_YU_SCAN();
-                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t3FileNo.getText().toString(),t3WorkcenterId.getText().toString());
-
-
-
-                }else{
-                    Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-
-
-            }catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    protected class YU_UPDATE extends AsyncTask<String, Void, String>
-    {
-        //final LuLoctionListAdapter luLoctionListAdapter = new LuLoctionListAdapter();
-        protected  String doInBackground(String... urls)
-        {
-            StringBuffer jsonHtml = new StringBuffer();
-
-            //서버로 보낼 데이터 설정
-            String search_title = "W_JOB_ID=" + urls[1]
-                    + "&W_OPERATION_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID=" + urls[3]
-                    + "&P_SOB_ID=" + urls[4]
-                    + "&P_ORG_ID=" + urls[5]
-                    + "&P_JOB_ID=" + urls[6]
-                    + "&P_LINE_NO=" + urls[7]
-                    + "&P_EQUIPMENT_ID=" + urls[8]
-                    + "&P_OILLER_ID=" + urls[9]
-                    + "&P_WORKING_START_DATE=" + urls[10]
-                    + "&P_WORKING_END_DATE=" + urls[11]
-                    + "&P_WORKING_START_DATE2=" + urls[12]
-                    + "&P_WORKING_END_DATE2=" + urls[13]
-                    + "&P_USER_ID=" + urls[14]
-                    + "&P_INDICATOR_USER_ID=" + urls[15]
-                    ;
-
-            try
-            {
-                //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
-
-                URL obj = new URL("http://" + urls[0] + "/TAIYO/YuUpdate.jsp"); //주소 지정
+                URL obj = new URL("http://" + urls[0] + "/TAIYO/CJUpdate.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
@@ -1220,8 +1251,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     // ClearView();
 
-                    FILE_NO_YU_SCAN fILE_NO_SCAN = new FILE_NO_YU_SCAN();
-                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t3FileNo.getText().toString(),t3WorkcenterId.getText().toString()); //다시 fill
+                    FILE_NO_CJ_SCAN fILE_NO_SCAN = new  FILE_NO_CJ_SCAN();
+                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t5FileNo.getText().toString(),t5WorkcenterId.getText().toString()); //다시 fill
 
                     btnt1save.setBackgroundColor(R.color.dark_green);
                     btnt1save.setTextColor(Color.WHITE);
@@ -1244,6 +1275,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         }
     }
 
-}
 
+
+
+}
 

@@ -16,6 +16,8 @@ import androidx.annotation.Nullable;
 import com.erp.Taiyo.activity.CombinationWorkActivity;
 
 import com.erp.Taiyo.activity.RegisterAdjustmentActivity;
+import com.erp.Taiyo.activity.RegisterPackingActivity;
+import com.erp.Taiyo.activity.RegisterResponseActivity;
 import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
 import com.erp.Taiyo.activity.SurimiWeighingWorkActivity;
 import com.erp.Taiyo.adapter.MenuListAdapter;
@@ -139,7 +141,7 @@ public class MenuActivity extends AppCompatActivity {
         btnJJ = findViewById(R.id.btn_jj); //조정
         btnCJ = findViewById(R.id.btn_cj); //충진
         btnTP = findViewById(R.id.btn_tp); //탈포
-        btbBO = findViewById(R.id.btb_bo); //반응
+        btbBO = findViewById(R.id.btn_bo); //반응
 
         Menu menu =  mNavigationView.getMenu();
 
@@ -186,7 +188,7 @@ public class MenuActivity extends AppCompatActivity {
                         break;
 
                     case R.id.MOBF0009:
-                        Intent MOBF0001 = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
+                        Intent MOBF0001 = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
                         MOBF0001.putExtra("O_USER_ID", strUserId);
                         MOBF0001.putExtra("O_USER_NAME", strUserName);
                         MOBF0001.putExtra("Ip", strIp);
@@ -278,6 +280,32 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intentMat);
             }
         });
+
+        btnCJ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMat = new Intent(MenuActivity.this, RegisterPackingActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
+                startActivity(intentMat);
+            }
+        });
+
+        btbBO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMat = new Intent(MenuActivity.this, RegisterResponseActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btbBO .getText().toString());
+                startActivity(intentMat);
+            }
+        });
+
+
 
 
         logOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {

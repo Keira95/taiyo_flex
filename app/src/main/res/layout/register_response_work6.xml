@@ -72,27 +72,7 @@
             />
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30sp"
-        android:layout_weight="0"
-        android:layout_gravity="right"
-        android:gravity="bottom"
-        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_t2_recent"
-            android:layout_width="150sp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="10sp"
-            android:background="@color/teal"
-            android:gravity="center"
-            android:text="최근실적"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,7 +83,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p2_file_no"
+            android:id="@+id/et_p6_file_no"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -119,7 +99,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t2_file_no_scan"
+            android:id="@+id/et_t6_file_no_scan"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -141,21 +121,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20sp"
+        android:layout_height="25sp"
         android:layout_weight="0.5"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t2_mix_start_time"
+            android:id="@+id/btn_t6_start_time"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:hint="배합작업시작"
+            android:hint="작업시작일"
             android:textColor="@color/login_edit_text"
             android:background="@drawable/buttonshape2"
             android:textColorHint="@color/black"
@@ -163,7 +143,7 @@
 
 
         <TextView
-            android:id="@+id/et_p2_op_groddup_nof"
+            android:id="@+id/et_p6_op_groddup_nof"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -177,7 +157,7 @@
             android:enabled="false"
             />
         <EditText
-            android:id="@+id/et_t2_item_desc"
+            android:id="@+id/et_t6_item_desc"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_gravity="center"
@@ -202,7 +182,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_t2_mix_start_time"
+            android:id="@+id/et_t6_start_time"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -220,7 +200,7 @@
 
 
         <TextView
-            android:id="@+id/et_p2_op_groddfup_nof"
+            android:id="@+id/et_p6_op_groddfup_nof"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -234,7 +214,7 @@
             android:enabled="false"
             />
         <EditText
-            android:id="@+id/et_t2_operaion_desc"
+            android:id="@+id/et_t6_operaion_desc"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -259,7 +239,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p2_mix_tank_desc"
+            android:id="@+id/et_p6_tank_desc"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -268,7 +248,7 @@
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
             android:enabled="false"
-            android:hint="설비 (TANK)"
+            android:hint="TANK"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
@@ -276,7 +256,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t2_mix_tank_desc_scan"
+            android:id="@+id/et_t6_tank_desc"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:layout_gravity="center"
@@ -302,7 +282,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p2_equipment"
+            android:id="@+id/et_p6_equipment"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -310,7 +290,7 @@
             android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
-            android:hint="배합 설비"
+            android:hint="반응 설비"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
@@ -320,7 +300,7 @@
             />
 
         <EditText
-            android:id="@+id/et_t2_equipment_scan"
+            android:id="@+id/et_t6_equipment_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -341,21 +321,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20sp"
+        android:layout_height="25sp"
         android:layout_weight="0.5"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t2_stir_1_start_date"
+            android:id="@+id/btn_t6_stir_1_start_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:hint="예비교반시작"
+            android:hint="투입교반시작"
             android:background="@drawable/buttonshape2"
 
             android:textColorHint="@color/black"
@@ -364,23 +344,23 @@
 
 
         <Button
-            android:id="@+id/btn_t2_stir_1_end_date"
+            android:id="@+id/btn_t6_stir_1_end_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
             android:background="@drawable/buttonshape2"
             android:layout_weight="1"
-            android:hint="예비교반종료"
+            android:hint="투입교반 종료"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/black"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t2_stir_1_worker_name"
+            android:id="@+id/et_p6_stir_1_worker_name"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
@@ -402,7 +382,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_t2_stir_1_start_date"
+            android:id="@+id/et_t6_stir_1_start_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -420,7 +400,7 @@
 
 
         <EditText
-            android:id="@+id/et_t2_stir_1_end_date"
+            android:id="@+id/et_t6_stir_1_end_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -437,7 +417,7 @@
             />
 
         <EditText
-            android:id="@+id/et_t2_stir_1_worker_name_scan"
+            android:id="@+id/et_t6_stir_1_worker_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -461,21 +441,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20sp"
+        android:layout_height="25sp"
         android:layout_weight="0.5"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t2_stir_2_start_date"
+            android:id="@+id/btn_t6_stir_2_start_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:hint="투입교반시작"
+            android:hint="승온교반 시작"
 
             android:background="@drawable/buttonshape2"
             android:textColorHint="@color/black"
@@ -484,14 +464,14 @@
 
 
         <Button
-            android:id="@+id/btn_t2_stir_2_end_date"
+            android:id="@+id/btn_t6_stir_2_end_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:hint="투입교반종료"
+            android:hint="승온교반 종료"
             android:background="@drawable/buttonshape2"
             android:textColorHint="@color/black"
             android:textColor="@color/login_edit_text"
@@ -499,7 +479,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t2_stir_2_worker_name"
+            android:id="@+id/et_p6_stir_2_worker_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -524,7 +504,7 @@
 
 
         <EditText
-            android:id="@+id/et_t2_stir_2_start_date"
+            android:id="@+id/et_t6_stir_2_start_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -539,7 +519,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/et_t2_stir_2_end_date"
+            android:id="@+id/et_t6_stir_2_end_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -556,7 +536,7 @@
             />
 
         <EditText
-            android:id="@+id/et_t2_stir_2_worker_name_scan"
+            android:id="@+id/et_t6_stir_2_worker_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -580,16 +560,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20sp"
+        android:layout_height="25sp"
         android:layout_weight="0.5"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t2_stir_3_start_date"
+            android:id="@+id/btn_t6_stir_3_start_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
@@ -602,9 +582,9 @@
 
 
         <Button
-            android:id="@+id/btn_t2_stir_3_end_date"
+            android:id="@+id/btn_t6_stir_3_end_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
@@ -618,9 +598,9 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t2_stir_3_worker_name"
+            android:id="@+id/et_p6_stir_3_worker_name"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
@@ -642,7 +622,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_t2_stir_3_start_date"
+            android:id="@+id/et_t6_stir_3_start_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -660,7 +640,7 @@
 
 
         <EditText
-            android:id="@+id/et_t2_stir_3_end_date"
+            android:id="@+id/et_t6_stir_3_end_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -677,7 +657,7 @@
             />
 
         <EditText
-            android:id="@+id/et_t2_stir_3_worker_name_scan"
+            android:id="@+id/et_t6_stir_3_worker_name"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_gravity="center"
@@ -694,47 +674,59 @@
 
     </LinearLayout>
 
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20sp"
+        android:layout_height="25sp"
         android:layout_weight="0.5"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t2_mix_end_time"
+            android:id="@+id/btn_t6_stir_4_start_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:hint="배합작업종료"
+            android:hint="급냉 시작"
             android:background="@drawable/buttonshape2"
+
             android:textColorHint="@color/black"
             android:textColor="@color/login_edit_text"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
 
-        <TextView
-            android:id="@+id/et_p2_op_gFDrSodDDup_noffff"
+        <Button
+            android:id="@+id/btn_t6_stir_4_end_date"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
+            android:background="@drawable/buttonshape2"
+            android:hint="급냉 종료"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_p6_stir_4_worker_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:enabled="false"
+            android:hint="작업자"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="18sp"
-            android:enabled="false"
-            />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -744,14 +736,32 @@
         android:layout_weight="0.2"
         android:orientation="horizontal">
 
-
         <EditText
-            android:id="@+id/et_t2_mix_end_time"
+            android:id="@+id/et_t6_stir_4_start_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="14sp"
+            android:enabled="false"
+            />
+
+
+
+        <EditText
+            android:id="@+id/et_t6_stir_4_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+
             android:layout_weight="1"
             android:background="@drawable/edit_login"
             android:paddingLeft="16dp"
@@ -761,8 +771,175 @@
             android:enabled="false"
             />
 
+        <EditText
+            android:id="@+id/et_t6_stir_4_worker_name"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+
+            android:background="@color/beige"
+            android:hint="Scan"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25sp"
+        android:layout_weight="0.5"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_t6_stir_5_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:hint="진공압력시작"
+            android:background="@drawable/buttonshape2"
+
+            android:textColorHint="@color/black"
+            android:textColor="@color/login_edit_text"
+            android:textSize="16sp" />
+
+
+        <Button
+            android:id="@+id/btn_t6_stir_5_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/buttonshape2"
+            android:layout_weight="1"
+            android:hint="진공압력종료"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_p6_stir_5_worker_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:enabled="false"
+            android:hint="작업자"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_t6_stir_5_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="14sp"
+            android:enabled="false"
+            />
+
+
+
+        <EditText
+            android:id="@+id/et_t6_stir_5_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="14sp"
+            android:enabled="false"
+            />
+
+        <EditText
+            android:id="@+id/et_t6_stir_5_worker_name"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+
+            android:background="@color/beige"
+            android:hint="Scan"
+            android:layout_weight="1"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp"
+
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25sp"
+        android:layout_weight="0.5"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_t6_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:hint="작업종료일"
+            android:background="@drawable/buttonshape2"
+            android:textColorHint="@color/black"
+            android:textColor="@color/login_edit_text"
+            android:textSize="15sp" />
+
+
         <TextView
-            android:id="@+id/et_p2_op_gFDrSodDDup_noffffff"
+            android:id="@+id/et_p6_op_gFDrSodDDup_noffff"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -770,15 +947,15 @@
             android:layout_marginRight="10sp"
             android:layout_weight="1"
             android:paddingLeft="16dp"
-
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="18sp"
             android:enabled="false"
             />
 
-
     </LinearLayout>
+
+
 
 
 
@@ -787,12 +964,32 @@
         android:layout_width="match_parent"
         android:layout_height="40sp"
         android:layout_weight="0"
-        android:layout_gravity="right"
+
         android:gravity="bottom"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_t6_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:enabled="false"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+        />
 
         <Button
-            android:id="@+id/btn_t2_save"
+            android:id="@+id/btn_t6_save"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -803,28 +1000,23 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             />
-        <EditText
-            android:id="@+id/et_p1_op_group_code"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-
 
 
     </LinearLayout>
 
 <!--   숨김 값 -->
     <EditText
-        android:id="@+id/et_h2_x_work_id"
+        android:id="@+id/et_t6_x_work_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
     <EditText
-        android:id="@+id/et_h2_x_work_code"
+        android:id="@+id/et_t6_x_work_code"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
     <EditText
-        android:id="@+id/et_h2_x_work_desc"
+        android:id="@+id/et_t6_x_work_desc"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
@@ -835,40 +1027,54 @@
 
 
     <EditText
-        android:id="@+id/et_h2_tank_lcode"
+        android:id="@+id/et_t6_tank_lcode"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
     <EditText
-        android:id="@+id/et_h2_stir_1_worker_id"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-
-    <EditText
-        android:id="@+id/et_h2_stir_2_worker_id"
+        android:id="@+id/et_t6_equipment_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
 
     <EditText
-        android:id="@+id/et_h2_stir_3_worker_id"
+        android:id="@+id/et_t6_stir_1_worker_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
 
+    <EditText
+        android:id="@+id/et_t6_stir_2_worker_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
 
     <EditText
-        android:id="@+id/et_h2_job_id"
+        android:id="@+id/et_t6_stir_3_worker_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t6_stir_4_worker_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t6_stir_5_worker_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+    <EditText
+        android:id="@+id/et_t6_job_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
     <EditText
-        android:id="@+id/et_h2_operation_id"
+        android:id="@+id/et_t6_operation_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
     <EditText
-        android:id="@+id/et_h2_mod_flag"
+        android:id="@+id/et_t6_mod_flag"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 

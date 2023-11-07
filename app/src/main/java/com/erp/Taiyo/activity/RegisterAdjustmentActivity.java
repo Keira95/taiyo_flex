@@ -132,7 +132,9 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
         btnWorkEndDate = (Button) findViewById(R.id.btn_t4_work_end_date);
 
 
-
+        keyboardFocus(t4FileNo);
+        keyboardFocus(t4EquipmentDesc);
+        keyboardFocus(t4WorkerDesc);
 
         btnt4save = (Button) findViewById(R.id.btn_t4_save);
 
@@ -409,8 +411,6 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 
     protected class GET_WORKCENTER_IN_AUTHORITY extends AsyncTask<String, Void, String>

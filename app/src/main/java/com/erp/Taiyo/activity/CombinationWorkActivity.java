@@ -54,7 +54,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
     EditText etT2FileNoScan, etT2ItemDesc,etT2MixStartTime,etT2OperaionDesc, etT2MixTankDescScan,etT2EquipmentScan,etT2Stir1StartDate , etT2Stir1EndDate,
             etT2Stir1WorkerName, etT2Stir2StartDate, etT2Stir2EndDate,etT2Stir2WorkerName, etT2Stir3StartDate, etT2Stir3EndDate, etT2Stir3WorkerName, etT2MixEndTime,
-            etT2Stir1WorkerNameScan, etT2Stir2WorkerNameScan, etT2Stir3WorkerNameScan,
+            etT2Stir1WorkerNameScan, etT2Stir2WorkerNameScan, etT2Stir3WorkerNameScan, etH2HiddenWorker,
 
 
     //숨김값
@@ -132,7 +132,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         etH2Stir1WorkerId = (EditText) findViewById(R.id.et_h2_stir_1_worker_id);
         etH2Stir2WorkerId = (EditText) findViewById(R.id.et_h2_stir_2_worker_id);
         etH2Stir3WorkerId = (EditText) findViewById(R.id.et_h2_stir_3_worker_id);
-
+        etH2HiddenWorker = (EditText) findViewById(R.id.et_h2_hidden_worker);
 
 
         etH2JobId = (EditText) findViewById(R.id.et_h2_job_id);
@@ -195,6 +195,14 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
 
+
+
+        keyboardFocus(etT2FileNoScan);
+        keyboardFocus(etT2MixTankDescScan);
+        keyboardFocus(etT2EquipmentScan);
+        keyboardFocus(etT2Stir1WorkerNameScan);
+        keyboardFocus(etT2Stir2WorkerNameScan);
+        keyboardFocus(etT2Stir3WorkerNameScan);
 
 
         etT2FileNoScan.addTextChangedListener(new TextWatcher() {
@@ -268,6 +276,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 if (getCurrentFocus() == etT2Stir1WorkerNameScan && !etT2Stir1WorkerNameScan.getText().toString().isEmpty()) {
 
                     LuWorker luWorker = new LuWorker();
+                    etH2HiddenWorker.setText("worker1");
+
                     luWorker.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
 
 
@@ -290,6 +300,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 if (getCurrentFocus() == etT2Stir2WorkerNameScan && !etT2Stir2WorkerNameScan.getText().toString().isEmpty()) {
 
                     LuWorker2 luWorker2 = new LuWorker2();
+                    etH2HiddenWorker.setText("worker2");
                     luWorker2.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
 
 
@@ -543,7 +554,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
             });
     }
 
+
     //노란색으로 오류 나는 이유는 시각 장애가 있는 사람들에 대해 생각해 보도록 상기시키는 것
+
     //키보드 내리고 포커스 주는 함수
     public void keyboardFocus(final EditText editText) {
         editText.setOnTouchListener(new View.OnTouchListener() {
@@ -559,13 +572,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
         });
     }
 
-//    private void ClearView()
-//    {
-//
-//        etT2FileNoScan.setText("");
-//        etT2ItemDesc.setText("");
-//
-//    }
+
+
 
     private void initializeToolbar() {
         setSupportActionBar(toolbar);
@@ -1065,11 +1073,37 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     String status = job.getString("Status");
 
                     if (status.equals("S")) {
+
+
+
                         etH2Stir1WorkerId.setText(job.getString("USER_ID"));
                         etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
 
+                      /*  if(etH2HiddenWorker.getText().toString().equals("worker1")){
+                            etH2Stir1WorkerId.setText(job.getString("USER_ID"));
+                            etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
 
+                        }else if(etH2HiddenWorker.getText().toString().equals("worker2")){
+
+                            etH2Stir2WorkerId.setText(job.getString("USER_ID"));
+                            etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                        }else if(etH2HiddenWorker.getText().toString().equals("worker3")){
+
+                            etH2Stir3WorkerId.setText(job.getString("USER_ID"));
+                            etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                        }else if(etH2HiddenWorker.getText().toString().equals("worker4")){
+
+                        }else{
+
+
+                        }*/
                     }
+
+
+
+
                     etT2Stir2WorkerNameScan.requestFocus();
 
                 }

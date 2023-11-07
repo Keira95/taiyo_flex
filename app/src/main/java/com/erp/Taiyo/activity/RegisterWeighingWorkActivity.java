@@ -56,7 +56,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
     String strDate;
 
     EditText t1FileNo,t1ItemDesc ,t1OperaionDesc,t1TankScan,t1LiqidPersonDesc ,t1RiqidStartTime , t1RiqidEndTime,t1PowderStartTime ,t1PowderEndTime ,t1WorkEndTime
-    ,t1WorkcenterCode, t1WorkcenterDesc ,t1WorkcenterId, t1WorkStartTiem ,t1TankLcode ,t1LiqidPersonId, t1PowderPersonId , t1Job_id ,t1OprationId ,t1PowderPersonDesc, t1ModeFlag;
+            ,t1WorkcenterCode, t1WorkcenterDesc ,t1WorkcenterId, t1WorkStartTiem ,t1TankLcode ,t1LiqidPersonId, t1PowderPersonId , t1Job_id ,t1OprationId ,t1PowderPersonDesc, t1ModeFlag;
     String strSobId = "70";
     String strOrgId = "701";
     String strAssembly ="PPMF2201";
@@ -153,7 +153,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
         imm.hideSoftInputFromWindow(t1FileNo.getWindowToken(), 0);
 
-        //키보드 내리고 포커스 주기
         keyboardFocus(t1FileNo);
         keyboardFocus(t1TankScan);
         keyboardFocus(t1LiqidPersonDesc);
@@ -201,6 +200,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(ScanModify==false && getCurrentFocus() == t1TankScan){
+                    // btnt1save.setBackgroundColor(Color.YELLOW);
+                    // btnt1save.setTextColor(Color.BLACK);
                 }
             }
 
@@ -229,8 +230,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(ScanModify==false && getCurrentFocus() == t1LiqidPersonDesc){
-                  //  btnt1save.setBackgroundColor(Color.YELLOW);
-                   // btnt1save.setTextColor(Color.BLACK);
+                    //  btnt1save.setBackgroundColor(Color.YELLOW);
+                    // btnt1save.setTextColor(Color.BLACK);
                 }
             }
 
@@ -261,7 +262,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(ScanModify==false && getCurrentFocus() == t1PowderPersonDesc){
-                   // btnt1save.setBackgroundColor(Color.YELLOW);
+                    // btnt1save.setBackgroundColor(Color.YELLOW);
                     //btnt1save.setTextColor(Color.BLACK);
                 }
             }
@@ -289,17 +290,17 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
         //계량 작업시작
         btnWorkStartTiem.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-            if(ScanModify==false){
-                btnt1save.setBackgroundColor(Color.YELLOW);
-                btnt1save.setTextColor(Color.BLACK);
+                if(ScanModify==false){
+                    btnt1save.setBackgroundColor(Color.YELLOW);
+                    btnt1save.setTextColor(Color.BLACK);
+                }
+
+                t1WorkStartTiem.setText(getNowDate());
             }
-
-        t1WorkStartTiem.setText(getNowDate());
-        }
-       });
+        });
 
         // 액상작업시작
         btnRiqidStartTime.setOnClickListener(new View.OnClickListener() {
@@ -384,9 +385,9 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        
+
                         if(t1FileNo.getText().toString().isEmpty()){
-                             Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
@@ -395,7 +396,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                                 , t1WorkEndTime.getText().toString().replaceAll(" ",""),t1TankLcode.getText().toString(),t1LiqidPersonId.getText().toString() ,t1PowderPersonId.getText().toString() , strUserId
                                 , t1RiqidStartTime.getText().toString().replaceAll(" ",""), t1RiqidEndTime.getText().toString().replaceAll(" ","") , t1PowderStartTime.getText().toString().replaceAll(" ","")
                                 ,t1PowderEndTime.getText().toString().replaceAll(" ",""));
-                               
+
 
                     }
                 });
@@ -452,9 +453,9 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 editText.setCursorVisible(true); // 커서 표시
                 return true; // 리턴
             }
+
         });
     }
-
 
 
 
@@ -691,7 +692,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
 
                 if(jarrayWorkLevel.length() < 1){
-                   // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                     ScanModify = false;
                     t1TankScan.requestFocus();
                     return;
@@ -1149,7 +1150,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 if(job.getString("P_RESULT_STATUS").equals("S")){
 
                     Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                   // ClearView();
+                    // ClearView();
 
 
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
@@ -1179,5 +1180,4 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
 
 }
-
 

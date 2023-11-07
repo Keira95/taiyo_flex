@@ -114,6 +114,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
         etT6Stir3WorkerName = (EditText) findViewById(R.id.et_t6_stir_3_worker_name);
         etT6Stir4WorkerName = (EditText) findViewById(R.id.et_t6_stir_4_worker_name);
         etT6Stir5WorkerName = (EditText) findViewById(R.id.et_t6_stir_5_worker_name);
+
         etT6EndTime = (EditText) findViewById(R.id.et_t6_end_time);
 
 

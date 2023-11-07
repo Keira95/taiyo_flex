@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40sp"
                 android:gravity="center"
-                android:text="배합작업등록"
+                android:text="반응작업등록"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -357,28 +357,30 @@
             android:textColorHint="@color/black"
             android:textSize="16sp" />
 
+
         <EditText
             android:id="@+id/et_p6_stir_1_worker_name"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1"
-            android:background="@drawable/edit_login"
-            android:enabled="false"
             android:hint="작업자"
+            android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
-
+            android:textSize="14sp"
+            android:enabled="false"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.2"
+        android:layout_weight="0.5"
         android:orientation="horizontal">
 
         <EditText
@@ -393,7 +395,7 @@
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:enabled="false"
             />
 
@@ -930,7 +932,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:layout_weight="1"
+            android:layout_weight="1.6"
             android:hint="작업종료일"
             android:background="@drawable/buttonshape2"
             android:textColorHint="@color/black"
@@ -945,7 +947,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="10sp"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
@@ -1143,4 +1145,9 @@
         android:id="@+id/et_h2_hidden_worker"
         android:layout_width="0dp"
         android:layout_height="0dp" />
+
+
+
+
+
 </LinearLayout>

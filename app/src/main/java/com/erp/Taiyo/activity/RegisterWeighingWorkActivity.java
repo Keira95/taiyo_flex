@@ -716,8 +716,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                         t1TankScan.setText(job.getString("TANK_DESC"));
                     }
 
-
-
                     t1LiqidPersonId.setText(job.getString("LIQUID_WORKER_ID"));
 
                     if(job.getString("LIQUID_WORKER_NAME").equals("null")){
@@ -725,8 +723,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                     }else{
                         t1LiqidPersonDesc .setText(job.getString("LIQUID_WORKER_NAME"));
                     }
-
-
 
                     if(job.getString("LIQUID_START_DATE").equals("null")){
                         t1RiqidStartTime.setText("");

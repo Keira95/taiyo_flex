@@ -1095,32 +1095,9 @@
         android:layout_height="0dp" />
 
 
-    <!-- 탱크 숨김값  -->
-
-    <EditText
-        android:id="@+id/et_h2_entry_code"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-    <EditText
-        android:id="@+id/et_h2_lookup_entry_id"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
 
 
-    <!-- 배합 숨김값   -->
-    <EditText
-        android:id="@+id/et_h2_equipment_id"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-    <EditText
-        android:id="@+id/et_h2_equipment_code"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
 
-    <EditText
-        android:id="@+id/et_h2_old_equipment_name"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
 
 
     <EditText
@@ -1134,8 +1111,25 @@
         android:layout_height="0dp" />
 
 
+    <EditText
+        android:id="@+id/et_h2_workercenter_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
-<!--  저장 부분 잘 몰라서 일단 숨김값으로-->
+
+    <EditText
+        android:id="@+id/et_h2_workercenter_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+    <EditText
+        android:id="@+id/et_h2_workercenter_desc"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+    <!--  저장 부분 잘 몰라서 일단 숨김값으로-->
 
 
 
@@ -1159,4 +1153,38 @@
         android:id="@+id/et_h2_hidden_worker"
         android:layout_width="0dp"
         android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t6_tank_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t6_tank_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t6_end_time"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+    <EditText
+        android:id="@+id/et_t6_equipment_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t6_old_equipment_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+
+    <EditText
+        android:id="@+id/et_t6_worker_hidden"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
 </LinearLayout>

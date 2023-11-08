@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.erp.Taiyo.activity.CombinationWorkActivity;
 
 import com.erp.Taiyo.activity.RegisterAdjustmentActivity;
+import com.erp.Taiyo.activity.RegisterDefomationActivity;
 import com.erp.Taiyo.activity.RegisterPackingActivity;
 import com.erp.Taiyo.activity.RegisterResponseActivity;
 import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
@@ -301,6 +302,18 @@ public class MenuActivity extends AppCompatActivity {
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
                 intentMat.putExtra("TOP_MENU_DESC", btbBO .getText().toString());
+                startActivity(intentMat);
+            }
+        });
+
+        btnTP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMat = new Intent(MenuActivity.this, RegisterDefomationActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btnTP .getText().toString());
                 startActivity(intentMat);
             }
         });

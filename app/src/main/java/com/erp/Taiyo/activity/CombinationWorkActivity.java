@@ -979,7 +979,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
 
-
                 if (resultArray.length() > 0) {
                     JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                     String status = job.getString("Status");

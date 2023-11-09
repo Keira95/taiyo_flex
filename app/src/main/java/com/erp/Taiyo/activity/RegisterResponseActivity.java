@@ -201,6 +201,9 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,etT6FileNoScan.getText().toString(),etT6WorkercenterId.getText().toString()); //다시 fill
+
+
+
                 }else{
                     return;
                 }
@@ -1003,29 +1006,34 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
                         etT6Stir1WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir1WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir2WorkerName.requestFocus();
 
                     }else if(etT6WorkerHidden.getText().toString().equals("worker2")){ //작업자 스캔 2
 
                         etT6Stir2WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir2WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir3WorkerName.requestFocus();
 
                     }else if(etT6WorkerHidden.getText().toString().equals("worker3")){//작업자 스캔 3
 
                         etT6Stir3WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir3WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir4WorkerName.requestFocus();
 
                     }else if(etT6WorkerHidden.getText().toString().equals("worker4")){ //작업자 스캔 4
                         etT6Stir4WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir4WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir5WorkerName.requestFocus();
                     }else{                                                            //작업자 스캔 5
 
                         etT6Stir5WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir5WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6FileNoScan.requestFocus();
                     }
 
                 }
 
-                etT6FileNoScan.requestFocus();
+
 
             }catch (JSONException e)
             {

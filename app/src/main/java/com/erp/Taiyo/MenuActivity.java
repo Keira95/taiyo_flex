@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.erp.Taiyo.activity.CombinationWorkActivity;
 
 import com.erp.Taiyo.activity.RegisterAdjustmentActivity;
+import com.erp.Taiyo.activity.RegisterAgingActivity;
 import com.erp.Taiyo.activity.RegisterDefomationActivity;
 import com.erp.Taiyo.activity.RegisterPackingActivity;
 import com.erp.Taiyo.activity.RegisterResponseActivity;
@@ -67,7 +68,7 @@ public class MenuActivity extends AppCompatActivity {
     TextView tvId;
     //버튼
 
-    Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO;
+    Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO,btnAg;
     GridView gv;
 
     MenuItem ItemId;
@@ -143,7 +144,7 @@ public class MenuActivity extends AppCompatActivity {
         btnCJ = findViewById(R.id.btn_cj); //충진
         btnTP = findViewById(R.id.btn_tp); //탈포
         btbBO = findViewById(R.id.btn_bo); //반응
-
+        btnAg = findViewById(R.id.btn_ag); //에이징
         Menu menu =  mNavigationView.getMenu();
 
         ItemId = menu.findItem(R.id.user_id);
@@ -314,6 +315,17 @@ public class MenuActivity extends AppCompatActivity {
                 intentMat.putExtra("O_USER_NAME", strUserName);
                 intentMat.putExtra("Ip", strIp);
                 intentMat.putExtra("TOP_MENU_DESC", btnTP .getText().toString());
+                startActivity(intentMat);
+            }
+        });
+        btnAg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMat = new Intent(MenuActivity.this, RegisterAgingActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btnAg .getText().toString());
                 startActivity(intentMat);
             }
         });

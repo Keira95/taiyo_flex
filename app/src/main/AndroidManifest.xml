@@ -74,6 +74,9 @@
         <activity android:name="com.erp.Taiyo.activity.RegisterDefomationActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name="com.erp.Taiyo.activity.RegisterAgingActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 

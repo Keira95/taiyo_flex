@@ -155,7 +155,7 @@
             android:layout_marginRight="10sp"
             android:background="@drawable/edit_login"
             android:layout_weight="1"
-
+            android:enabled="false"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
@@ -201,7 +201,7 @@
             android:layout_marginRight="10sp"
             android:background="@drawable/edit_login"
             android:layout_weight="1"
-
+            android:enabled="false"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"

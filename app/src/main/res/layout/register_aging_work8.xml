@@ -314,7 +314,7 @@
             android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
-            android:hint="설비"
+            android:hint="보관장소"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"

@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40sp"
                 android:gravity="center"
-                android:text="탈포작업등록"
+                android:text="AGING작업등록"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -81,7 +81,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p7_file_no"
+            android:id="@+id/et_p8_file_no"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -97,7 +97,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t7_file_no_scan"
+            android:id="@+id/et_t8_file_no_scan"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -130,7 +130,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p7_op_groddup_nof"
+            android:id="@+id/et_p8_op_groddup_nof"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -146,7 +146,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t7_item_desc"
+            android:id="@+id/et_t8_item_desc"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -176,7 +176,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p7_op_groddfup_nof"
+            android:id="@+id/et_p8_op_groddfup_nof"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -184,15 +184,15 @@
             android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
+            android:enabled="false"
             android:hint="공정"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:enabled="false"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t7_operaion_desc"
+            android:id="@+id/et_t8_operaion_desc"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -221,7 +221,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t7_start_date"
+            android:id="@+id/btn_t8_start_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -235,7 +235,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/et_t7_start_date"
+            android:id="@+id/et_t8_start_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -262,7 +262,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p7_tank_desc"
+            android:id="@+id/et_p8_tank_desc"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -279,7 +279,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_t7_tank_desc"
+            android:id="@+id/et_t8_tank_desc"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:layout_gravity="center"
@@ -306,7 +306,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p7_equipment"
+            android:id="@+id/et_p8_equipment"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -324,7 +324,7 @@
             />
 
         <EditText
-            android:id="@+id/et_t7_equipment_name"
+            android:id="@+id/et_t8_equipment_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -351,7 +351,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_p7_stir_worker_name"
+            android:id="@+id/et_p8_stir_worker_name"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -369,7 +369,7 @@
             />
 
         <EditText
-            android:id="@+id/et_t7_stir_worker_name"
+            android:id="@+id/et_t8_stir_worker_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -396,7 +396,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_t7_end_date"
+            android:id="@+id/btn_t8_end_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -410,7 +410,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/et_t7_end_date"
+            android:id="@+id/et_t8_end_date"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -462,7 +462,7 @@
 
     <!--   숨김 값 -->
     <EditText
-        android:id="@+id/et_h2_x_work_id"
+        android:id="@+id/et_t2_x_work_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 

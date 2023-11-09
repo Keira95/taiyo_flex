@@ -282,11 +282,16 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (getCurrentFocus() == etT2Stir1WorkerNameScan && !etT2Stir1WorkerNameScan.getText().toString().isEmpty()) {
 
-                    LuWorker luWorker = new LuWorker();
+
                     etH2HiddenWorker.setText("worker1");
 
-                    luWorker.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
-
+                    if(ScanWorkerCnt == 1) {
+                        LuWorker luWorker = new LuWorker();
+                        luWorker.execute(strSobId, strOrgId, etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
+                    }else{
+                        ScanWorkerCnt = 1;
+                        return;
+                    }
 
                 }else{
                     return;
@@ -854,7 +859,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         }
         // 스트링 null 처리하는 메서드
         private String handleStringNull(String input) {
-            return "null".equals(input) ? "" : input;
+                 return input.equals("null") ? "" : input;
         }
 
     }
@@ -1099,20 +1104,16 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 String hiddenWorker = etH2HiddenWorker.getText().toString();
 
-                if (resultArray.length() < 1 && ScanWorkerCnt == 1) {
+                if (resultArray.length() < 1) { //데이터 없을때
 
                     FileScan = false;
                    // if (etT2Stir1WorkerNameScan.getText().toString().isEmpty()) {
                      hiddenWorkerChk(hiddenWorker);
 
-                        return;
+                     return;
 
-                    }else{
+                    }else{ //데이터 있을때
 
-                       if( resultArray.length() < 1 ){
-                           hiddenWorkerChk(hiddenWorker);
-                           return;
-                       }
                     JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                     String status = job.getString("Status");
 

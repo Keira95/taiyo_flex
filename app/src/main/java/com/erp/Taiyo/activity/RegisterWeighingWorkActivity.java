@@ -246,7 +246,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 }else{
                     return;
 
-
                 }
             }
         });

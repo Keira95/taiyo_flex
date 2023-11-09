@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/main_layout"
+
+    >
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_green"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/AppTheme"
+            app:navigationIcon="?attr/homeAsUpIndicator">
+
+            <TextView
+                android:id="@+id/tv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40sp"
+                android:gravity="center"
+                android:text="탈포작업등록"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/layout_logout"
+                android:layout_width="95dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="4dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/user_nm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="사용자"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <!--warehouse-->
+
+    <FrameLayout
+        android:id="@+id/content_log"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scrollbars="vertical"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:scrollbars="vertical"
+            />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p7_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="File No"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:enabled="false"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t7_file_no_scan"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/beige"
+            android:layout_weight="1"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp"
+            android:windowSoftInputMode="stateHidden"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p7_op_groddup_nof"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="재공명"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:enabled="false"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t7_item_desc"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp"
+            android:windowSoftInputMode="stateHidden"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p7_op_groddfup_nof"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="공정"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:enabled="false"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t7_operaion_desc"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/edit_login"
+            android:layout_weight="1"
+
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp"
+            android:windowSoftInputMode="stateHidden"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_t7_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="작업시작일"
+            android:background="@drawable/buttonshape2"
+            android:textColorHint="@color/black"
+            android:textColor="@color/login_edit_text"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_t7_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="14sp"
+            android:enabled="false"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p7_tank_desc"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:enabled="false"
+            android:hint="설비 (TANK)"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_t7_tank_desc"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@color/beige"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p7_equipment"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="설비"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp"
+            android:enabled="false"
+            />
+
+        <EditText
+            android:id="@+id/et_t7_equipment_name"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/beige"
+            android:layout_weight="1"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_p7_stir_worker_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="작업자"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp"
+            android:enabled="false"
+            />
+
+        <EditText
+            android:id="@+id/et_t7_stir_worker_name"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@color/beige"
+            android:layout_weight="1"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_t7_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:background="@drawable/buttonshape2"
+            android:hint="작업종료일"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_t7_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_login"
+            android:enabled="false"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+
+
+
+    <!-- 입고 처리 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_weight="0"
+        android:layout_gravity="right"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_t8_save"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginLeft="10sp"
+            android:background="@color/dark_green"
+            android:text="저장"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+        <EditText
+            android:id="@+id/et_p1_op_group_code"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+
+
+    </LinearLayout>
+
+    <!--   숨김 값 -->
+    <EditText
+        android:id="@+id/et_h2_x_work_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+</LinearLayout>

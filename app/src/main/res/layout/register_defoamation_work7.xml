@@ -155,7 +155,7 @@
             android:layout_marginRight="10sp"
             android:background="@drawable/edit_login"
             android:layout_weight="1"
-
+            android:enabled="false"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
@@ -201,7 +201,7 @@
             android:layout_marginRight="10sp"
             android:background="@drawable/edit_login"
             android:layout_weight="1"
-
+            android:enabled="false"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
@@ -369,7 +369,7 @@
             />
 
         <EditText
-            android:id="@+id/et_t7_stir_worker_name"
+            android:id="@+id/et_t7_worker_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
@@ -440,7 +440,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_t8_save"
+            android:id="@+id/btn_t7_save"
             android:layout_width="100sp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -461,10 +461,74 @@
     </LinearLayout>
 
     <!--   숨김 값 -->
+    <!-- WORKCENTER_IN_AUTHORITY    -->
     <EditText
-        android:id="@+id/et_h2_x_work_id"
+        android:id="@+id/et_t7_workcenter_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
+    <EditText
+        android:id="@+id/et_t7_workcenter_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t7_workcenter_desc"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+
+<!--  파일넘버 숨김값  -->
+
+    <EditText
+        android:id="@+id/et_t7_op_order_seq"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t7_tank_lcode"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t7_equipment_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t7_worker_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t7_job_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t7_operation_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t7_mod_flag"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+<!-- 탈포  설비   -->
+
+    <EditText
+        android:id="@+id/et_t7_top_equipment_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+    <EditText
+        android:id="@+id/et_t7_top_equipment_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+    <EditText
+        android:id="@+id/et_t7_old_equipment_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
 </LinearLayout>

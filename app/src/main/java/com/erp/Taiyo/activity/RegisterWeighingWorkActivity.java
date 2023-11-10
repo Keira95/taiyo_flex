@@ -767,7 +767,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 ScanModify = false;
 
-                if(!t1ModeFlag.equals("N")){
+                if(t1ModeFlag.equals("N")){
 
                     t1FileNo.setInputType(InputType.TYPE_NULL);
                     t1ItemDesc.setInputType(InputType.TYPE_NULL);

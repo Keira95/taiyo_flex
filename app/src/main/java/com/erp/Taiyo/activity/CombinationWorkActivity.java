@@ -818,7 +818,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                     FileScan = false;
 
-                    if(!etH2ModFlag.equals("Y")){  //수정이 가능하지않으면 tape_null
+                    if(etH2ModFlag.equals("N")){  //수정이 가능하지않으면 tape_null
 
                         etT2FileNoScan.setInputType(InputType.TYPE_NULL);
                         etT2OperaionDesc.setInputType(InputType.TYPE_NULL);

@@ -632,7 +632,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
 
 
                     etT7JobId.setText(job.getString("JOB_ID"));
-                    etT7OperationId.setText(job.getString("OPERATION_ID")); //etT7OperationId 원래 이거 값 확인을 위해 다른걸로
+                    etT7OperationId.setText(job.getString("OPERAITON_ID")); //etT7OperationId 원래 이거 값 확인을 위해 다른걸로
                     etT7ModFlag.setText(job.getString("MOD_FLAG"));
 
 
@@ -643,7 +643,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                if(!etT7ModFlag.equals("Y")){
+                if(etT7ModFlag.equals("N")){
 
                     etT7FileNoScan.setInputType(InputType.TYPE_NULL);
                     etT7ItemDesc.setInputType(InputType.TYPE_NULL);
@@ -959,7 +959,6 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                     + "&P_EQUIPMENT_ID=" + urls[9]
                     + "&P_WORKER_ID=" + urls[10]
                     + "&P_USER_ID=" + urls[11]
-
                     ;
 
             try
@@ -1027,7 +1026,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                     btnt7save.setTextColor(Color.WHITE);
 
                 }else{
-                    Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "오류입니다." +result, Toast.LENGTH_SHORT).show();
                     return;
                 }
 

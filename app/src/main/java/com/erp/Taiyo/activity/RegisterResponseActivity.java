@@ -201,12 +201,14 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,etT6FileNoScan.getText().toString(),etT6WorkercenterId.getText().toString()); //다시 fill
+
+
+
                 }else{
                     return;
                 }
             }
         });
-
 
 
 
@@ -1003,29 +1005,34 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
                         etT6Stir1WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir1WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir2WorkerName.requestFocus();
 
                     }else if(etT6WorkerHidden.getText().toString().equals("worker2")){ //작업자 스캔 2
 
                         etT6Stir2WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir2WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir3WorkerName.requestFocus();
 
                     }else if(etT6WorkerHidden.getText().toString().equals("worker3")){//작업자 스캔 3
 
                         etT6Stir3WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir3WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir4WorkerName.requestFocus();
 
                     }else if(etT6WorkerHidden.getText().toString().equals("worker4")){ //작업자 스캔 4
                         etT6Stir4WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir4WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir5WorkerName.requestFocus();
                     }else{                                                            //작업자 스캔 5
 
                         etT6Stir5WorkerId.setText(job.getString("USER_ID"));
                         etT6Stir5WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6FileNoScan.requestFocus();
                     }
 
                 }
 
-                etT6FileNoScan.requestFocus();
+
 
             }catch (JSONException e)
             {
@@ -1266,12 +1273,47 @@ public class RegisterResponseActivity extends AppCompatActivity{
                         etT6OperationId.setText(job.getString("OPERATION_ID"));
                     }
 
-
-
-
                     if(etT6ModFlag.equals("N")){
 
-                        //t1FileNo.setInputType(InputType.TYPE_NULL);
+                        etT6FileNoScan.setInputType(InputType.TYPE_NULL);
+                        etT6StartTime.setInputType(InputType.TYPE_NULL);
+                        etT6ItemDesc.setInputType(InputType.TYPE_NULL);
+                        etT6OperaionDesc.setInputType(InputType.TYPE_NULL);
+                        etT6TankDesc.setInputType(InputType.TYPE_NULL);
+                        etT6EquipmentName.setInputType(InputType.TYPE_NULL);
+                        etT6Stir1StartDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir2StartDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir3StartDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir4StartDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir5StartDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir1EndDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir2EndDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir3EndDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir4EndDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir5EndDate.setInputType(InputType.TYPE_NULL);
+                        etT6Stir1WorkerName.setInputType(InputType.TYPE_NULL);
+                        etT6Stir2WorkerName.setInputType(InputType.TYPE_NULL);
+                        etT6Stir3WorkerName.setInputType(InputType.TYPE_NULL);
+                        etT6Stir4WorkerName.setInputType(InputType.TYPE_NULL);
+                        etT6Stir5WorkerName.setInputType(InputType.TYPE_NULL);
+                        etT6EndTime.setInputType(InputType.TYPE_NULL);
+                        etT6WorkercenterId.setInputType(InputType.TYPE_NULL);
+                        etT6WorkercenterCode.setInputType(InputType.TYPE_NULL);
+                        etT6WorkercenterDesc.setInputType(InputType.TYPE_NULL);
+                        etT6TankId.setInputType(InputType.TYPE_NULL);
+                        etT6TankCode.setInputType(InputType.TYPE_NULL);
+                        etT6EquipmentCode.setInputType(InputType.TYPE_NULL);
+                        etT6OldEquipmentName.setInputType(InputType.TYPE_NULL);
+                        etT6EquipmentId.setInputType(InputType.TYPE_NULL);
+                        etT6WorkerHidden.setInputType(InputType.TYPE_NULL);
+                        etT6Stir1WorkerId.setInputType(InputType.TYPE_NULL);
+                        etT6Stir2WorkerId.setInputType(InputType.TYPE_NULL);
+                        etT6Stir3WorkerId.setInputType(InputType.TYPE_NULL);
+                        etT6Stir4WorkerId.setInputType(InputType.TYPE_NULL);
+                        etT6Stir5WorkerId.setInputType(InputType.TYPE_NULL);
+                        etT6ModFlag.setInputType(InputType.TYPE_NULL);
+                        etT6JobId.setInputType(InputType.TYPE_NULL);
+                        etT6OperationId.setInputType(InputType.TYPE_NULL);
                     }
                 }
 
@@ -1395,7 +1437,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                     btnt6save.setTextColor(Color.WHITE);
 
                 }else{
-                    Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "오류입니다."+ result, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -1410,6 +1452,10 @@ public class RegisterResponseActivity extends AppCompatActivity{
             }
         }
     }
+
+
+
+
 
 }
 

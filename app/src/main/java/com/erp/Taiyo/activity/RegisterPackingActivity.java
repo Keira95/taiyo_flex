@@ -1258,7 +1258,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     btnt1save.setTextColor(Color.WHITE);
 
                 }else{
-                    Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "오류입니다."+ result, Toast.LENGTH_SHORT).show();
                     return;
                 }
 

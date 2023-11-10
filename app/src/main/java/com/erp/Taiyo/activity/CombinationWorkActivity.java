@@ -1258,7 +1258,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                         }else{
 
-                            Toast.makeText(getApplicationContext(), "오류입니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "오류입니다"+ result, Toast.LENGTH_SHORT).show();
 
                         }
 

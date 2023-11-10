@@ -442,15 +442,14 @@
         <Button
             android:id="@+id/btn_t8_save"
             android:layout_width="100sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_gravity="right"
-            android:gravity="center"
             android:layout_marginLeft="10sp"
             android:background="@color/dark_green"
+            android:gravity="center"
             android:text="저장"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
         <EditText
             android:id="@+id/et_p1_op_group_code"
             android:layout_width="0dp"
@@ -462,9 +461,62 @@
 
     <!--   숨김 값 -->
     <EditText
-        android:id="@+id/et_t2_x_work_id"
+        android:id="@+id/et_t8_tank_code"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
+
+    <EditText
+        android:id="@+id/et_t8_equipment_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_stir_worker1_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_job_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_operation_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_mod_flag"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_workcenter_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_workcenter_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_workcenter_desc"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+    <EditText
+        android:id="@+id/et_t8_tank_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+    <EditText
+        android:id="@+id/et_t8_equipment_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t8_old_equipment_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
 </LinearLayout>

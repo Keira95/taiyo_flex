@@ -644,7 +644,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
-                if(conn != null) //
+                if(conn != null)
                 {
                     conn.setReadTimeout(5000);
                     conn.setConnectTimeout(10000);
@@ -793,10 +793,12 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t1TankScan.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t1TankScan.requestFocus();
             }
         }
     }

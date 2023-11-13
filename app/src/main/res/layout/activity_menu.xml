@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@android:color/white">
+        android:background="@drawable/taiyo_background">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -51,13 +51,25 @@
             android:layout_marginTop="1dp"
             android:background="#FFFFFF" />
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
-        </LinearLayout>
+            <ImageView
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image_desc"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+
+
+                android:visibility="visible" />
+        </LinearLayout>-->
         <!--android:background="@drawable/menu_img"-->
         <TextView
             android:id="@+id/textView2"
@@ -271,7 +283,7 @@
                 android:layout_margin="5sp"
                 android:layout_weight="1"
                 android:background="@drawable/buttonshape2"
-                android:text="process"
+                android:text="실적처리"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 

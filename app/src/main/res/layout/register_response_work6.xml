@@ -92,6 +92,7 @@
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
             android:hint="File No"
+
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"

@@ -625,6 +625,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
     }
 
 
+
+
     // FILE_NO_SCAN
     protected class FILE_NO_SCAN extends AsyncTask<String, Void, String>
     {

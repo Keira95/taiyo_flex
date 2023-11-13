@@ -84,11 +84,11 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
-            android:layout_marginTop="5sp"
+            android:layout_marginTop="3sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
             android:hint="작업장"
-            android:enabled="false"
+            android:background="@drawable/edit_login"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
@@ -114,16 +114,16 @@
         <EditText
             android:id="@+id/et_t9_move_trx_desc"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="33dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
-            android:layout_marginTop="5sp"
+            android:layout_marginTop="3sp"
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
             android:hint="이동유형"
-            android:enabled="false"
             android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
+            android:background="@drawable/edit_login"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
             android:textSize="16sp" />
@@ -328,10 +328,71 @@
     </LinearLayout>
 
     <!--   숨김 값 -->
+    <!--   파일 넘버 -->
+    <EditText
+        android:id="@+id/et_t9_release_date_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_op_poise_order_seq"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_op_unit_order_seq"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_op_actual_qty"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_remark"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_section_desc"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_split_flag"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_op_poise_order_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_op_unit_order_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_operation_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+    <EditText
+        android:id="@+id/et_t9_job_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+
+
     <EditText
         android:id="@+id/et_t9_workcenter_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
+
 
     <EditText
         android:id="@+id/et_t9_workcenter_code"
@@ -343,10 +404,13 @@
         android:layout_height="0dp" />
 
 
+
     <EditText
         android:id="@+id/et_t9_move_trx_type_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
+
+
 
 
 

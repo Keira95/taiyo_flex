@@ -34,7 +34,9 @@ public class RegisterProcessActivity extends AppCompatActivity {
     String filter = null;
     String strDate;
 
-    EditText t1FileNo, t1ItemDesc, t1OperaionDesc, t1TankScan, t1LiqidPersonDesc, t1RiqidStartTime, t1RiqidEndTime, t1PowderStartTime, t1PowderEndTime, t1WorkEndTime, t1WorkcenterCode, t1WorkcenterDesc, t1WorkcenterId, t1WorkStartTiem, t1TankLcode, t1LiqidPersonId, t1PowderPersonId, t1Job_id, t1OprationId, t1PowderPersonDesc, t1ModeFlag;
+    EditText etT9ItemDesc, etT9FileNo, etT9OperaionDesc, etT9WorkcenterId, etT9WorkcenterCode, etT9MoveTrxType, etT9MoveTrxTypeId, etT9MoveTrxTypeDesc, etT9ReleaseDateId,
+            etT9OpPoiseOrderSeq , etT9OpUnitOrderSeq, etT9OpActualQty ,etT9Remark, etT9SectionDesc, etT9SplitFlag, etT9OpPoiseOrderId, etT9OpUnitOrderId, etT9OperationId,
+            etT9JobId;
     String strSobId = "70";
     String strOrgId = "701";
     String strAssembly = "PPMF2201";
@@ -53,7 +55,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt9save;
-    Button btnWorkStartTiem, btnRiqidStartTime, btnRiqidEndTime, btnPowderStartTime, btnPowderEndTime, btnWorkEndTime;
+    Button btnT9WorkcenterLookup, btnT9MoveLookup;
     //키보드
 
     InputMethodManager imm;
@@ -80,7 +82,32 @@ public class RegisterProcessActivity extends AppCompatActivity {
         tvMenu = (TextView) findViewById(R.id.tv_menu);
 
 
+        etT9ItemDesc = (EditText) findViewById(R.id.et_t9_item_desc);
+        etT9FileNo = (EditText) findViewById(R.id.et_t9_file_no);
+        etT9OperaionDesc = (EditText) findViewById(R.id.et_t9_operaion_desc);
+        etT9WorkcenterId = (EditText) findViewById(R.id.et_t9_workcenter_id);
+        etT9WorkcenterCode = (EditText) findViewById(R.id.et_t9_workcenter_code);
+        etT9MoveTrxType = (EditText) findViewById(R.id.et_t9_move_trx_type);
+        etT9MoveTrxTypeId = (EditText) findViewById(R.id.et_t9_move_trx_type_id);
+        etT9MoveTrxTypeDesc = (EditText) findViewById(R.id.et_t9_move_trx_desc);
+        etT9ReleaseDateId = (EditText) findViewById(R.id.et_t9_release_date_id);
+        etT9OpPoiseOrderSeq = (EditText) findViewById(R.id.et_t9_op_poise_order_seq);
+        etT9OpUnitOrderSeq = (EditText) findViewById(R.id.et_t9_op_unit_order_seq);
+        etT9OpActualQty = (EditText) findViewById(R.id.et_t9_op_actual_qty);
+        etT9Remark = (EditText) findViewById(R.id.et_t9_remark);
+        etT9SectionDesc = (EditText) findViewById(R.id.et_t9_section_desc);
+        etT9SplitFlag = (EditText) findViewById(R.id.et_t9_split_flag);
+        etT9OpPoiseOrderId = (EditText) findViewById(R.id.et_t9_op_poise_order_id);
+        etT9OpUnitOrderId = (EditText) findViewById(R.id.et_t9_op_unit_order_id);
+        etT9OperationId = (EditText) findViewById(R.id.et_t9_operation_id);
+        etT9JobId = (EditText) findViewById(R.id.et_t9_job_id);
+
+
+
         btnt9save = (Button) findViewById(R.id.btn_t9_save);
+        btnT9WorkcenterLookup = (Button) findViewById(R.id.btn_t9_workcenter_lookup);
+        btnT9MoveLookup = (Button) findViewById(R.id.btn_t9_move_lookup);
+
 
 
         auto = getSharedPreferences("appData_Log", Context.MODE_PRIVATE);
@@ -154,6 +181,32 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
         // 유저 정보 삽입.
         tvUserName.setText(strUserName);
+
+        //보고 삭제하기 (아래)
+        //public void call_Workcetner(String ip, final TextView tvCode, final TextView tvName, final TextView tvId , final String UserId , final TextView  OperationId) {
+
+        btnT9WorkcenterLookup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LuOillerDialog luOillerDialog = new LuOillerDialog(RegisterProcessActivity.this);
+                luOillerDialog.call_Workcetner(strIp ,etT9WorkcenterCode,etT9OperaionDesc,etT9WorkcenterId,strUserId,etT9OperationId);
+
+
+            }
+        });
+
+
+        btnT9MoveLookup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LuOillerDialog luOillerDialog = new LuOillerDialog(RegisterProcessActivity.this);
+                luOillerDialog.call_Move_Trx(strIp ,etT9MoveTrxType,etT9MoveTrxTypeDesc,etT9WorkcenterId,strUserId,etT9MoveTrxType);
+
+
+            }
+        });
 
 
     }

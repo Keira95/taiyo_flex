@@ -195,7 +195,7 @@ public class LuOillerDialog {
 
     }
 
-    public void call_Move_Trx(String ip, final TextView tvCode, final TextView tvName, final TextView tvId ,final TextView tvMoveTrxType) {
+    public void call_Move_Trx(String ip, final TextView tvCode, final TextView tvName, final TextView tvId ,final String UserId ,final TextView tvMoveTrxType) {
 
         // 커스텀 다이얼로그를 정의하기위해 Dialog클래스를 생성한다.
         final Dialog dialog = new Dialog(context);
@@ -224,7 +224,7 @@ public class LuOillerDialog {
         IvItem = dialog.findViewById(R.id.lv_list);
 
         Lu_Move_Trx lu_move_trx = new Lu_Move_Trx();
-        lu_move_trx.execute(ip.toString(), strSobId, strOrgId,tvMoveTrxType.getText().toString());
+        lu_move_trx.execute(ip.toString(), strSobId, strOrgId,UserId,tvMoveTrxType.getText().toString());
 
 
 
@@ -523,13 +523,13 @@ public class LuOillerDialog {
                 {
                     JSONObject job = jarrayWorkLevel.getJSONObject(i); //JSON 오브젝트 파싱
 
-                    LuMoveControlItem luWorkCenterItem = new LuMoveControlItem();
+                    LuMoveControlItem luMoveControlItem = new LuMoveControlItem();
 
-                    luWorkCenterItem.setStrMoveType(job.getString("MOVE_TRX_TYPE"));
-                    luWorkCenterItem.setStrMoveDesc(job.getString("DESCRIPTION"));
-                    luWorkCenterItem.setStrMoveTypeId(job.getString("MOVE_TRX_TYPE_ID"));
+                    luMoveControlItem.setStrMoveType(job.getString("MOVE_TRX_TYPE"));
+                    luMoveControlItem.setStrMoveDesc(job.getString("DESCRIPTION"));
+                    luMoveControlItem.setStrMoveTypeId(job.getString("MOVE_TRX_TYPE_ID"));
 
-                    luMoveControlAdapter.addItem(luWorkCenterItem);
+                    luMoveControlAdapter.addItem(luMoveControlItem);
                 }
 
                 IvItem.setAdapter(luMoveControlAdapter);

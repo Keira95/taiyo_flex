@@ -855,6 +855,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t1LiqidPersonDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -885,10 +886,13 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t1LiqidPersonDesc.requestFocus();
+
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t1LiqidPersonDesc.requestFocus();
             }
         }
     }
@@ -943,6 +947,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t1PowderPersonDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -973,10 +978,12 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t1PowderPersonDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t1PowderPersonDesc.requestFocus();
             }
         }
     }

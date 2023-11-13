@@ -544,6 +544,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t4EquipmentDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -678,18 +679,20 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                /*if(!t1ModeFlag.equals("N")){
+                if(t4ModFlag.equals("N")){
 
 
                 }
-*/
+
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t4EquipmentDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t4EquipmentDesc.requestFocus();
             }
         }
 

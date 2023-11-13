@@ -34,7 +34,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
     String filter = null;
     String strDate;
 
-    EditText etT9ItemDesc, etT9FileNo, etT9OperaionDesc, etT9WorkcenterId, etT9WorkcenterCode, etT9MoveTrxType, etT9MoveTrxTypeId, etT9MoveTrxTypeDesc, etT9ReleaseDateId,
+    EditText etT9ItemDesc, etT9FileNo, etT9WorkcenterDesc,etT9OperaionDesc, etT9WorkcenterId, etT9WorkcenterCode, etT9MoveTrxType, etT9MoveTrxTypeId, etT9MoveTrxTypeDesc, etT9ReleaseDateId,
             etT9OpPoiseOrderSeq , etT9OpUnitOrderSeq, etT9OpActualQty ,etT9Remark, etT9SectionDesc, etT9SplitFlag, etT9OpPoiseOrderId, etT9OpUnitOrderId, etT9OperationId,
             etT9JobId;
     String strSobId = "70";
@@ -84,6 +84,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
         etT9ItemDesc = (EditText) findViewById(R.id.et_t9_item_desc);
         etT9FileNo = (EditText) findViewById(R.id.et_t9_file_no);
+        etT9WorkcenterDesc = (EditText) findViewById(R.id.et_t9_workcenter_desc);
         etT9OperaionDesc = (EditText) findViewById(R.id.et_t9_operaion_desc);
         etT9WorkcenterId = (EditText) findViewById(R.id.et_t9_workcenter_id);
         etT9WorkcenterCode = (EditText) findViewById(R.id.et_t9_workcenter_code);
@@ -190,7 +191,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 LuOillerDialog luOillerDialog = new LuOillerDialog(RegisterProcessActivity.this);
-                luOillerDialog.call_Workcetner(strIp ,etT9WorkcenterCode,etT9OperaionDesc,etT9WorkcenterId,strUserId,etT9OperationId);
+                luOillerDialog.call_Workcetner(strIp ,etT9WorkcenterCode,etT9WorkcenterDesc,etT9WorkcenterId,strUserId,etT9OperationId);
 
 
             }

@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.erp.Taiyo.Dialog.LuOillerDialog;
+
 import com.erp.Taiyo.R;
 
 import org.json.JSONObject;
@@ -86,6 +88,9 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
         //키보드
         imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+
+        initializeToolbar();
+
 
 
 

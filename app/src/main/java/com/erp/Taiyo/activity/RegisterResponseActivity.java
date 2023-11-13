@@ -1456,6 +1456,5 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
 
 
-
 }
 

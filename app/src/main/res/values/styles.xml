@@ -34,5 +34,6 @@
         <item name="windowNoTitle">true</item>
 
         <item name="android:windowBackground">@drawable/taiyo_splash</item>
+
     </style>
 </resources>

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -15,11 +18,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.erp.Taiyo.Dialog.LuOillerDialog;
+import com.erp.Taiyo.adapter.FileNoProcessAdapter;
+import com.erp.Taiyo.item.FileNoProcessListItem;
 
 import com.erp.Taiyo.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -61,8 +73,12 @@ public class RegisterProcessActivity extends AppCompatActivity {
     InputMethodManager imm;
     JSONObject jspSumObject = new JSONObject();
 
+    FileNoProcessAdapter fileNoProcessAdapter = new FileNoProcessAdapter();
+    FileNoProcessListItem fileNoProcessListItem = new FileNoProcessListItem();
+
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
+
 
 
     @Override
@@ -104,10 +120,10 @@ public class RegisterProcessActivity extends AppCompatActivity {
         etT9JobId = (EditText) findViewById(R.id.et_t9_job_id);
 
 
-
         btnt9save = (Button) findViewById(R.id.btn_t9_save);
         btnT9WorkcenterLookup = (Button) findViewById(R.id.btn_t9_workcenter_lookup);
         btnT9MoveLookup = (Button) findViewById(R.id.btn_t9_move_lookup);
+        lvInput = (ListView)  findViewById(R.id.lv_search);
 
 
 
@@ -120,10 +136,38 @@ public class RegisterProcessActivity extends AppCompatActivity {
         initializeToolbar();
 
 
+        etT9FileNo.requestFocus();
 
 
+        etT9FileNo.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(ScanModify==false && getCurrentFocus() == etT9FileNo){
+                    // btnt1save.setBackgroundColor(Color.YELLOW);
+                    // btnt1save.setTextColor(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(getCurrentFocus() == etT9FileNo && !s.toString().isEmpty()){
+
+                    FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
+                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId, etT9FileNo.getText().toString() ,etT9WorkcenterId.getText().toString() ,strUserId, etT9MoveTrxType.getText().toString());
+
+                }else{
+                    return;
+                }
+            }
+        });
 
 
 
@@ -135,7 +179,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.KOREAN);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss", Locale.KOREAN);
 
         String getTime = sdf.format(date);
 
@@ -197,7 +241,6 @@ public class RegisterProcessActivity extends AppCompatActivity {
             }
         });
 
-
         btnT9MoveLookup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,6 +253,121 @@ public class RegisterProcessActivity extends AppCompatActivity {
         });
 
 
+    }
+
+
+
+
+    // FILE_NO_SCAN
+    protected class FILE_NO_SCAN extends AsyncTask<String, Void, String>
+    {
+        final FileNoProcessAdapter fileNoProcessAdapter = new FileNoProcessAdapter();
+        protected  String doInBackground(String... urls)
+        {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "W_SOB_ID=" + urls[1]
+                    + "&W_ORG_ID=" + urls[2]
+                    + "&W_FILE_NO=" +urls[3]
+                    + "&W_WORKCENTER_ID=" +"11350"
+                    + "&P_USER_ID=" +urls[5]
+                    + "&P_MOVE_TRX_TYPE=" +urls[6]
+                    ;
+
+            try
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/FileNoScanProcess.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return  jsonHtml.toString(); //결과값 리턴
+        }
+
+
+        protected void onPostExecute(String result)
+        {
+            //페이지 결과값 파싱
+            try
+            {
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+
+                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+
+
+                if(jarrayWorkLevel.length() < 1){
+                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                    ScanModify = false;
+                    return;
+                }
+                for(int j=0; j< jarrayWorkLevel.length(); j++){
+                    JSONObject job = jarrayWorkLevel.getJSONObject(j);
+                    if(!job.getString("Status").equals("S")){
+                        return;
+                    }
+
+                   fileNoProcessAdapter.addItem("√" ,job.getString("FILE_NO"),job.getString("OP_POISE_ORDER_SEQ"),job.getString("OP_UNIT_ORDER_SEQ")
+                           ,job.getString("RELEASE_DATE"),job.getString("ITEM_DESCRIPTION"),
+                           job.getString("WEEK_ACTUAL_QTY"),job.getString("REMARK"),job.getString("SECTION_DESC")
+                           ,job.getString("JOB_NO"),job.getString("SPLIT_FLAG"),job.getString("OP_POISE_ORDER_ID"),
+                           job.getString("OP_UNIT_ORDER_ID"),job.getString("OPERATION_ID"),job.getString("OPERATION_DESC"));
+
+
+                    etT9FileNo.setText(job.getString("FILE_NO"));
+                    etT9OperaionDesc.setText(job.getString("OPERATION_DESC"));
+                    etT9ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+
+                    lvInput.setAdapter(fileNoProcessAdapter);
+
+                }
+
+
+
+                /*if(!t1ModeFlag.equals("N")){
+
+
+                }
+*/
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 
 

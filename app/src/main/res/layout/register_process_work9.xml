@@ -329,6 +329,8 @@
 
     <!--   숨김 값 -->
     <!--   파일 넘버 -->
+
+
     <EditText
         android:id="@+id/et_t9_release_date_id"
         android:layout_width="0dp"

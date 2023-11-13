@@ -38,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -404,16 +405,11 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
-               // currentDateAndTime = currentDateAndTime.replaceAll(" ", "");
-
-
-                etT2MixStartTime.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2MixStartTime.setText(getNowDate());
             }
         });
 
@@ -421,15 +417,11 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
-
-
-                etT2Stir1StartDate.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2Stir1StartDate.setText(getNowDate());
             }
         });
 
@@ -437,15 +429,11 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
-
-
-                etT2Stir1EndDate.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2Stir1EndDate.setText(getNowDate());
             }
         });
 
@@ -453,56 +441,45 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
-
-                etT2Stir2StartDate.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2Stir2StartDate.setText(getNowDate());
             }
         });
         btnT2Stir2EndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
-
-                etT2Stir2EndDate.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2Stir2EndDate.setText(getNowDate());
             }
         });
         btnT2Stir3StartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
 
-                etT2Stir3StartDate.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2Stir3StartDate.setText(getNowDate());
             }
         });
         btnT2Stir3EndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
-
-                etT2Stir3EndDate.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2Stir3EndDate.setText(getNowDate());
             }
         });
 
@@ -510,27 +487,17 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String currentDateAndTime = sdf.format(new Date());
-
-
-                etT2MixEndTime.setText(currentDateAndTime);
                 if(FileScan==false){
                     bT2Save.setBackgroundColor(Color.YELLOW);
                     bT2Save.setTextColor(Color.BLACK);
                 }
+                etT2MixEndTime.setText(getNowDate());
 
-
-
-
-//                bT2Save.setBackgroundResource(R.color.yellow); 기존에 만든거
-//                bT2Save.setTextColor(R.color.black);
             }
         });
 
 
         //        다이얼로그
-
         bT2Recent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -590,7 +557,16 @@ public class CombinationWorkActivity extends AppCompatActivity {
         });
     }
 
+    private String getNowDate() {
 
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss", Locale.KOREAN);
+
+        String getTime = sdf.format(date);
+
+        return getTime;
+    }
 
 
     private void initializeToolbar() {
@@ -724,6 +700,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     + "&W_FILE_NO=" + urls[2]
                     + "&W_WORKCENTER_ID=" + urls[3];
             try {
+
                 URL obj = new URL("http://"+strIp+"/TAIYO/FileNoScanBH.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
@@ -859,7 +836,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
         }
         // 스트링 null 처리하는 메서드
         private String handleStringNull(String input) {
-                 return input.equals("null") ? "" : input;
+
+            String rtStr = input.equals("null") ? "" : input;
+
+            return rtStr;
         }
 
     }

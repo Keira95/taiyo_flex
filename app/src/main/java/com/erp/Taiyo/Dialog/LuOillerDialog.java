@@ -74,10 +74,22 @@ public class LuOillerDialog {
         btnClose = dialog.findViewById(R.id.btn_close);
         IvItem = dialog.findViewById(R.id.lv_list);
 
+   /*
+        if( ){// LU_OLIER
+            Lu_Oiller lu_oiller = new Lu_Oiller();
+            lu_oiller.execute(ip.toString(), strSobId, strOrgId);
 
-        Lu_Oiller lu_oiller = new Lu_Oiller();
-        lu_oiller.execute(ip.toString(), strSobId, strOrgId);
 
+        }
+        else if(){ //LU_WORKCENTER
+
+
+
+        }else{ //LU_MOVE_TRX_TYPE
+
+
+
+        }*/
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override

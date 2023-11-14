@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/taiyo_background">
+        android:background="@drawable/taiyo_background"
 
+        >
+        <!--android:background="@drawable/taiyo_background"-->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -82,8 +84,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+
             android:layout_marginBottom="5dp"
             >
+
 
             <Button
                 android:id="@+id/btn_gr"
@@ -95,7 +99,6 @@
                 android:text="계량작업등록"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
-
 
             <Button
                 android:id="@+id/btn_bh"

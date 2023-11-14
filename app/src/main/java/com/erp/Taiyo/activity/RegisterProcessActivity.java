@@ -326,7 +326,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
                     + "&W_FILE_NO=" +urls[3]
-                    + "&W_WORKCENTER_ID=" +"11353"
+                    + "&W_WORKCENTER_ID=" +urls[4]
                     + "&P_USER_ID=" +urls[5]
                     + "&P_MOVE_TRX_TYPE=" +urls[6]
                     ;

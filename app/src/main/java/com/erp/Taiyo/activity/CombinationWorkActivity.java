@@ -42,8 +42,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-
+import androidx.core.content.ContextCompat;
 
 
 public class CombinationWorkActivity extends AppCompatActivity {
@@ -735,6 +734,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                etT2MixTankDescScan.requestFocus();
             }
 
             return jsonHtml.toString(); //결과값 리턴
@@ -830,8 +830,12 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                etT2MixTankDescScan.requestFocus();
+
             } catch (Exception e) {
                 e.printStackTrace();
+                etT2MixTankDescScan.requestFocus();
+
             }
         }
         // 스트링 null 처리하는 메서드
@@ -889,6 +893,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                etT2EquipmentScan.requestFocus();
+
             }
 
             return jsonHtml.toString(); //결과값 리턴
@@ -921,8 +927,12 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                etT2EquipmentScan.requestFocus();
+
             } catch (Exception e) {
                 e.printStackTrace();
+                etT2EquipmentScan.requestFocus();
+
             }
         }
 
@@ -974,6 +984,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                etT2Stir1WorkerNameScan.requestFocus();
+
             }
 
             return jsonHtml.toString(); //결과값 리턴
@@ -1014,8 +1026,12 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                etT2Stir1WorkerNameScan.requestFocus();
+
             } catch (Exception e) {
                 e.printStackTrace();
+                etT2Stir1WorkerNameScan.requestFocus();
+
             }
         }
 
@@ -1233,8 +1249,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
                             fileNoScanBH.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString()); //재조회
 
 
-                            bT2Save.setBackgroundColor(R.color.dark_green);
-                            bT2Save.setTextColor(Color.WHITE);
+                            bT2Save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                            bT2Save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                         }else{
 

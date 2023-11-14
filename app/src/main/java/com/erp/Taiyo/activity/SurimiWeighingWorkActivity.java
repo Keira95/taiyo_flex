@@ -44,6 +44,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
@@ -663,6 +664,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t3TankScan.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -759,18 +761,37 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                /*if(!t1ModeFlag.equals("N")){
-
+                if(t3ModFlag.equals("N")){
+                    t3FileNo.setInputType(InputType.TYPE_NULL);
+                    t3ItemDesc.setInputType(InputType.TYPE_NULL);
+                    t3OperaionDesc.setInputType(InputType.TYPE_NULL);
+                    t3LastSurimiCount.setInputType(InputType.TYPE_NULL);
+                    t3Surimi1StartTime.setInputType(InputType.TYPE_NULL);
+                    t3TankScan.setInputType(InputType.TYPE_NULL);
+                    t3OillerDesc.setInputType(InputType.TYPE_NULL);
+                    t3LiqidPersonDesc.setInputType(InputType.TYPE_NULL);
+                    t3Surimi1EndTime.setInputType(InputType.TYPE_NULL);
+                    t3Surimi2StartTime.setInputType(InputType.TYPE_NULL);
+                    t3Surimi2EndTime.setInputType(InputType.TYPE_NULL);
+                    t3EquimentId.setInputType(InputType.TYPE_NULL);
+                    t3OillerId.setInputType(InputType.TYPE_NULL);
+                    t3IndicatorUserId.setInputType(InputType.TYPE_NULL);
+                    t3TankCode.setInputType(InputType.TYPE_NULL);
+                    t3JobId.setInputType(InputType.TYPE_NULL);
+                    t3ModFlag.setInputType(InputType.TYPE_NULL);
+                    t3OperationId.setInputType(InputType.TYPE_NULL);
 
                 }
-*/
+
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t3TankScan.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t3TankScan.requestFocus();
             }
         }
     }
@@ -826,6 +847,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t3LiqidPersonDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -858,10 +880,12 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t3LiqidPersonDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t3LiqidPersonDesc.requestFocus();
             }
         }
     }
@@ -1223,8 +1247,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     FILE_NO_YU_SCAN fILE_NO_SCAN = new FILE_NO_YU_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t3FileNo.getText().toString(),t3WorkcenterId.getText().toString()); //다시 fill
 
-                    btnt1save.setBackgroundColor(R.color.dark_green);
-                    btnt1save.setTextColor(Color.WHITE);
+                    btnSave.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnSave.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();

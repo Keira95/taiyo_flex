@@ -47,6 +47,7 @@ import java.util.TimeZone;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
@@ -855,6 +856,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t1LiqidPersonDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -885,10 +887,13 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t1LiqidPersonDesc.requestFocus();
+
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t1LiqidPersonDesc.requestFocus();
             }
         }
     }
@@ -943,6 +948,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t1PowderPersonDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -973,10 +979,12 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t1PowderPersonDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t1PowderPersonDesc.requestFocus();
             }
         }
     }
@@ -1155,8 +1163,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t1FileNo.getText().toString(),t1WorkcenterId.getText().toString()); //다시 fill
 
-                    btnt1save.setBackgroundColor(R.color.dark_green);
-                    btnt1save.setTextColor(Color.WHITE);
+                    btnt1save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt1save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다." + result, Toast.LENGTH_SHORT).show();

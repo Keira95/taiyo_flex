@@ -41,6 +41,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class RegisterPackingActivity extends AppCompatActivity {
 
@@ -52,7 +53,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
     EditText t5FileNo , t5ItemDesc, t5operaionDesc , t5OpOrderSeq , t5OpUnitOrderSeq ,t5PackingUnit, t5Request_qty , t5UnitQty,
             t5LotNo ,t5StirEquipmentDesc, t5StirStartDate ,t5StirEndDate , t5UnitEquipmentDesc, t5UnitStartDate , t5UnitEndDate ,t5PumpNoDes , t5StirEquipmentId
             , t5UnitEquipmentId, t5WorkerId ,t5PumpNoCode ,t5WorkerDesc ,t5WorkcenterCode , t5WorkcenterDesc, t5WorkcenterId ,t5StirEquipmentCode ,t5StirOldEquipmentCode
-            ,t5UnitEquipmentCode , t5OldUnitEquipmentDesc , t5PumpNoId , t5JobId ,t5OperationId ,t5OpUnitOrderId ,t5UnitWorkDate
+            ,t5UnitEquipmentCode , t5OldUnitEquipmentDesc , t5PumpNoId , t5JobId ,t5OperationId ,t5OpUnitOrderId ,t5UnitWorkDate, t5ModFlag
     ;
     String strSobId = "70";
     String strOrgId = "701";
@@ -141,6 +142,9 @@ public class RegisterPackingActivity extends AppCompatActivity {
         t5OperationId =(EditText) findViewById(R.id.et_t5_operation_id);
         t5OpUnitOrderId = (EditText) findViewById(R.id.et_t5_op_unit_order_id);
         t5UnitWorkDate   = (EditText) findViewById(R.id.et_t5_unit_work_date);
+        t5ModFlag   = (EditText) findViewById(R.id.et_t5_mod_flag);
+
+
 
         btnStirStarDate = (Button) findViewById(R.id.btn_t5_stir_start_date);
         btnStirEndDate  = (Button) findViewById(R.id.btn_t5_stir_end_date);
@@ -655,6 +659,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t5StirEquipmentDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -790,6 +795,11 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     }else{
                         t5OpUnitOrderId.setText(job.getString("OP_UNIT_ORDER_ID"));
                     }
+                    if(job.getString("MOD_FLAG").equals("null")){
+                        t5ModFlag.setText("");
+                    }else{
+                        t5ModFlag.setText(job.getString("MOD_FLAG"));
+                    }
 
 
 
@@ -798,18 +808,44 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                /*if(!t1ModeFlag.equals("N")){
+                if(t5ModFlag.equals("N")){
+                    t5FileNo.setInputType(InputType.TYPE_NULL);
+                    t5ItemDesc.setInputType(InputType.TYPE_NULL);
+                    t5operaionDesc.setInputType(InputType.TYPE_NULL);
+                    t5OpOrderSeq.setInputType(InputType.TYPE_NULL);
+                    t5OpUnitOrderSeq.setInputType(InputType.TYPE_NULL);
+                    t5PackingUnit.setInputType(InputType.TYPE_NULL);
+                    t5Request_qty.setInputType(InputType.TYPE_NULL);
+                    t5UnitQty.setInputType(InputType.TYPE_NULL);
+                    t5LotNo.setInputType(InputType.TYPE_NULL);
+                    t5StirEquipmentDesc.setInputType(InputType.TYPE_NULL);
+                    t5StirStartDate.setInputType(InputType.TYPE_NULL);
+                    t5StirEndDate.setInputType(InputType.TYPE_NULL);
+                    t5UnitEquipmentDesc.setInputType(InputType.TYPE_NULL);
+                    t5UnitStartDate.setInputType(InputType.TYPE_NULL);
+                    t5UnitEndDate.setInputType(InputType.TYPE_NULL);
+                    t5PumpNoDes.setInputType(InputType.TYPE_NULL);
+                    t5StirEquipmentId.setInputType(InputType.TYPE_NULL);
+                    t5UnitEquipmentId.setInputType(InputType.TYPE_NULL);
+                    t5WorkerId.setInputType(InputType.TYPE_NULL);
+                    t5PumpNoCode.setInputType(InputType.TYPE_NULL);
+                    t5WorkerDesc.setInputType(InputType.TYPE_NULL);
+                    t5JobId.setInputType(InputType.TYPE_NULL);
+                    t5OperationId.setInputType(InputType.TYPE_NULL);
+                    t5OpUnitOrderId.setInputType(InputType.TYPE_NULL);
+                    t5ModFlag.setInputType(InputType.TYPE_NULL);
 
 
                 }
-*/
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t5StirEquipmentDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t5StirEquipmentDesc.requestFocus();
             }
         }
     }
@@ -863,6 +899,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t5UnitEquipmentDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -895,10 +932,12 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t5UnitEquipmentDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t5UnitEquipmentDesc.requestFocus();
             }
         }
     }
@@ -951,6 +990,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t5WorkerDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -983,10 +1023,12 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t5WorkerDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t5WorkerDesc.requestFocus();
             }
         }
     }
@@ -1040,6 +1082,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t5PumpNoDes.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -1070,10 +1113,12 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t5PumpNoDes.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t5PumpNoDes.requestFocus();
             }
         }
     }
@@ -1254,8 +1299,9 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     FILE_NO_CJ_SCAN fILE_NO_SCAN = new  FILE_NO_CJ_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t5FileNo.getText().toString(),t5WorkcenterId.getText().toString()); //다시 fill
 
-                    btnt1save.setBackgroundColor(R.color.dark_green);
-                    btnt1save.setTextColor(Color.WHITE);
+                    btnSave.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnSave.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다."+ result, Toast.LENGTH_SHORT).show();

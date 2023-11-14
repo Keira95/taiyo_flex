@@ -844,6 +844,12 @@
             android:layout_height="0dp" />
 
         <EditText
+            android:id="@+id/et_t5_mod_flag"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+
+        <EditText
             android:id="@+id/et_t5_op_unit_order_id"
             android:layout_width="0dp"
             android:layout_height="0dp" />

@@ -6,7 +6,7 @@
         <item name="windowNoTitle">true</item>
 
         <item name="android:windowBackground">@drawable/taiyo_splash</item>
-        <item name="android:fontFamily">@font/bmjua</item>
+
 
     </style>
 </resources>

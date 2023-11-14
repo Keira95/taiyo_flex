@@ -41,6 +41,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class RegisterAdjustmentActivity extends AppCompatActivity {
 
@@ -544,6 +545,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t4EquipmentDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -678,18 +680,40 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                /*if(!t1ModeFlag.equals("N")){
+                if(t4ModFlag.equals("N")){
 
+                    t4FileNo.setInputType(InputType.TYPE_NULL);
+                    t4ItemDesc.setInputType(InputType.TYPE_NULL);
+                    t4OperaionDesc.setInputType(InputType.TYPE_NULL);
+                    t4OpOrderSeq.setInputType(InputType.TYPE_NULL);
+                    t4Jojung1.setInputType(InputType.TYPE_NULL);
+                    t4Jojung2.setInputType(InputType.TYPE_NULL);
+                    t4OrderQty1.setInputType(InputType.TYPE_NULL);
+                    t4OrderQty2.setInputType(InputType.TYPE_NULL);
+                    t4PoiseSubSeq.setInputType(InputType.TYPE_NULL);
+                    t4EquipmentDesc.setInputType(InputType.TYPE_NULL);
+                    t4WorkStartDate.setInputType(InputType.TYPE_NULL);
+                    t4WorkEndDate.setInputType(InputType.TYPE_NULL);
+                    t4WorkerDesc.setInputType(InputType.TYPE_NULL);
+                    t4EquipmentId.setInputType(InputType.TYPE_NULL);
+                    t4WorkerId.setInputType(InputType.TYPE_NULL);
+                    t4OpOrderId.setInputType(InputType.TYPE_NULL);
+                    t4JobId.setInputType(InputType.TYPE_NULL);
+                    t4OperationId.setInputType(InputType.TYPE_NULL);
+                    t4OpPoiseOrderId.setInputType(InputType.TYPE_NULL);
+                    t4ModFlag.setInputType(InputType.TYPE_NULL);
 
                 }
-*/
+
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t4EquipmentDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t4EquipmentDesc.requestFocus();
             }
         }
 
@@ -777,9 +801,9 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t4FileNo.getText().toString(),t4WorkcenterId.getText().toString()); //다시 fill
 
-                    btnt4save.setBackgroundColor(R.color.dark_green);
 
-                    btnt4save.setTextColor(Color.WHITE);
+                    btnt4save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt4save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다."+ result, Toast.LENGTH_SHORT).show();
@@ -849,6 +873,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t4WorkerDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -881,10 +906,12 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t4WorkerDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t4WorkerDesc.requestFocus();
             }
         }
     }
@@ -939,6 +966,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t4FileNo.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -969,10 +997,12 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t4FileNo.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t4FileNo.requestFocus();
             }
         }
     }

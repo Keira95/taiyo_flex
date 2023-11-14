@@ -517,6 +517,10 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+                        if(etT2FileNoScan.getText().toString().isEmpty()){
+                            Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
                         BhUpdate bhUpdate = new BhUpdate();
                         bhUpdate.execute(etH2JobId.getText().toString(), etH2OperationId.getText().toString(), etH2XworkId.getText().toString(), strSobId, strOrgId, "", etH2TankLcode.getText().toString(),

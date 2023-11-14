@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -183,7 +184,47 @@ public class RegisterProcessActivity extends AppCompatActivity {
             }
         });
 
+        lvInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
+            FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(position);
 
+                int outQty = 0;
+                if(item.getStrChk().equals("√"))
+                {
+                    item.setStrChk("");
+                }
+                else {
+                    item.setStrChk("√");
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        etT9FileNo.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT9FileNo.setText("");
+                etT9OperaionDesc.setText("");
+                etT9ItemDesc.setText("");
+                return false;
+            }
+        });
+        etT9WorkcenterDesc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT9WorkcenterDesc.setText("");
+                return false;
+            }
+        });
+        etT9MoveTrxType.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT9MoveTrxType.setText("");
+                return false;
+            }
+        });
 
 
     }
@@ -351,12 +392,21 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     if(!job.getString("Status").equals("S")){
                         return;
                     }
-
-                   fileNoProcessAdapter.addItem("√" ,job.getString("FILE_NO"),job.getString("OP_POISE_ORDER_SEQ"),job.getString("OP_UNIT_ORDER_SEQ")
-                           ,job.getString("RELEASE_DATE"),job.getString("ITEM_DESCRIPTION"),
-                           job.getString("WEEK_ACTUAL_QTY"),job.getString("REMARK"),job.getString("SECTION_DESC")
-                           ,job.getString("JOB_NO"),job.getString("SPLIT_FLAG"),job.getString("OP_POISE_ORDER_ID"),
-                           job.getString("OP_UNIT_ORDER_ID"),job.getString("OPERATION_ID"),job.getString("OPERATION_DESC"));
+                   fileNoProcessAdapter.addItem("√" ,
+                           handleStringNull(job.getString("FILE_NO")),
+                           handleStringNull(job.getString("OP_POISE_ORDER_SEQ")),
+                           handleStringNull(job.getString("OP_UNIT_ORDER_SEQ")),
+                           handleStringNull(job.getString("RELEASE_DATE")),
+                           handleStringNull(job.getString("ITEM_DESCRIPTION")),
+                           handleStringNull(job.getString("WEEK_ACTUAL_QTY")),
+                           handleStringNull(job.getString("REMARK")),
+                           handleStringNull(job.getString("SECTION_DESC")),
+                           handleStringNull(job.getString("JOB_NO")),
+                           handleStringNull(job.getString("SPLIT_FLAG")),
+                           handleStringNull(job.getString("OP_POISE_ORDER_ID")),
+                           handleStringNull(job.getString("OP_UNIT_ORDER_ID")),
+                           handleStringNull(job.getString("OPERATION_ID")),
+                           handleStringNull(job.getString("OPERATION_DESC")));
 
 
                     etT9FileNo.setText(job.getString("FILE_NO"));
@@ -365,7 +415,6 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
 
                 }
-
 
                 lvInput.setAdapter(fileNoProcessAdapter);
                 etT9HiddenFocus.requestFocus();
@@ -386,6 +435,13 @@ public class RegisterProcessActivity extends AppCompatActivity {
         }
     }
 
+
+    private String handleStringNull(String input) {
+
+        String rtStr = input.equals("null") ? "" : input;
+
+        return rtStr;
+    }
 
 
 

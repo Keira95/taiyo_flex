@@ -2,11 +2,11 @@
 <LinearLayout android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="35sp"
+    android:descendantFocusability="blocksDescendants"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     >
-
 
 
     <LinearLayout
@@ -240,10 +240,6 @@
                 android:id="@+id/li9_operation_desc"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
-
-
-
-
 
 
 

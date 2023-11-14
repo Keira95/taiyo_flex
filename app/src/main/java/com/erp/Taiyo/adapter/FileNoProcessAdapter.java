@@ -90,7 +90,7 @@ public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
 
         FileNoProcessListItem FilterListArray = getItem(position);
 
-        tvSeq.setText(FilterListArray.getStrActualQty());
+        tvSeq.setText(FilterListArray.getStrChk());
         tvFileNo.setText(FilterListArray.getStrFileNo());
         tvActQty.setText(FilterListArray.getStrActualQty());
         tvOpPoiserOrderSeq.setText(FilterListArray.getStrOpPoiseOrderSeq());

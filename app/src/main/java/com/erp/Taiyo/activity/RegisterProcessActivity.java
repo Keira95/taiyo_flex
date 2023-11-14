@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.erp.Taiyo.Dialog.LuOillerDialog;
 import com.erp.Taiyo.adapter.FileNoProcessAdapter;
@@ -48,7 +49,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
     EditText etT9ItemDesc, etT9FileNo, etT9WorkcenterDesc,etT9OperaionDesc, etT9WorkcenterId, etT9WorkcenterCode, etT9MoveTrxType, etT9MoveTrxTypeId, etT9MoveTrxTypeDesc, etT9ReleaseDateId,
             etT9OpPoiseOrderSeq , etT9OpUnitOrderSeq, etT9OpActualQty ,etT9Remark, etT9SectionDesc, etT9SplitFlag, etT9OpPoiseOrderId, etT9OpUnitOrderId, etT9OperationId,
-            etT9JobId;
+            etT9JobId ,etT9HiddenFocus;
     String strSobId = "70";
     String strOrgId = "701";
     String strAssembly = "PPMF2201";
@@ -118,7 +119,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
         etT9OpUnitOrderId = (EditText) findViewById(R.id.et_t9_op_unit_order_id);
         etT9OperationId = (EditText) findViewById(R.id.et_t9_operation_id);
         etT9JobId = (EditText) findViewById(R.id.et_t9_job_id);
-
+        etT9HiddenFocus = (EditText) findViewById(R.id.et_t9_hidden_focus);
 
         btnt9save = (Button) findViewById(R.id.btn_t9_save);
         btnT9WorkcenterLookup = (Button) findViewById(R.id.btn_t9_workcenter_lookup);
@@ -160,8 +161,21 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
                 if(getCurrentFocus() == etT9FileNo && !s.toString().isEmpty()){
 
-                    FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
-                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId, etT9FileNo.getText().toString() ,etT9WorkcenterId.getText().toString() ,strUserId, etT9MoveTrxType.getText().toString());
+                    FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
+                    String chk = "S";
+                    for(int x=0; x< lvInput.getCount(); x++){
+                        FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(x);
+
+                        if(item.getStrFileNo().equals(etT9FileNo.getText().toString())){
+                            chk = "F";
+                        }
+                    }
+                    if(chk.equals("S")){
+                        FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
+                        fILE_NO_SCAN.execute(strIp, strSobId,strOrgId, etT9FileNo.getText().toString() ,etT9WorkcenterId.getText().toString() ,strUserId, etT9MoveTrxType.getText().toString());
+                    }else{
+                        return;
+                    }
 
                 }else{
                     return;
@@ -245,6 +259,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                etT9MoveTrxType.setText("");
                 LuOillerDialog luOillerDialog = new LuOillerDialog(RegisterProcessActivity.this);
                 luOillerDialog.call_Move_Trx(strIp ,etT9MoveTrxType,etT9MoveTrxTypeDesc,etT9WorkcenterId,strUserId,etT9MoveTrxType);
 
@@ -270,7 +285,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
                     + "&W_FILE_NO=" +urls[3]
-                    + "&W_WORKCENTER_ID=" +"11350"
+                    + "&W_WORKCENTER_ID=" +"11353"
                     + "&P_USER_ID=" +urls[5]
                     + "&P_MOVE_TRX_TYPE=" +urls[6]
                     ;
@@ -348,12 +363,13 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     etT9OperaionDesc.setText(job.getString("OPERATION_DESC"));
                     etT9ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
 
-                    lvInput.setAdapter(fileNoProcessAdapter);
 
                 }
 
 
-
+                lvInput.setAdapter(fileNoProcessAdapter);
+                etT9HiddenFocus.requestFocus();
+                etT9FileNo.setText("");
                 /*if(!t1ModeFlag.equals("N")){
 
 

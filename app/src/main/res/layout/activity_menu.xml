@@ -10,10 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/taiyo_background"
+        android:background="@drawable/taiyo_background">
 
-        >
-        <!--android:background="@drawable/taiyo_background"-->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -81,18 +79,17 @@
             android:background="#FFFFFF" />
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-
+            android:layout_marginTop="100dp"
             android:layout_marginBottom="5dp"
             >
 
-
             <Button
                 android:id="@+id/btn_gr"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
                 android:background="@drawable/buttonshape2"
@@ -100,10 +97,12 @@
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
+
+
             <Button
                 android:id="@+id/btn_bh"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:text="배합작업등록"
@@ -149,18 +148,21 @@
 
             <Button
                 android:id="@+id/btn_yu"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
                 android:background="@drawable/buttonshape2"
                 android:text="연육작업등록"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
+
+
+
             <Button
                 android:id="@+id/btn_jj"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
                 android:background="@drawable/buttonshape2"
@@ -205,8 +207,8 @@
             >
             <Button
                 android:id="@+id/btn_cj"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
                 android:textColor="@color/black"
@@ -216,10 +218,12 @@
 
                 />
 
+
+
             <Button
                 android:id="@+id/btn_bo"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
                 android:layout_margin="5sp"
                 android:layout_weight="1"
                 android:background="@drawable/buttonshape2"
@@ -239,29 +243,21 @@
 
         <Button
             android:id="@+id/btn_tp"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape2"
             android:text="탈포작업등록"
             android:textColor="@color/black"
             android:textSize="15sp" />
-<!--        <Button-->
-<!--            android:id="@+id/btn_work8"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="70dp"-->
-<!--            android:layout_margin="5sp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/buttonshape"-->
-<!--            android:text="실적등록"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="15sp"/>-->
+
+
         <Button
 
             android:id="@+id/btn_ag"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape2"

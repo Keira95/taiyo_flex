@@ -2,6 +2,7 @@
 <LinearLayout android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="35sp"
+    android:descendantFocusability="blocksDescendants"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -27,12 +28,7 @@
             android:orientation="vertical"
             >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#BDBDBD"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+
 
             <TextView
                 android:id="@+id/li9_chk"
@@ -63,11 +59,7 @@
             android:orientation="vertical"
             >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#BDBDBD"
-                app:layout_constraintBottom_toBottomOf="parent" />
+
 
             <TextView
                 android:id="@+id/li9_file_no"
@@ -99,11 +91,6 @@
             android:orientation="vertical"
             >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#BDBDBD"
-                app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
                 android:id="@+id/li9_qctual_qty"
                 android:layout_width="match_parent"
@@ -132,11 +119,7 @@
             android:orientation="vertical"
             >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#BDBDBD"
-                app:layout_constraintBottom_toBottomOf="parent" />
+
             <TextView
                 android:id="@+id/li9_op_poise_order_seq"
                 android:layout_width="match_parent"
@@ -165,11 +148,6 @@
             android:orientation="vertical"
             >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#BDBDBD"
-                app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
                 android:id="@+id/li9_op_unit_order_seq"
                 android:layout_width="match_parent"

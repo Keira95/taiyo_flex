@@ -534,6 +534,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                t8EquipmentName.requestFocus();
             }
 
             return jsonHtml.toString(); //결과값 리턴
@@ -563,8 +564,12 @@ public class RegisterAgingActivity extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                t8EquipmentName.requestFocus();
+
             } catch (Exception e) {
                 e.printStackTrace();
+                t8EquipmentName.requestFocus();
+
             }
         }
 
@@ -620,6 +625,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t8StirWorkerName.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -652,10 +658,12 @@ public class RegisterAgingActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t8StirWorkerName.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t8StirWorkerName.requestFocus();
             }
         }
     }
@@ -797,6 +805,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                t8TankDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -929,10 +938,12 @@ public class RegisterAgingActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                t8TankDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                t8TankDesc.requestFocus();
             }
         }
     }
@@ -1018,6 +1029,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
 
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t8FileNoScan.getText().toString(),t8WorkcenterId.getText().toString()); //다시 fill
+
 
                     btnt8Save.setBackgroundColor(R.color.dark_green);
                     btnt8Save.setTextColor(Color.WHITE);

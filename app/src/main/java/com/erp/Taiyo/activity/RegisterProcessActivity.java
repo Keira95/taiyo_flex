@@ -245,6 +245,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                etT9MoveTrxType.setText(""); //초기화 다시 한 번 잘생각하기,,
                 LuOillerDialog luOillerDialog = new LuOillerDialog(RegisterProcessActivity.this);
                 luOillerDialog.call_Move_Trx(strIp ,etT9MoveTrxType,etT9MoveTrxTypeDesc,etT9WorkcenterId,strUserId,etT9MoveTrxType);
 

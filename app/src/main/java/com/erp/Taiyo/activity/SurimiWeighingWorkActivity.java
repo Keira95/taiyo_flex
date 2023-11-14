@@ -44,6 +44,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
@@ -1246,8 +1247,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     FILE_NO_YU_SCAN fILE_NO_SCAN = new FILE_NO_YU_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t3FileNo.getText().toString(),t3WorkcenterId.getText().toString()); //다시 fill
 
-                    btnt1save.setBackgroundColor(R.color.dark_green);
-                    btnt1save.setTextColor(Color.WHITE);
+                    btnSave.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnSave.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();

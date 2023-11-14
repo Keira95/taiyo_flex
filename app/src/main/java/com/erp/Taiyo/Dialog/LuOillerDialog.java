@@ -512,9 +512,12 @@ public class LuOillerDialog {
 
         protected void onPostExecute(String result)
         {
+
+
             //페이지 결과값 파싱
             try
             {
+
                 JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
 
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱

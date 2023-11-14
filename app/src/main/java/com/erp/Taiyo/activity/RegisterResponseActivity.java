@@ -42,6 +42,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class RegisterResponseActivity extends AppCompatActivity{
 
@@ -803,6 +804,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
             } catch (Exception e) {
                 e.printStackTrace();
+                etT6EquipmentName.requestFocus();
             }
 
             return jsonHtml.toString(); //결과값 리턴
@@ -832,8 +834,12 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                etT6EquipmentName.requestFocus();
+
             } catch (Exception e) {
                 e.printStackTrace();
+                etT6EquipmentName.requestFocus();
+
             }
         }
 
@@ -885,6 +891,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
             } catch (Exception e) {
                 e.printStackTrace();
+                etT6Stir1WorkerName.requestFocus();
             }
 
             return jsonHtml.toString(); //결과값 리턴
@@ -921,8 +928,12 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                etT6Stir1WorkerName.requestFocus();
+
             } catch (Exception e) {
                 e.printStackTrace();
+                etT6Stir1WorkerName.requestFocus();
+
             }
         }
 
@@ -1094,6 +1105,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             }catch (Exception e)
             {
                 e.printStackTrace();
+                etT6TankDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -1433,8 +1445,9 @@ public class RegisterResponseActivity extends AppCompatActivity{
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,etT6FileNoScan.getText().toString(),etT6WorkercenterId.getText().toString()); //다시 fill
 
-                    btnt6save.setBackgroundColor(R.color.dark_green);
-                    btnt6save.setTextColor(Color.WHITE);
+                    btnt6save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt6save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다."+ result, Toast.LENGTH_SHORT).show();

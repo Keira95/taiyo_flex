@@ -41,6 +41,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class RegisterDefomationActivity extends AppCompatActivity {
 
@@ -563,6 +564,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                etT7TankDesc.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -665,10 +667,12 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                etT7TankDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                etT7TankDesc.requestFocus();
             }
         }
     }
@@ -725,6 +729,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                etT7EquipmentName.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -755,10 +760,13 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                etT7EquipmentName.requestFocus();
+
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                etT7EquipmentName.requestFocus();
             }
         }
     }
@@ -813,6 +821,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             }catch (Exception e)
             {
                 e.printStackTrace();
+                etT7WorkerName.requestFocus();
             }
             return  jsonHtml.toString(); //결과값 리턴
         }
@@ -845,10 +854,12 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                etT7WorkerName.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                etT7WorkerName.requestFocus();
             }
         }
     }
@@ -1022,8 +1033,9 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                     FILE_NO_TP_SCAN fILE_NO_TP_SCAN = new FILE_NO_TP_SCAN();
                     fILE_NO_TP_SCAN.execute(strIp, strSobId,strOrgId ,etT7FileNoScan.getText().toString(),etT7WorkcenterId.getText().toString()); //다시 fill
 
-                    btnt7save.setBackgroundColor(R.color.dark_green);
-                    btnt7save.setTextColor(Color.WHITE);
+                    btnt7save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt7save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다." +result, Toast.LENGTH_SHORT).show();

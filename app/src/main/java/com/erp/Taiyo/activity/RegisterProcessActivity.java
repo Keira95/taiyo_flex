@@ -10,12 +10,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.erp.Taiyo.Dialog.LuOillerDialog;
 import com.erp.Taiyo.adapter.FileNoProcessAdapter;
@@ -48,7 +50,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
     EditText etT9ItemDesc, etT9FileNo, etT9WorkcenterDesc,etT9OperaionDesc, etT9WorkcenterId, etT9WorkcenterCode, etT9MoveTrxType, etT9MoveTrxTypeId, etT9MoveTrxTypeDesc, etT9ReleaseDateId,
             etT9OpPoiseOrderSeq , etT9OpUnitOrderSeq, etT9OpActualQty ,etT9Remark, etT9SectionDesc, etT9SplitFlag, etT9OpPoiseOrderId, etT9OpUnitOrderId, etT9OperationId,
-            etT9JobId;
+            etT9JobId ,etT9HiddenFocus;
     String strSobId = "70";
     String strOrgId = "701";
     String strAssembly = "PPMF2201";
@@ -118,7 +120,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
         etT9OpUnitOrderId = (EditText) findViewById(R.id.et_t9_op_unit_order_id);
         etT9OperationId = (EditText) findViewById(R.id.et_t9_operation_id);
         etT9JobId = (EditText) findViewById(R.id.et_t9_job_id);
-
+        etT9HiddenFocus = (EditText) findViewById(R.id.et_t9_hidden_focus);
 
         btnt9save = (Button) findViewById(R.id.btn_t9_save);
         btnT9WorkcenterLookup = (Button) findViewById(R.id.btn_t9_workcenter_lookup);
@@ -160,8 +162,21 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
                 if(getCurrentFocus() == etT9FileNo && !s.toString().isEmpty()){
 
-                    FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
-                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId, etT9FileNo.getText().toString() ,etT9WorkcenterId.getText().toString() ,strUserId, etT9MoveTrxType.getText().toString());
+                    FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
+                    String chk = "S";
+                    for(int x=0; x< lvInput.getCount(); x++){
+                        FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(x);
+
+                        if(item.getStrFileNo().equals(etT9FileNo.getText().toString())){
+                            chk = "F";
+                        }
+                    }
+                    if(chk.equals("S")){
+                        FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
+                        fILE_NO_SCAN.execute(strIp, strSobId,strOrgId, etT9FileNo.getText().toString() ,etT9WorkcenterId.getText().toString() ,strUserId, etT9MoveTrxType.getText().toString());
+                    }else{
+                        return;
+                    }
 
                 }else{
                     return;
@@ -169,7 +184,47 @@ public class RegisterProcessActivity extends AppCompatActivity {
             }
         });
 
+        lvInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
+            FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(position);
 
+                int outQty = 0;
+                if(item.getStrChk().equals("√"))
+                {
+                    item.setStrChk("");
+                }
+                else {
+                    item.setStrChk("√");
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        etT9FileNo.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT9FileNo.setText("");
+                etT9OperaionDesc.setText("");
+                etT9ItemDesc.setText("");
+                return false;
+            }
+        });
+        etT9WorkcenterDesc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT9WorkcenterDesc.setText("");
+                return false;
+            }
+        });
+        etT9MoveTrxType.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etT9MoveTrxType.setText("");
+                return false;
+            }
+        });
 
 
     }
@@ -245,9 +300,9 @@ public class RegisterProcessActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                etT9MoveTrxType.setText(""); //초기화 다시 한 번 잘생각하기,,
+                etT9MoveTrxType.setText("");
                 LuOillerDialog luOillerDialog = new LuOillerDialog(RegisterProcessActivity.this);
-                luOillerDialog.call_Move_Trx(strIp ,etT9MoveTrxType,etT9MoveTrxTypeDesc,etT9WorkcenterId,strUserId,etT9MoveTrxType);
+                luOillerDialog.call_Move_Trx(strIp ,etT9MoveTrxType,etT9MoveTrxTypeDesc,etT9MoveTrxTypeId,strUserId,etT9MoveTrxType);
 
 
             }
@@ -271,7 +326,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
                     + "&W_FILE_NO=" +urls[3]
-                    + "&W_WORKCENTER_ID=" +"11350"
+                    + "&W_WORKCENTER_ID=" +urls[4]
                     + "&P_USER_ID=" +urls[5]
                     + "&P_MOVE_TRX_TYPE=" +urls[6]
                     ;
@@ -337,24 +392,33 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     if(!job.getString("Status").equals("S")){
                         return;
                     }
-
-                   fileNoProcessAdapter.addItem("√" ,job.getString("FILE_NO"),job.getString("OP_POISE_ORDER_SEQ"),job.getString("OP_UNIT_ORDER_SEQ")
-                           ,job.getString("RELEASE_DATE"),job.getString("ITEM_DESCRIPTION"),
-                           job.getString("WEEK_ACTUAL_QTY"),job.getString("REMARK"),job.getString("SECTION_DESC")
-                           ,job.getString("JOB_NO"),job.getString("SPLIT_FLAG"),job.getString("OP_POISE_ORDER_ID"),
-                           job.getString("OP_UNIT_ORDER_ID"),job.getString("OPERATION_ID"),job.getString("OPERATION_DESC"));
+                   fileNoProcessAdapter.addItem("√" ,
+                           handleStringNull(job.getString("FILE_NO")),
+                           handleStringNull(job.getString("OP_POISE_ORDER_SEQ")),
+                           handleStringNull(job.getString("OP_UNIT_ORDER_SEQ")),
+                           handleStringNull(job.getString("RELEASE_DATE")),
+                           handleStringNull(job.getString("ITEM_DESCRIPTION")),
+                           handleStringNull(job.getString("WEEK_ACTUAL_QTY")),
+                           handleStringNull(job.getString("REMARK")),
+                           handleStringNull(job.getString("SECTION_DESC")),
+                           handleStringNull(job.getString("JOB_NO")),
+                           handleStringNull(job.getString("SPLIT_FLAG")),
+                           handleStringNull(job.getString("OP_POISE_ORDER_ID")),
+                           handleStringNull(job.getString("OP_UNIT_ORDER_ID")),
+                           handleStringNull(job.getString("OPERATION_ID")),
+                           handleStringNull(job.getString("OPERATION_DESC")));
 
 
                     etT9FileNo.setText(job.getString("FILE_NO"));
                     etT9OperaionDesc.setText(job.getString("OPERATION_DESC"));
                     etT9ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
 
-                    lvInput.setAdapter(fileNoProcessAdapter);
 
                 }
 
-
-
+                lvInput.setAdapter(fileNoProcessAdapter);
+                etT9HiddenFocus.requestFocus();
+                etT9FileNo.setText("");
                 /*if(!t1ModeFlag.equals("N")){
 
 
@@ -371,6 +435,13 @@ public class RegisterProcessActivity extends AppCompatActivity {
         }
     }
 
+
+    private String handleStringNull(String input) {
+
+        String rtStr = input.equals("null") ? "" : input;
+
+        return rtStr;
+    }
 
 
 

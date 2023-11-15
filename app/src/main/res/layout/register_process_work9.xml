@@ -270,8 +270,8 @@
 
         android:id="@+id/linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_weight="0.1"
+        android:layout_height="40dp"
+        android:layout_weight="0"
         android:orientation="horizontal">
 
         <include
@@ -284,7 +284,7 @@
         android:id="@+id/lv_search"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.5"
+        android:layout_weight="5"
         android:descendantFocusability="blocksDescendants"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -297,7 +297,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="4"
+        android:layout_weight="0"
         android:background="@drawable/border"
         android:backgroundTint="#ffffff"
         android:orientation="horizontal"
@@ -330,6 +330,10 @@
     <!--   숨김 값 -->
     <!--   파일 넘버 -->
 
+    <EditText
+        android:id="@+id/et_t9_hidden_focus"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
     <EditText
         android:id="@+id/et_t9_release_date_id"

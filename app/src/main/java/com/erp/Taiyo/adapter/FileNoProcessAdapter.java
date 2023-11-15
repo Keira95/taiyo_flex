@@ -134,7 +134,7 @@ public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
 
 
     public void addItem(CharSequence  tvSeq,CharSequence  tvFileNo , CharSequence tvOpPoiserOrderSeq ,CharSequence tvOpUnitOrderSeq
-            , CharSequence  tvReleaseDate ,CharSequence tvItemDesc ,CharSequence tvWeekActualQty ,CharSequence tvRemark ,CharSequence tvSectionDesc,CharSequence tvJobNo
+            , CharSequence  tvReleaseDate ,CharSequence tvItemDesc ,CharSequence tvActQty ,CharSequence tvRemark ,CharSequence tvSectionDesc,CharSequence tvJobNo
             , CharSequence tvSplitFlag ,CharSequence tvOpPoiseOrderId,CharSequence tvOpUnitOrderId ,CharSequence tvOperationId ,CharSequence tvOperationDesc
     )
     {
@@ -148,7 +148,7 @@ public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
         Item.setStrOpUnitOrderSeq((String) tvOpUnitOrderSeq);
         Item.setStrReleaseDate((String) tvReleaseDate);
         Item.setStrItemDesc((String) tvItemDesc);
-        Item.setStrWeekActualQty((String) tvWeekActualQty);
+        Item.setStrActualQty((String) tvActQty);
         Item.setStrRemark((String) tvRemark);
         Item.setStrSectionDesc((String) tvSectionDesc);
         Item.setStrJobNo((String) tvJobNo);

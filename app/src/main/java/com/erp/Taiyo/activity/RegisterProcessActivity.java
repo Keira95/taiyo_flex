@@ -302,7 +302,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
                 etT9MoveTrxType.setText("");
                 LuOillerDialog luOillerDialog = new LuOillerDialog(RegisterProcessActivity.this);
-                luOillerDialog.call_Move_Trx(strIp ,etT9MoveTrxType,etT9MoveTrxTypeDesc,etT9WorkcenterId,strUserId,etT9MoveTrxType);
+                luOillerDialog.call_Move_Trx(strIp ,etT9MoveTrxType,etT9MoveTrxTypeDesc,etT9MoveTrxTypeId,strUserId,etT9MoveTrxType);
 
 
             }

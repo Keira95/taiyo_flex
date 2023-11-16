@@ -1,13 +1,18 @@
 package com.erp.Taiyo.activity;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -40,6 +45,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class RegisterProcessActivity extends AppCompatActivity {
 
@@ -138,8 +144,11 @@ public class RegisterProcessActivity extends AppCompatActivity {
         initializeToolbar();
 
 
-        etT9FileNo.requestFocus();
+        keyboardFocus(etT9WorkcenterDesc);
+        keyboardFocus(etT9MoveTrxTypeDesc);
 
+        etT9FileNo.requestFocus();
+        keyboardFocus(etT9FileNo);
 
         etT9FileNo.addTextChangedListener(new TextWatcher() {
 
@@ -187,17 +196,23 @@ public class RegisterProcessActivity extends AppCompatActivity {
         lvInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
-            FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(position);
+                FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
+                FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(position);
 
-                int outQty = 0;
-                if(item.getStrChk().equals("√"))
-                {
-                    item.setStrChk("");
+                for (int i = 0; i < lvInput.getCount(); i++) {
+
+                    if (i != position) {
+                        FileNoProcessListItem proItem = (FileNoProcessListItem) adapter.getItem(i);
+                        proItem.setStrChk("");
+                    }
                 }
-                else {
+
+                if (item.getStrChk().equals("√")) {
+                    item.setStrChk("");
+                } else {
                     item.setStrChk("√");
                 }
+
                 adapter.notifyDataSetChanged();
             }
         });
@@ -226,9 +241,73 @@ public class RegisterProcessActivity extends AppCompatActivity {
             }
         });
 
+        btnt9save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(RegisterProcessActivity.this);
+                alert.setTitle("저장");
+                alert.setMessage("수정한 내역을 저장하시겠습니까?");
+                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(etT9FileNo.getText().toString().isEmpty()){
+                            Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        String SaveChk = "F";
+                        String jobNo ="";
+                        FileNoProcessAdapter adapter =(FileNoProcessAdapter) lvInput.getAdapter();
+                        for(int a=0; a> lvInput.getCount(); a++){
+                            FileNoProcessListItem item = (FileNoProcessListItem)adapter.getItem(a);
+                            if(item.getStrChk().equals("√")){
+                                SaveChk ="Y";
+                                jobNo = item.getStrJobNo();
+                            }
+                        }
+                        if(SaveChk.equals("S")){
+
+                            RegisterProcessActivity.PROCESS_UPDATE pROCESS_UPDATE = new RegisterProcessActivity.PROCESS_UPDATE();
+                            pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, jobNo, etT9WorkcenterId.getText().toString());
+
+                        }else{
+                             Toast.makeText(getApplicationContext(), "선택된 데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                });
+                alert.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+
+                    }
+
+                });
+                alert.show();
+
+
+            }
+        });
+
 
     }
 
+   public void keyboardFocus(final EditText editText) {
+       editText.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View v, MotionEvent event) {
+
+               int inType = editText.getInputType(); // 현재 입력 모드 저장
+               editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
+               editText.onTouchEvent(event); // 이벤트 처리
+               editText.setInputType(inType); // 원래 입력 모드를 복구
+               editText.setCursorVisible(true); // 커서 표시
+               return true; // 리턴
+           }
+       });
+   }
 
     private String getNowDate() {
 
@@ -313,7 +392,6 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
 
 
-
     // FILE_NO_SCAN
     protected class FILE_NO_SCAN extends AsyncTask<String, Void, String>
     {
@@ -387,12 +465,21 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     ScanModify = false;
                     return;
                 }
+                String chk ="√";
                 for(int j=0; j< jarrayWorkLevel.length(); j++){
                     JSONObject job = jarrayWorkLevel.getJSONObject(j);
                     if(!job.getString("Status").equals("S")){
                         return;
                     }
-                   fileNoProcessAdapter.addItem("√" ,
+
+                    if(jarrayWorkLevel.length() > 1){
+                        if(Integer.parseInt(handleStringNull(job.getString("OP_POISE_ORDER_SEQ"))) == 1){
+                            chk = "√";
+                        }else{
+                            chk ="";
+                        }
+                    }
+                   fileNoProcessAdapter.addItem(chk,
                            handleStringNull(job.getString("FILE_NO")),
                            handleStringNull(job.getString("OP_POISE_ORDER_SEQ")),
                            handleStringNull(job.getString("OP_UNIT_ORDER_SEQ")),
@@ -407,7 +494,6 @@ public class RegisterProcessActivity extends AppCompatActivity {
                            handleStringNull(job.getString("OP_UNIT_ORDER_ID")),
                            handleStringNull(job.getString("OPERATION_ID")),
                            handleStringNull(job.getString("OPERATION_DESC")));
-
 
                     etT9FileNo.setText(job.getString("FILE_NO"));
                     etT9OperaionDesc.setText(job.getString("OPERATION_DESC"));
@@ -442,6 +528,106 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
         return rtStr;
     }
+
+    protected class PROCESS_UPDATE extends AsyncTask<String, Void, String>
+    {
+        //final LuLoctionListAdapter luLoctionListAdapter = new LuLoctionListAdapter();
+        protected  String doInBackground(String... urls)
+        {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "P_SOB_ID=" + urls[1]
+                    + "&P_ORG_ID=" + urls[2]
+                    + "&P_USER_ID=" + urls[3]
+                    + "&P_JOB_NO=" + urls[4]
+                    + "&P_WORKCENTER_ID=" + urls[5]
+                    + "&P_MOVE_TRX_TYPE=" + urls[6]
+                    ;
+
+            try
+            {
+                //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
+
+                URL obj = new URL("http://" + urls[0] + "/TAIYO/ProcessUpdate.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return  jsonHtml.toString(); //결과값 리턴
+        }
+
+        @SuppressLint("ResourceAsColor")
+        protected void onPostExecute(String result)
+        {
+            //페이지 결과값 파싱
+            try
+            {
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+                JSONArray jarray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+                JSONObject job = jarray.getJSONObject(0); //JSON 오브젝트 파싱
+
+                if(job.getString("P_RESULT_STATUS").equals("S")){
+
+                    Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                    // ClearView();
+
+                    FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
+                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId, etT9FileNo.getText().toString() ,etT9WorkcenterId.getText().toString() ,strUserId, etT9MoveTrxType.getText().toString());
+
+                    btnt9save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt9save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
 
 

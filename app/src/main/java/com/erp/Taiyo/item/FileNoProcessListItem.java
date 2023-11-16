@@ -1,8 +1,32 @@
 package com.erp.Taiyo.item;
 
 public class FileNoProcessListItem {
-    public String strChk, strFileNo , strActualQty ,strOpPoiseOrderSeq ,strOpUnitOrderSeq, strReleaseDate ,strItemDesc ,strWeekActualQty ,strRemark ,strSectionDesc,strJobNo
-            ,strSplitFlag ,strOpPoiseOrderId,strOpUnitOrderId ,strOperationId ,strOperationDesc ;
+    public String strChk;
+    public String strFileNo;
+    public String strActualQty;
+    public String strOpPoiseOrderSeq;
+    public String strOpUnitOrderSeq;
+    public String strReleaseDate;
+    public String strItemDesc;
+    public String strWeekActualQty;
+    public String strRemark;
+    public String strSectionDesc;
+    public String strJobNo;
+    public String strSplitFlag;
+    public String strOpPoiseOrderId;
+    public String strOpUnitOrderId;
+    public String strOperationId;
+    public String strOperationDesc;
+    public String strOperationSeqNo;
+    public String strJobId;
+
+    public String getStrJobId() {
+        return strJobId;
+    }
+
+    public void setStrJobId(String strJobId) {
+        this.strJobId = strJobId;
+    }
 
     public String getStrReleaseDate() {
         return strReleaseDate;
@@ -130,5 +154,13 @@ public class FileNoProcessListItem {
 
     public void setStrOpUnitOrderSeq(String strOpUnitOrderSeq) {
         this.strOpUnitOrderSeq = strOpUnitOrderSeq;
+    }
+
+    public String getStrOperationSeqNo() {
+        return strOperationSeqNo;
+    }
+
+    public void setStrOperationSeqNo(String strOperationSeqNo) {
+        this.strOperationSeqNo = strOperationSeqNo;
     }
 }

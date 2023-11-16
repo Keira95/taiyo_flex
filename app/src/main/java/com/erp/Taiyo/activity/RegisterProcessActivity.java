@@ -86,7 +86,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
-
+    private String JobNo = "";
 
 
     @Override
@@ -257,31 +257,30 @@ public class RegisterProcessActivity extends AppCompatActivity {
                             return;
                         }
                         String SaveChk = "F";
-                        String jobNo ="";
+
                         FileNoProcessAdapter adapter =(FileNoProcessAdapter) lvInput.getAdapter();
                         for(int a=0; a> lvInput.getCount(); a++){
                             FileNoProcessListItem item = (FileNoProcessListItem)adapter.getItem(a);
                             if(item.getStrChk().equals("√")){
 
-                               // if(item.getstrs)
+                                if(item.getStrSplitFlag().equals("Y")){
 
-                                SaveChk ="Y";
-                                jobNo = item.getStrJobNo();
+                                    JOB_SPLIT_INSERT job_split_insert = new JOB_SPLIT_INSERT();
+                                    job_split_insert.execute(strIp, strSobId,strOrgId, item.getStrJobId(), item.getStrOperationSeqNo() , item.getStrOperationId() , item.getStrActualQty()
+                                    , item.getStrActualQty() ,item.getStrActualQty() ,item.getStrOpPoiseOrderId(), item.getStrOpUnitOrderId() ,strUserId);
 
+                                }else{
+                                    JobNo = item.getStrJobNo();
+                                }
 
-
+                                SaveChk ="S";
                             }
                         }
-
-
-
-
-
 
                         if(SaveChk.equals("S")){
 
                             RegisterProcessActivity.PROCESS_UPDATE pROCESS_UPDATE = new RegisterProcessActivity.PROCESS_UPDATE();
-                            pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, jobNo, etT9WorkcenterId.getText().toString());
+                            pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, JobNo, etT9WorkcenterId.getText().toString());
 
                         }else{
                              Toast.makeText(getApplicationContext(), "선택된 데이터가 없습니다.", Toast.LENGTH_SHORT).show();
@@ -505,7 +504,10 @@ public class RegisterProcessActivity extends AppCompatActivity {
                            handleStringNull(job.getString("OP_POISE_ORDER_ID")),
                            handleStringNull(job.getString("OP_UNIT_ORDER_ID")),
                            handleStringNull(job.getString("OPERATION_ID")),
-                           handleStringNull(job.getString("OPERATION_DESC")));
+                           handleStringNull(job.getString("OPERATION_DESC")),
+                          handleStringNull(job.getString("OPERATION_SEQ_NO")),
+                           handleStringNull(job.getString("JOB_ID"))
+                   );
 
                     etT9FileNo.setText(job.getString("FILE_NO"));
                     etT9OperaionDesc.setText(job.getString("OPERATION_DESC"));
@@ -639,6 +641,101 @@ public class RegisterProcessActivity extends AppCompatActivity {
         }
     }
 
+    protected class JOB_SPLIT_INSERT extends AsyncTask<String, Void, String>
+    {
+        //final LuLoctionListAdapter luLoctionListAdapter = new LuLoctionListAdapter();
+        protected  String doInBackground(String... urls)
+        {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "P_SOB_ID=" + urls[1]
+                    + "&P_ORG_ID=" + urls[2]
+                    + "&P_FROM_JOB_ID=" + urls[3]
+                    + "&P_OPERATION_SEQ_NO=" + urls[4]
+                    + "&P_OPERATION_ID=" + urls[5]
+                    + "&P_UOM_QTY=" + urls[6]
+                    + "&P_ARRAY_QTY=" + urls[7]
+                    + "&P_ARRAY1_MTX_QTY=" + urls[8]
+                    + "&P_OP_POISE_ORDER_ID=" + urls[9]
+                    + "&P_OP_UNIT_ORDER_ID=" + urls[10]
+                    + "&P_SPLIT_PERSON_ID=" + urls[11]
+                    ;
+
+            try
+            {
+                //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
+
+                URL obj = new URL("http://" + urls[0] + "/TAIYO/JobSplitInsert.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return  jsonHtml.toString(); //결과값 리턴
+        }
+
+        @SuppressLint("ResourceAsColor")
+        protected void onPostExecute(String result)
+        {
+            //페이지 결과값 파싱
+            try
+            {
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+                JSONArray jarray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+                JSONObject job = jarray.getJSONObject(0); //JSON 오브젝트 파싱
+
+                if(job.getString("P_RESULT_STATUS").equals("S")){
+
+                    JobNo = job.getString("P_TO_JOB_NO");
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "오류입니다"+ result, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 

@@ -262,10 +262,22 @@ public class RegisterProcessActivity extends AppCompatActivity {
                         for(int a=0; a> lvInput.getCount(); a++){
                             FileNoProcessListItem item = (FileNoProcessListItem)adapter.getItem(a);
                             if(item.getStrChk().equals("√")){
+
+                               // if(item.getstrs)
+
                                 SaveChk ="Y";
                                 jobNo = item.getStrJobNo();
+
+
+
                             }
                         }
+
+
+
+
+
+
                         if(SaveChk.equals("S")){
 
                             RegisterProcessActivity.PROCESS_UPDATE pROCESS_UPDATE = new RegisterProcessActivity.PROCESS_UPDATE();

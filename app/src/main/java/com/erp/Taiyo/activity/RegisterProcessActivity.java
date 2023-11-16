@@ -252,14 +252,14 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        if(etT9FileNo.getText().toString().isEmpty()){
-                            Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                        if(lvInput.getCount() == 0){
+                            Toast.makeText(getApplicationContext(), "처리할 데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         String SaveChk = "F";
 
                         FileNoProcessAdapter adapter =(FileNoProcessAdapter) lvInput.getAdapter();
-                        for(int a=0; a> lvInput.getCount(); a++){
+                        for(int a=0; a < lvInput.getCount(); a++){
                             FileNoProcessListItem item = (FileNoProcessListItem)adapter.getItem(a);
                             if(item.getStrChk().equals("√")){
 
@@ -279,8 +279,8 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
                         if(SaveChk.equals("S")){
 
-                            RegisterProcessActivity.PROCESS_UPDATE pROCESS_UPDATE = new RegisterProcessActivity.PROCESS_UPDATE();
-                            pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, JobNo, etT9WorkcenterId.getText().toString());
+                            PROCESS_UPDATE pROCESS_UPDATE = new PROCESS_UPDATE();
+                            pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, JobNo, etT9WorkcenterId.getText().toString() ,etT9MoveTrxType.getText().toString());
 
                         }else{
                              Toast.makeText(getApplicationContext(), "선택된 데이터가 없습니다.", Toast.LENGTH_SHORT).show();
@@ -617,14 +617,12 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     // ClearView();
 
-                    FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
-                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId, etT9FileNo.getText().toString() ,etT9WorkcenterId.getText().toString() ,strUserId, etT9MoveTrxType.getText().toString());
 
                     btnt9save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
                     btnt9save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{
-                    Toast.makeText(getApplicationContext(), "오류입니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "오류입니다." +result, Toast.LENGTH_SHORT).show();
                     return;
                 }
 

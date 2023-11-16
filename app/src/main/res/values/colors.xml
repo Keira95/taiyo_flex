@@ -8,7 +8,6 @@
     <!--<color name="primary_color_light">#8CE6FF</color>-->
     <!--<color name="primary_color_dark">#004c8c</color>-->
     <!--<color name="primary_text_color">#DD000000</color>-->
-
     <!--<color name="default_background">#EFF0F1</color>-->
     <color name="colorPrimary">@color/primary_color</color>
     <color name="colorIvory">@color/ivory</color>

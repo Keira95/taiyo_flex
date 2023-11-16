@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="사용자"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -190,7 +190,7 @@
             android:paddingLeft="10dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
 
@@ -595,6 +595,7 @@
 
 
 
+
     <!-- 입고 처리 버튼 -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -602,7 +603,7 @@
             android:layout_weight="0"
             android:layout_gravity="right"
             android:gravity="bottom"
-
+            android:layout_marginBottom="-2sp"
             android:orientation="vertical">
 
             <Button
@@ -611,12 +612,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="30sp"
                 android:background="@color/dark_green"
                 android:gravity="center"
                 android:text="저장"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+
+                />
+
 
         </LinearLayout>
 
@@ -659,19 +662,9 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
-
-
             <EditText
                 android:id="@+id/et_t1_mode_flag"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
-
-
-
-
-
-
-
-
 
     </LinearLayout>

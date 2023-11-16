@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -137,6 +138,11 @@ public class RegisterAgingActivity extends AppCompatActivity {
 
         t8FileNoScan.requestFocus();
 
+        keyboardFocus(t8FileNoScan);
+        keyboardFocus(t8TankDesc);
+        keyboardFocus(t8EquipmentName);
+        keyboardFocus(t8StirWorkerName);
+
         //workcenter 가져오기
         GET_WORKCENTER_IN_AUTHORITY gET_WORKCENTER_IN_AUTHORITY = new GET_WORKCENTER_IN_AUTHORITY();
         gET_WORKCENTER_IN_AUTHORITY.execute(strIp, strSobId,strOrgId ,strUserId, strAssembly);
@@ -165,7 +171,19 @@ public class RegisterAgingActivity extends AppCompatActivity {
         });
     }
 
-
+    public void keyboardFocus(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int inType = editText.getInputType(); // 현재 입력 모드 저장
+                editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
+                editText.onTouchEvent(event); // 이벤트 처리
+                editText.setInputType(inType); // 원래 입력 모드를 복구
+                editText.setCursorVisible(true); // 커서 표시
+                return true; // 리턴
+            }
+        });
+    }
 
 
     private String getNowDate() {

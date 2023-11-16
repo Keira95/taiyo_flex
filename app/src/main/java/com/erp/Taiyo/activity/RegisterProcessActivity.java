@@ -247,7 +247,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(RegisterProcessActivity.this);
                 alert.setTitle("저장");
-                alert.setMessage("수정한 내역을 저장하시겠습니까?");
+                alert.setMessage(etT9MoveTrxTypeDesc.getText().toString() +" 상태로 변경하시겠습니까?");
                 alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -548,12 +548,12 @@ public class RegisterProcessActivity extends AppCompatActivity {
             StringBuffer jsonHtml = new StringBuffer();
 
             //서버로 보낼 데이터 설정
-            String search_title = "P_SOB_ID=" + urls[1]
-                    + "&P_ORG_ID=" + urls[2]
-                    + "&P_USER_ID=" + urls[3]
-                    + "&P_JOB_NO=" + urls[4]
-                    + "&P_WORKCENTER_ID=" + urls[5]
-                    + "&P_MOVE_TRX_TYPE=" + urls[6]
+            String search_title = "W_SOB_ID=" + urls[1]
+                    + "&W_ORG_ID=" + urls[2]
+                    + "&W_USER_ID=" + urls[3]
+                    + "&W_JOB_NO=" + urls[4]
+                    + "&W_WORKCENTER_ID=" + urls[5]
+                    + "&W_MOVE_TRX_TYPE=" + urls[6]
                     ;
 
             try
@@ -611,7 +611,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
                 if(job.getString("P_RESULT_STATUS").equals("S")){
 
-                    Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "작업상태가 ( "+etT9MoveTrxTypeDesc.getText().toString()+" ) 변경 되었습니다.", Toast.LENGTH_SHORT).show();
                     // ClearView();
 
 

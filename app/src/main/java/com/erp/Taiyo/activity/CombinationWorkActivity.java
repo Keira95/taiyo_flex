@@ -546,6 +546,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
     //노란색으로 오류 나는 이유는 시각 장애가 있는 사람들에 대해 생각해 보도록 상기시키는 것
 
     //키보드 내리고 포커스 주는 함수
+    @SuppressLint("ClickableViewAccessibility") //노란색 경고 없애기
     public void keyboardFocus(final EditText editText) {
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -556,6 +557,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 editText.setInputType(inType); // 원래 입력 모드를 복구
                 editText.setCursorVisible(true); // 커서 표시
                 return true; // 리턴
+
             }
         });
     }

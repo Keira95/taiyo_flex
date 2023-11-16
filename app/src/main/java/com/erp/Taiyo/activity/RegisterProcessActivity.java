@@ -372,9 +372,6 @@ public class RegisterProcessActivity extends AppCompatActivity {
         // 유저 정보 삽입.
         tvUserName.setText(strUserName);
 
-        //보고 삭제하기 (아래)
-        //public void call_Workcetner(String ip, final TextView tvCode, final TextView tvName, final TextView tvId , final String UserId , final TextView  OperationId) {
-
         btnT9WorkcenterLookup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -505,7 +502,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
                            handleStringNull(job.getString("OP_UNIT_ORDER_ID")),
                            handleStringNull(job.getString("OPERATION_ID")),
                            handleStringNull(job.getString("OPERATION_DESC")),
-                          handleStringNull(job.getString("OPERATION_SEQ_NO")),
+                           handleStringNull(job.getString("OPERATION_SEQ_NO")),
                            handleStringNull(job.getString("JOB_ID"))
                    );
 

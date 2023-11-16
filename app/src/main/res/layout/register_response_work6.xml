@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="사용자"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

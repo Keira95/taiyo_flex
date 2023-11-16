@@ -311,6 +311,7 @@
         android:layout_weight="0"
         android:layout_gravity="right"
         android:gravity="bottom"
+        android:layout_marginBottom="-2sp"
         android:orientation="vertical">
 
         <Button

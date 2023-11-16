@@ -99,6 +99,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         strIp = intent.getStringExtra("Ip");
         strUserId = intent.getStringExtra("O_USER_ID");
+        strUserName = intent.getStringExtra("O_USER_NAME");
 
 //        final Intent = getIntent();
 //        sintenttrUserId = intent.getStringExtra("O_USER_ID");

@@ -190,17 +190,24 @@ public class RegisterProcessActivity extends AppCompatActivity {
             FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
             FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(position);
 
-                int outQty = 0;
-                if(item.getStrChk().equals("√"))
-                {
-                    item.setStrChk("");
+               for (int i = 0; i < lvInput.getCount(); i++) {
+
+                   if (i != position) {
+                        FileNoProcessListItem proItem = (FileNoProcessListItem) adapter.getItem(i);
+                        proItem.setStrChk("");
+                    }
                 }
-                else {
+
+                if (item.getStrChk().equals("√")) {
+                    item.setStrChk("");
+                } else {
                     item.setStrChk("√");
                 }
+
                 adapter.notifyDataSetChanged();
             }
         });
+
 
         etT9FileNo.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -318,6 +325,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
     protected class FILE_NO_SCAN extends AsyncTask<String, Void, String>
     {
         final FileNoProcessAdapter fileNoProcessAdapter = new FileNoProcessAdapter();
+
         protected  String doInBackground(String... urls)
         {
             StringBuffer jsonHtml = new StringBuffer();
@@ -380,7 +388,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
                 JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
 
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
-
+                String chk  ="";
 
                 if(jarrayWorkLevel.length() < 1){
                     // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
@@ -392,7 +400,12 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     if(!job.getString("Status").equals("S")){
                         return;
                     }
-                   fileNoProcessAdapter.addItem("√" ,
+                    if(Integer.parseInt(job.getString("OP_POISE_ORDER_SEQ")) > 1){
+                        chk ="";
+                    }else{
+                        chk ="√";
+                    }
+                    fileNoProcessAdapter.addItem(chk ,
                            handleStringNull(job.getString("FILE_NO")),
                            handleStringNull(job.getString("OP_POISE_ORDER_SEQ")),
                            handleStringNull(job.getString("OP_UNIT_ORDER_SEQ")),
@@ -406,7 +419,8 @@ public class RegisterProcessActivity extends AppCompatActivity {
                            handleStringNull(job.getString("OP_POISE_ORDER_ID")),
                            handleStringNull(job.getString("OP_UNIT_ORDER_ID")),
                            handleStringNull(job.getString("OPERATION_ID")),
-                           handleStringNull(job.getString("OPERATION_DESC")));
+                           handleStringNull(job.getString("OPERATION_DESC")),
+                           handleStringNull(job.getString("OPERATION_SEQ_NO")));
 
 
                     etT9FileNo.setText(job.getString("FILE_NO"));

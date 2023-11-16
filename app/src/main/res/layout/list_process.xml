@@ -212,6 +212,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
 
+            <EditText
+                android:id="@+id/li9_operation_seq_no"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
 
 
 

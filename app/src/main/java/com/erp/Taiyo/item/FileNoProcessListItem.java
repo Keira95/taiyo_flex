@@ -2,7 +2,7 @@ package com.erp.Taiyo.item;
 
 public class FileNoProcessListItem {
     public String strChk, strFileNo , strActualQty ,strOpPoiseOrderSeq ,strOpUnitOrderSeq, strReleaseDate ,strItemDesc ,strWeekActualQty ,strRemark ,strSectionDesc,strJobNo
-            ,strSplitFlag ,strOpPoiseOrderId,strOpUnitOrderId ,strOperationId ,strOperationDesc ;
+            ,strSplitFlag ,strOpPoiseOrderId,strOpUnitOrderId ,strOperationId ,strOperationDesc, strOperationSeqNo ;
 
     public String getStrReleaseDate() {
         return strReleaseDate;
@@ -130,5 +130,13 @@ public class FileNoProcessListItem {
 
     public void setStrOpUnitOrderSeq(String strOpUnitOrderSeq) {
         this.strOpUnitOrderSeq = strOpUnitOrderSeq;
+    }
+
+    public String getStrOperationSeqNo() {
+        return strOperationSeqNo;
+    }
+
+    public void setStrOperationSeqNo(String strOperationSeqNo) {
+        this.strOperationSeqNo = strOperationSeqNo;
     }
 }

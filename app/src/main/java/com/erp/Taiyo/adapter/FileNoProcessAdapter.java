@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
     TextView tvMoveId, tvSeq, tvFileNo ,tvActQty ,tvOpPoiserOrderSeq ,tvOpUnitOrderSeq ,  tvReleaseDate ,tvItemDesc ,tvWeekActualQty ,tvRemark ,tvSectionDesc,tvJobNo
-            ,tvSplitFlag ,tvOpPoiseOrderId,tvOpUnitOrderId ,tvOperationId ,tvOperationDesc;
+            ,tvSplitFlag ,tvOpPoiseOrderId,tvOpUnitOrderId ,tvOperationId ,tvOperationDesc, tvOperationSeqNo;
     Button btnMenu;
     private ArrayList<FileNoProcessListItem> ListArray = new ArrayList<>();
     private ArrayList<FileNoProcessListItem> FilterListArray = ListArray;
@@ -85,7 +85,7 @@ public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
         tvOpUnitOrderId = (TextView) convertView.findViewById(R.id.li9_op_unit_order_id);
         tvOperationId = (TextView) convertView.findViewById(R.id.li9_operation_id);
         tvOperationDesc = (TextView) convertView.findViewById(R.id.li9_operation_desc);
-
+        tvOperationSeqNo = (TextView) convertView.findViewById(R.id.li9_operation_seq_no);
 
 
         FileNoProcessListItem FilterListArray = getItem(position);
@@ -108,6 +108,7 @@ public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
         tvOpUnitOrderId.setText(FilterListArray.getStrOpUnitOrderSeq());
         tvOperationId.setText(FilterListArray.getStrOperationId());
         tvOperationDesc.setText(FilterListArray.getStrOperationDesc());
+        tvOperationSeqNo.setText(FilterListArray.getStrOperationSeqNo());
 
 
         if(FilterListArray != null){
@@ -136,6 +137,7 @@ public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
     public void addItem(CharSequence  tvSeq,CharSequence  tvFileNo , CharSequence tvOpPoiserOrderSeq ,CharSequence tvOpUnitOrderSeq
             , CharSequence  tvReleaseDate ,CharSequence tvItemDesc ,CharSequence tvActQty ,CharSequence tvRemark ,CharSequence tvSectionDesc,CharSequence tvJobNo
             , CharSequence tvSplitFlag ,CharSequence tvOpPoiseOrderId,CharSequence tvOpUnitOrderId ,CharSequence tvOperationId ,CharSequence tvOperationDesc
+            , CharSequence tvOperationSeqNo
     )
     {
         //ListArray.add(item);
@@ -157,6 +159,7 @@ public class FileNoProcessAdapter extends BaseAdapter implements Filterable {
         Item.setStrOpPoiseOrderId((String) tvOpPoiseOrderId);
         Item.setStrOperationId((String) tvOperationId);
         Item.setStrOperationDesc((String) tvOperationDesc);
+        Item.setStrOperationSeqNo((String) tvOperationSeqNo);
 
 
 

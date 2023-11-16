@@ -61,8 +61,6 @@ public class RegisterResponseActivity extends AppCompatActivity{
             etT6Stir2WorkerName, etT6Stir3WorkerName, etT6Stir4WorkerName, etT6Stir5WorkerName, etT6EndTime ,etT6WorkercenterId ,etT6WorkercenterCode ,etT6WorkercenterDesc
             ,etT6TankId , etT6TankCode ,etT6EquipmentCode ,etT6OldEquipmentName ,etT6EquipmentId, etT6WorkerHidden ,
              etT6Stir1WorkerId ,etT6Stir2WorkerId ,etT6Stir3WorkerId ,etT6Stir4WorkerId ,etT6Stir5WorkerId , etT6ModFlag , etT6JobId , etT6OperationId
-
-
             ;
 
 

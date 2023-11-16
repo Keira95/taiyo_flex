@@ -1237,6 +1237,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         @SuppressLint("ResourceAsColor")
         protected void onPostExecute(String result) {
             try{
+
                 JSONObject RESULT = new JSONObject(result);
                 JSONArray arr = RESULT.getJSONArray("RESULT");
 

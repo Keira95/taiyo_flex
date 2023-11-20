@@ -2,6 +2,7 @@ package com.erp.Taiyo.activity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -61,6 +62,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
     String strOrgId = "701";
     String strAssembly = "PPMF2201";
 
+    ProgressDialog asyncDialog;
 
     TextView tvUserGroup;
     TextView tvUserName;
@@ -256,6 +258,8 @@ public class RegisterProcessActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "처리할 데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                             return;
                         }
+
+                        showDialoag("show");
                         String SaveChk = "F";
 
                         FileNoProcessAdapter adapter =(FileNoProcessAdapter) lvInput.getAdapter();
@@ -266,24 +270,24 @@ public class RegisterProcessActivity extends AppCompatActivity {
                                 if(item.getStrSplitFlag().equals("Y")){
 
                                     JOB_SPLIT_INSERT job_split_insert = new JOB_SPLIT_INSERT();
-                                    job_split_insert.execute(strIp, strSobId,strOrgId, item.getStrJobId(), item.getStrOperationSeqNo() , item.getStrOperationId() , item.getStrActualQty()
-                                    , item.getStrActualQty() ,item.getStrActualQty() ,item.getStrOpPoiseOrderId(), item.getStrOpUnitOrderId() ,strUserId);
+                                    job_split_insert.execute(strIp, strSobId,strOrgId, "" ,strUserId, "", item.getStrJobId() , "", item.getStrOperationSeqNo() , item.getStrOperationId(),
+                                            item.getStrActualQty() , item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty(),
+                                            strUserId,item.getStrOpPoiseOrderId(), item.getStrOpUnitOrderId());
 
                                 }else{
+
                                     JobNo = item.getStrJobNo();
+                                    PROCESS_UPDATE pROCESS_UPDATE = new PROCESS_UPDATE();
+                                    pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, JobNo, etT9WorkcenterId.getText().toString() ,etT9MoveTrxType.getText().toString());
+
                                 }
 
                                 SaveChk ="S";
                             }
                         }
-
-                        if(SaveChk.equals("S")){
-
-                            PROCESS_UPDATE pROCESS_UPDATE = new PROCESS_UPDATE();
-                            pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, JobNo, etT9WorkcenterId.getText().toString() ,etT9MoveTrxType.getText().toString());
-
-                        }else{
-                             Toast.makeText(getApplicationContext(), "선택된 데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                        if(!SaveChk.equals("S")){
+                            Toast.makeText(getApplicationContext(), "선택된 데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                            showDialoag("false");
                             return;
                         }
                     }
@@ -309,7 +313,6 @@ public class RegisterProcessActivity extends AppCompatActivity {
        editText.setOnTouchListener(new View.OnTouchListener() {
            @Override
            public boolean onTouch(View v, MotionEvent event) {
-
                int inType = editText.getInputType(); // 현재 입력 모드 저장
                editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
                editText.onTouchEvent(event); // 이벤트 처리
@@ -610,16 +613,17 @@ public class RegisterProcessActivity extends AppCompatActivity {
                 JSONObject job = jarray.getJSONObject(0); //JSON 오브젝트 파싱
 
                 if(job.getString("P_RESULT_STATUS").equals("S")){
+                    showDialoag("false");
 
                     Toast.makeText(getApplicationContext(), "작업상태가 ( "+etT9MoveTrxTypeDesc.getText().toString()+" ) 변경 되었습니다.", Toast.LENGTH_SHORT).show();
                     // ClearView();
-
 
                     btnt9save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
                     btnt9save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다." +result, Toast.LENGTH_SHORT).show();
+                    showDialoag("false");
                     return;
                 }
 
@@ -628,10 +632,12 @@ public class RegisterProcessActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                showDialoag("false");
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                showDialoag("false");
             }
         }
     }
@@ -646,15 +652,23 @@ public class RegisterProcessActivity extends AppCompatActivity {
             //서버로 보낼 데이터 설정
             String search_title = "P_SOB_ID=" + urls[1]
                     + "&P_ORG_ID=" + urls[2]
-                    + "&P_FROM_JOB_ID=" + urls[3]
-                    + "&P_OPERATION_SEQ_NO=" + urls[4]
-                    + "&P_OPERATION_ID=" + urls[5]
-                    + "&P_UOM_QTY=" + urls[6]
-                    + "&P_ARRAY_QTY=" + urls[7]
-                    + "&P_ARRAY1_MTX_QTY=" + urls[8]
-                    + "&P_OP_POISE_ORDER_ID=" + urls[9]
-                    + "&P_OP_UNIT_ORDER_ID=" + urls[10]
-                    + "&P_SPLIT_PERSON_ID=" + urls[11]
+                    + "&P_SPLIT_TYPE_LCODE=" + urls[3]
+                    + "&P_SPLIT_PERSON_ID=" + urls[4]
+                    + "&P_SPLIT_REASON_COMMENT=" + urls[5]
+                    + "&P_FROM_JOB_ID=" + urls[6]
+                    + "&P_MES_JOB_NO=" + urls[7]
+                    + "&P_OPERATION_SEQ_NO=" + urls[8]
+                    + "&P_OPERATION_ID=" + urls[9]
+                    + "&P_PNL_QTY=" + urls[10]
+                    + "&P_UOM_QTY=" + urls[11]
+                    + "&P_ARRAY_QTY=" + urls[12]
+                    + "&P_ARRAY1_MTX_QTY=" + urls[13]
+                    + "&P_ARRAY2_MTX_QTY=" + urls[14]
+                    + "&P_ARRAY3_MTX_QTY=" + urls[15]
+                    + "&P_ARRAY4_MTX_QTY=" + urls[16]
+                    + "&P_USER_ID=" + urls[17]
+                    + "&P_OP_POISE_ORDER_ID=" + urls[18]
+                    + "&P_OP_UNIT_ORDER_ID=" + urls[19]
                     ;
 
             try
@@ -711,11 +725,16 @@ public class RegisterProcessActivity extends AppCompatActivity {
                 JSONObject job = jarray.getJSONObject(0); //JSON 오브젝트 파싱
 
                 if(job.getString("P_RESULT_STATUS").equals("S")){
+                    showDialoag("false");
 
                     JobNo = job.getString("P_TO_JOB_NO");
 
+                    PROCESS_UPDATE pROCESS_UPDATE = new PROCESS_UPDATE();
+                    pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, JobNo, etT9WorkcenterId.getText().toString() ,etT9MoveTrxType.getText().toString());
+
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다"+ result, Toast.LENGTH_SHORT).show();
+                    showDialoag("false");
                     return;
                 }
 
@@ -724,14 +743,32 @@ public class RegisterProcessActivity extends AppCompatActivity {
             }catch (JSONException e)
             {
                 e.printStackTrace();
+                showDialoag("false");
             }
             catch (Exception e)
             {
                 e.printStackTrace();
+                showDialoag("false");
             }
         }
     }
+    public void showDialoag(String result) {
 
+        //  AlertDialog.Builder alert = new AlertDialog.Builder(MainReleaseVerson2Activity.this);
+
+        if(result.equals("show")){
+            asyncDialog = new ProgressDialog(RegisterProcessActivity.this);
+            asyncDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            asyncDialog.setMessage("처리중입니다. 잠시만 기다려주세요.");
+            asyncDialog.setCancelable(false);
+            asyncDialog.show();
+
+
+        }else {
+            asyncDialog.dismiss();
+
+        }
+    }
 
 
 

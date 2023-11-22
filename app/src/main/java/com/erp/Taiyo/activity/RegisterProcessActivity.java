@@ -410,6 +410,22 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
     }
 
+    private void ClearView(){
+
+        etT9MoveTrxType.setText("");
+        etT9MoveTrxTypeId.setText("");
+        etT9MoveTrxTypeDesc.setText("");
+        etT9FileNo.setText("");
+        etT9ItemDesc.setText("");
+        etT9OperaionDesc.setText("");
+
+        fileNoProcessAdapter.clearItem();
+        lvInput.setAdapter(fileNoProcessAdapter);
+        fileNoProcessAdapter.notifyDataSetChanged();
+    }
+
+
+
     //11-20 다훈 추가
     // WORKCENTER_IN_AUTHORITY
     protected class GET_WORKCENTER_IN_AUTHORITY extends AsyncTask<String, Void, String>
@@ -709,7 +725,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
                     showDialoag("false");
 
                     Toast.makeText(getApplicationContext(), "작업상태가 ( "+etT9MoveTrxTypeDesc.getText().toString()+" ) 변경 되었습니다.", Toast.LENGTH_SHORT).show();
-                    // ClearView();
+                     ClearView();
 
                     btnt9save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
                     btnt9save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));

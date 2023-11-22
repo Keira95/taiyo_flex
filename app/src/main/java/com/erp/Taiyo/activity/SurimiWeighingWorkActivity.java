@@ -751,12 +751,6 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                         t3EquimentId.setText(job.getString("EQUIPMENT_ID"));
                     }
 
-                    if(job.getString("EQUIPMENT_NAME").equals("null")){
-                        t3TankScan.setText("");
-                    }else{
-                        t3TankScan.setText(job.getString("EQUIPMENT_NAME"));
-                    }
-
                     if(job.getString("OILLER_ID").equals("null")){
                         t3OillerId.setText("");
                     }else{

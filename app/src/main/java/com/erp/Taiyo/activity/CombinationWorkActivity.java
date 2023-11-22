@@ -813,9 +813,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     }
 
                     if(job.getString("STIR_1_WORKER_NAME").equals("null")){
-                        etT2Stir1WorkerName.setText("");
+                        etT2Stir1WorkerNameScan.setText("");
                     }else{
-                        etT2Stir1WorkerName.setText(job.getString("STIR_1_WORKER_NAME"));
+                        etT2Stir1WorkerNameScan.setText(job.getString("STIR_1_WORKER_NAME"));
                     }
                     if(job.getString("STIR_2_START_DATE").equals("null")){
                         etT2Stir2StartDate.setText("");
@@ -837,9 +837,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                     if(job.getString("STIR_2_WORKER_NAME").equals("null")){
-                        etT2Stir2WorkerName.setText("");
+                        etT2Stir2WorkerNameScan.setText("");
                     }else{
-                        etT2Stir2WorkerName.setText(job.getString("STIR_2_WORKER_NAME"));
+                        etT2Stir2WorkerNameScan.setText(job.getString("STIR_2_WORKER_NAME"));
                     }
                     if(job.getString("STIR_3_START_DATE").equals("null")){
                         etT2Stir3StartDate.setText("");
@@ -860,9 +860,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     }
 
                     if(job.getString("STIR_3_WORKER_NAME").equals("null")){
-                        etT2Stir3WorkerName.setText("");
+                        etT2Stir3WorkerNameScan.setText("");
                     }else{
-                        etT2Stir3WorkerName.setText(job.getString("STIR_3_WORKER_NAME"));
+                        etT2Stir3WorkerNameScan.setText(job.getString("STIR_3_WORKER_NAME"));
                     }
 
                     if(job.getString("MIX_END_DATE").equals("null")){

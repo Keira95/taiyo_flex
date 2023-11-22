@@ -716,7 +716,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                     ;
 
             try
-            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuTankType.jsp"); //주소 지정
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuSurimiTankType.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 

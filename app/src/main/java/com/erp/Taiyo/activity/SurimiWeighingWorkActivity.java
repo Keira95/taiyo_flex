@@ -56,7 +56,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     EditText t3FileNo ,t3ItemDesc ,t3OperaionDesc ,t3LastSurimiCount ,t3Surimi1StartTime ,t3TankScan,t3OillerDesc
     ,t3LiqidPersonDesc,t3Suimi1EndTime, t3Surimi2StartTime, t3Surimi2EndTime, t3LastTankScan ,t3WorkcenterCode, t3WorkcenterDesc, t3WorkcenterId , t3Surimi1EndTime
     ,t3EquimentId, t3OillerId , t3IndicatorUserId , t3TankCode , t3JobId ,t3ModFlag , t3OperationId ,t3OldEquimentName ,t3EquimentName,  t3EquimentCode ,t3OillerCode,
-            t3LiqidPersonId      ,t3LastTankCode;
+            t3LiqidPersonId      ,t3LastTankCode, t3LookupEntryId;
     String strSobId = "70";
     String strOrgId = "701";
     String strAssembly = "PPMF2203";
@@ -133,6 +133,9 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         t3EquimentCode= (EditText) findViewById(R.id.et_t3_equiment_code);
         t3OillerCode =(EditText) findViewById(R.id.et_t3_oiller_code);
         t3LastTankCode= (EditText) findViewById(R.id.et_t3_last_tank_code);
+        t3LookupEntryId= (EditText) findViewById(R.id.et_t3_lookup_entry_id);
+
+
 
 
         auto = getSharedPreferences("appData_Log", Context.MODE_PRIVATE);
@@ -709,9 +712,9 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                         t3Surimi1StartTime.setText(job.getString("WORKING_START_DATE"));
                     }
                     if(job.getString("TANK_DESC").equals("null")){
-                        t3TankScan.setText("");
+                        t3LastTankScan.setText("");
                     }else{
-                        t3TankScan.setText(job.getString("TANK_DESC"));
+                        t3LastTankScan.setText(job.getString("TANK_DESC"));
                     }
                     if(job.getString("OILLER_DESC").equals("null")){
                         t3OillerDesc.setText("");
@@ -748,6 +751,12 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                         t3EquimentId.setText(job.getString("EQUIPMENT_ID"));
                     }
 
+                    if(job.getString("EQUIPMENT_NAME").equals("null")){
+                        t3TankScan.setText("");
+                    }else{
+                        t3TankScan.setText(job.getString("EQUIPMENT_NAME"));
+                    }
+
                     if(job.getString("OILLER_ID").equals("null")){
                         t3OillerId.setText("");
                     }else{
@@ -762,7 +771,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     }
 
 
-                    t3TankCode.setText(job.getString("TANK_CODE"));
+                    t3LastTankCode.setText(job.getString("TANK_CODE"));
                     t3JobId.setText(job.getString("JOB_ID"));
                     t3ModFlag.setText(job.getString("MOD_FLAG"));
 
@@ -1065,6 +1074,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
+                    t3LookupEntryId.setText(job.getString("LOOKUP_ENTRY_ID"));
                     t3LastTankCode.setText(job.getString("ENTRY_CODE"));
                     t3LastTankScan.setText(job.getString("ENTRY_DESCRIPTION"));
 

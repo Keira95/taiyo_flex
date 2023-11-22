@@ -62,7 +62,7 @@ public class MenuActivity extends AppCompatActivity {
 
     ActionBarDrawerToggle mDrawerToggle;
 
-    String strUserId, strUserPassword, strUserStatus, strUserName, strSabeon, strVerison, strIp;
+    String strUserId, strUserPassword, strUserStatus, strUserName, strSabeon, strVerison, strIp, strUserAuthority;
     String strSobId = "70";
     String strOrgId = "701";
 
@@ -100,6 +100,7 @@ public class MenuActivity extends AppCompatActivity {
         strIp = intent.getStringExtra("Ip");
         strUserId = intent.getStringExtra("O_USER_ID");
         strUserName = intent.getStringExtra("O_USER_NAME");
+        strUserAuthority = intent.getStringExtra("O_USER_AUTHORITY_TYPE");
 
 //        final Intent = getIntent();
 //        sintenttrUserId = intent.getStringExtra("O_USER_ID");

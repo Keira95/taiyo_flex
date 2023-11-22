@@ -157,11 +157,6 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
         initializeToolbar();
 
-        keyboardFocus(t3FileNo);
-        keyboardFocus(t3LiqidPersonDesc);
-        keyboardFocus(t3TankScan);
-        keyboardFocus(t3LastTankScan);
-
 
         //먼저 실행되는 함수
         GET_WORKCENTER_IN_AUTHORITY gET_WORKCENTER_IN_AUTHORITY = new GET_WORKCENTER_IN_AUTHORITY();
@@ -202,6 +197,15 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
         return getTime;
     }
+
+    //저장버튼 색 바꾸는 함수
+    private void saveColorChange() {
+        if (ScanModify==false) {
+            btnSave.setBackgroundColor(Color.YELLOW);
+            btnSave.setTextColor(Color.BLACK);
+        }
+    }
+
 
 
     //Toolbar 정보
@@ -446,7 +450,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     yU_UPDATE.execute(strIp,t3JobId.getText().toString(),t3OperationId.getText().toString(),t3WorkcenterId.getText().toString(),strSobId ,strOrgId ,t3JobId.getText().toString(),
                             t3LastSurimiCount.getText().toString(), t3EquimentId.getText().toString(), t3OillerId.getText().toString() ,t3Surimi1StartTime.getText().toString().replaceAll(" ",""),
                             t3Surimi1EndTime.getText().toString().replaceAll(" ",""), t3Surimi2StartTime.getText().toString().replaceAll(" ",""),  t3Surimi2EndTime.getText().toString().replaceAll(" ","") ,
-                            strUserId , t3IndicatorUserId.getText().toString()
+                            strUserId , t3IndicatorUserId.getText().toString(),t3LastTankCode.getText().toString()
                     );
 
 
@@ -736,12 +740,21 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                         t3Surimi2EndTime.setText(job.getString("WORKING_END_DATE2"));
                     }
 
-
-
                   //  t3LastTankScan.setText(job.getString("POWDER_WORKER_ID"));
 
-                    t3EquimentId.setText(job.getString("EQUIPMENT_ID"));
-                    t3OillerId.setText(job.getString("OILLER_ID"));
+                    if(job.getString("EQUIPMENT_ID").equals("null")){
+                        t3EquimentId.setText("");
+                    }else{
+                        t3EquimentId.setText(job.getString("EQUIPMENT_ID"));
+                    }
+
+                    if(job.getString("OILLER_ID").equals("null")){
+                        t3OillerId.setText("");
+                    }else{
+                        t3OillerId.setText(job.getString("OILLER_ID"));
+                    }
+
+
                     if(job.getString("INDICATOR_USER_ID").equals("null")){
                         t3IndicatorUserId.setText("");
                     }else{
@@ -874,6 +887,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     t3TankScan.setText(job.getString("TOP_EQUIPMENT_NAME"));
                     t3EquimentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                     t3EquimentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                    saveColorChange();
                 }
                 t3LiqidPersonDesc.requestFocus();
 
@@ -963,6 +978,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
                     t3IndicatorUserId.setText(job.getString("USER_ID"));
                     t3LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
+
+                    saveColorChange();
                 }
                 t3LastTankScan.requestFocus();
 
@@ -977,7 +994,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         }
     }
 
-    // LU_TANK_TYPE
+    // LU_TANK_TYPE SURIMI
     protected class LU_TANK_TYPE extends AsyncTask<String, Void, String>
     {
         protected  String doInBackground(String... urls)
@@ -991,7 +1008,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     ;
 
             try
-            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuTankType.jsp"); //주소 지정
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuSurimiTankType.jsp"); //주소 지정
 
                 HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
@@ -1050,6 +1067,8 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
                     t3LastTankCode.setText(job.getString("ENTRY_CODE"));
                     t3LastTankScan.setText(job.getString("ENTRY_DESCRIPTION"));
+
+                    saveColorChange();
                 }
                 t3FileNo.requestFocus();
 
@@ -1184,6 +1203,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     + "&P_WORKING_END_DATE2=" + urls[13]
                     + "&P_USER_ID=" + urls[14]
                     + "&P_INDICATOR_USER_ID=" + urls[15]
+                    + "&P_TANK_CODE=" + urls[16]
                     ;
 
             try

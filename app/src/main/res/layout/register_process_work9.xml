@@ -89,7 +89,7 @@
             android:layout_weight="1.5"
             android:hint="작업장"
             android:background="@drawable/edit_login"
-            android:inputType="textVisiblePassword"
+
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
@@ -121,7 +121,6 @@
             android:layout_marginRight="10sp"
             android:layout_weight="1.5"
             android:hint="이동유형"
-            android:inputType="textVisiblePassword"
             android:paddingLeft="16dp"
             android:background="@drawable/edit_login"
             android:textColor="@color/login_edit_text"

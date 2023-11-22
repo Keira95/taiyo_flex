@@ -478,6 +478,14 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
         return time3;
     }
 
+    //저장버튼 색 바꾸는 함수
+    private void saveColorChange() {
+        if (ScanModify==false) {
+            btnt1save.setBackgroundColor(Color.YELLOW);
+            btnt1save.setTextColor(Color.BLACK);
+        }
+    }
+
     private void ClearView(){
         t1FileNo.setText("");
         t1ItemDesc.setText("");
@@ -711,7 +719,12 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                         t1WorkStartTiem.setText(job.getString("WORK_START_DATE"));
                     }
 
-                    t1TankLcode.setText(job.getString("TANK_LCODE"));
+                    if(job.getString("TANK_LCODE").equals("null")){
+                        t1TankLcode.setText("");
+                    }else{
+                        t1TankLcode.setText(job.getString("TANK_LCODE"));
+                    }
+
 
                     if(job.getString("TANK_DESC").equals("null")){
                         t1TankScan.setText("");
@@ -719,7 +732,12 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                         t1TankScan.setText(job.getString("TANK_DESC"));
                     }
 
-                    t1LiqidPersonId.setText(job.getString("LIQUID_WORKER_ID"));
+                    if(job.getString("LIQUID_WORKER_ID").equals("null")){
+                        t1LiqidPersonId.setText("");
+                    }else{
+                        t1LiqidPersonId.setText(job.getString("LIQUID_WORKER_ID"));
+                    }
+
 
                     if(job.getString("LIQUID_WORKER_NAME").equals("null")){
                         t1LiqidPersonDesc.setText("");
@@ -759,7 +777,12 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                         t1WorkEndTime.setText(job.getString("WORK_END_DATE"));
                     }
 
-                    t1PowderPersonId.setText(job.getString("POWDER_WORKER_ID"));
+
+                    if(job.getString("POWDER_WORKER_ID").equals("null")){
+                        t1PowderPersonId.setText("");
+                    }else{
+                        t1PowderPersonId.setText(job.getString("POWDER_WORKER_ID"));
+                    }
 
                     t1Job_id.setText(job.getString("JOB_ID"));
                     t1OprationId.setText(job.getString("OPERATION_ID"));
@@ -881,6 +904,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                     t1TankLcode.setText(job.getString("ENTRY_CODE"));
                     t1TankScan.setText(job.getString("ENTRY_DESCRIPTION"));
+
+                    saveColorChange();
                 }
                 t1LiqidPersonDesc.requestFocus();
 
@@ -973,6 +998,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                     t1LiqidPersonId.setText(job.getString("USER_ID"));
                     t1LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
+
                 }
                 t1PowderPersonDesc.requestFocus();
 
@@ -1062,6 +1088,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                     t1PowderPersonId.setText(job.getString("USER_ID"));
                     t1PowderPersonDesc.setText(job.getString("DESCRIPTION"));
+
+
                 }
                 t1PowderPersonDesc.requestFocus();
 

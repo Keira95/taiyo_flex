@@ -459,6 +459,14 @@ public class RegisterPackingActivity extends AppCompatActivity {
         });
     }
 
+    //저장버튼 색 바꾸는 함수
+    private void saveColorChange() {
+        if (ScanModify==false) {
+            btnSave.setBackgroundColor(Color.YELLOW);
+            btnSave.setTextColor(Color.BLACK);
+        }
+    }
+
     private String getNowDate() {
 
         long now = System.currentTimeMillis();
@@ -926,6 +934,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     t5StirEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
                     t5StirEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                     t5StirEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                    saveColorChange();
                 }
                 t5UnitEquipmentDesc.requestFocus();
 
@@ -1017,6 +1027,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     t5UnitEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
                     t5UnitEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                     t5UnitEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                    saveColorChange();
                 }
                 t5WorkerDesc.requestFocus();
 
@@ -1107,6 +1119,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                     t5WorkerId.setText(job.getString("USER_ID"));
                     t5WorkerDesc.setText(job.getString("DESCRIPTION"));
+
                 }
                 t5PumpNoDes.requestFocus();
 
@@ -1196,6 +1209,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     t5PumpNoId.setText(job.getString("LOOKUP_ENTRY_ID"));
                     t5PumpNoCode.setText(job.getString("ENTRY_CODE"));
                     t5PumpNoDes.setText(job.getString("ENTRY_DESCRIPTION"));
+
+                    saveColorChange();
                 }
                 t5FileNo.requestFocus();
 

@@ -225,6 +225,13 @@ public class RegisterDefomationActivity extends AppCompatActivity {
         });
     }
 
+    private void saveColorChange() {
+        if (ScanModify==false) {
+            btnt7save.setBackgroundColor(Color.YELLOW);
+            btnt7save.setTextColor(Color.BLACK);
+        }
+    }
+
 
 
     private String getNowDate() {
@@ -601,7 +608,11 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                         etT7StartDate.setText(job.getString("WORKING_START_DATE"));
                     }
 
-                    etT7TankLcode.setText(job.getString("TANK_LCODE"));
+                    if(job.getString("TANK_LCODE").equals("null")){
+                        etT7TankLcode.setText("");
+                    }else{
+                        etT7TankLcode.setText(job.getString("TANK_LCODE"));
+                    }
 
                     if(job.getString("TANK_DESC").equals("null")){
                         etT7TankDesc.setText("");
@@ -609,7 +620,12 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                         etT7TankDesc.setText(job.getString("TANK_DESC"));
                     }
 
-                    etT7EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+
+                    if(job.getString("EQUIPMENT_ID").equals("null")){
+                        etT7EquipmentId.setText("");
+                    }else{
+                        etT7EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                    }
 
 
                     if(job.getString("EQUIPMENT_NAME").equals("null")){
@@ -618,7 +634,13 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                         etT7EquipmentName.setText(job.getString("EQUIPMENT_NAME"));
                     }
 
-                    etT7WorkerId.setText(job.getString("WORKER_ID"));
+
+                    if(job.getString("WORKER_ID").equals("null")){
+                        etT7WorkerId.setText("");
+                    }else{
+                        etT7WorkerId.setText(job.getString("WORKER_ID"));
+                    }
+
 
                     if(job.getString("WORKER").equals("null")){
                         etT7WorkerName.setText("");
@@ -754,6 +776,8 @@ public class RegisterDefomationActivity extends AppCompatActivity {
 
                     etT7TankLcode.setText(job.getString("ENTRY_CODE"));
                     etT7TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
+
+                    saveColorChange();
                 }
                 etT7EquipmentName.requestFocus();
 

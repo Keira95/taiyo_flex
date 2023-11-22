@@ -41,6 +41,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 public class RegisterAgingActivity extends AppCompatActivity {
 
@@ -185,6 +186,12 @@ public class RegisterAgingActivity extends AppCompatActivity {
         });
     }
 
+    private void saveColorChange() {
+        if (ScanModify==false) {
+            btnt8Save.setBackgroundColor(Color.YELLOW);
+            btnt8Save.setTextColor(Color.BLACK);
+        }
+    }
 
     private String getNowDate() {
 
@@ -573,9 +580,11 @@ public class RegisterAgingActivity extends AppCompatActivity {
                 String status = job.getString("Status");
 
                 if (status.equals("S")) {
-                    t8TankCode.setText(job.getString("ENTRY_CODE")); // entryDesc
-                    t8TankDesc.setText(job.getString("ENTRY_DESCRIPTION")); // edT2TankScan
-                    t8TankId.setText(job.getString("LOOKUP_ENTRY_ID")); // lookupEntryId
+                    t8TankCode.setText(job.getString("ENTRY_CODE"));
+                    t8TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
+                    t8TankId.setText(job.getString("LOOKUP_ENTRY_ID"));
+
+                    saveColorChange();
                 }
 
                 t8EquipmentName.requestFocus();
@@ -1049,8 +1058,8 @@ public class RegisterAgingActivity extends AppCompatActivity {
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t8FileNoScan.getText().toString(),t8WorkcenterId.getText().toString()); //다시 fill
 
 
-                    btnt8Save.setBackgroundColor(R.color.dark_green);
-                    btnt8Save.setTextColor(Color.WHITE);
+                    btnt8Save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt8Save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "오류입니다."+ result, Toast.LENGTH_SHORT).show();

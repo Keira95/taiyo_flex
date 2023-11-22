@@ -160,7 +160,7 @@ public class LuComLatelyDialog {
 
                 for(int i = 0; i < jarrayWorkLevel.length(); i++)
                 {
-                    JSONObject job = jarrayWorkLevel.getJSONObject(0); //JSON 오브젝트 파싱
+                    JSONObject job = jarrayWorkLevel.getJSONObject(i); //JSON 오브젝트 파싱
 
                     CombinLatelyItem combinLatelyItem = new CombinLatelyItem();
 

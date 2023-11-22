@@ -413,6 +413,13 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
         });
     }
 
+    private void saveColorChange() {
+        if (ScanModify==false) {
+            btnt4save.setBackgroundColor(Color.YELLOW);
+            btnt4save.setTextColor(Color.BLACK);
+        }
+    }
+
 
     protected class GET_WORKCENTER_IN_AUTHORITY extends AsyncTask<String, Void, String>
     {
@@ -900,6 +907,8 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                     t4EquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
                     t4TopEquimentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                     t4TopEquimentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                    saveColorChange();
                 }
                 t4WorkerDesc.requestFocus();
 
@@ -991,6 +1000,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
                     t4WorkerId.setText(job.getString("USER_ID"));
                     t4WorkerDesc.setText(job.getString("DESCRIPTION"));
+
                 }
                 t4FileNo.requestFocus();
 

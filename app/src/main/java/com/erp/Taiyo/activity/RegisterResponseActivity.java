@@ -619,6 +619,14 @@ public class RegisterResponseActivity extends AppCompatActivity{
         });
     }
 
+    //저장버튼 색 바꾸는 함수
+    private void saveColorChange() {
+        if (ScanModify==false) {
+            btnt6save.setBackgroundColor(Color.YELLOW);
+            btnt6save.setTextColor(Color.BLACK);
+        }
+    }
+
     private String getNowDate() {
 
         long now = System.currentTimeMillis();
@@ -823,9 +831,11 @@ public class RegisterResponseActivity extends AppCompatActivity{
                     String status = job.getString("Status");
 
                     if (status.equals("S")) {
-                        etT6TankCode.setText(job.getString("ENTRY_CODE")); // entryDesc
-                        etT6TankDesc.setText(job.getString("ENTRY_DESCRIPTION")); // edT2TankScan
-                        etT6TankId.setText(job.getString("LOOKUP_ENTRY_ID")); // lookupEntryId
+                        etT6TankCode.setText(job.getString("ENTRY_CODE"));
+                        etT6TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
+                        etT6TankId.setText(job.getString("LOOKUP_ENTRY_ID"));
+
+                        saveColorChange();
                     }
 
                     etT6EquipmentName.requestFocus();

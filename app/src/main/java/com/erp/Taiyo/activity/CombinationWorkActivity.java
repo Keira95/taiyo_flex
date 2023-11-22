@@ -192,20 +192,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
         keyboardFocus(etT2Stir2WorkerNameScan);
         keyboardFocus(etT2Stir3WorkerNameScan);
 
-
-
-
-
-
-
-        keyboardFocus(etT2FileNoScan);
-        keyboardFocus(etT2MixTankDescScan);
-        keyboardFocus(etT2EquipmentScan);
-        keyboardFocus(etT2Stir1WorkerNameScan);
-        keyboardFocus(etT2Stir2WorkerNameScan);
-        keyboardFocus(etT2Stir3WorkerNameScan);
-
-
         etT2FileNoScan.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -282,16 +268,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (getCurrentFocus() == etT2Stir1WorkerNameScan && !etT2Stir1WorkerNameScan.getText().toString().isEmpty()) {
 
-
-                    etH2HiddenWorker.setText("worker1");
-
-                    if(ScanWorkerCnt == 1) {
                         LuWorker luWorker = new LuWorker();
                         luWorker.execute(strSobId, strOrgId, etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
-                    }else{
-                        ScanWorkerCnt = 1;
-                        return;
-                    }
 
                 }else{
                     return;
@@ -313,9 +291,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (getCurrentFocus() == etT2Stir2WorkerNameScan && !etT2Stir2WorkerNameScan.getText().toString().isEmpty()) {
 
-                    LuWorker luWorker = new LuWorker();
-                    etH2HiddenWorker.setText("worker2");
-                    luWorker.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
+                    LuWorker2 luWorker2 = new LuWorker2();
+                    luWorker2.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
 
 
                 }else{
@@ -338,8 +315,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (getCurrentFocus() == etT2Stir3WorkerNameScan && !etT2Stir3WorkerNameScan.getText().toString().isEmpty()) {
 
-                    LuWorker luWorker = new LuWorker();
-                    luWorker.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir3WorkerNameScan.getText().toString());
+                    LuWorker3 luWorker3 = new LuWorker3();
+                    luWorker3.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir3WorkerNameScan.getText().toString());
 
 
                 }else{
@@ -513,7 +490,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(CombinationWorkActivity.this);
                 alert.setTitle("저장");
                 alert.setMessage("저장하시겠습니까?");
-                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -531,7 +508,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     }
 
                 });
-                alert.setNegativeButton("No", new DialogInterface.OnClickListener() { //no
+                alert.setNegativeButton("취소", new DialogInterface.OnClickListener() { //no
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                     }
@@ -571,6 +548,14 @@ public class CombinationWorkActivity extends AppCompatActivity {
         String getTime = sdf.format(date);
 
         return getTime;
+    }
+
+    //저장버튼 색 바꾸는 함수
+    private void saveColorChange() {
+        if (FileScan==false) {
+            bT2Save.setBackgroundColor(Color.YELLOW);
+            bT2Save.setTextColor(Color.BLACK);
+        }
     }
 
 
@@ -769,34 +754,129 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 String status = job.getString("Status");
 
 
-                    if (status.equals("S") ) {
-                        etT2FileNoScan.setText(handleStringNull(job.optString("WORK_ORDER_NO")));
-                        etT2ItemDesc.setText(handleStringNull(job.getString("ITEM_DESCRIPTION")));
-                        etT2OperaionDesc.setText(handleStringNull(job.getString("OPERATION_DESCRIPTION")));
-                        etT2MixStartTime.setText(handleStringNull(job.getString("MIX_START_DATE")));
-                        etH2TankLcode.setText(handleStringNull(job.getString("MIX_TANK_LCODE")));
-                        etT2MixTankDescScan.setText(handleStringNull(job.getString("MIX_TANK_DESC")));
-                        etH2EquipmentId.setText(handleStringNull(job.getString("EQUIPMENT_ID")));
-                        etT2EquipmentScan.setText(handleStringNull(job.getString("EQUIPMENT_NAME")));
-                        etT2Stir1StartDate.setText(handleStringNull(job.optString("STIR_1_START_DATE")));
-                        etT2Stir1EndDate.setText(handleStringNull(job.getString("STIR_1_END_DATE")));
-                        etH2Stir1WorkerId.setText(handleStringNull(job.getString("STIR_1_WORKER_ID")));
-                        etT2Stir1WorkerName.setText(handleStringNull(job.getString("STIR_1_WORKER_NAME")));
-                        etT2Stir2StartDate.setText(handleStringNull(job.getString("STIR_2_START_DATE")));
-                        etT2Stir2EndDate.setText(handleStringNull(job.getString("STIR_2_END_DATE")));
-                        etH2Stir2WorkerId.setText(handleStringNull(job.getString("STIR_2_WORKER_ID")));
-                        etT2Stir2WorkerName.setText(handleStringNull(job.getString("STIR_2_WORKER_NAME")));
-                        etT2Stir3StartDate.setText(handleStringNull(job.getString("STIR_3_START_DATE")));
-                        etT2Stir3EndDate.setText(handleStringNull(job.getString("STIR_3_END_DATE")));
-                        etH2Stir3WorkerId.setText(handleStringNull(job.getString("STIR_3_WORKER_ID")));
-                        etT2Stir3WorkerName.setText(handleStringNull(job.getString("STIR_3_WORKER_NAME")));
-                        etT2MixEndTime.setText(handleStringNull(job.getString("MIX_END_DATE")));
-                        etH2JobId.setText(handleStringNull(job.getString("JOB_ID")));
-                        etH2OperationId.setText(handleStringNull(job.getString("OPERATION_ID")));
-                        etH2ModFlag.setText(handleStringNull(job.getString("MOD_FLAG")));
+                if (status.equals("S") ) {
+
+                    etT2FileNoScan.setText(job.getString("WORK_ORDER_NO"));
+                    etT2ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                    etT2OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+                    if(job.getString("MIX_START_DATE").equals("null")){
+                        etT2MixStartTime.setText("");
+                    }else{
+                        etT2MixStartTime.setText(job.getString("MIX_START_DATE"));
+                    }
+
+
+
+                    if(job.getString("MIX_TANK_LCODE").equals("null")){
+                        etH2TankLcode.setText("");
+                    }else{
+                        etH2TankLcode.setText(job.getString("MIX_TANK_LCODE"));
+                    }
+
+                    if(job.getString("MIX_TANK_DESC").equals("null")){
+                        etT2MixTankDescScan.setText("");
+                    }else{
+                        etT2MixTankDescScan.setText(job.getString("MIX_TANK_DESC"));
+                    }
+
+
+                    if(job.getString("EQUIPMENT_ID").equals("null")){
+                        etH2EquipmentId.setText("");
+                    }else{
+                        etH2EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                    }
+
+
+                    if(job.getString("EQUIPMENT_NAME").equals("null")){
+                        etT2EquipmentScan.setText("");
+                    }else{
+                        etT2EquipmentScan .setText(job.getString("EQUIPMENT_NAME"));
+                    }
+
+                    if(job.getString("STIR_1_START_DATE").equals("null")){
+                        etT2Stir1StartDate.setText("");
+                    }else{
+                        etT2Stir1StartDate.setText(job.getString("STIR_1_START_DATE"));
 
                     }
-                    etT2MixTankDescScan.requestFocus();
+                    if(job.getString("STIR_1_END_DATE").equals("null")){
+                        etT2Stir1EndDate.setText("");
+                    }else{
+                        etT2Stir1EndDate.setText(job.getString("STIR_1_END_DATE"));
+                    }
+
+
+                    if(job.getString("STIR_1_WORKER_ID").equals("null")){
+                        etH2Stir1WorkerId.setText("");
+                    }else{
+                        etH2Stir1WorkerId.setText(job.getString("STIR_1_WORKER_ID"));
+                    }
+
+                    if(job.getString("STIR_1_WORKER_NAME").equals("null")){
+                        etT2Stir1WorkerName.setText("");
+                    }else{
+                        etT2Stir1WorkerName.setText(job.getString("STIR_1_WORKER_NAME"));
+                    }
+                    if(job.getString("STIR_2_START_DATE").equals("null")){
+                        etT2Stir2StartDate.setText("");
+                    }else{
+                        etT2Stir2StartDate.setText(job.getString("STIR_2_START_DATE"));
+                    }
+                    if(job.getString("STIR_2_END_DATE").equals("null")){
+                        etT2Stir2EndDate.setText("");
+                    }else{
+                        etT2Stir2EndDate.setText(job.getString("STIR_2_END_DATE"));
+                    }
+
+
+                    if(job.getString("STIR_2_WORKER_ID").equals("null")){
+                        etH2Stir2WorkerId.setText("");
+                    }else{
+                        etH2Stir2WorkerId.setText(job.getString("STIR_2_WORKER_ID"));
+                    }
+
+
+                    if(job.getString("STIR_2_WORKER_NAME").equals("null")){
+                        etT2Stir2WorkerName.setText("");
+                    }else{
+                        etT2Stir2WorkerName.setText(job.getString("STIR_2_WORKER_NAME"));
+                    }
+                    if(job.getString("STIR_3_START_DATE").equals("null")){
+                        etT2Stir3StartDate.setText("");
+                    }else{
+                        etT2Stir3StartDate.setText(job.getString("STIR_3_START_DATE"));
+                    }
+                    if(job.getString("STIR_3_END_DATE").equals("null")){
+                        etT2Stir3EndDate.setText("");
+                    }else{
+                        etT2Stir3EndDate.setText(job.getString("STIR_3_END_DATE"));
+                    }
+
+
+                    if(job.getString("STIR_3_WORKER_ID").equals("null")){
+                        etH2Stir3WorkerId.setText("");
+                    }else{
+                        etH2Stir3WorkerId.setText(job.getString("STIR_3_WORKER_ID"));
+                    }
+
+                    if(job.getString("STIR_3_WORKER_NAME").equals("null")){
+                        etT2Stir3WorkerName.setText("");
+                    }else{
+                        etT2Stir3WorkerName.setText(job.getString("STIR_3_WORKER_NAME"));
+                    }
+
+                    if(job.getString("MIX_END_DATE").equals("null")){
+                        etT2MixEndTime.setText("");
+                    }else{
+                        etT2MixEndTime.setText(job.getString("MIX_END_DATE"));
+                    }
+
+                    etH2JobId.setText(job.getString("JOB_ID"));
+                    etH2OperationId.setText(job.getString("OPERATION_ID"));
+                    etH2ModFlag.setText(job.getString("MOD_FLAG"));
+
+                }
+                etT2MixTankDescScan.requestFocus();
 
 
                     FileScan = false;
@@ -845,12 +925,12 @@ public class CombinationWorkActivity extends AppCompatActivity {
             }
         }
         // 스트링 null 처리하는 메서드
-        private String handleStringNull(String input) {
-
-            String rtStr = input.equals("null") ? "" : input;
-
-            return rtStr;
-        }
+//        private String handleStringNull(String input) {
+//
+//            String rtStr = input.equals("null") ? "" : input;
+//
+//            return rtStr;
+//        }
 
     }
     //lutanktype 설비 탱크
@@ -915,7 +995,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (resultArray.length() < 1) {
                     FileScan = false;
-                    etT2EquipmentScan.requestFocus();
                     return;
                 }
 
@@ -927,17 +1006,22 @@ public class CombinationWorkActivity extends AppCompatActivity {
                         etH2TankLcode.setText(job.getString("ENTRY_CODE")); // entryDesc
                         etT2MixTankDescScan.setText(job.getString("ENTRY_DESCRIPTION")); // edT2TankScan
                         etH2LookupEntryId.setText(job.getString("LOOKUP_ENTRY_ID")); // lookupEntryId
+
+                        saveColorChange();
                     }
+
+
 
                     etT2EquipmentScan.requestFocus();
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                etT2EquipmentScan.requestFocus();
+               etT2MixTankDescScan.setText("");
 
             } catch (Exception e) {
                 e.printStackTrace();
-                etT2EquipmentScan.requestFocus();
+              //etT2EquipmentScan.requestFocus();
+              etT2MixTankDescScan.setText("");
 
             }
         }
@@ -1023,6 +1107,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
                         etT2EquipmentScan.setText(job.getString("TOP_EQUIPMENT_NAME"));
                         etH2OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
 
+                        saveColorChange();
+
                     }
                     etT2Stir1WorkerNameScan.requestFocus();
 
@@ -1104,43 +1190,31 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
 
-                String hiddenWorker = etH2HiddenWorker.getText().toString();
+
 
                 if (resultArray.length() < 1) { //데이터 없을때
 
                     FileScan = false;
-                   // if (etT2Stir1WorkerNameScan.getText().toString().isEmpty()) {
-                     hiddenWorkerChk(hiddenWorker);
 
-                     return;
-
-                    }else{ //데이터 있을때
-
-                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                    String status = job.getString("Status");
-
-                    if (status.equals("S")) {
-                        if (etH2HiddenWorker.getText().toString().equals("worker1")) {
-                            etH2Stir1WorkerId.setText(job.getString("USER_ID"));
-                            etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
-                            etT2Stir2WorkerNameScan.requestFocus();
-
-                        } else if (etH2HiddenWorker.getText().toString().equals("worker2")) {
-
-                            etH2Stir2WorkerId.setText(job.getString("USER_ID"));
-                            etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
-                            etT2Stir3WorkerNameScan.requestFocus();
-
-                        } else {
-
-                            etH2Stir3WorkerId.setText(job.getString("USER_ID"));
-                            etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
-                        }
-
-                        ScanWorkerCnt ++;
-                    }
+                    return;
 
                 }
+
+                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                String status = job.getString("Status");
+
+                if (status.equals("S")) {
+                    etH2Stir1WorkerId.setText(job.getString("USER_ID"));
+                    etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                    saveColorChange();
+                }
+                etT2Stir2WorkerNameScan.requestFocus();
+
+
+
+
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -1151,18 +1225,188 @@ public class CombinationWorkActivity extends AppCompatActivity {
         }
 
     }
-    private void hiddenWorkerChk(String str){
+
+    protected class LuWorker2 extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String... urls) {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "W_SOB_ID=" + urls[0]
+                    + "&W_ORG_ID=" + urls[1]
+                    + "&W_WORKCENTER_ID=" + urls[2]
+                    + "&W_BARCODE=" + urls[3];
+            try {
+                URL obj = new URL("http://"+strIp+"/TAIYO/LuWorker.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
+
+                if (conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true) {
+                            String line = br.readLine();
+                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return jsonHtml.toString(); //결과값 리턴
+        }
+
+        protected void onPostExecute(String result) {
+            //페이지 결과값 파싱
 
 
-        if (str.equals("worker1")) {
-            etT2Stir1WorkerNameScan.setText("");
-            etT2Stir1WorkerNameScan.requestFocus();
-        } else if (str.equals("worker2") ) {
-            etT2Stir2WorkerNameScan.setText("");
-            etT2Stir2WorkerNameScan.requestFocus();
-        } else if(str.equals("worker3")){
-            etT2Stir3WorkerNameScan.setText("");
-            etT2Stir3WorkerNameScan.requestFocus();
+            try {
+
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+                JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+
+                //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
+
+
+
+                if (resultArray.length() < 1) { //데이터 없을때
+
+                    FileScan = false;
+
+                    return;
+
+                }
+
+                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                String status = job.getString("Status");
+
+                if (status.equals("S")) {
+                    etH2Stir2WorkerId.setText(job.getString("USER_ID"));
+                    etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                    saveColorChange();
+                }
+
+                etT2Stir3WorkerNameScan.requestFocus();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    protected class LuWorker3 extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String... urls) {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "W_SOB_ID=" + urls[0]
+                    + "&W_ORG_ID=" + urls[1]
+                    + "&W_WORKCENTER_ID=" + urls[2]
+                    + "&W_BARCODE=" + urls[3];
+            try {
+                URL obj = new URL("http://"+strIp+"/TAIYO/LuWorker.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
+
+                if (conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true) {
+                            String line = br.readLine();
+                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return jsonHtml.toString(); //결과값 리턴
+        }
+
+        protected void onPostExecute(String result) {
+            //페이지 결과값 파싱
+
+
+            try {
+
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+                JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+
+                //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
+
+
+
+                if (resultArray.length() < 1) { //데이터 없을때
+
+                    FileScan = false;
+
+                    return;
+
+                }
+
+                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                String status = job.getString("Status");
+
+                if (status.equals("S")) {
+                    etH2Stir3WorkerId.setText(job.getString("USER_ID"));
+                    etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                    saveColorChange();
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -1275,5 +1519,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             }
         }
     }
+
+
 
 }

@@ -84,6 +84,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
+    private String test = "S";
 
 
     @Override
@@ -209,7 +210,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t1TankScan && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t1TankScan && !s.toString().isEmpty() && s != null && t1TankLcode.getText().toString().equals("")){
 
                     LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
                     lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, t1TankScan.getText().toString());
@@ -239,7 +240,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty() && s != null){
 
                     LU_RIQID_WORKER lU_RIQID_WORKER = new LU_RIQID_WORKER();
                     lU_RIQID_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1LiqidPersonDesc.getText().toString());
@@ -418,6 +419,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 t1TankScan.setText("");
+                t1TankLcode.setText("");
                 return false;
             }
         });
@@ -843,6 +845,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                     + "&W_BARCODE=" +urls[3]
                     ;
 
+
+
             try
             {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuTankType.jsp"); //주소 지정
 
@@ -894,11 +898,13 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
+
                 if(jarrayWorkLevel.length() < 1){
                     t1LiqidPersonDesc.requestFocus();
+                    test ="F";
+                    t1TankScan.setText("");
                     return;
                 }
-
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 

@@ -160,17 +160,17 @@ public class MenuActivity extends AppCompatActivity {
         ItemName.setTitle(strUserName);
 
         //
-        MenuItem MOBF0001 = menu.findItem(R.id.MOBF0009);
-        MenuItem MOBF0004 = menu.findItem(R.id.MOBF0010);
-        MenuItem MOBF0007 = menu.findItem(R.id.MOBF0011);
+      //  MenuItem MOBF0001 = menu.findItem(R.id.MOBF0009);
+       // MenuItem MOBF0004 = menu.findItem(R.id.MOBF0010);
+       // MenuItem MOBF0007 = menu.findItem(R.id.MOBF0011);
 
 
         MenuItem logOut   = menu.findItem(R.id.log_out);
         MenuItem appOut   = menu.findItem(R.id.app_out);
 
 
-        MenuItem ItemVerison = menu.findItem(R.id.user_verison);
-        ItemVerison.setTitle(strVerison);
+       // MenuItem ItemVerison = menu.findItem(R.id.user_verison);
+      //  ItemVerison.setTitle(strVerison);
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -180,12 +180,12 @@ public class MenuActivity extends AppCompatActivity {
 
         //매뉴
 
-       // DB_Menu_Header  dbMenuHeader = new DB_Menu_Header();
-       // dbMenuHeader.execute();
+        DB_Menu_Header  dbMenuHeader = new DB_Menu_Header();
+        dbMenuHeader.execute();
        // DB_Menu_Detail dbMenuDetail = new DB_Menu_Detail();
        // dbMenuDetail.execute(strUserId);
 
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+     /*   mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NewApi")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -218,13 +218,13 @@ public class MenuActivity extends AppCompatActivity {
                         MOBF0007.putExtra("Ip", strIp);
                         MOBF0007.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
                         startActivity(MOBF0007);
-             /*       case R.id.MOBF0011:
+             *//*       case R.id.MOBF0011:
                         Intent MOBF0011 = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
                         MOBF0011.putExtra("O_USER_ID", strUserId);
                         MOBF0011.putExtra("O_USER_NAME", strUserName);
                         MOBF0011.putExtra("Ip", strIp);
                         MOBF0011.putExtra("TOP_MENU_DESC", btnMobf0007.getText().toString());
-                        startActivity(MOBF0011);*/
+                        startActivity(MOBF0011);*//*
 
 
 
@@ -234,7 +234,7 @@ public class MenuActivity extends AppCompatActivity {
 
                 return false;
             }
-        });
+        });*/
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open, R.string.close);
         mDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -537,15 +537,16 @@ public class MenuActivity extends AppCompatActivity {
                 MenuItem ItemName = menu.findItem(R.id.user_name);
 
                 //
-                MenuItem MOBF0001 = menu.findItem(R.id.MOBF0009);
-               /* MenuItem MOBF0002 = menu.findItem(R.id.MOBF0002);
-                MenuItem MOBF0003 = menu.findItem(R.id.MOBF0003);*/
-                MenuItem MOBF0004 = menu.findItem(R.id.MOBF0010);
-              /*  MenuItem MOBF0005 = menu.findItem(R.id.MOBF0005);
-                MenuItem MOBF0006 = menu.findItem(R.id.MOBF0006);*/
-                MenuItem MOBF0007 = menu.findItem(R.id.MOBF0011);
-               // MenuItem MOBF0008 = menu.findItem(R.id.MOBF0008);
-
+                MenuItem WC801 = menu.findItem(R.id.WC801);
+                MenuItem WC802 = menu.findItem(R.id.WC802);
+                MenuItem WC803 = menu.findItem(R.id.WC803);
+                MenuItem WC804 = menu.findItem(R.id.WC804);
+                MenuItem WC805 = menu.findItem(R.id.WC805);
+                MenuItem WC807 = menu.findItem(R.id.WC807);
+                MenuItem WC808 = menu.findItem(R.id.WC808);
+                MenuItem WC809 = menu.findItem(R.id.WC809);
+                MenuItem PROCESS = menu.findItem(R.id.PROCESS);
+/*
                 for(int i=0; i< arr.length(); i++)
                 {
                     JSONObject j_ob = arr.getJSONObject(i);
@@ -606,7 +607,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
-                }
+                }*/
 
 //                for(int i = 0; i < arr.length(); i++) {
 //                    JSONObject j_ob = arr.getJSONObject(i);

@@ -175,7 +175,6 @@ public class LuComLatelyDialog {
                     combinLatelyItem.setStrStir3MMinute(job.getString("STIR_3_MINUTE"));
 
 
-
                     comLatelyAdapter.addItem(combinLatelyItem);
 
                 }

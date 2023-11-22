@@ -720,6 +720,10 @@
                 android:id="@+id/et_t3_last_tank_code"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
+            <EditText
+                android:id="@+id/et_t3_lookup_entry_id"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
 
 
         </LinearLayout>

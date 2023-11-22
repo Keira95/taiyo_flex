@@ -709,9 +709,9 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                         t3Surimi1StartTime.setText(job.getString("WORKING_START_DATE"));
                     }
                     if(job.getString("TANK_DESC").equals("null")){
-                        t3TankScan.setText("");
+                        t3LastTankScan.setText("");
                     }else{
-                        t3TankScan.setText(job.getString("TANK_DESC"));
+                        t3LastTankScan.setText(job.getString("TANK_DESC"));
                     }
                     if(job.getString("OILLER_DESC").equals("null")){
                         t3OillerDesc.setText("");
@@ -753,7 +753,11 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                     }else{
                         t3OillerId.setText(job.getString("OILLER_ID"));
                     }
-
+                    if(job.getString("EQUIPMENT_NAME").equals("null")){
+                        t3TankScan.setText("");
+                    }else{
+                        t3TankScan.setText(job.getString("EQUIPMENT_NAME"));
+                    }
 
                     if(job.getString("INDICATOR_USER_ID").equals("null")){
                         t3IndicatorUserId.setText("");

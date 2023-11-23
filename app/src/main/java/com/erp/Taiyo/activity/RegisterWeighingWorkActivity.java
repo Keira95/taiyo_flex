@@ -906,6 +906,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                     test ="F";
                     t1TankScan.setText("");
                     return;
+
+
                 }
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){

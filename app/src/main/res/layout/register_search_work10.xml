@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/main_layout"
+    >
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/AppTheme"
+            app:navigationIcon="?attr/homeAsUpIndicator">
+
+            <TextView
+                android:id="@+id/tv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40sp"
+                android:gravity="center"
+                android:text="실적처리등록"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/layout_logout"
+                android:layout_width="95dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="4dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/user_nm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="사용자"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <!--warehouse-->
+
+    <FrameLayout
+        android:id="@+id/content_log"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scrollbars="vertical"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:scrollbars="vertical"
+            />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_t10_workcenter_desc"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="3sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="작업장"
+            android:background="@drawable/edit_login"
+
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_t10_workcenter_lookup"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/buttonshape3"
+            android:textColorHint="@color/white"
+            android:layout_weight="5"
+            android:hint="..."
+
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:background="@drawable/border"
+        android:layout_marginBottom="5sp"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal"
+
+        >
+
+        <EditText
+            android:id="@+id/et_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+
+            android:layout_weight="0.8"
+            android:enabled="false"
+            android:hint="File No"
+            android:inputType="textVisiblePassword"
+            android:paddingLeft="10dp"
+            android:paddingTop="7dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="15sp" />
+
+
+   <EditText
+            android:id="@+id/et_t10_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5sp"
+
+            android:background="@color/beige"
+            android:layout_weight="0.5"
+            android:hint="Scan"
+            android:paddingLeft="16dp"
+            android:textColor="@color/login_edit_text"
+            android:textColorHint="@color/login_edit_hint"
+            android:textSize="16sp" />
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <include
+            android:id="@+id/in_search_list"
+            layout="@layout/header_search" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_search"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal"
+        >
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_weight="0"
+        android:layout_gravity="right"
+        android:gravity="bottom"
+        android:layout_marginBottom="-2sp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_t10_search"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginLeft="10sp"
+            android:background="@color/dark_green"
+            android:text="조회"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+    <!--   숨김 값 -->
+
+
+    <EditText
+        android:id="@+id/et_t10_hidden_focus"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_oreration_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_work_order_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_qctual_qty"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_op_poise_order_seq"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_op_unit_order_seq"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_item_desc"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_sort_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t10_workcenter_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+    <EditText
+        android:id="@+id/et_t10_workcenter_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+
+</LinearLayout>

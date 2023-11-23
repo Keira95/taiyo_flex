@@ -84,7 +84,9 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
-    private String test = "S";
+    private String TankDesc = "";
+    private String RiqidWorkerDesc = "";
+    private String PowderPersonDesc = "";
 
 
     @Override
@@ -201,23 +203,22 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(ScanModify==false && getCurrentFocus() == t1TankScan){
-                    // btnt1save.setBackgroundColor(Color.YELLOW);
-                    // btnt1save.setTextColor(Color.BLACK);
-                }
+
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
-                if(getCurrentFocus() == t1TankScan && !s.toString().isEmpty() && s != null && t1TankLcode.getText().toString().equals("")){
+                //사용자 스캔또는 터치 포커스              //값이 널이아니고           // locde가 null이어야만한다
+                if(getCurrentFocus() == t1TankScan && !s.toString().equals("") && t1TankLcode.getText().toString().equals("")) {
 
                     LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
-                    lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, t1TankScan.getText().toString());
+                    lU_TANK_TYPE.execute(strIp, strSobId, strOrgId, t1TankScan.getText().toString());
 
                 }else{
                     return;
                 }
+
             }
         });
 
@@ -240,7 +241,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty() && s != null){
+                if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty() && s != null && t1LiqidPersonId.getText().toString().equals("")){
 
                     LU_RIQID_WORKER lU_RIQID_WORKER = new LU_RIQID_WORKER();
                     lU_RIQID_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1LiqidPersonDesc.getText().toString());
@@ -271,7 +272,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t1PowderPersonDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t1PowderPersonDesc && !s.toString().isEmpty() && t1PowderPersonId.getText().toString().equals("")){
 
                     LU_POWEDR_WORKER lU_POWEDR_WORKER = new LU_POWEDR_WORKER();
                     lU_POWEDR_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1PowderPersonDesc.getText().toString());
@@ -428,6 +429,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 t1LiqidPersonDesc.setText("");
+                t1LiqidPersonId.setText("");
                 return false;
             }
         });
@@ -436,6 +438,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 t1PowderPersonDesc.setText("");
+                t1PowderPersonId.setText("");
                 return false;
             }
         });
@@ -900,22 +903,26 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    t1LiqidPersonDesc.requestFocus();
-                    test ="F";
-                    t1TankScan.setText("");
+                    if(!TankDesc.equals(t1TankScan.getText().toString())){
+                        t1TankScan.requestFocus();
+                        t1TankScan.setText("");
+
+                    }
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
 
+                        t1TankLcode.setText(job.getString("ENTRY_CODE"));
+                        t1TankScan.setText(job.getString("ENTRY_DESCRIPTION"));
 
+                        saveColorChange();
+                        TankDesc =job.getString("ENTRY_DESCRIPTION");
+
+                 }
+                    t1LiqidPersonDesc.requestFocus();
                 }
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    t1TankLcode.setText(job.getString("ENTRY_CODE"));
-                    t1TankScan.setText(job.getString("ENTRY_DESCRIPTION"));
-
-                    saveColorChange();
-                }
-                t1LiqidPersonDesc.requestFocus();
 
             }catch (JSONException e)
             {
@@ -997,18 +1004,24 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t1PowderPersonDesc.requestFocus();
+                    if(!RiqidWorkerDesc.equals(t1LiqidPersonDesc.getText().toString())){
+                        t1LiqidPersonDesc.requestFocus();
+                        t1LiqidPersonDesc.setText("");
+                    }
                     return;
+
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t1LiqidPersonId.setText(job.getString("USER_ID"));
+                        t1LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
+                        RiqidWorkerDesc = job.getString("DESCRIPTION");
+                        t1PowderPersonDesc.requestFocus();
+
+                    }
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-
-                    t1LiqidPersonId.setText(job.getString("USER_ID"));
-                    t1LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
-
-                }
-                t1PowderPersonDesc.requestFocus();
 
             }catch (JSONException e)
             {
@@ -1086,17 +1099,25 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
 
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
+
 
                 if(jarrayWorkLevel.length() < 1){
-                    t1PowderPersonDesc.requestFocus();
+                    if(!PowderPersonDesc.equals(t1PowderPersonDesc.getText().toString())){
+                        t1PowderPersonDesc.setText("");
+                        t1PowderPersonDesc.requestFocus();
+
+                    }
                     return;
-                }
-                if(job.getString("Status").equals("S")){
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
 
-                    t1PowderPersonId.setText(job.getString("USER_ID"));
-                    t1PowderPersonDesc.setText(job.getString("DESCRIPTION"));
+                        t1PowderPersonId.setText(job.getString("USER_ID"));
+                        t1PowderPersonDesc.setText(job.getString("DESCRIPTION"));
+                        PowderPersonDesc = job.getString("DESCRIPTION");
 
+
+                    }
 
                 }
                 t1PowderPersonDesc.requestFocus();

@@ -84,7 +84,13 @@ public class CombinationWorkActivity extends AppCompatActivity {
     TextView tvUserName;
 
     private boolean FileScan = true;
-    private int ScanWorkerCnt = 1; //기본값
+    private String TankDesc = "";
+    private String LuBhEQpDesc = "";
+    private String Worker1 = "";
+    private String Worker2 = "";
+    private String Worker3 = "";
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -338,6 +344,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT2MixTankDescScan.setText("");
+                etH2TankLcode.setText("");
                 return false;
             }
         });
@@ -994,25 +1001,33 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 if (resultArray.length() < 1) {
-                    FileScan = false;
-                    return;
-                }
+                    if(!TankDesc.equals(etT2MixTankDescScan.getText().toString())){
+                        etT2MixTankDescScan.requestFocus();
+                        etT2MixTankDescScan.setText("");
 
+                    }
+                return;
+
+            }else{
                 JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                 String status = job.getString("Status");
 
 
-                    if (status.equals("S")) {
-                        etH2TankLcode.setText(job.getString("ENTRY_CODE")); // entryDesc
-                        etT2MixTankDescScan.setText(job.getString("ENTRY_DESCRIPTION")); // edT2TankScan
-                        etH2LookupEntryId.setText(job.getString("LOOKUP_ENTRY_ID")); // lookupEntryId
-
-                        saveColorChange();
-                    }
-
-
+                if (status.equals("S")) {
+                    etH2TankLcode.setText(job.getString("ENTRY_CODE")); // entryDesc
+                    etT2MixTankDescScan.setText(job.getString("ENTRY_DESCRIPTION")); // edT2TankScan
+                    etH2LookupEntryId.setText(job.getString("LOOKUP_ENTRY_ID")); // lookupEntryId
+                    saveColorChange();
+                    TankDesc = job.getString("ENTRY_DESCRIPTION");
+                }
 
                     etT2EquipmentScan.requestFocus();
+            }
+
+
+
+
+
 
             } catch (JSONException e) {
                 e.printStackTrace();

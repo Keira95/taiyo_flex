@@ -86,7 +86,7 @@
             android:layout_marginLeft="5sp"
             android:layout_marginTop="3sp"
             android:layout_marginRight="10sp"
-            android:layout_weight="1.5"
+            android:layout_weight="2"
             android:hint="작업장"
             android:background="@drawable/edit_login"
 
@@ -104,11 +104,15 @@
             android:layout_marginRight="10sp"
             android:background="@drawable/buttonshape3"
             android:textColorHint="@color/white"
-            android:layout_weight="5"
+            android:layout_weight="2.9"
             android:hint="..."
 
             android:textColor="@color/white"
             android:textSize="16sp" />
+
+        <View
+            android:layout_width="180sp"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
@@ -147,7 +151,8 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
+            android:layout_marginLeft="15sp"
+            android:layout_marginRight="15sp"
 
             android:background="@color/beige"
             android:layout_weight="0.5"

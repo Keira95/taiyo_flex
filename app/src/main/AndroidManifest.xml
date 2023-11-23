@@ -81,6 +81,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
+        <activity android:name="com.erp.Taiyo.activity.SearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
+
+
     </application>
 
 

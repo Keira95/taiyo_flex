@@ -22,6 +22,7 @@ import com.erp.Taiyo.activity.RegisterPackingActivity;
 import com.erp.Taiyo.activity.RegisterProcessActivity;
 import com.erp.Taiyo.activity.RegisterResponseActivity;
 import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
+import com.erp.Taiyo.activity.SearchActivity;
 import com.erp.Taiyo.activity.SurimiWeighingWorkActivity;
 import com.erp.Taiyo.adapter.MenuListAdapter;
 import com.google.android.material.navigation.NavigationView;
@@ -69,7 +70,7 @@ public class MenuActivity extends AppCompatActivity {
     TextView tvId;
     //버튼
 
-    Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO,btnAg,btnPr;
+    Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO,btnAg,btnPr,btnSr;
     GridView gv;
 
     MenuItem ItemId;
@@ -149,6 +150,8 @@ public class MenuActivity extends AppCompatActivity {
         btbBO = findViewById(R.id.btn_bo); //반응
         btnAg = findViewById(R.id.btn_ag); //에이징
         btnPr = findViewById(R.id.btn_pr); //프로세스
+        btnSr = findViewById(R.id.btn_search); //프로세스
+
 
 
         Menu menu =  mNavigationView.getMenu();
@@ -347,7 +350,17 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intentMat);
             }
         });
-
+        btnSr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMat = new Intent(MenuActivity.this, SearchActivity.class);
+                intentMat.putExtra("O_USER_ID", strUserId);
+                intentMat.putExtra("O_USER_NAME", strUserName);
+                intentMat.putExtra("Ip", strIp);
+                intentMat.putExtra("TOP_MENU_DESC", btnSr .getText().toString());
+                startActivity(intentMat);
+            }
+        });
 
 
 

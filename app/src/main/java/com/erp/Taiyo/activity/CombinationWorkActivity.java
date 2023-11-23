@@ -225,7 +225,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (getCurrentFocus() == etT2MixTankDescScan && !etT2MixTankDescScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2MixTankDescScan && !s.toString().isEmpty() && s != null && etH2TankLcode.getText().toString().equals("")) {
                     LuTankType luTankType = new LuTankType();
                     luTankType.execute(strSobId, strOrgId, etT2MixTankDescScan.getText().toString());
                 }else{
@@ -244,7 +244,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (getCurrentFocus() == etT2EquipmentScan && !etT2EquipmentScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2EquipmentScan && !s.toString().isEmpty() && s != null && etH2EquipmentCode.getText().toString().equals("")) {
                     LuBhEQp luBhEQp = new LuBhEQp();
                     luBhEQp.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2EquipmentScan.getText().toString());   //eth2xworkid를 usrid  etH2XworkId.getText().toString()
 
@@ -266,7 +266,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (getCurrentFocus() == etT2Stir1WorkerNameScan && !etT2Stir1WorkerNameScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2Stir1WorkerNameScan && !s.toString().isEmpty() && s != null && etH2Stir1WorkerId.getText().toString().equals("")) {
 
                         LuWorker luWorker = new LuWorker();
                         luWorker.execute(strSobId, strOrgId, etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
@@ -289,7 +289,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (getCurrentFocus() == etT2Stir2WorkerNameScan && !etT2Stir2WorkerNameScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2Stir2WorkerNameScan && !s.toString().isEmpty() && s != null && etH2Stir2WorkerId.getText().toString().equals("")) {
 
                     LuWorker2 luWorker2 = new LuWorker2();
                     luWorker2.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
@@ -313,7 +313,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (getCurrentFocus() == etT2Stir3WorkerNameScan && !etT2Stir3WorkerNameScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2Stir3WorkerNameScan && !s.toString().isEmpty() && s != null && etH2Stir3WorkerId.getText().toString().equals("")) {
 
                     LuWorker3 luWorker3 = new LuWorker3();
                     luWorker3.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir3WorkerNameScan.getText().toString());

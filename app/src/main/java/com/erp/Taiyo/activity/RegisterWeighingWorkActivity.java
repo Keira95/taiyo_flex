@@ -240,7 +240,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty() && s != null){
+                if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty() && s != null && t1LiqidPersonId.getText().toString().equals("")){
 
                     LU_RIQID_WORKER lU_RIQID_WORKER = new LU_RIQID_WORKER();
                     lU_RIQID_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1LiqidPersonDesc.getText().toString());
@@ -271,7 +271,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t1PowderPersonDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t1PowderPersonDesc && !s.toString().isEmpty() && s != null && t1PowderPersonId.getText().toString().equals("")){
 
                     LU_POWEDR_WORKER lU_POWEDR_WORKER = new LU_POWEDR_WORKER();
                     lU_POWEDR_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1PowderPersonDesc.getText().toString());
@@ -428,6 +428,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 t1LiqidPersonDesc.setText("");
+                t1LiqidPersonId.setText("");
                 return false;
             }
         });
@@ -436,6 +437,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 t1PowderPersonDesc.setText("");
+                t1PowderPersonId.setText("");
                 return false;
             }
         });
@@ -996,6 +998,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 if(jarrayWorkLevel.length() < 1){
                     t1PowderPersonDesc.requestFocus();
+                    t1LiqidPersonDesc.setText("");
                     return;
                 }
 
@@ -1088,6 +1091,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 if(jarrayWorkLevel.length() < 1){
                     t1PowderPersonDesc.requestFocus();
+                    t1PowderPersonDesc.setText("");
                     return;
                 }
                 if(job.getString("Status").equals("S")){

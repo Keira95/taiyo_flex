@@ -77,7 +77,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt9save;
-    Button btnT9WorkcenterLookup, btnT9MoveLookup;
+    Button btnT9WorkcenterLookup, btnT9MoveLookup,  btnT9Holding;
     //키보드
 
     InputMethodManager imm;
@@ -133,6 +133,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
         btnt9save = (Button) findViewById(R.id.btn_t9_save);
         btnT9WorkcenterLookup = (Button) findViewById(R.id.btn_t9_workcenter_lookup);
         btnT9MoveLookup = (Button) findViewById(R.id.btn_t9_move_lookup);
+        btnT9Holding = (Button) findViewById(R.id.btn_t9_holding);
         lvInput = (ListView)  findViewById(R.id.lv_search);
 
 

@@ -1000,10 +1000,18 @@
             android:textColorHint="@color/login_edit_hint"
             android:textSize="14sp" />
 
-        <View
-            android:layout_width="130sp"
+        <Button
+            android:id="@+id/btn_t6_holding"
+            android:layout_width="100sp"
             android:layout_height="wrap_content"
-        />
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginLeft="10sp"
+            android:background="@color/dark_green"
+            android:text="홀딩"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
 
         <Button
             android:id="@+id/btn_t6_save"

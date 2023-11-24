@@ -75,7 +75,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt1save;
-    Button btnRecent ,btnLastSurimiCount ,btnSurimi1StartTime ,btnOillerLookup,btnSurimi1EndTime ,btnSurimi2StartTime, btnSurimi2EndTime, btnSave;
+    Button btnRecent ,btnLastSurimiCount ,btnSurimi1StartTime ,btnOillerLookup,btnSurimi1EndTime ,btnSurimi2StartTime, btnSurimi2EndTime, btnSave, btnHolding;
     //키보드
 
     InputMethodManager imm;
@@ -157,6 +157,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         btnSurimi2StartTime = (Button) findViewById(R.id.btn_t3_surimi2_start_time);
         btnSurimi2EndTime= (Button) findViewById(R.id.btn_t3_surimi2_end_time);
         btnSave= (Button) findViewById(R.id.btn_t3_save);
+        btnHolding = (Button) findViewById(R.id.btn_t3_holding);
 
 
 

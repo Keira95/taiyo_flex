@@ -74,7 +74,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt4save;
-    Button btnWorkStartDate , btnWorkEndDate ,btnWorkerDesc;
+    Button btnWorkStartDate , btnWorkEndDate ,btnWorkerDesc, btnHolding;
     //키보드
 
     InputMethodManager imm;
@@ -134,6 +134,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
         btnWorkStartDate = (Button) findViewById(R.id.btn_t4_work_start_date);
         btnWorkEndDate = (Button) findViewById(R.id.btn_t4_work_end_date);
+        btnHolding = (Button) findViewById(R.id.btn_t4_holding);
 
 
         keyboardFocus(t4FileNo);

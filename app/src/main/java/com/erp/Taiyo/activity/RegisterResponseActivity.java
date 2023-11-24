@@ -1195,169 +1195,179 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
-                    ScanModify = false;
-                    etT6TankDesc.requestFocus();
+                    if(!FileScan.equals(etT6FileNoScan.getText().toString())){
+                        ScanModify = false;
+                        etT6FileNoScan.requestFocus();
+                        etT6FileNoScan.setText("");
+                    }
+
+
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")) {
+
+
+                        etT6FileNoScan.setText(job.getString("WORK_ORDER_NO"));
+                        etT6ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                        etT6OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+
+                        if (job.getString("START_DATE").equals("null")) {
+                            etT6StartTime.setText("");
+                        } else {
+                            etT6StartTime.setText(job.getString("START_DATE"));
+                        }
+
+                        if (job.getString("TANK_DESC").equals("null")) {
+                            etT6TankDesc.setText("");
+                        } else {
+                            etT6TankDesc.setText(job.getString("TANK_DESC"));
+                        }
+
+                        if (job.getString("TANK_LCODE").equals("null")) {
+                            etT6TankCode.setText("");
+                        } else {
+                            etT6TankCode.setText(job.getString("TANK_LCODE"));
+                        }
+                        if (job.getString("EQUIPMENT_ID").equals("null")) {
+                            etT6EquipmentId.setText("");
+                        } else {
+                            etT6EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                        }
+                        if (job.getString("EQUIPMENT_NAME").equals("null")) {
+                            etT6EquipmentName.setText("");
+                        } else {
+                            etT6EquipmentName.setText(job.getString("EQUIPMENT_NAME"));
+                        }
+                        if (job.getString("STIR_1_START_DATE").equals("null")) {
+                            etT6Stir1StartDate.setText("");
+                        } else {
+                            etT6Stir1StartDate.setText(job.getString("STIR_1_START_DATE"));
+                        }
+                        if (job.getString("STIR_2_START_DATE").equals("null")) {
+                            etT6Stir2StartDate.setText("");
+                        } else {
+                            etT6Stir2StartDate.setText(job.getString("STIR_2_START_DATE"));
+                        }
+                        if (job.getString("STIR_3_START_DATE").equals("null")) {
+                            etT6Stir3StartDate.setText("");
+                        } else {
+                            etT6Stir3StartDate.setText(job.getString("STIR_3_START_DATE"));
+                        }
+                        if (job.getString("STIR_4_START_DATE").equals("null")) {
+                            etT6Stir4StartDate.setText("");
+                        } else {
+                            etT6Stir4StartDate.setText(job.getString("STIR_4_START_DATE"));
+                        }
+                        if (job.getString("STIR_5_START_DATE").equals("null")) {
+                            etT6Stir5StartDate.setText("");
+                        } else {
+                            etT6Stir5StartDate.setText(job.getString("STIR_5_START_DATE"));
+                        }
+                        if (job.getString("STIR_1_END_DATE").equals("null")) {
+                            etT6Stir1EndDate.setText("");
+                        } else {
+                            etT6Stir1EndDate.setText(job.getString("STIR_1_END_DATE"));
+                        }
+                        if (job.getString("STIR_2_END_DATE").equals("null")) {
+                            etT6Stir2EndDate.setText("");
+                        } else {
+                            etT6Stir2EndDate.setText(job.getString("STIR_2_END_DATE"));
+                        }
+                        if (job.getString("STIR_3_END_DATE").equals("null")) {
+                            etT6Stir3EndDate.setText("");
+                        } else {
+                            etT6Stir3EndDate.setText(job.getString("STIR_3_END_DATE"));
+                        }
+                        if (job.getString("STIR_4_END_DATE").equals("null")) {
+                            etT6Stir4EndDate.setText("");
+                        } else {
+                            etT6Stir4EndDate.setText(job.getString("STIR_4_END_DATE"));
+                        }
+                        if (job.getString("STIR_5_END_DATE").equals("null")) {
+                            etT6Stir5EndDate.setText("");
+                        } else {
+                            etT6Stir5EndDate.setText(job.getString("STIR_5_END_DATE"));
+                        }
+                        if (job.getString("STIR_1_WORKER_NAME").equals("null")) {
+                            etT6Stir1WorkerName.setText("");
+                        } else {
+                            etT6Stir1WorkerName.setText(job.getString("STIR_1_WORKER_NAME"));
+                        }
+                        if (job.getString("STIR_2_WORKER_NAME").equals("null")) {
+                            etT6Stir2WorkerName.setText("");
+                        } else {
+                            etT6Stir2WorkerName.setText(job.getString("STIR_2_WORKER_NAME"));
+                        }
+                        if (job.getString("STIR_3_WORKER_NAME").equals("null")) {
+                            etT6Stir3WorkerName.setText("");
+                        } else {
+                            etT6Stir3WorkerName.setText(job.getString("STIR_3_WORKER_NAME"));
+                        }
+                        if (job.getString("STIR_4_WORKER_NAME").equals("null")) {
+                            etT6Stir4WorkerName.setText("");
+                        } else {
+                            etT6Stir4WorkerName.setText(job.getString("STIR_4_WORKER_NAME"));
+                        }
+                        if (job.getString("STIR_5_WORKER_NAME").equals("null")) {
+                            etT6Stir5WorkerName.setText("");
+                        } else {
+                            etT6Stir5WorkerName.setText(job.getString("STIR_5_WORKER_NAME"));
+                        }
+
+                        if (job.getString("END_DATE").equals("null")) { //수정해야함
+                            etT6EndTime.setText("");
+                        } else {
+                            etT6EndTime.setText(job.getString("END_DATE"));
+                        }
+
+                        if (job.getString("STIR_1_WORKER_ID").equals("null")) {
+                            etT6Stir1WorkerId.setText("");
+                        } else {
+                            etT6Stir1WorkerId.setText(job.getString("STIR_1_WORKER_ID"));
+                        }
+
+                        if (job.getString("STIR_2_WORKER_ID").equals("null")) {
+                            etT6Stir2WorkerId.setText("");
+                        } else {
+                            etT6Stir2WorkerId.setText(job.getString("STIR_2_WORKER_ID"));
+                        }
+
+                        if (job.getString("STIR_3_WORKER_ID").equals("null")) {
+                            etT6Stir3WorkerId.setText("");
+
+                        } else {
+                            etT6Stir3WorkerId.setText(job.getString("STIR_3_WORKER_ID"));
+                        }
+                        if (job.getString("STIR_4_WORKER_ID").equals("null")) {
+                            etT6Stir4WorkerId.setText("");
+                        } else {
+                            etT6Stir4WorkerId.setText(job.getString("STIR_4_WORKER_ID"));
+                        }
+                        if (job.getString("STIR_5_WORKER_ID").equals("null")) {
+                            etT6Stir5WorkerId.setText("");
+                        } else {
+                            etT6Stir5WorkerId.setText(job.getString("STIR_5_WORKER_ID"));
+                        }
+
+                        if (job.getString("JOB_ID").equals("null")) {
+                            etT6JobId.setText("");
+                        } else {
+                            etT6JobId.setText(job.getString("JOB_ID"));
+                        }
+                        if (job.getString("OPERATION_ID").equals("null")) {
+                            etT6OperationId.setText("");
+                        } else {
+                            etT6OperationId.setText(job.getString("OPERATION_ID"));
+                        }
+
+                        FileScan = job.getString("WORK_ORDER_NO");
+                    }
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")) {
 
-
-                    etT6FileNoScan.setText(job.getString("WORK_ORDER_NO"));
-                    etT6ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
-                    etT6OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
-
-                    if(job.getString("START_DATE").equals("null")){
-                        etT6StartTime.setText("");
-                    }else{
-                        etT6StartTime.setText(job.getString("START_DATE"));
-                    }
-
-                    if(job.getString("TANK_DESC").equals("null")){
-                        etT6TankDesc.setText("");
-                    }else{
-                        etT6TankDesc.setText(job.getString("TANK_DESC"));
-                    }
-
-                    if(job.getString("TANK_LCODE").equals("null")){
-                        etT6TankCode.setText("");
-                    }else{
-                        etT6TankCode.setText(job.getString("TANK_LCODE"));
-                    }
-                    if(job.getString("EQUIPMENT_ID").equals("null")){
-                        etT6EquipmentId.setText("");
-                    }else{
-                        etT6EquipmentId.setText(job.getString("EQUIPMENT_ID"));
-                    }
-                    if(job.getString("EQUIPMENT_NAME").equals("null")){
-                        etT6EquipmentName.setText("");
-                    }else{
-                        etT6EquipmentName.setText(job.getString("EQUIPMENT_NAME"));
-                    }
-                    if(job.getString("STIR_1_START_DATE").equals("null")){
-                        etT6Stir1StartDate.setText("");
-                    }else{
-                        etT6Stir1StartDate.setText(job.getString("STIR_1_START_DATE"));
-                    }
-                    if(job.getString("STIR_2_START_DATE").equals("null")){
-                        etT6Stir2StartDate.setText("");
-                    }else{
-                        etT6Stir2StartDate.setText(job.getString("STIR_2_START_DATE"));
-                    }
-                    if(job.getString("STIR_3_START_DATE").equals("null")){
-                        etT6Stir3StartDate.setText("");
-                    }else{
-                        etT6Stir3StartDate.setText(job.getString("STIR_3_START_DATE"));
-                    }
-                    if(job.getString("STIR_4_START_DATE").equals("null")){
-                        etT6Stir4StartDate.setText("");
-                    }else{
-                        etT6Stir4StartDate.setText(job.getString("STIR_4_START_DATE"));
-                    }
-                    if(job.getString("STIR_5_START_DATE").equals("null")){
-                        etT6Stir5StartDate.setText("");
-                    }else{
-                        etT6Stir5StartDate.setText(job.getString("STIR_5_START_DATE"));
-                    }
-                    if(job.getString("STIR_1_END_DATE").equals("null")){
-                        etT6Stir1EndDate.setText("");
-                    }else{
-                        etT6Stir1EndDate.setText(job.getString("STIR_1_END_DATE"));
-                    }
-                    if(job.getString("STIR_2_END_DATE").equals("null")){
-                        etT6Stir2EndDate.setText("");
-                    }else{
-                        etT6Stir2EndDate.setText(job.getString("STIR_2_END_DATE"));
-                    }
-                    if(job.getString("STIR_3_END_DATE").equals("null")){
-                        etT6Stir3EndDate.setText("");
-                    }else{
-                        etT6Stir3EndDate.setText(job.getString("STIR_3_END_DATE"));
-                    }
-                    if(job.getString("STIR_4_END_DATE").equals("null")){
-                        etT6Stir4EndDate.setText("");
-                    }else{
-                        etT6Stir4EndDate.setText(job.getString("STIR_4_END_DATE"));
-                    }
-                    if(job.getString("STIR_5_END_DATE").equals("null")){
-                        etT6Stir5EndDate.setText("");
-                    }else{
-                        etT6Stir5EndDate.setText(job.getString("STIR_5_END_DATE"));
-                    }
-                    if(job.getString("STIR_1_WORKER_NAME").equals("null")){
-                        etT6Stir1WorkerName.setText("");
-                    }else{
-                        etT6Stir1WorkerName.setText(job.getString("STIR_1_WORKER_NAME"));
-                    }
-                    if(job.getString("STIR_2_WORKER_NAME").equals("null")){
-                        etT6Stir2WorkerName.setText("");
-                    }else{
-                        etT6Stir2WorkerName.setText(job.getString("STIR_2_WORKER_NAME"));
-                    }
-                    if(job.getString("STIR_3_WORKER_NAME").equals("null")){
-                        etT6Stir3WorkerName.setText("");
-                    }else{
-                        etT6Stir3WorkerName.setText(job.getString("STIR_3_WORKER_NAME"));
-                    }
-                    if(job.getString("STIR_4_WORKER_NAME").equals("null")){
-                        etT6Stir4WorkerName.setText("");
-                    }else{
-                        etT6Stir4WorkerName.setText(job.getString("STIR_4_WORKER_NAME"));
-                    }
-                    if(job.getString("STIR_5_WORKER_NAME").equals("null")){
-                        etT6Stir5WorkerName.setText("");
-                    }else{
-                        etT6Stir5WorkerName.setText(job.getString("STIR_5_WORKER_NAME"));
-                    }
-
-                    if(job.getString("END_DATE").equals("null")){ //수정해야함
-                        etT6EndTime.setText("");
-                    }else{
-                        etT6EndTime.setText(job.getString("END_DATE"));
-                    }
-
-                    if(job.getString("STIR_1_WORKER_ID").equals("null")){
-                        etT6Stir1WorkerId.setText("");
-                    }else{
-                        etT6Stir1WorkerId.setText(job.getString("STIR_1_WORKER_ID"));
-                    }
-
-                    if(job.getString("STIR_2_WORKER_ID").equals("null")){
-                        etT6Stir2WorkerId.setText("");
-                    }else{
-                        etT6Stir2WorkerId.setText(job.getString("STIR_2_WORKER_ID"));
-                    }
-
-                    if(job.getString("STIR_3_WORKER_ID").equals("null")){
-                        etT6Stir3WorkerId.setText("");
-
-                    }else{
-                        etT6Stir3WorkerId.setText(job.getString("STIR_3_WORKER_ID"));
-                    }
-                    if(job.getString("STIR_4_WORKER_ID").equals("null")){
-                        etT6Stir4WorkerId.setText("");
-                    }else{
-                        etT6Stir4WorkerId.setText(job.getString("STIR_4_WORKER_ID"));
-                    }
-                    if(job.getString("STIR_5_WORKER_ID").equals("null")){
-                        etT6Stir5WorkerId.setText("");
-                    }else{
-                        etT6Stir5WorkerId.setText(job.getString("STIR_5_WORKER_ID"));
-                    }
-
-                    if(job.getString("JOB_ID").equals("null")){
-                        etT6JobId.setText("");
-                    }else{
-                        etT6JobId.setText(job.getString("JOB_ID"));
-                    }
-                    if(job.getString("OPERATION_ID").equals("null")){
-                        etT6OperationId.setText("");
-                    }else{
-                        etT6OperationId.setText(job.getString("OPERATION_ID"));
-                    }
-
+                etT6TankDesc.requestFocus();
 
                     if(etT6ModFlag.equals("N")){
 
@@ -1401,7 +1411,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                         etT6JobId.setInputType(InputType.TYPE_NULL);
                         etT6OperationId.setInputType(InputType.TYPE_NULL);
                     }
-                }
+
 
                 etT6TankDesc.requestFocus();
 

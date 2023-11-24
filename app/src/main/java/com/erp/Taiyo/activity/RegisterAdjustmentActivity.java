@@ -82,6 +82,9 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
+    private String FileScan = "";
+    private String JjEqp = "";
+    private String Worker = "";
 
 
     @Override
@@ -234,7 +237,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t4FileNo && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t4FileNo && !s.toString().isEmpty() && s != null && t4JobId.getText().toString().equals("")){
 
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t4FileNo.getText().toString(),t4WorkcenterId.getText().toString());
@@ -261,7 +264,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t4EquipmentDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t4EquipmentDesc && !s.toString().isEmpty() && s != null && t4TopEquimentCode.getText().toString().equals("")){
 
                     LU_JJ_EQP lU_JJ_EQP = new LU_JJ_EQP();
                     lU_JJ_EQP.execute(strIp, strSobId,strOrgId, t4WorkcenterId.getText().toString(),t4EquipmentDesc.getText().toString());
@@ -287,7 +290,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t4WorkerDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t4WorkerDesc && !s.toString().isEmpty() && s != null && t4WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lu_worker = new LU_WORKER();
                     lu_worker.execute(strIp, strSobId,strOrgId, t4WorkcenterId.getText().toString(), t4WorkerDesc.getText().toString());
@@ -305,6 +308,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
 
                 t4FileNo.setText("");
+                t4JobId.setText("");
                 return false;
             }
         });
@@ -313,6 +317,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
 
                 t4WorkerDesc.setText("");
+                t4WorkerId.setText("");
                 return false;
             }
         });
@@ -321,6 +326,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
 
                 t4EquipmentDesc.setText("");
+                t4TopEquimentCode.setText("");
                 return false;
             }
         });
@@ -569,13 +575,15 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
-                    ScanModify = false;
-                    t4EquipmentDesc.requestFocus();
-                    return;
-                }
+                    if(!FileScan.equals(t4FileNo.getText().toString())){
+                        ScanModify = false;
+                        t4FileNo.requestFocus();
+                        t4FileNo.setText("");
+                    }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    return;
+                }else {
+                     JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")) {
 
                     if(job.getString("WORK_ORDER_NO").equals("null")){
@@ -679,11 +687,15 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                     }else{
                         t4ModFlag.setText(job.getString("MOD_FLAG"));
                     }
+                    FileScan = job.getString("WORK_ORDER_NO");
+                }
+
+                    t4EquipmentDesc.requestFocus();
 
 
                 }
 
-                t4EquipmentDesc.requestFocus();
+
 
                 ScanModify = false;
 
@@ -896,7 +908,11 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t4WorkerDesc.requestFocus();
+                    if(!JjEqp.equals(t4EquipmentDesc.getText().toString())){
+                        t4EquipmentDesc.requestFocus();
+                        t4EquipmentDesc.setText("");
+                    }
+
                     return;
                 }
 
@@ -907,6 +923,8 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                     t4EquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
                     t4TopEquimentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                     t4TopEquimentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                    JjEqp = job.getString("TOP_EQUIPMENT_NAME");
 
                     saveColorChange();
                 }
@@ -991,18 +1009,27 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t4FileNo.requestFocus();
+                    if(!Worker.equals(t4WorkerDesc.getText().toString())){
+                        t4WorkerDesc.requestFocus();
+                        t4WorkerDesc.setText("");
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t4WorkerId.setText(job.getString("USER_ID"));
+                        t4WorkerDesc.setText(job.getString("DESCRIPTION"));
+
+                        Worker = job.getString("DESCRIPTION");
+
+                    }
+                    t4WorkerDesc.requestFocus();
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    t4WorkerId.setText(job.getString("USER_ID"));
-                    t4WorkerDesc.setText(job.getString("DESCRIPTION"));
 
-                }
-                t4FileNo.requestFocus();
 
             }catch (JSONException e)
             {

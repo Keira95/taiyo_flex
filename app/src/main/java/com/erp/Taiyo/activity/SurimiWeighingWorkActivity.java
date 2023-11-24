@@ -85,6 +85,11 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     private boolean Mod_Flag = true;
 
 
+    private String FileNoScan = "";
+    private String TankDesc = "";
+    private String LuYuEQpDesc = "";
+    private String Worker = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -292,7 +297,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t3LiqidPersonDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t3LiqidPersonDesc && !s.toString().isEmpty() && s != null && t3IndicatorUserId.getText().toString().equals("")){
 
                     LU_WORKER lu_worker = new LU_WORKER();
                     lu_worker.execute(strIp, strSobId,strOrgId, t3WorkcenterId.getText().toString(), t3LiqidPersonDesc.getText().toString());
@@ -320,7 +325,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t3TankScan && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t3TankScan && !s.toString().isEmpty() && s != null && t3EquimentId.getText().toString().equals("")){
 
                     LU_YU_EQP lU_YU_EQP = new LU_YU_EQP();
                     lU_YU_EQP.execute(strIp, strSobId,strOrgId, t3WorkcenterId.getText().toString(),t3TankScan.getText().toString());
@@ -346,7 +351,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t3LastTankScan && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t3LastTankScan && !s.toString().isEmpty() && s != null && t3LastTankCode.getText().toString().equals("")){
 
                   LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
                   lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, t3LastTankScan.getText().toString());
@@ -485,6 +490,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t3TankScan.setText("");
+                t3EquimentId.setText("");
                 return false;
             }
         });
@@ -494,6 +500,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
 
                 t3LiqidPersonDesc.setText("");
+                t3IndicatorUserId.setText("");
                 return false;
             }
         });
@@ -502,6 +509,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
 
                 t3LastTankScan.setText("");
+                t3LastTankCode.setText("");
                 return false;
             }
         });
@@ -883,21 +891,28 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                t3LiqidPersonDesc.requestFocus();
-                 return;
+                    if(!LuYuEQpDesc.equals(t3TankScan.getText().toString())){
+                        t3TankScan.requestFocus();
+                        t3TankScan.setText("");
+                    }
+                    return;
+
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t3OldEquimentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                        t3TankScan.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        LuYuEQpDesc = job.getString("TOP_EQUIPMENT_NAME");
+                        t3EquimentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                        t3EquimentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                        saveColorChange();
+                }
+                    t3LiqidPersonDesc.requestFocus();
+
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-
-                    t3OldEquimentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                    t3TankScan.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                    t3EquimentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                    t3EquimentId.setText(job.getString("TOP_EQUIPMENT_ID"));
-
-                    saveColorChange();
-                }
-                t3LiqidPersonDesc.requestFocus();
 
             }catch (JSONException e)
             {
@@ -921,7 +936,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_WORKCENTER_ID=" + urls[3]
                     + "&W_BARCODE=" +urls[4]
                     ;
 
@@ -976,19 +991,27 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t3LastTankScan.requestFocus();
+                    if(!Worker.equals(t3LiqidPersonDesc.getText().toString())){
+                        t3LiqidPersonDesc.requestFocus();
+                        t3LiqidPersonDesc.setText("");
+
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t3IndicatorUserId.setText(job.getString("USER_ID"));
+                        t3LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
+                        Worker = job.getString("DESCRIPTION");
+
+                        saveColorChange();
+                }
+                    t3LastTankScan.requestFocus();
+
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-
-                    t3IndicatorUserId.setText(job.getString("USER_ID"));
-                    t3LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
-
-                    saveColorChange();
-                }
-                t3LastTankScan.requestFocus();
 
             }catch (JSONException e)
             {
@@ -1065,20 +1088,24 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t3LastTankScan.requestFocus();
+                    if(!TankDesc.equals(t3LastTankScan.getText().toString())){
+                        t3LastTankScan.requestFocus();
+                        t3LastTankScan.setText("");
+                    }
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t3LookupEntryId.setText(job.getString("LOOKUP_ENTRY_ID"));
+                        t3LastTankCode.setText(job.getString("ENTRY_CODE"));
+                        t3LastTankScan.setText(job.getString("ENTRY_DESCRIPTION"));
+                        TankDesc = job.getString("ENTRY_DESCRIPTION");
+
+                        saveColorChange();
+                    }
+                    t3LastTankScan.requestFocus();
                 }
-
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-
-                    t3LookupEntryId.setText(job.getString("LOOKUP_ENTRY_ID"));
-                    t3LastTankCode.setText(job.getString("ENTRY_CODE"));
-                    t3LastTankScan.setText(job.getString("ENTRY_DESCRIPTION"));
-
-                    saveColorChange();
-                }
-                t3FileNo.requestFocus();
 
             }catch (JSONException e)
             {

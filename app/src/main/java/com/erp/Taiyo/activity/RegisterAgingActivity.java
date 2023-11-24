@@ -81,6 +81,11 @@ public class RegisterAgingActivity extends AppCompatActivity {
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
 
+    private String FileScan = "";
+    private String TankType = "";
+    private String AjEqp = "";
+    private String Worker = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -258,7 +263,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t8FileNoScan && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t8FileNoScan && !s.toString().isEmpty() && s != null && t8JobId.getText().toString().equals("")) {
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t8FileNoScan.getText().toString(),t8WorkcenterId.getText().toString());
 
@@ -284,7 +289,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t8EquipmentName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t8EquipmentName && !s.toString().isEmpty() && s != null && t8EquipmentCode.getText().toString().equals("")){
 
                     LU_AJ_EQP lU_AJ_EQP = new LU_AJ_EQP();
                     lU_AJ_EQP.execute(strIp, strSobId,strOrgId, t8WorkcenterId.getText().toString(),t8EquipmentName.getText().toString());
@@ -312,7 +317,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t8TankDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t8TankDesc && !s.toString().isEmpty() && s != null && t8TankCode.getText().toString().equals("")){
 
                     LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
                     lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, t8TankDesc.getText().toString());
@@ -338,7 +343,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t8StirWorkerName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t8StirWorkerName && !s.toString().isEmpty() && s != null && t8StirWorker1Id.getText().toString().equals("")){
 
                     LU_WORKER lu_worker = new LU_WORKER();
                     lu_worker.execute(strIp, strSobId,strOrgId, t8WorkcenterId.getText().toString(), t8StirWorkerName.getText().toString());
@@ -356,7 +361,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
                 t8FileNoScan.setText("");
                 t8OperaionDesc.setText("");
                 t8ItemDesc.setText("");
-
+                t8JobId.setText("");
 
                 return false;
             }
@@ -367,6 +372,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t8TankDesc.setText("");
+                t8TankCode.setText("");
                 return false;
             }
         });
@@ -375,6 +381,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t8EquipmentName.setText("");
+                t8EquipmentCode.setText("");
                 return false;
             }
         });
@@ -382,6 +389,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t8StirWorkerName.setText("");
+                t8StirWorker1Id.setText("");
                 return false;
             }
         });
@@ -572,22 +580,32 @@ public class RegisterAgingActivity extends AppCompatActivity {
                 JSONArray resultArray = RESURT.getJSONArray("RESULT"); // JSONArray 파싱
 
                 if(resultArray.length() < 1){
-                    t8EquipmentName.requestFocus();
+                    if(!TankType.equals(t8TankDesc.getText().toString())){
+                        t8TankDesc.requestFocus();
+                        t8TankDesc.setText("");
+
+                    }
+
                     return;
+                }else{
+                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                    String status = job.getString("Status");
+
+                    if (status.equals("S")) {
+                        t8TankCode.setText(job.getString("ENTRY_CODE"));
+                        t8TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
+                        t8TankId.setText(job.getString("LOOKUP_ENTRY_ID"));
+
+                        TankType = job.getString("ENTRY_DESCRIPTION");
+
+                        saveColorChange();
+                    }
+                    t8EquipmentName.requestFocus();
                 }
 
-                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                String status = job.getString("Status");
 
-                if (status.equals("S")) {
-                    t8TankCode.setText(job.getString("ENTRY_CODE"));
-                    t8TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
-                    t8TankId.setText(job.getString("LOOKUP_ENTRY_ID"));
 
-                    saveColorChange();
-                }
 
-                t8EquipmentName.requestFocus();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -668,19 +686,28 @@ public class RegisterAgingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t8StirWorkerName.requestFocus();
+                    if(!AjEqp.equals(t8EquipmentName.getText().toString())){
+                        t8EquipmentName.requestFocus();
+                        t8EquipmentName.setText("");
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t8OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                        t8EquipmentName.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        t8EquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                        t8EquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                        AjEqp = job.getString("TOP_EQUIPMENT_NAME");
+                    }
+                    t8StirWorkerName.requestFocus();
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    t8OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                    t8EquipmentName.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                    t8EquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                    t8EquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
-                }
-                t8StirWorkerName.requestFocus();
+
 
             }catch (JSONException e)
             {
@@ -759,17 +786,25 @@ public class RegisterAgingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
+                    if(!Worker.equals(t8StirWorkerName.getText().toString())){
+                        t8StirWorkerName.requestFocus();
+                        t8StirWorkerName.setText("");
+
+                    }
                     t8FileNoScan.requestFocus();
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t8StirWorker1Id.setText(job.getString("USER_ID"));
+                        t8StirWorkerName.setText(job.getString("DESCRIPTION"));
+
+                        Worker = job.getString("DESCRIPTION");
+                    }
+                    t8FileNoScan.requestFocus();
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-
-                    t8StirWorker1Id.setText(job.getString("USER_ID"));
-                    t8StirWorkerName.setText(job.getString("DESCRIPTION"));
-                }
-                t8FileNoScan.requestFocus();
 
             }catch (JSONException e)
             {
@@ -849,92 +884,99 @@ public class RegisterAgingActivity extends AppCompatActivity {
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
-                    ScanModify = false;
-                    t8TankDesc.requestFocus();
-                    return;
-                }
-
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-
-
-                    if(job.getString("WORK_ORDER_NO").equals("null")){
+                    if(!FileScan.equals(t8FileNoScan.getText().toString())){
+                        ScanModify = false;
+                        t8FileNoScan.requestFocus();
                         t8FileNoScan.setText("");
-                    }else{
-                        t8FileNoScan.setText(job.getString("WORK_ORDER_NO"));
                     }
 
-                    if(job.getString("ITEM_DESCRIPTION").equals("null")){
-                        t8ItemDesc.setText("");
-                    }else{
-                        t8ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
-                    }
-                    if(job.getString("OPERATION_DESCRIPTION").equals("null")){
-                        t8OperaionDesc.setText("");
-                    }else{
-                        t8OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
-                    }
-                    if(job.getString("STIR_1_START_DATE").equals("null")){
-                        t8StartDate.setText("");
-                    }else{
-                        t8StartDate.setText(job.getString("STIR_1_START_DATE"));
-                    }
-                    if(job.getString("TANK_NO").equals("null")){
-                        t8TankDesc.setText("");
-                    }else{
-                        t8TankDesc.setText(job.getString("TANK_NO"));
-                    }
-                    if(job.getString("EQUIPMENT_NAME").equals("null")){
-                        t8EquipmentName.setText("");
-                    }else{
-                        t8EquipmentName.setText(job.getString("EQUIPMENT_NAME"));
-                    }
-                    if(job.getString("STIR_1_WORKER_NAME").equals("null")){
-                        t8StirWorkerName.setText("");
-                    }else{
-                        t8StirWorkerName.setText(job.getString("STIR_1_WORKER_NAME"));
-                    }
-                    if(job.getString("STIR_1_END_DATE").equals("null")){
-                        t8EndDate.setText("");
-                    }else{
-                        t8EndDate.setText(job.getString("STIR_1_END_DATE"));
+                    return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+
+                        if(job.getString("WORK_ORDER_NO").equals("null")){
+                            t8FileNoScan.setText("");
+                        }else{
+                            t8FileNoScan.setText(job.getString("WORK_ORDER_NO"));
+                        }
+
+                        if(job.getString("ITEM_DESCRIPTION").equals("null")){
+                            t8ItemDesc.setText("");
+                        }else{
+                            t8ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                        }
+                        if(job.getString("OPERATION_DESCRIPTION").equals("null")){
+                            t8OperaionDesc.setText("");
+                        }else{
+                            t8OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+                        }
+                        if(job.getString("STIR_1_START_DATE").equals("null")){
+                            t8StartDate.setText("");
+                        }else{
+                            t8StartDate.setText(job.getString("STIR_1_START_DATE"));
+                        }
+                        if(job.getString("TANK_NO").equals("null")){
+                            t8TankDesc.setText("");
+                        }else{
+                            t8TankDesc.setText(job.getString("TANK_NO"));
+                        }
+                        if(job.getString("EQUIPMENT_NAME").equals("null")){
+                            t8EquipmentName.setText("");
+                        }else{
+                            t8EquipmentName.setText(job.getString("EQUIPMENT_NAME"));
+                        }
+                        if(job.getString("STIR_1_WORKER_NAME").equals("null")){
+                            t8StirWorkerName.setText("");
+                        }else{
+                            t8StirWorkerName.setText(job.getString("STIR_1_WORKER_NAME"));
+                        }
+                        if(job.getString("STIR_1_END_DATE").equals("null")){
+                            t8EndDate.setText("");
+                        }else{
+                            t8EndDate.setText(job.getString("STIR_1_END_DATE"));
+
+                        }
+                        if(job.getString("MIX_TANK_LCODE").equals("null")){
+                            t8TankCode.setText("");
+                        }else{
+                            t8TankCode.setText(job.getString("MIX_TANK_LCODE"));
+                        }
+                        if(job.getString("EQUIPMENT_ID").equals("null")){
+                            t8EquipmentId.setText("");
+                        }else{
+                            t8EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                        }
+                        if(job.getString("STIR_1_WORKER_ID").equals("null")){
+                            t8StirWorker1Id.setText("");
+                        }else{
+                            t8StirWorker1Id.setText(job.getString("STIR_1_WORKER_ID"));
+                        }
+                        if(job.getString("JOB_ID").equals("null")){
+                            t8JobId.setText("");
+                        }else{
+                            t8JobId.setText(job.getString("JOB_ID"));
+                        }
+                        if(job.getString("OPERATION_ID").equals("null")){
+                            t8OperationId.setText("");
+                        }else{
+                            t8OperationId.setText(job.getString("OPERATION_ID"));
+                        }
+                        if(job.getString("MOD_FLAG").equals("null")){
+                            t8ModFlag.setText("");
+                        }else{
+                            t8ModFlag.setText(job.getString("MOD_FLAG"));
+                        }
+                        FileScan = job.getString("WORK_ORDER_NO");
 
                     }
-                    if(job.getString("MIX_TANK_LCODE").equals("null")){
-                        t8TankCode.setText("");
-                    }else{
-                        t8TankCode.setText(job.getString("MIX_TANK_LCODE"));
-                    }
-                    if(job.getString("EQUIPMENT_ID").equals("null")){
-                        t8EquipmentId.setText("");
-                    }else{
-                        t8EquipmentId.setText(job.getString("EQUIPMENT_ID"));
-                    }
-                    if(job.getString("STIR_1_WORKER_ID").equals("null")){
-                        t8StirWorker1Id.setText("");
-                    }else{
-                        t8StirWorker1Id.setText(job.getString("STIR_1_WORKER_ID"));
-                    }
-                    if(job.getString("JOB_ID").equals("null")){
-                        t8JobId.setText("");
-                    }else{
-                        t8JobId.setText(job.getString("JOB_ID"));
-                    }
-                    if(job.getString("OPERATION_ID").equals("null")){
-                        t8OperationId.setText("");
-                    }else{
-                        t8OperationId.setText(job.getString("OPERATION_ID"));
-                    }
-                    if(job.getString("MOD_FLAG").equals("null")){
-                        t8ModFlag.setText("");
-                    }else{
-                        t8ModFlag.setText(job.getString("MOD_FLAG"));
-                    }
-
+                    t8TankDesc.requestFocus();
                 }
 
-                t8TankDesc.requestFocus();
+
+
+
 
                 ScanModify = false;
 

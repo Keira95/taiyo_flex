@@ -610,6 +610,7 @@
         android:layout_width="match_parent"
         android:layout_height="40sp"
         android:layout_weight="0"
+        android:background="@color/button_color"
         android:gravity="bottom"
         android:orientation="horizontal">
 
@@ -617,30 +618,30 @@
             android:id="@+id/btn_t4_holding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/dark_green"
+            android:background="@color/button_color"
             android:gravity="center"
             android:layout_weight="1"
             android:text="홀딩"
             android:textColor="@color/white"
             android:textSize="20sp"
+
             />
         <View
-            android:layout_width="130sp"
-            android:layout_height="wrap_content"
-            />
-
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/light_green_1"/>
         <Button
             android:id="@+id/btn_t4_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/dark_green"
+            android:background="@color/button_color"
             android:gravity="center"
             android:layout_weight="1"
             android:text="저장"
             android:textColor="@color/white"
             android:textSize="20sp"
-            />
 
+            />
 
     </LinearLayout>
             <EditText

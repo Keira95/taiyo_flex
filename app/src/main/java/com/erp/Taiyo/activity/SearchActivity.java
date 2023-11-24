@@ -77,6 +77,8 @@ public class SearchActivity extends AppCompatActivity {
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
 
+
+
     SearchListAdapter searchListAdapter = new SearchListAdapter();
     SearchListItem searchListItem = new SearchListItem();
 
@@ -118,6 +120,9 @@ public class SearchActivity extends AppCompatActivity {
 
         t10FileNo.requestFocus();
 
+
+
+
         t10FileNo.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -132,20 +137,33 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t10FileNo && !s.toString().isEmpty() && t10FileNo.getText().toString().equals("")){
+                if(getCurrentFocus() == t10FileNo && !s.toString().isEmpty() && ScanModify){
 
-                    t10FileNo.setText(s.toString());
-                    t10WorkcenterId.requestFocus();
+                  /*  t10FileNo.setText(s.toString());
+                    t10WorkcenterId.requestFocus();*/
+
+                    SEARCH sEARCH = new SEARCH();
+                    sEARCH.execute(strIp, strSobId, strOrgId, t10WorkcenterId.getText().toString(), t10FileNo.getText().toString().replaceAll("\n", ""));
+
+
                 }else{
+                    ScanModify = true;
                     return;
                 }
             }
         });
 
+        t10FileNo.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ClearView();
+                ScanModify = false;
+                return false;
+            }
+        });
+
 
     }
-
-
 
     private String getNowDate() {
 
@@ -157,6 +175,17 @@ public class SearchActivity extends AppCompatActivity {
 
         return getTime;
     }
+
+
+    private void ClearView(){
+
+        t10FileNo.setText("");
+        t10WorkcenterDesc.setText("");
+        searchListAdapter.clearItem();
+        lvInput.setAdapter(searchListAdapter);
+        searchListAdapter.notifyDataSetChanged();
+    }
+
 
 
     //Toolbar 정보
@@ -206,13 +235,14 @@ public class SearchActivity extends AppCompatActivity {
                 LuOillerDialog luOillerDialog = new LuOillerDialog(SearchActivity.this);
                 luOillerDialog.call_Workcetner(strIp ,t10WorkcenterCode,t10WorkcenterDesc,t10WorkcenterId,strUserId, t10OperationId);
 
+                t10FileNo.requestFocus();
             }
         });
         btntsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SEARCH sEARCH = new SEARCH();
-                    sEARCH.execute(strIp, strSobId, strOrgId, t10WorkcenterId.getText().toString(), t10FileNo.getText().toString().replaceAll("\n", ""));
+                sEARCH.execute(strIp, strSobId, strOrgId, t10WorkcenterId.getText().toString(), t10FileNo.getText().toString().replaceAll("\n", ""));
 
             }
         });
@@ -308,7 +338,7 @@ public class SearchActivity extends AppCompatActivity {
                     );
 
                 }
-
+                t10FileNo.setText("");
                 lvInput.setAdapter(searchListAdapter);
 
             } catch (JSONException e) {

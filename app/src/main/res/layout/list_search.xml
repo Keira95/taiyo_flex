@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:id="@+id/frameLayout"
     android:layout_width="match_parent"
-    android:layout_height="40sp"
+    android:layout_height="50sp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_marginBottom="5sp"
         >
@@ -85,7 +85,24 @@
                 android:id="@+id/li10_work_order_no"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="14sp"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#BDBDBD"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/li10_item_desc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="10sp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textColor="@color/black"
@@ -187,10 +204,7 @@
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/li10_item_desc"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
+
 
     <EditText
         android:id="@+id/li10_sort_no"

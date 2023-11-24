@@ -69,7 +69,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
     Button btnt6save;
     Button btnT6StartTime, btnT6Stir1StartDate, btnT6Stir2StartDate, btnT6Stir3StartDate, btnT6Stir4StartDate, btnT6Stir5StartDate ,btnT6Stir1EndDate,
-            btnT6Stir2EndDate, btnT6Stir3EndDate, btnT6Stir4EndDate, btnT6Stir5EndDate, btnT6EndTime;
+            btnT6Stir2EndDate, btnT6Stir3EndDate, btnT6Stir4EndDate, btnT6Stir5EndDate, btnT6EndTime,btnHolding;
 
     InputMethodManager imm;
     JSONObject jspSumObject = new JSONObject();
@@ -167,6 +167,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
         btnT6Stir5EndDate = (Button) findViewById(R.id.btn_t6_stir_5_end_date);
         btnT6EndTime = (Button) findViewById(R.id.btn_t6_end_time);
         btnt6save = (Button) findViewById(R.id.btn_t6_save);
+        btnHolding = (Button) findViewById(R.id.btn_t6_holding);
 
 
         //먼저 실행되는 함수

@@ -72,7 +72,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt1save;
-    Button  btnt8StartDate ,btnt8EndDate ,btnt8Save;
+    Button  btnt8StartDate ,btnt8EndDate ,btnt8Save, btnHolding;
     //키보드
 
     InputMethodManager imm;
@@ -138,6 +138,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
         btnt8StartDate = (Button) findViewById(R.id.btn_t8_start_date);
         btnt8EndDate = (Button) findViewById(R.id.btn_t8_end_date);
         btnt8Save =  (Button) findViewById(R.id.btn_t8_save);
+        btnHolding = (Button) findViewById(R.id.btn_t8_holding);
 
 
         initializeToolbar();

@@ -76,7 +76,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt7save;
-    Button btnT7StartDate,btnT7EndDate;
+    Button btnT7StartDate,btnT7EndDate, btnHolding;
     //키보드
 
     InputMethodManager imm;
@@ -136,6 +136,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
         btnT7StartDate = (Button) findViewById(R.id.btn_t7_start_date);
         btnT7EndDate = (Button) findViewById(R.id.btn_t7_end_date);
         btnt7save = (Button) findViewById(R.id.btn_t7_save);
+        btnHolding = (Button) findViewById(R.id.btn_t7_holding);
 
 
         auto = getSharedPreferences("appData_Log", Context.MODE_PRIVATE);

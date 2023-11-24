@@ -76,7 +76,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
     ListView lvPaldlet, lvInput;
 
     Button btnt1save;
-    Button btnWorkStartTiem,btnRiqidStartTime, btnRiqidEndTime,btnPowderStartTime,btnPowderEndTime, btnWorkEndTime ;
+    Button btnWorkStartTiem,btnRiqidStartTime, btnRiqidEndTime,btnPowderStartTime,btnPowderEndTime, btnWorkEndTime, btnHolding ;
     //키보드
 
     InputMethodManager imm;
@@ -136,6 +136,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
         btnPowderStartTime = (Button) findViewById(R.id.btn_t1_powder_start_time);
         btnPowderEndTime = (Button) findViewById(R.id.btn_t1_powder_end_time);
         btnWorkEndTime = (Button) findViewById(R.id.btn_t1_work_end_time);
+        btnHolding = (Button) findViewById(R.id.btn_t1_holding);
 
 
         btnt1save  = (Button) findViewById(R.id.btn_t1_save);

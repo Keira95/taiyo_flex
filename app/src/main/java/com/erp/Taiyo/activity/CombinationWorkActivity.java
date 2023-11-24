@@ -69,7 +69,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
     etH2SobId, etH2OrgId, etH2WipJobEntitiesSubId;
 
     Button bT2Recent, btnT2MixStartTime, btnT2Stir1StartDate, btnT2Stir1EndDate , btnT2Stir2StartDate, btnT2Stir2EndDate, btnT2Stir3StartDate,
-            btnT2Stir3EndDate, btnT2MixEndTime, bT2Save;
+            btnT2Stir3EndDate, btnT2MixEndTime, bT2Save,btnT2Holding;
 
 
 
@@ -179,6 +179,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         btnT2Stir3StartDate  = (Button) findViewById(R.id.btn_t2_stir_3_start_date	);
         btnT2Stir3EndDate  = (Button) findViewById(R.id.btn_t2_stir_3_end_date	);
         btnT2MixEndTime  = (Button) findViewById(R.id.btn_t2_mix_end_time	);
+        btnT2Holding = (Button) findViewById(R.id.btn_t2_holding);
 
         bT2Save = (Button) findViewById(R.id.btn_t2_save);
 

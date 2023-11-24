@@ -7,7 +7,9 @@ import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -67,7 +69,7 @@ public class SearchActivity extends AppCompatActivity {
     ListView lv_log;
     ListView lvPaldlet, lvInput;
 
-    Button btntsave, btnWorkcenteLu;
+    Button btntsave, btnWorkcenteLu, btnHolding;
 
     //키보드
 
@@ -105,6 +107,8 @@ public class SearchActivity extends AppCompatActivity {
         t10OperationId = (EditText) findViewById(R.id.et_t10_operation_id);
 
         btntsave = (Button) findViewById(R.id.btn_t10_search);
+        btnHolding = (Button) findViewById(R.id.btn_t10_holding);
+
         btnWorkcenteLu = (Button) findViewById(R.id.btn_t10_workcenter_lookup);
 
         lvInput = (ListView)  findViewById(R.id.lv_search);
@@ -120,7 +124,8 @@ public class SearchActivity extends AppCompatActivity {
 
         t10FileNo.requestFocus();
 
-
+        keyboardFocus(t10WorkcenterDesc);
+        keyboardFocus(t10FileNo);
 
 
         t10FileNo.addTextChangedListener(new TextWatcher() {
@@ -175,7 +180,20 @@ public class SearchActivity extends AppCompatActivity {
 
         return getTime;
     }
+    public void keyboardFocus(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int inType = editText.getInputType(); // 현재 입력 모드 저장
+                editText.setInputType(InputType.TYPE_NULL); // 키보드 막기
+                editText.onTouchEvent(event); // 이벤트 처리
+                editText.setInputType(inType); // 원래 입력 모드를 복구
+                editText.setCursorVisible(true); // 커서 표시
+                return true; // 리턴
+            }
 
+        });
+    }
 
     private void ClearView(){
 

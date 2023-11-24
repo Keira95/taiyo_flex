@@ -74,7 +74,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
     ListView lvPaldlet, lvInput;
 
     Button btnt1save;
-    Button btnStirStarDate , btnStirEndDate ,  btnUnitStartDate ,btnUnitEndDate , btnSave;
+    Button btnStirStarDate , btnStirEndDate ,  btnUnitStartDate ,btnUnitEndDate , btnSave, btnHolding;
     //키보드
 
     InputMethodManager imm;
@@ -158,6 +158,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
         btnUnitStartDate = (Button) findViewById(R.id.btn_t5_unit_start_date);
         btnUnitEndDate = (Button) findViewById(R.id.btn_t5_unit_end_date);
         btnSave = (Button) findViewById(R.id.btn_t5_save);
+        btnHolding = (Button) findViewById(R.id.btn_t5_holding);
 
 
         initializeToolbar();

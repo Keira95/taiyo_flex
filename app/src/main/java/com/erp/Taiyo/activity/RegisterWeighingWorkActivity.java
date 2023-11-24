@@ -351,7 +351,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                     btnt1save.setBackgroundColor(Color.YELLOW);
                     btnt1save.setTextColor(Color.BLACK);
                 }
-
                 t1PowderEndTime.setText(getNowDate());
             }
         });
@@ -406,12 +405,10 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
 
-
                     }
 
                 });
                 alert.show();
-
 
             }
         });

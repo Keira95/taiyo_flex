@@ -316,6 +316,10 @@ public class SearchActivity extends AppCompatActivity {
                 if (jarrayWorkLevel.length() < 1) {
                     // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                     ScanModify = false;
+
+                    searchListAdapter.clearItem();
+                    lvInput.setAdapter(searchListAdapter);
+                    searchListAdapter.notifyDataSetChanged();
                     return;
                 }
                 String chk = "√";

@@ -86,6 +86,15 @@ public class RegisterResponseActivity extends AppCompatActivity{
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
 
+    private String FileScan = "";
+    private String TankType = "";
+    private String BoEqp = "";
+    private String Worker1 = "";
+    private String Worker2 = "";
+    private String Worker3 = "";
+    private String Worker4 = "";
+    private String Worker5 = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,7 +204,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6FileNoScan && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6FileNoScan && !s.toString().isEmpty() && s != null && etT6JobId.getText().toString().equals("")){
 
 
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
@@ -227,7 +236,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6TankDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6TankDesc && !s.toString().isEmpty() && s != null && etT6TankCode.getText().toString().equals("")){
 
                     LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
                     lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, etT6TankDesc.getText().toString());
@@ -253,7 +262,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6EquipmentName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6EquipmentName && !s.toString().isEmpty() && s != null && etT6EquipmentCode.getText().toString().equals("")){
 
                     LU_BO_EQP lU_BO_EQP = new LU_BO_EQP();
                     lU_BO_EQP.execute( strIp,strSobId, strOrgId,etT6WorkercenterId.getText().toString(), etT6EquipmentName.getText().toString());
@@ -279,7 +288,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6Stir1WorkerName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6Stir1WorkerName && !s.toString().isEmpty() && s != null && etT6Stir1WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lU_WORKER = new LU_WORKER();
                     etT6WorkerHidden.setText("worker1");
@@ -306,7 +315,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6Stir2WorkerName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6Stir2WorkerName && !s.toString().isEmpty() && s != null && etT6Stir2WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lU_WORKER = new LU_WORKER();
                     etT6WorkerHidden.setText("worker2");
@@ -334,7 +343,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6Stir3WorkerName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6Stir3WorkerName && !s.toString().isEmpty() && s != null && etT6Stir3WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lU_WORKER = new LU_WORKER();
                     etT6WorkerHidden.setText("worker3");
@@ -361,7 +370,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6Stir4WorkerName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6Stir4WorkerName && !s.toString().isEmpty() && s != null && etT6Stir4WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lU_WORKER = new LU_WORKER();
                     etT6WorkerHidden.setText("worker4");
@@ -387,7 +396,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6Stir5WorkerName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT6Stir5WorkerName && !s.toString().isEmpty() && s != null && etT6Stir5WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lU_WORKER = new LU_WORKER();
                     etT6WorkerHidden.setText("worker5");
@@ -446,6 +455,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6FileNoScan.setText("");
+                etT6JobId.setText("");
                 return false;
             }
         });
@@ -454,6 +464,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6TankDesc.setText("");
+                etT6TankCode.setText("");
                 return false;
             }
         });
@@ -463,6 +474,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6EquipmentName.setText("");
+                etT6EquipmentCode.setText("");
                 return false;
             }
         });
@@ -472,6 +484,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6Stir1WorkerName.setText("");
+                etT6Stir1WorkerId.setText("");
                 return false;
             }
         });
@@ -481,6 +494,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6Stir2WorkerName.setText("");
+                etT6Stir2WorkerId.setText("");
                 return false;
             }
         });
@@ -489,6 +503,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6Stir3WorkerName.setText("");
+                etT6Stir3WorkerId.setText("");
                 return false;
             }
         });
@@ -497,6 +512,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6Stir4WorkerName.setText("");
+                etT6Stir4WorkerId.setText("");
                 return false;
             }
         });
@@ -505,6 +521,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6Stir5WorkerName.setText("");
+                etT6Stir5WorkerId.setText("");
                 return false;
             }
         });
@@ -823,10 +840,13 @@ public class RegisterResponseActivity extends AppCompatActivity{
                 JSONArray resultArray = RESURT.getJSONArray("RESULT"); // JSONArray 파싱
 
                 if(resultArray.length() < 1){
-                    etT6EquipmentName.requestFocus();
-                    return;
-                }
+                    if(!TankType.equals(etT6TankDesc.getText().toString())){
+                        etT6TankDesc.requestFocus();
+                        etT6TankDesc.setText("");
+                    }
 
+                    return;
+                }else{
                     JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                     String status = job.getString("Status");
 
@@ -835,10 +855,15 @@ public class RegisterResponseActivity extends AppCompatActivity{
                         etT6TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
                         etT6TankId.setText(job.getString("LOOKUP_ENTRY_ID"));
 
+                        TankType = job.getString("ENTRY_DESCRIPTION");
+
                         saveColorChange();
                     }
-
                     etT6EquipmentName.requestFocus();
+                }
+
+
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -914,11 +939,13 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
                 //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
                 if(resultArray.length() < 1){
+                    if(!BoEqp.equals(etT6EquipmentName.getText().toString())){
+                        etT6EquipmentName.requestFocus();
+                        etT6EquipmentName.setText("");
+                    }
 
-                    etT6Stir1WorkerName.requestFocus();
                     return;
-                }
-
+                }else{
                     JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                     String status = job.getString("Status");
 
@@ -929,8 +956,14 @@ public class RegisterResponseActivity extends AppCompatActivity{
                         etT6EquipmentName.setText(job.getString("TOP_EQUIPMENT_NAME"));
                         etT6OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
 
+                        BoEqp = job.getString("etT6EquipmentName");
+
                     }
                     etT6Stir1WorkerName.requestFocus();
+                }
+
+
+
 
 
 
@@ -958,7 +991,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_WORKCENTER_ID=" + urls[3]
                     + "&W_BARCODE=" +urls[4]
                     ;
 
@@ -1012,44 +1045,76 @@ public class RegisterResponseActivity extends AppCompatActivity{
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    etT6FileNoScan.requestFocus();
-                    return;
-                }
-
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-
-
-                    if(etT6WorkerHidden.getText().toString().equals("worker1")){ //작업자 스캔 1
-
-                        etT6Stir1WorkerId.setText(job.getString("USER_ID"));
-                        etT6Stir1WorkerName.setText(job.getString("DESCRIPTION"));
+                    if(etT6WorkerHidden.getText().toString().equals("worker1") && !Worker1.equals(etT6Stir1WorkerName.getText().toString()))
+                    {
+                        etT6Stir1WorkerName.requestFocus();
+                        etT6Stir1WorkerName.setText("");
+                    }else if(etT6WorkerHidden.getText().toString().equals("worker2") && !Worker2.equals(etT6Stir2WorkerName.getText().toString()))
+                    {
                         etT6Stir2WorkerName.requestFocus();
-
-                    }else if(etT6WorkerHidden.getText().toString().equals("worker2")){ //작업자 스캔 2
-
-                        etT6Stir2WorkerId.setText(job.getString("USER_ID"));
-                        etT6Stir2WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir2WorkerName.setText("");
+                    }else if(etT6WorkerHidden.getText().toString().equals("worker3") && !Worker3.equals(etT6Stir3WorkerName.getText().toString()))
+                    {
                         etT6Stir3WorkerName.requestFocus();
-
-                    }else if(etT6WorkerHidden.getText().toString().equals("worker3")){//작업자 스캔 3
-
-                        etT6Stir3WorkerId.setText(job.getString("USER_ID"));
-                        etT6Stir3WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir3WorkerName.setText("");
+                    }else if(etT6WorkerHidden.getText().toString().equals("worker4") && !Worker4.equals(etT6Stir4WorkerName.getText().toString()))
+                    {
                         etT6Stir4WorkerName.requestFocus();
-
-                    }else if(etT6WorkerHidden.getText().toString().equals("worker4")){ //작업자 스캔 4
-                        etT6Stir4WorkerId.setText(job.getString("USER_ID"));
-                        etT6Stir4WorkerName.setText(job.getString("DESCRIPTION"));
+                        etT6Stir4WorkerName.setText("");
+                    }else if(etT6WorkerHidden.getText().toString().equals("worker5") && !Worker4.equals(etT6Stir5WorkerName.getText().toString()))
+                    {
                         etT6Stir5WorkerName.requestFocus();
-                    }else{                                                            //작업자 스캔 5
-
-                        etT6Stir5WorkerId.setText(job.getString("USER_ID"));
-                        etT6Stir5WorkerName.setText(job.getString("DESCRIPTION"));
-                        etT6FileNoScan.requestFocus();
+                        etT6Stir5WorkerName.setText("");
                     }
 
+                    return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+
+                        if(etT6WorkerHidden.getText().toString().equals("worker1")){ //작업자 스캔 1
+
+                            etT6Stir1WorkerId.setText(job.getString("USER_ID"));
+                            etT6Stir1WorkerName.setText(job.getString("DESCRIPTION"));
+
+                            Worker1 = job.getString("DESCRIPTION");
+                            etT6Stir2WorkerName.requestFocus();
+
+                        }else if(etT6WorkerHidden.getText().toString().equals("worker2")){ //작업자 스캔 2
+
+                            etT6Stir2WorkerId.setText(job.getString("USER_ID"));
+                            etT6Stir2WorkerName.setText(job.getString("DESCRIPTION"));
+
+                            Worker2 = job.getString("DESCRIPTION");
+                            etT6Stir3WorkerName.requestFocus();
+
+                        }else if(etT6WorkerHidden.getText().toString().equals("worker3")){//작업자 스캔 3
+
+                            etT6Stir3WorkerId.setText(job.getString("USER_ID"));
+                            etT6Stir3WorkerName.setText(job.getString("DESCRIPTION"));
+
+                            Worker3 = job.getString("DESCRIPTION");
+                            etT6Stir4WorkerName.requestFocus();
+
+                        }else if(etT6WorkerHidden.getText().toString().equals("worker4")){ //작업자 스캔 4
+                            etT6Stir4WorkerId.setText(job.getString("USER_ID"));
+                            etT6Stir4WorkerName.setText(job.getString("DESCRIPTION"));
+                            Worker4 = job.getString("DESCRIPTION");
+                            etT6Stir5WorkerName.requestFocus();
+                        }else{                                                            //작업자 스캔 5
+
+                            etT6Stir5WorkerId.setText(job.getString("USER_ID"));
+                            etT6Stir5WorkerName.setText(job.getString("DESCRIPTION"));
+
+                            Worker5 = job.getString("DESCRIPTION");
+                            etT6FileNoScan.requestFocus();
+                        }
+
+                    }
                 }
+
+
 
 
 
@@ -1292,6 +1357,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                     }else{
                         etT6OperationId.setText(job.getString("OPERATION_ID"));
                     }
+
 
                     if(etT6ModFlag.equals("N")){
 

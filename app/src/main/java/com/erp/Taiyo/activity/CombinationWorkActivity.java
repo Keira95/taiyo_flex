@@ -760,6 +760,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 if (resultArray.length() < 1) {
                     if(!Jobno.equals(etT2FileNoScan.getText().toString()))
                     {
+                        FileScan = false;
                         etT2FileNoScan.requestFocus();
                         etT2FileNoScan.setText("");
                     }

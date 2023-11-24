@@ -31,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -81,6 +82,12 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
+
+    private String FileScan = "";
+    private String ChCs = "";
+    private String ChGs = "";
+    private String Worker = "";
+    private String PumpNo = "";
 
 
     @Override
@@ -180,7 +187,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t5FileNo && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t5FileNo && !s.toString().isEmpty() && s != null && t5JobId.getText().toString().equals("")){
 
                     FILE_NO_CJ_SCAN fILE_NO_SCAN = new FILE_NO_CJ_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t5FileNo.getText().toString(),t5WorkcenterId.getText().toString());
@@ -207,7 +214,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t5StirEquipmentDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t5StirEquipmentDesc && !s.toString().isEmpty() && s != null && t5StirEquipmentCode.getText().toString().equals("")){
 
                     LU_CH_C_S lU_CH_C_S = new LU_CH_C_S();
                     lU_CH_C_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
@@ -232,7 +239,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t5UnitEquipmentDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t5UnitEquipmentDesc && !s.toString().isEmpty() && s != null && t5UnitEquipmentCode.getText().toString().equals("")){
 
                     LU_CH_G_S lU_CH_G_S = new LU_CH_G_S();
                     lU_CH_G_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
@@ -257,7 +264,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t5WorkerDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t5WorkerDesc && !s.toString().isEmpty() && s != null && t5WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lU_WORKER = new LU_WORKER();
                     lU_WORKER.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5WorkerDesc.getText().toString());
@@ -283,7 +290,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t5PumpNoDes && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t5PumpNoDes && !s.toString().isEmpty() && s != null && t5PumpNoCode.getText().toString().equals("")){
 
                     LU_PUMP_NO lU_PUMP_NO = new LU_PUMP_NO();
                     lU_PUMP_NO.execute(strIp, strSobId,strOrgId, t5PumpNoDes.getText().toString());
@@ -327,6 +334,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t5StirEquipmentDesc.setText("");
+                t5StirEquipmentCode.setText("");
                 return false;
             }
         });
@@ -334,6 +342,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t5UnitEquipmentDesc.setText("");
+                t5UnitEquipmentCode.setText("");
                 return false;
             }
         });
@@ -341,6 +350,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t5PumpNoDes.setText("");
+                t5PumpNoCode.setText("");
                 return false;
             }
         });
@@ -348,6 +358,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t5WorkerDesc.setText("");
+                t5WorkerId.setText("");
                 return false;
             }
         });
@@ -684,13 +695,15 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
-                    ScanModify = false;
-                    t5StirEquipmentDesc.requestFocus();
-                    return;
-                }
+                    if(!FileScan.equals(t5FileNo.getText().toString())){
+                        ScanModify = false;
+                        t5FileNo.requestFocus();
+                        t5FileNo.setText("");
+                    }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    return;
+                }else{
+                                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
 
@@ -808,11 +821,12 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     }else{
                         t5ModFlag.setText(job.getString("MOD_FLAG"));
                     }
-
-
+                    FileScan = job.getString("WORK_ORDER_NO");
+                }
+                    t5StirEquipmentDesc.requestFocus();
 
                 }
-                t5StirEquipmentDesc.requestFocus();
+
 
                 ScanModify = false;
 
@@ -923,7 +937,9 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t5UnitEquipmentDesc.requestFocus();
+                    if(!ChCs.equals(t5StirEquipmentDesc.getText().toString()))
+                        t5StirEquipmentDesc.requestFocus();
+                        t5StirEquipmentDesc.setText("");
                     return;
                 }
 
@@ -934,6 +950,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     t5StirEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
                     t5StirEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                     t5StirEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                    ChCs = job.getString("TOP_EQUIPMENT_NAME");
 
                     saveColorChange();
                 }
@@ -1016,7 +1034,11 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t5WorkerDesc.requestFocus();
+                    if(!ChGs.equals(t5UnitEquipmentDesc.getText().toString())){
+                        t5UnitEquipmentDesc.requestFocus();
+                        t5UnitEquipmentDesc.setText("");
+                    }
+
                     return;
                 }
 
@@ -1027,6 +1049,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     t5UnitEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
                     t5UnitEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                     t5UnitEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                    ChGs = job.getString("TOP_EQUIPMENT_NAME");
 
                     saveColorChange();
                 }
@@ -1110,7 +1134,12 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t5PumpNoDes.requestFocus();
+                    if(!Worker.equals(t5WorkerDesc.getText().toString())) {
+                        t5WorkerDesc.requestFocus();
+                        t5WorkerDesc.setText("");
+                    }
+
+
                     return;
                 }
 
@@ -1119,6 +1148,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                     t5WorkerId.setText(job.getString("USER_ID"));
                     t5WorkerDesc.setText(job.getString("DESCRIPTION"));
+
+                    Worker = job.getString("DESCRIPTION");
 
                 }
                 t5PumpNoDes.requestFocus();
@@ -1199,7 +1230,12 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    t5PumpNoDes.requestFocus();
+                    if(!PumpNo.equals(t5PumpNoDes.getText().toString())){
+                        t5PumpNoDes.requestFocus();
+                        t5PumpNoDes.setText("");
+
+                    }
+
                     return;
                 }
 
@@ -1209,6 +1245,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     t5PumpNoId.setText(job.getString("LOOKUP_ENTRY_ID"));
                     t5PumpNoCode.setText(job.getString("ENTRY_CODE"));
                     t5PumpNoDes.setText(job.getString("ENTRY_DESCRIPTION"));
+
+                    PumpNo = job.getString("ENTRY_DESCRIPTION");
 
                     saveColorChange();
                 }

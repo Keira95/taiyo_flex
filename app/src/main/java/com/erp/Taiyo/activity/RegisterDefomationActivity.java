@@ -84,6 +84,12 @@ public class RegisterDefomationActivity extends AppCompatActivity {
 
     private boolean ScanModify = true;
 
+    private String FileScan = "";
+    private String TankType = "";
+    private String TpEqp = "";
+    private String Worker = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -180,6 +186,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT7FileNoScan.setText("");
+                etT7JobId.setText("");
                 return false;
             }
         });
@@ -188,6 +195,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT7TankDesc.setText("");
+                etT7TankLcode.setText("");
                 return false;
             }
         });
@@ -196,6 +204,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT7EquipmentName.setText("");
+                etT7TopEquipmentCode.setText("");
                 return false;
             }
         });
@@ -205,6 +214,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT7WorkerName.setText("");
+                etT7WorkerId.setText("");
                 return false;
             }
         });
@@ -300,7 +310,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT7FileNoScan && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT7FileNoScan && !s.toString().isEmpty() && s != null && etT7JobId.getText().toString().equals("")){
                     FILE_NO_TP_SCAN fILE_NO_TP_SCAN = new FILE_NO_TP_SCAN();
                     fILE_NO_TP_SCAN.execute(strIp, strSobId,strOrgId ,etT7FileNoScan.getText().toString(),etT7WorkcenterId.getText().toString());
 
@@ -328,7 +338,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT7TankDesc && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT7TankDesc && !s.toString().isEmpty() && s != null && etT7TankLcode.getText().toString().equals("")){
 
                     LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
                     lU_TANK_TYPE.execute(strIp, strSobId,strOrgId, etT7TankDesc.getText().toString());
@@ -355,7 +365,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT7EquipmentName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT7EquipmentName && !s.toString().isEmpty() && s != null && etT7TopEquipmentCode.getText().toString().equals("")){
 
                     LU_TP_EQP lU_TP_EQP = new LU_TP_EQP();
                     lU_TP_EQP.execute(strIp, strSobId,strOrgId, etT7WorkcenterId.getText().toString(),etT7EquipmentName.getText().toString());
@@ -381,7 +391,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT7WorkerName && !s.toString().isEmpty()){
+                if(getCurrentFocus() == etT7WorkerName && !s.toString().isEmpty() && s != null && etT7WorkerId.getText().toString().equals("")){
 
                     LU_WORKER lu_worker = new LU_WORKER();
                     lu_worker.execute(strIp, strSobId,strOrgId, etT7WorkcenterId.getText().toString(), etT7WorkerName.getText().toString());
@@ -588,13 +598,16 @@ public class RegisterDefomationActivity extends AppCompatActivity {
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
-                    ScanModify = false;
-                    etT7TankDesc.requestFocus();
-                    return;
-                }
+                    if(!FileScan.equals(etT7FileNoScan.getText().toString())){
+                        ScanModify = false;
+                        etT7FileNoScan.requestFocus();
+                        etT7FileNoScan.setText("");
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    }
+
+                    return;
+                }else{
+                                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
                     etT7FileNoScan.setText(job.getString("WORK_ORDER_NO"));
@@ -656,14 +669,18 @@ public class RegisterDefomationActivity extends AppCompatActivity {
 
 
                     etT7JobId.setText(job.getString("JOB_ID"));
-                    etT7OperationId.setText(job.getString("OPERAITON_ID")); //etT7OperationId 원래 이거 값 확인을 위해 다른걸로
+                    etT7OperationId.setText(job.getString("OPERAITON_ID"));
                     etT7ModFlag.setText(job.getString("MOD_FLAG"));
 
+                    FileScan = job.getString("WORK_ORDER_NO");
 
+                }
+                    etT7TankDesc.requestFocus();
 
                 }
 
-                etT7TankDesc.requestFocus();
+
+
 
                 ScanModify = false;
 
@@ -767,19 +784,29 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    etT7EquipmentName.requestFocus();
+                    if(!TankType.equals(etT7TankDesc.getText().toString())){
+                        etT7TankDesc.requestFocus();
+                        etT7TankDesc.setText("");
+
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        etT7TankLcode.setText(job.getString("ENTRY_CODE"));
+                        etT7TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
+
+                        TankType = job.getString("ENTRY_DESCRIPTION");
+
+                        saveColorChange();
+                    }
+                    etT7EquipmentName.requestFocus();
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    etT7TankLcode.setText(job.getString("ENTRY_CODE"));
-                    etT7TankDesc.setText(job.getString("ENTRY_DESCRIPTION"));
 
-                    saveColorChange();
-                }
-                etT7EquipmentName.requestFocus();
 
             }catch (JSONException e)
             {
@@ -861,19 +888,29 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    etT7EquipmentName.requestFocus();
+                    if(!TpEqp.equals(etT7EquipmentName.getText().toString())){
+                        etT7EquipmentName.requestFocus();
+                        etT7EquipmentName.setText("");
+
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        etT7OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                        etT7EquipmentName.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        etT7TopEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                        etT7EquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                        TpEqp = job.getString("TOP_EQUIPMENT_NAME");
+                    }
+                    etT7WorkerName.requestFocus();
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    etT7OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                    etT7EquipmentName.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                    etT7TopEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                    etT7EquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
-                }
-                etT7WorkerName.requestFocus();
+
 
             }catch (JSONException e)
             {
@@ -952,17 +989,26 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    etT7WorkerName.requestFocus();
+                    if(!Worker.equals(etT7WorkerName.getText().toString())){
+                        etT7WorkerName.requestFocus();
+                        etT7WorkerName.setText("");
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        etT7WorkerId.setText(job.getString("USER_ID"));
+                        etT7WorkerName.setText(job.getString("DESCRIPTION"));
+
+                        Worker = job.getString("DESCRIPTION");
+                    }
+                    etT7WorkerName.requestFocus();
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    etT7WorkerId.setText(job.getString("USER_ID"));
-                    etT7WorkerName.setText(job.getString("DESCRIPTION"));
-                }
-                etT7WorkerName.requestFocus();
+
 
             }catch (JSONException e)
             {

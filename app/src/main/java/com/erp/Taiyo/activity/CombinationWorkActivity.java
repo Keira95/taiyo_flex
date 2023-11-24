@@ -302,7 +302,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     luWorker2.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
 
 
-
                 }else{
                     return;
                 }

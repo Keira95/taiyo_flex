@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40sp"
                 android:gravity="center"
-                android:text="실적처리등록"
+                android:text="조회"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -86,10 +86,9 @@
             android:layout_marginLeft="5sp"
             android:layout_marginTop="3sp"
             android:layout_marginRight="10sp"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             android:hint="작업장"
             android:background="@drawable/edit_login"
-
             android:paddingLeft="16dp"
             android:textColor="@color/login_edit_text"
             android:textColorHint="@color/login_edit_hint"
@@ -104,15 +103,16 @@
             android:layout_marginRight="10sp"
             android:background="@drawable/buttonshape3"
             android:textColorHint="@color/white"
-            android:layout_weight="2.9"
+            android:layout_weight="2.1"
             android:hint="..."
-
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <View
             android:layout_width="180sp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="0"/>
+
 
     </LinearLayout>
 
@@ -231,46 +231,8 @@
             />
     </LinearLayout>
 
-    <!--   숨김 값 -->
-
-
     <EditText
-        android:id="@+id/et_t10_hidden_focus"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <EditText
-        android:id="@+id/et_t10_oreration_description"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <EditText
-        android:id="@+id/et_t10_work_order_no"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <EditText
-        android:id="@+id/et_t10_qctual_qty"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <EditText
-        android:id="@+id/et_t10_op_poise_order_seq"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <EditText
-        android:id="@+id/et_t10_op_unit_order_seq"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <EditText
-        android:id="@+id/et_t10_item_desc"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <EditText
-        android:id="@+id/et_t10_sort_no"
+        android:id="@+id/et_t10_workcenter_code"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
@@ -281,9 +243,10 @@
 
 
     <EditText
-        android:id="@+id/et_t10_workcenter_code"
+        android:id="@+id/et_t10_operation_id"
         android:layout_width="0dp"
         android:layout_height="0dp" />
+
 
 
 </LinearLayout>

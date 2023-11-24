@@ -82,6 +82,9 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
+    private String FileScan = "";
+    private String JjEqp = "";
+    private String Worker = "";
 
 
     @Override

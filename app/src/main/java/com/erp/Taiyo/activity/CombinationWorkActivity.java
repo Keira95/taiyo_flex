@@ -84,6 +84,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
     TextView tvUserName;
 
     private boolean FileScan = true;
+    private String Jobno = "";
     private String TankDesc = "";
     private String LuBhEQpDesc = "";
     private String Worker1 = "";
@@ -209,7 +210,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
-                if (getCurrentFocus() == etT2FileNoScan && !etT2FileNoScan.getText().toString().isEmpty()) {
+                if (getCurrentFocus() == etT2FileNoScan && !etT2FileNoScan.getText().toString().isEmpty() && s != null && etH2JobId.getText().toString().equals("")) {
                     bT2Save.setBackgroundResource(R.color.dark_green);
                     FileNoScanBH fileNoScanBH = new FileNoScanBH();
                     //fileNoScanGR.execute(strSobId, strOrgId, edT2FileNoScan.getText().toString(), strUserId); 기존
@@ -337,6 +338,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT2FileNoScan.setText("");
+                etH2JobId.setText("");
                 return false;
             }
         });
@@ -354,6 +356,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT2EquipmentScan.setText("");
+                etH2EquipmentCode.setText("");
                 return false;
             }
         });
@@ -362,6 +365,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT2Stir1WorkerNameScan.setText("");
+                etH2Stir1WorkerId.setText("");
                 return false;
             }
         });
@@ -370,6 +374,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT2Stir2WorkerNameScan.setText("");
+                etH2Stir2WorkerId.setText("");
                 return false;
             }
         });
@@ -377,6 +382,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT2Stir3WorkerNameScan.setText("");
+                etH2Stir3WorkerId.setText("");
                 return false;
             }
         });
@@ -753,138 +759,146 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 if (resultArray.length() < 1) {
-                    FileScan = false;
-                    etT2MixTankDescScan.requestFocus();
+                    if(!Jobno.equals(etT2FileNoScan.getText().toString()))
+                    {
+                        etT2FileNoScan.requestFocus();
+                        etT2FileNoScan.setText("");
+                    }
+
                     return;
+                }else{
+                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                    String status = job.getString("Status");
+
+
+                    if (status.equals("S") ) {
+
+                        etT2FileNoScan.setText(job.getString("WORK_ORDER_NO"));
+                        etT2ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                        etT2OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+                        if(job.getString("MIX_START_DATE").equals("null")){
+                            etT2MixStartTime.setText("");
+                        }else{
+                            etT2MixStartTime.setText(job.getString("MIX_START_DATE"));
+                        }
+
+
+
+                        if(job.getString("MIX_TANK_LCODE").equals("null")){
+                            etH2TankLcode.setText("");
+                        }else{
+                            etH2TankLcode.setText(job.getString("MIX_TANK_LCODE"));
+                        }
+
+                        if(job.getString("MIX_TANK_DESC").equals("null")){
+                            etT2MixTankDescScan.setText("");
+                        }else{
+                            etT2MixTankDescScan.setText(job.getString("MIX_TANK_DESC"));
+                        }
+
+
+                        if(job.getString("EQUIPMENT_ID").equals("null")){
+                            etH2EquipmentId.setText("");
+                        }else{
+                            etH2EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                        }
+
+
+                        if(job.getString("EQUIPMENT_NAME").equals("null")){
+                            etT2EquipmentScan.setText("");
+                        }else{
+                            etT2EquipmentScan .setText(job.getString("EQUIPMENT_NAME"));
+                        }
+
+                        if(job.getString("STIR_1_START_DATE").equals("null")){
+                            etT2Stir1StartDate.setText("");
+                        }else{
+                            etT2Stir1StartDate.setText(job.getString("STIR_1_START_DATE"));
+
+                        }
+                        if(job.getString("STIR_1_END_DATE").equals("null")){
+                            etT2Stir1EndDate.setText("");
+                        }else{
+                            etT2Stir1EndDate.setText(job.getString("STIR_1_END_DATE"));
+                        }
+
+
+                        if(job.getString("STIR_1_WORKER_ID").equals("null")){
+                            etH2Stir1WorkerId.setText("");
+                        }else{
+                            etH2Stir1WorkerId.setText(job.getString("STIR_1_WORKER_ID"));
+                        }
+
+                        if(job.getString("STIR_1_WORKER_NAME").equals("null")){
+                            etT2Stir1WorkerNameScan.setText("");
+                        }else{
+                            etT2Stir1WorkerNameScan.setText(job.getString("STIR_1_WORKER_NAME"));
+                        }
+                        if(job.getString("STIR_2_START_DATE").equals("null")){
+                            etT2Stir2StartDate.setText("");
+                        }else{
+                            etT2Stir2StartDate.setText(job.getString("STIR_2_START_DATE"));
+                        }
+                        if(job.getString("STIR_2_END_DATE").equals("null")){
+                            etT2Stir2EndDate.setText("");
+                        }else{
+                            etT2Stir2EndDate.setText(job.getString("STIR_2_END_DATE"));
+                        }
+
+
+                        if(job.getString("STIR_2_WORKER_ID").equals("null")){
+                            etH2Stir2WorkerId.setText("");
+                        }else{
+                            etH2Stir2WorkerId.setText(job.getString("STIR_2_WORKER_ID"));
+                        }
+
+
+                        if(job.getString("STIR_2_WORKER_NAME").equals("null")){
+                            etT2Stir2WorkerNameScan.setText("");
+                        }else{
+                            etT2Stir2WorkerNameScan.setText(job.getString("STIR_2_WORKER_NAME"));
+                        }
+                        if(job.getString("STIR_3_START_DATE").equals("null")){
+                            etT2Stir3StartDate.setText("");
+                        }else{
+                            etT2Stir3StartDate.setText(job.getString("STIR_3_START_DATE"));
+                        }
+                        if(job.getString("STIR_3_END_DATE").equals("null")){
+                            etT2Stir3EndDate.setText("");
+                        }else{
+                            etT2Stir3EndDate.setText(job.getString("STIR_3_END_DATE"));
+                        }
+
+
+                        if(job.getString("STIR_3_WORKER_ID").equals("null")){
+                            etH2Stir3WorkerId.setText("");
+                        }else{
+                            etH2Stir3WorkerId.setText(job.getString("STIR_3_WORKER_ID"));
+                        }
+
+                        if(job.getString("STIR_3_WORKER_NAME").equals("null")){
+                            etT2Stir3WorkerNameScan.setText("");
+                        }else{
+                            etT2Stir3WorkerNameScan.setText(job.getString("STIR_3_WORKER_NAME"));
+                        }
+
+                        if(job.getString("MIX_END_DATE").equals("null")){
+                            etT2MixEndTime.setText("");
+                        }else{
+                            etT2MixEndTime.setText(job.getString("MIX_END_DATE"));
+                        }
+
+                        etH2JobId.setText(job.getString("JOB_ID"));
+                        etH2OperationId.setText(job.getString("OPERATION_ID"));
+                        etH2ModFlag.setText(job.getString("MOD_FLAG"));
+                        Jobno = job.getString("etT2FileNoScan");
+
+                    }
+                    etT2MixTankDescScan.requestFocus();
                 }
 
-                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                String status = job.getString("Status");
 
 
-                if (status.equals("S") ) {
-
-                    etT2FileNoScan.setText(job.getString("WORK_ORDER_NO"));
-                    etT2ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
-                    etT2OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
-                    if(job.getString("MIX_START_DATE").equals("null")){
-                        etT2MixStartTime.setText("");
-                    }else{
-                        etT2MixStartTime.setText(job.getString("MIX_START_DATE"));
-                    }
-
-
-
-                    if(job.getString("MIX_TANK_LCODE").equals("null")){
-                        etH2TankLcode.setText("");
-                    }else{
-                        etH2TankLcode.setText(job.getString("MIX_TANK_LCODE"));
-                    }
-
-                    if(job.getString("MIX_TANK_DESC").equals("null")){
-                        etT2MixTankDescScan.setText("");
-                    }else{
-                        etT2MixTankDescScan.setText(job.getString("MIX_TANK_DESC"));
-                    }
-
-
-                    if(job.getString("EQUIPMENT_ID").equals("null")){
-                        etH2EquipmentId.setText("");
-                    }else{
-                        etH2EquipmentId.setText(job.getString("EQUIPMENT_ID"));
-                    }
-
-
-                    if(job.getString("EQUIPMENT_NAME").equals("null")){
-                        etT2EquipmentScan.setText("");
-                    }else{
-                        etT2EquipmentScan .setText(job.getString("EQUIPMENT_NAME"));
-                    }
-
-                    if(job.getString("STIR_1_START_DATE").equals("null")){
-                        etT2Stir1StartDate.setText("");
-                    }else{
-                        etT2Stir1StartDate.setText(job.getString("STIR_1_START_DATE"));
-
-                    }
-                    if(job.getString("STIR_1_END_DATE").equals("null")){
-                        etT2Stir1EndDate.setText("");
-                    }else{
-                        etT2Stir1EndDate.setText(job.getString("STIR_1_END_DATE"));
-                    }
-
-
-                    if(job.getString("STIR_1_WORKER_ID").equals("null")){
-                        etH2Stir1WorkerId.setText("");
-                    }else{
-                        etH2Stir1WorkerId.setText(job.getString("STIR_1_WORKER_ID"));
-                    }
-
-                    if(job.getString("STIR_1_WORKER_NAME").equals("null")){
-                        etT2Stir1WorkerNameScan.setText("");
-                    }else{
-                        etT2Stir1WorkerNameScan.setText(job.getString("STIR_1_WORKER_NAME"));
-                    }
-                    if(job.getString("STIR_2_START_DATE").equals("null")){
-                        etT2Stir2StartDate.setText("");
-                    }else{
-                        etT2Stir2StartDate.setText(job.getString("STIR_2_START_DATE"));
-                    }
-                    if(job.getString("STIR_2_END_DATE").equals("null")){
-                        etT2Stir2EndDate.setText("");
-                    }else{
-                        etT2Stir2EndDate.setText(job.getString("STIR_2_END_DATE"));
-                    }
-
-
-                    if(job.getString("STIR_2_WORKER_ID").equals("null")){
-                        etH2Stir2WorkerId.setText("");
-                    }else{
-                        etH2Stir2WorkerId.setText(job.getString("STIR_2_WORKER_ID"));
-                    }
-
-
-                    if(job.getString("STIR_2_WORKER_NAME").equals("null")){
-                        etT2Stir2WorkerNameScan.setText("");
-                    }else{
-                        etT2Stir2WorkerNameScan.setText(job.getString("STIR_2_WORKER_NAME"));
-                    }
-                    if(job.getString("STIR_3_START_DATE").equals("null")){
-                        etT2Stir3StartDate.setText("");
-                    }else{
-                        etT2Stir3StartDate.setText(job.getString("STIR_3_START_DATE"));
-                    }
-                    if(job.getString("STIR_3_END_DATE").equals("null")){
-                        etT2Stir3EndDate.setText("");
-                    }else{
-                        etT2Stir3EndDate.setText(job.getString("STIR_3_END_DATE"));
-                    }
-
-
-                    if(job.getString("STIR_3_WORKER_ID").equals("null")){
-                        etH2Stir3WorkerId.setText("");
-                    }else{
-                        etH2Stir3WorkerId.setText(job.getString("STIR_3_WORKER_ID"));
-                    }
-
-                    if(job.getString("STIR_3_WORKER_NAME").equals("null")){
-                        etT2Stir3WorkerNameScan.setText("");
-                    }else{
-                        etT2Stir3WorkerNameScan.setText(job.getString("STIR_3_WORKER_NAME"));
-                    }
-
-                    if(job.getString("MIX_END_DATE").equals("null")){
-                        etT2MixEndTime.setText("");
-                    }else{
-                        etT2MixEndTime.setText(job.getString("MIX_END_DATE"));
-                    }
-
-                    etH2JobId.setText(job.getString("JOB_ID"));
-                    etH2OperationId.setText(job.getString("OPERATION_ID"));
-                    etH2ModFlag.setText(job.getString("MOD_FLAG"));
-
-                }
-                etT2MixTankDescScan.requestFocus();
 
 
                     FileScan = false;
@@ -1108,13 +1122,15 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 if (resultArray.length() < 1) {
-                    FileScan = false;
-                    etT2Stir1WorkerNameScan.requestFocus();
-                    return;
-                }
+                    if (!LuBhEQpDesc.equals(etT2EquipmentScan.getText().toString())){
+                        etT2EquipmentScan.requestFocus();
+                        etT2EquipmentScan.setText("");
 
-                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                String status = job.getString("Status");
+                }
+                return;
+                }else{
+                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                    String status = job.getString("Status");
 
                     if (status.equals("S")) {
 
@@ -1124,9 +1140,12 @@ public class CombinationWorkActivity extends AppCompatActivity {
                         etH2OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
 
                         saveColorChange();
-
                     }
+
+
                     etT2Stir1WorkerNameScan.requestFocus();
+                    }
+
 
 
 
@@ -1209,23 +1228,23 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 if (resultArray.length() < 1) { //데이터 없을때
+                    if (!Worker1.equals(etT2Stir1WorkerNameScan.getText().toString())) {
+                        etT2Stir1WorkerNameScan.requestFocus();
+                        etT2Stir1WorkerNameScan.setText("");
+                    }
+                }else{
+                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                    String status = job.getString("Status");
 
-                    FileScan = false;
+                    if (status.equals("S")) {
+                        etH2Stir1WorkerId.setText(job.getString("USER_ID"));
+                        etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
 
-                    return;
-
+                        saveColorChange();
+                }
+                    etT2Stir2WorkerNameScan.requestFocus();
                 }
 
-                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                String status = job.getString("Status");
-
-                if (status.equals("S")) {
-                    etH2Stir1WorkerId.setText(job.getString("USER_ID"));
-                    etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
-
-                    saveColorChange();
-                }
-                etT2Stir2WorkerNameScan.requestFocus();
 
 
 
@@ -1306,24 +1325,22 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 if (resultArray.length() < 1) { //데이터 없을때
+                    if (!Worker1.equals(etT2Stir2WorkerNameScan.getText().toString())) {
+                        etT2Stir2WorkerNameScan.requestFocus();
+                        etT2Stir2WorkerNameScan.setText("");
+                    }
+                }else{
+                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                    String status = job.getString("Status");
 
-                    FileScan = false;
+                    if (status.equals("S")) {
+                        etH2Stir2WorkerId.setText(job.getString("USER_ID"));
+                        etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
 
-                    return;
-
+                        saveColorChange();
+                    }
+                    etT2Stir3WorkerNameScan.requestFocus();
                 }
-
-                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                String status = job.getString("Status");
-
-                if (status.equals("S")) {
-                    etH2Stir2WorkerId.setText(job.getString("USER_ID"));
-                    etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
-
-                    saveColorChange();
-                }
-
-                etT2Stir3WorkerNameScan.requestFocus();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -1399,21 +1416,21 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
                 if (resultArray.length() < 1) { //데이터 없을때
+                    if (!Worker1.equals(etT2Stir3WorkerNameScan.getText().toString())) {
+                        etT2Stir3WorkerNameScan.requestFocus();
+                        etT2Stir3WorkerNameScan.setText("");
+                    }
+                }else{
+                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
+                    String status = job.getString("Status");
 
-                    FileScan = false;
+                    if (status.equals("S")) {
+                        etH2Stir3WorkerId.setText(job.getString("USER_ID"));
+                        etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
 
-                    return;
-
-                }
-
-                JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                String status = job.getString("Status");
-
-                if (status.equals("S")) {
-                    etH2Stir3WorkerId.setText(job.getString("USER_ID"));
-                    etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
-
-                    saveColorChange();
+                        saveColorChange();
+                    }
+                    etT2Stir3WorkerNameScan.requestFocus();
                 }
 
 

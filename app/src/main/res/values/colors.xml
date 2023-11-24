@@ -55,7 +55,7 @@
     <color name="light_green">#E8F8E1</color>
     <color name="dark_green">#0B6121</color>
     <color name="light_green_1">#E0F8E0</color>
-
+    <color name="button_color">#A3B763</color>
 
 
     <!-- 로그인 에디트 관련 -->

@@ -272,7 +272,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t3FileNo && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t3FileNo && !s.toString().isEmpty() && s != null && t3JobId.getText().toString().equals("")){
                     FILE_NO_YU_SCAN fILE_NO_SCAN = new FILE_NO_YU_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t3FileNo.getText().toString(),t3WorkcenterId.getText().toString());
 
@@ -483,6 +483,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t3FileNo.setText("");
+                t3JobId.setText("");
                 return false;
             }
         });
@@ -697,94 +698,102 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
-                    ScanModify = false;
-                    t3TankScan.requestFocus();
+                    if(!FileNoScan.equals(t3FileNo.getText().toString())){
+                        ScanModify = false;
+                        t3FileNo.requestFocus();
+                        t3FileNo.setText("");
+                    }
+
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t3FileNo.setText(job.getString("WORK_ORDER_NO"));
+                        t3ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                        t3OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+
+                        if(job.getString("LINE_NO").equals("null")){
+                            t3LastSurimiCount.setText("");
+                        }else{
+                            t3LastSurimiCount.setText(job.getString("LINE_NO"));
+                        }
+                        if(job.getString("WORKING_START_DATE").equals("null")){
+                            t3Surimi1StartTime.setText("");
+                        }else{
+                            t3Surimi1StartTime.setText(job.getString("WORKING_START_DATE"));
+                        }
+                        if(job.getString("TANK_DESC").equals("null")){
+                            t3LastTankScan.setText("");
+                        }else{
+                            t3LastTankScan.setText(job.getString("TANK_DESC"));
+                        }
+                        if(job.getString("OILLER_DESC").equals("null")){
+                            t3OillerDesc.setText("");
+                        }else{
+                            t3OillerDesc.setText(job.getString("OILLER_DESC"));
+                        }
+
+                        if(job.getString("USER_DESC").equals("null")){
+                            t3LiqidPersonDesc.setText("");
+                        }else{
+                            t3LiqidPersonDesc.setText(job.getString("USER_DESC"));
+                        }
+                        if(job.getString("WORKING_END_DATE").equals("null")){
+                            t3Surimi1EndTime.setText("");
+                        }else{
+                            t3Surimi1EndTime.setText(job.getString("WORKING_END_DATE"));
+                        }
+                        if(job.getString("WORKING_START_DATE2").equals("null")){
+                            t3Surimi2StartTime.setText("");
+                        }else{
+                            t3Surimi2StartTime.setText(job.getString("WORKING_START_DATE2"));
+                        }
+                        if(job.getString("WORKING_END_DATE2").equals("null")){
+                            t3Surimi2EndTime.setText("");
+                        }else{
+                            t3Surimi2EndTime.setText(job.getString("WORKING_END_DATE2"));
+                        }
+
+                        //  t3LastTankScan.setText(job.getString("POWDER_WORKER_ID"));
+
+                        if(job.getString("EQUIPMENT_ID").equals("null")){
+                            t3EquimentId.setText("");
+                        }else{
+                            t3EquimentId.setText(job.getString("EQUIPMENT_ID"));
+                        }
+
+                        if(job.getString("OILLER_ID").equals("null")){
+                            t3OillerId.setText("");
+                        }else{
+                            t3OillerId.setText(job.getString("OILLER_ID"));
+                        }
+                        if(job.getString("EQUIPMENT_NAME").equals("null")){
+                            t3TankScan.setText("");
+                        }else{
+                            t3TankScan.setText(job.getString("EQUIPMENT_NAME"));
+                        }
+
+                        if(job.getString("INDICATOR_USER_ID").equals("null")){
+                            t3IndicatorUserId.setText("");
+                        }else{
+                            t3IndicatorUserId.setText(job.getString("INDICATOR_USER_ID"));
+                        }
+
+
+                        t3LastTankCode.setText(job.getString("TANK_CODE"));
+                        t3JobId.setText(job.getString("JOB_ID"));
+                        t3ModFlag.setText(job.getString("MOD_FLAG"));
+
+                        t3OperationId.setText(job.getString("OPERATION_ID"));
+
+                        FileNoScan = job.getString("WORK_ORDER_NO");
+
+                    }
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    t3FileNo.setText(job.getString("WORK_ORDER_NO"));
-                    t3ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
-                    t3OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
-
-                    if(job.getString("LINE_NO").equals("null")){
-                        t3LastSurimiCount.setText("");
-                    }else{
-                        t3LastSurimiCount.setText(job.getString("LINE_NO"));
-                    }
-                    if(job.getString("WORKING_START_DATE").equals("null")){
-                        t3Surimi1StartTime.setText("");
-                    }else{
-                        t3Surimi1StartTime.setText(job.getString("WORKING_START_DATE"));
-                    }
-                    if(job.getString("TANK_DESC").equals("null")){
-                        t3LastTankScan.setText("");
-                    }else{
-                        t3LastTankScan.setText(job.getString("TANK_DESC"));
-                    }
-                    if(job.getString("OILLER_DESC").equals("null")){
-                        t3OillerDesc.setText("");
-                    }else{
-                        t3OillerDesc.setText(job.getString("OILLER_DESC"));
-                    }
-
-                    if(job.getString("USER_DESC").equals("null")){
-                        t3LiqidPersonDesc.setText("");
-                    }else{
-                        t3LiqidPersonDesc.setText(job.getString("USER_DESC"));
-                    }
-                    if(job.getString("WORKING_END_DATE").equals("null")){
-                        t3Surimi1EndTime.setText("");
-                    }else{
-                        t3Surimi1EndTime.setText(job.getString("WORKING_END_DATE"));
-                    }
-                    if(job.getString("WORKING_START_DATE2").equals("null")){
-                        t3Surimi2StartTime.setText("");
-                    }else{
-                        t3Surimi2StartTime.setText(job.getString("WORKING_START_DATE2"));
-                    }
-                    if(job.getString("WORKING_END_DATE2").equals("null")){
-                        t3Surimi2EndTime.setText("");
-                    }else{
-                        t3Surimi2EndTime.setText(job.getString("WORKING_END_DATE2"));
-                    }
-
-                  //  t3LastTankScan.setText(job.getString("POWDER_WORKER_ID"));
-
-                    if(job.getString("EQUIPMENT_ID").equals("null")){
-                        t3EquimentId.setText("");
-                    }else{
-                        t3EquimentId.setText(job.getString("EQUIPMENT_ID"));
-                    }
-
-                    if(job.getString("OILLER_ID").equals("null")){
-                        t3OillerId.setText("");
-                    }else{
-                        t3OillerId.setText(job.getString("OILLER_ID"));
-                    }
-                    if(job.getString("EQUIPMENT_NAME").equals("null")){
-                        t3TankScan.setText("");
-                    }else{
-                        t3TankScan.setText(job.getString("EQUIPMENT_NAME"));
-                    }
-
-                    if(job.getString("INDICATOR_USER_ID").equals("null")){
-                        t3IndicatorUserId.setText("");
-                    }else{
-                        t3IndicatorUserId.setText(job.getString("INDICATOR_USER_ID"));
-                    }
-
-
-                    t3LastTankCode.setText(job.getString("TANK_CODE"));
-                    t3JobId.setText(job.getString("JOB_ID"));
-                    t3ModFlag.setText(job.getString("MOD_FLAG"));
-
-                    t3OperationId.setText(job.getString("OPERATION_ID"));
-
-                }
 
                 t3TankScan.requestFocus();
 

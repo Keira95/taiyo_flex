@@ -188,7 +188,6 @@ public class RegisterResponseActivity extends AppCompatActivity{
         keyboardFocus(etT6Stir4WorkerName);
         keyboardFocus(etT6Stir5WorkerName);
 
-
         etT6FileNoScan.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -263,7 +262,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT6EquipmentName && !s.toString().isEmpty() && s != null && etT6EquipmentCode.getText().toString().equals("")){
+                if(getCurrentFocus() == etT6EquipmentName && !s.toString().isEmpty() && s != null && etT6EquipmentId.getText().toString().equals("")){
 
                     LU_BO_EQP lU_BO_EQP = new LU_BO_EQP();
                     lU_BO_EQP.execute( strIp,strSobId, strOrgId,etT6WorkercenterId.getText().toString(), etT6EquipmentName.getText().toString());
@@ -475,7 +474,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
             @Override
             public boolean onLongClick(View v) {
                 etT6EquipmentName.setText("");
-                etT6EquipmentCode.setText("");
+                etT6EquipmentId.setText("");
                 return false;
             }
         });
@@ -957,7 +956,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                         etT6EquipmentName.setText(job.getString("TOP_EQUIPMENT_NAME"));
                         etT6OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
 
-                        BoEqp = job.getString("etT6EquipmentName");
+                        BoEqp = job.getString("TOP_EQUIPMENT_NAME");
 
                     }
                     etT6Stir1WorkerName.requestFocus();

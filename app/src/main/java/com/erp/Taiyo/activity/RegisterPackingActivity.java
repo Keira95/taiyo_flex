@@ -215,7 +215,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t5StirEquipmentDesc && !s.toString().isEmpty() && s != null && t5StirEquipmentCode.getText().toString().equals("")){
+                if(getCurrentFocus() == t5StirEquipmentDesc && !s.toString().isEmpty() && s != null && t5StirEquipmentId.getText().toString().equals("")){
 
                     LU_CH_C_S lU_CH_C_S = new LU_CH_C_S();
                     lU_CH_C_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
@@ -240,7 +240,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t5UnitEquipmentDesc && !s.toString().isEmpty() && s != null && t5UnitEquipmentCode.getText().toString().equals("")){
+                if(getCurrentFocus() == t5UnitEquipmentDesc && !s.toString().isEmpty() && s != null && t5UnitEquipmentId.getText().toString().equals("")){
 
                     LU_CH_G_S lU_CH_G_S = new LU_CH_G_S();
                     lU_CH_G_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
@@ -335,7 +335,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t5StirEquipmentDesc.setText("");
-                t5StirEquipmentCode.setText("");
+                t5StirEquipmentId.setText("");
                 return false;
             }
         });
@@ -343,7 +343,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t5UnitEquipmentDesc.setText("");
-                t5UnitEquipmentCode.setText("");
+                t5UnitEquipmentId.setText("");
                 return false;
             }
         });

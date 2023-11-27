@@ -205,7 +205,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT7EquipmentName.setText("");
-                etT7TopEquipmentCode.setText("");
+                etT7EquipmentId.setText("");
                 return false;
             }
         });
@@ -366,7 +366,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == etT7EquipmentName && !s.toString().isEmpty() && s != null && etT7TopEquipmentCode.getText().toString().equals("")){
+                if(getCurrentFocus() == etT7EquipmentName && !s.toString().isEmpty() && s != null && etT7EquipmentId.getText().toString().equals("")){
 
                     LU_TP_EQP lU_TP_EQP = new LU_TP_EQP();
                     lU_TP_EQP.execute(strIp, strSobId,strOrgId, etT7WorkcenterId.getText().toString(),etT7EquipmentName.getText().toString());

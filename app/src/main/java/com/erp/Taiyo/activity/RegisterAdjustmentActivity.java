@@ -265,7 +265,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t4EquipmentDesc && !s.toString().isEmpty() && s != null && t4TopEquimentCode.getText().toString().equals("")){
+                if(getCurrentFocus() == t4EquipmentDesc && !s.toString().isEmpty() && s != null && t4TopEquimentId.getText().toString().equals("")){
 
                     LU_JJ_EQP lU_JJ_EQP = new LU_JJ_EQP();
                     lU_JJ_EQP.execute(strIp, strSobId,strOrgId, t4WorkcenterId.getText().toString(),t4EquipmentDesc.getText().toString());
@@ -327,7 +327,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
 
                 t4EquipmentDesc.setText("");
-                t4TopEquimentCode.setText("");
+                t4TopEquimentId.setText("");
                 return false;
             }
         });
@@ -654,9 +654,9 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                         t4WorkerDesc.setText(job.getString("WORKER_DESC"));
                     }
                     if(job.getString("EQUIPMENT_ID").equals("null")){
-                        t4EquipmentId.setText("");
+                        t4TopEquimentId.setText("");
                     }else{
-                        t4EquipmentId.setText(job.getString("EQUIPMENT_ID"));
+                        t4TopEquimentId.setText(job.getString("EQUIPMENT_ID"));
                     }
                     if(job.getString("WORKER_ID").equals("null")){
                         t4WorkerId.setText("");

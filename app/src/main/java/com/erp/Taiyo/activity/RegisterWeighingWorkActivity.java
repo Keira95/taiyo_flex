@@ -84,6 +84,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
+    private String FileNo = "";
     private String TankDesc = "";
     private String RiqidWorkerDesc = "";
     private String PowderPersonDesc = "";
@@ -182,7 +183,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t1FileNo && !s.toString().isEmpty()){
+                if(getCurrentFocus() == t1FileNo && !s.toString().isEmpty()  && t1Job_id.getText().toString().equals("")){
 
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t1FileNo.getText().toString(),t1WorkcenterId.getText().toString());
@@ -705,92 +706,99 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
 
                 if(jarrayWorkLevel.length() < 1){
-                    // Toast.makeText(getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
-                    ScanModify = false;
-                    t1TankScan.requestFocus();
+                    if(!FileNo.equals(t1FileNo.getText().toString())){
+                        ScanModify = false;
+                        t1FileNo.requestFocus();
+                        t1FileNo.setText("");
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+                        t1FileNo.setText(job.getString("WORK_ORDER_NO"));
+                        t1ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
+                        t1OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
+                        if(job.getString("WORK_START_DATE").equals("null")){
+                            t1WorkStartTiem.setText("");
+                        }else{
+                            t1WorkStartTiem.setText(job.getString("WORK_START_DATE"));
+                        }
+
+                        if(job.getString("TANK_LCODE").equals("null")){
+                            t1TankLcode.setText("");
+                        }else{
+                            t1TankLcode.setText(job.getString("TANK_LCODE"));
+                        }
+
+
+                        if(job.getString("TANK_DESC").equals("null")){
+                            t1TankScan.setText("");
+                        }else{
+                            t1TankScan.setText(job.getString("TANK_DESC"));
+                        }
+
+                        if(job.getString("LIQUID_WORKER_ID").equals("null")){
+                            t1LiqidPersonId.setText("");
+                        }else{
+                            t1LiqidPersonId.setText(job.getString("LIQUID_WORKER_ID"));
+                        }
+
+
+                        if(job.getString("LIQUID_WORKER_NAME").equals("null")){
+                            t1LiqidPersonDesc.setText("");
+                        }else{
+                            t1LiqidPersonDesc .setText(job.getString("LIQUID_WORKER_NAME"));
+                        }
+
+                        if(job.getString("LIQUID_START_DATE").equals("null")){
+                            t1RiqidStartTime.setText("");
+                        }else{
+                            t1RiqidStartTime.setText(job.getString("LIQUID_START_DATE"));
+
+                        }
+                        if(job.getString("LIQUID_END_DATE").equals("null")){
+                            t1RiqidEndTime.setText("");
+                        }else{
+                            t1RiqidEndTime.setText(job.getString("LIQUID_END_DATE"));
+                        }
+                        if(job.getString("POWDER_WORKER_NAME").equals("null")){
+                            t1PowderPersonDesc.setText("");
+                        }else{
+                            t1PowderPersonDesc.setText(job.getString("POWDER_WORKER_NAME"));
+                        }
+                        if(job.getString("POWDER_START_DATE").equals("null")){
+                            t1PowderStartTime.setText("");
+                        }else{
+                            t1PowderStartTime.setText(job.getString("POWDER_START_DATE"));
+                        }
+                        if(job.getString("POWDER_END_DATE").equals("null")){
+                            t1PowderEndTime.setText("");
+                        }else{
+                            t1PowderEndTime.setText(job.getString("POWDER_END_DATE"));
+                        }
+                        if(job.getString("WORK_END_DATE").equals("null")){
+                            t1WorkEndTime.setText("");
+                        }else{
+                            t1WorkEndTime.setText(job.getString("WORK_END_DATE"));
+                        }
+
+
+                        if(job.getString("POWDER_WORKER_ID").equals("null")){
+                            t1PowderPersonId.setText("");
+                        }else{
+                            t1PowderPersonId.setText(job.getString("POWDER_WORKER_ID"));
+                        }
+
+                        t1Job_id.setText(job.getString("JOB_ID"));
+                        t1OprationId.setText(job.getString("OPERATION_ID"));
+                        t1ModeFlag.setText(job.getString("MOD_FLAG"));
+
+                        FileNo = job.getString("WORK_ORDER_NO");
+                    }
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
-                    t1FileNo.setText(job.getString("WORK_ORDER_NO"));
-                    t1ItemDesc.setText(job.getString("ITEM_DESCRIPTION"));
-                    t1OperaionDesc.setText(job.getString("OPERATION_DESCRIPTION"));
-                    if(job.getString("WORK_START_DATE").equals("null")){
-                        t1WorkStartTiem.setText("");
-                    }else{
-                        t1WorkStartTiem.setText(job.getString("WORK_START_DATE"));
-                    }
 
-                    if(job.getString("TANK_LCODE").equals("null")){
-                        t1TankLcode.setText("");
-                    }else{
-                        t1TankLcode.setText(job.getString("TANK_LCODE"));
-                    }
-
-
-                    if(job.getString("TANK_DESC").equals("null")){
-                        t1TankScan.setText("");
-                    }else{
-                        t1TankScan.setText(job.getString("TANK_DESC"));
-                    }
-
-                    if(job.getString("LIQUID_WORKER_ID").equals("null")){
-                        t1LiqidPersonId.setText("");
-                    }else{
-                        t1LiqidPersonId.setText(job.getString("LIQUID_WORKER_ID"));
-                    }
-
-
-                    if(job.getString("LIQUID_WORKER_NAME").equals("null")){
-                        t1LiqidPersonDesc.setText("");
-                    }else{
-                        t1LiqidPersonDesc .setText(job.getString("LIQUID_WORKER_NAME"));
-                    }
-
-                    if(job.getString("LIQUID_START_DATE").equals("null")){
-                        t1RiqidStartTime.setText("");
-                    }else{
-                        t1RiqidStartTime.setText(job.getString("LIQUID_START_DATE"));
-
-                    }
-                    if(job.getString("LIQUID_END_DATE").equals("null")){
-                        t1RiqidEndTime.setText("");
-                    }else{
-                        t1RiqidEndTime.setText(job.getString("LIQUID_END_DATE"));
-                    }
-                    if(job.getString("POWDER_WORKER_NAME").equals("null")){
-                        t1PowderPersonDesc.setText("");
-                    }else{
-                        t1PowderPersonDesc.setText(job.getString("POWDER_WORKER_NAME"));
-                    }
-                    if(job.getString("POWDER_START_DATE").equals("null")){
-                        t1PowderStartTime.setText("");
-                    }else{
-                        t1PowderStartTime.setText(job.getString("POWDER_START_DATE"));
-                    }
-                    if(job.getString("POWDER_END_DATE").equals("null")){
-                        t1PowderEndTime.setText("");
-                    }else{
-                        t1PowderEndTime.setText(job.getString("POWDER_END_DATE"));
-                    }
-                    if(job.getString("WORK_END_DATE").equals("null")){
-                        t1WorkEndTime.setText("");
-                    }else{
-                        t1WorkEndTime.setText(job.getString("WORK_END_DATE"));
-                    }
-
-
-                    if(job.getString("POWDER_WORKER_ID").equals("null")){
-                        t1PowderPersonId.setText("");
-                    }else{
-                        t1PowderPersonId.setText(job.getString("POWDER_WORKER_ID"));
-                    }
-
-                    t1Job_id.setText(job.getString("JOB_ID"));
-                    t1OprationId.setText(job.getString("OPERATION_ID"));
-                    t1ModeFlag.setText(job.getString("MOD_FLAG"));
-                }
 
                 t1TankScan.requestFocus();
 

@@ -290,7 +290,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(getCurrentFocus() == t8EquipmentName && !s.toString().isEmpty() && s != null && t8EquipmentCode.getText().toString().equals("")){
+                if(getCurrentFocus() == t8EquipmentName && !s.toString().isEmpty() && s != null && t8EquipmentId.getText().toString().equals("")){
 
                     LU_AJ_EQP lU_AJ_EQP = new LU_AJ_EQP();
                     lU_AJ_EQP.execute(strIp, strSobId,strOrgId, t8WorkcenterId.getText().toString(),t8EquipmentName.getText().toString());
@@ -382,7 +382,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t8EquipmentName.setText("");
-                t8EquipmentCode.setText("");
+                t8EquipmentId.setText("");
                 return false;
             }
         });

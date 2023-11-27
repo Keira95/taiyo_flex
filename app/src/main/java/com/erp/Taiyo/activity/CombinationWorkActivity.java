@@ -252,7 +252,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if (getCurrentFocus() == etT2EquipmentScan && !s.toString().isEmpty() && s != null && etH2EquipmentCode.getText().toString().equals("")) {
+                if (getCurrentFocus() == etT2EquipmentScan && !s.toString().isEmpty() && s != null && etH2EquipmentId.getText().toString().equals("")) {
                     LuBhEQp luBhEQp = new LuBhEQp();
                     luBhEQp.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2EquipmentScan.getText().toString());   //eth2xworkid를 usrid  etH2XworkId.getText().toString()
 
@@ -339,6 +339,25 @@ public class CombinationWorkActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 etT2FileNoScan.setText("");
                 etH2JobId.setText("");
+
+                etT2ItemDesc.setText("");
+                etT2MixStartTime.setText("");
+                etT2OperaionDesc.setText("");
+                etT2MixTankDescScan.setText("");
+                etT2EquipmentScan.setText("");
+                etT2Stir1StartDate.setText("");
+                etT2Stir1EndDate.setText("");
+                etT2Stir1WorkerName.setText("");
+                etT2Stir2StartDate.setText("");
+                etT2Stir2EndDate.setText("");
+                etT2Stir2WorkerName.setText("");
+                etT2Stir3StartDate.setText("");
+                etT2Stir3EndDate.setText("");
+                etT2Stir3WorkerName.setText("");
+                etT2MixEndTime.setText("");
+                etT2Stir1WorkerNameScan.setText("");
+                etT2Stir2WorkerNameScan.setText("");
+                etT2Stir3WorkerNameScan.setText("");
                 return false;
             }
         });
@@ -356,7 +375,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 etT2EquipmentScan.setText("");
-                etH2EquipmentCode.setText("");
+                etH2EquipmentId.setText("");
                 return false;
             }
         });
@@ -571,7 +590,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
             bT2Save.setTextColor(Color.BLACK);
         }
     }
-
 
     private void initializeToolbar() {
         setSupportActionBar(toolbar);
@@ -892,7 +910,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                         etH2JobId.setText(job.getString("JOB_ID"));
                         etH2OperationId.setText(job.getString("OPERATION_ID"));
                         etH2ModFlag.setText(job.getString("MOD_FLAG"));
-                        Jobno = job.getString("etT2FileNoScan");
+                        Jobno = job.getString("WORK_ORDER_NO");
 
                     }
                     etT2MixTankDescScan.requestFocus();
@@ -1126,9 +1144,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     if (!LuBhEQpDesc.equals(etT2EquipmentScan.getText().toString())){
                         etT2EquipmentScan.requestFocus();
                         etT2EquipmentScan.setText("");
-
-                }
-                return;
+                       }
+                    return;
                 }else{
                     JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
                     String status = job.getString("Status");
@@ -1139,6 +1156,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
                         etH2EquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
                         etT2EquipmentScan.setText(job.getString("TOP_EQUIPMENT_NAME"));
                         etH2OldEquipmentName.setText(job.getString("OLD_EQUIPMENT_NAME"));
+
+                        LuBhEQpDesc = job.getString("TOP_EQUIPMENT_NAME");
 
                         saveColorChange();
                     }

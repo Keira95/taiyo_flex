@@ -4,8 +4,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +23,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class HoldingDialog {
@@ -30,7 +35,7 @@ public class HoldingDialog {
    // ListView lvIssueListView;
     int Number;
 
-    String strIp, strSobId, strOrgId;
+    String strIp, strSobId, strOrgId, strWorkOrderNo;
     EditText etFileNo, etStartTime, etEndTime , etJobId, etOperationId,etHoldingControlId;
     Button btnStartTime, btnEndTime, btnSave, btnClose;
 
@@ -55,6 +60,14 @@ public class HoldingDialog {
         // 커스텀 다이얼로그의 레이아웃을 설정한다.
         dialog.setContentView(R.layout.dialog_holding);
 
+        DisplayMetrics dm = dialog.getContext().getApplicationContext().getResources().getDisplayMetrics();
+        WindowManager.LayoutParams wm = new WindowManager.LayoutParams();
+        wm.copyFrom(dialog.getWindow().getAttributes());
+        wm.width = dm.widthPixels - (dm.widthPixels / 20);
+        wm.height = dm.heightPixels - (dm.widthPixels / 3);
+        dialog.getWindow().setAttributes(wm);
+
+
         etFileNo = (EditText) dialog.findViewById(R.id.dialog_file_no);
         etStartTime = (EditText) dialog.findViewById(R.id.dialog_holding_start_time);
         etEndTime = (EditText) dialog.findViewById(R.id.dialog_holding_end_time);
@@ -63,7 +76,7 @@ public class HoldingDialog {
         etOperationId = (EditText) dialog.findViewById(R.id.operation_id);
         etHoldingControlId = (EditText) dialog.findViewById(R.id.holding_control_id);
 
-
+        strWorkOrderNo = tvWorkOrderNo.getText().toString();
 
         btnStartTime = (Button) dialog.findViewById(R.id.btn_holding_start_time);
         btnEndTime = (Button) dialog.findViewById(R.id.btn_holding_end_time);
@@ -82,6 +95,23 @@ public class HoldingDialog {
                 dialog.dismiss();
             }
         });
+
+        btnStartTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                etStartTime.setText(getNowDate());
+            }
+        });
+
+        btnEndTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            etEndTime.setText(getNowDate());
+            }
+        });
+
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,8 +209,7 @@ public class HoldingDialog {
                     hOLDING_CONTROL_SELECT.execute(strIp, strSobId, strOrgId,etOperationId.getText().toString(),"","",etHoldingControlId.getText().toString());
 
                 }else{
-
-
+                etFileNo.setText(strWorkOrderNo);
                 }
 
             }catch (JSONException e)
@@ -265,10 +294,21 @@ public class HoldingDialog {
                 if(job.getString("Status").equals("S")){
 
                     etJobId.setText(job.getString("JOB_ID"));
+                    etFileNo.setText(job.getString("FILE_NO"));
                     etOperationId.setText(job.getString("OPERATION_ID"));
                     etHoldingControlId.setText(job.getString("JOB_HOLDING_CONTROL_ID"));
-                    etStartTime.setText(job.getString("HOLDING_START_DATE"));
-                    etEndTime.setText(job.getString("HOLDING_END_DATE"));
+
+                    if(job.getString("HOLDING_START_DATE").equals("null")){
+                        etStartTime.setText("");
+                    }else{
+                        etStartTime.setText(job.getString("HOLDING_START_DATE"));
+                    }
+                    if(job.getString("HOLDING_END_DATE").equals("null")){
+                        etEndTime.setText("");
+                    }else{
+                        etEndTime.setText(job.getString("HOLDING_END_DATE"));
+                    }
+
 
                 }
 
@@ -284,6 +324,16 @@ public class HoldingDialog {
     }
 
 
+    private String getNowDate() {
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss", Locale.KOREAN);
+
+        String getTime = sdf.format(date);
+
+        return getTime;
+    }
 
 
 }

@@ -25,6 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.erp.Taiyo.Dialog.HoldingDialog;
+import com.erp.Taiyo.Dialog.LuComLatelyDialog;
 import com.erp.Taiyo.R;
 
 
@@ -290,6 +292,22 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
         p3ItemCode.setInputType(0);
         p3FgWarDesc.setInputType(0);
 */
+
+        btnHolding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(t1FileNo.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                HoldingDialog holdingDialog = new HoldingDialog(RegisterWeighingWorkActivity.this);
+                holdingDialog.call_Level_Dialog(t1FileNo, strIp);
+            }
+        });
+
 
         //계량 작업시작
         btnWorkStartTiem.setOnClickListener(new View.OnClickListener() {

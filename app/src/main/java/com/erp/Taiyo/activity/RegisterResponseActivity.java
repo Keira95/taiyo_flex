@@ -958,6 +958,8 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
                         BoEqp = job.getString("TOP_EQUIPMENT_NAME");
 
+                        saveColorChange();
+
                     }
                     etT6Stir1WorkerName.requestFocus();
                 }
@@ -1079,6 +1081,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                             etT6Stir1WorkerName.setText(job.getString("DESCRIPTION"));
 
                             Worker1 = job.getString("DESCRIPTION");
+                            saveColorChange();
                             etT6Stir2WorkerName.requestFocus();
 
                         }else if(etT6WorkerHidden.getText().toString().equals("worker2")){ //작업자 스캔 2
@@ -1087,6 +1090,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                             etT6Stir2WorkerName.setText(job.getString("DESCRIPTION"));
 
                             Worker2 = job.getString("DESCRIPTION");
+                            saveColorChange();
                             etT6Stir3WorkerName.requestFocus();
 
                         }else if(etT6WorkerHidden.getText().toString().equals("worker3")){//작업자 스캔 3
@@ -1095,12 +1099,15 @@ public class RegisterResponseActivity extends AppCompatActivity{
                             etT6Stir3WorkerName.setText(job.getString("DESCRIPTION"));
 
                             Worker3 = job.getString("DESCRIPTION");
+                            saveColorChange();
                             etT6Stir4WorkerName.requestFocus();
 
                         }else if(etT6WorkerHidden.getText().toString().equals("worker4")){ //작업자 스캔 4
                             etT6Stir4WorkerId.setText(job.getString("USER_ID"));
                             etT6Stir4WorkerName.setText(job.getString("DESCRIPTION"));
+
                             Worker4 = job.getString("DESCRIPTION");
+                            saveColorChange();
                             etT6Stir5WorkerName.requestFocus();
                         }else{                                                            //작업자 스캔 5
 
@@ -1108,6 +1115,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                             etT6Stir5WorkerName.setText(job.getString("DESCRIPTION"));
 
                             Worker5 = job.getString("DESCRIPTION");
+                            saveColorChange();
                             etT6FileNoScan.requestFocus();
                         }
 

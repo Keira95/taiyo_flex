@@ -703,6 +703,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
                         t8EquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
 
                         AjEqp = job.getString("TOP_EQUIPMENT_NAME");
+                        saveColorChange();
                     }
                     t8StirWorkerName.requestFocus();
                 }
@@ -802,6 +803,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
                         t8StirWorkerName.setText(job.getString("DESCRIPTION"));
 
                         Worker = job.getString("DESCRIPTION");
+                        saveColorChange();
                     }
                     t8FileNoScan.requestFocus();
                 }

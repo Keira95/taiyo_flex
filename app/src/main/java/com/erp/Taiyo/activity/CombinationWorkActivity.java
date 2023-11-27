@@ -93,6 +93,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
 
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.combination_weighing_work2);
@@ -339,7 +341,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 etT2FileNoScan.setText("");
                 etH2JobId.setText("");
-
                 etT2ItemDesc.setText("");
                 etT2MixStartTime.setText("");
                 etT2OperaionDesc.setText("");
@@ -591,6 +592,31 @@ public class CombinationWorkActivity extends AppCompatActivity {
         }
     }
 
+    private void ClearView(){
+        etT2FileNoScan.setText("");
+        etT2OperaionDesc.setText("");
+        etT2MixStartTime.setText("");
+        etH2TankLcode.setText("");
+        etT2MixTankDescScan.setText("");
+        etH2EquipmentId.setText("");
+        etT2EquipmentScan.setText("");
+        etT2Stir1StartDate .setText("");
+        etT2Stir1EndDate .setText("");
+        etH2Stir1WorkerId.setText("");
+        etT2Stir1WorkerName.setText("");
+        etT2Stir2StartDate.setText("");
+        etT2Stir2EndDate .setText("");
+        etH2Stir2WorkerId .setText("");
+        etT2Stir2WorkerName.setText("");
+        etT2Stir3StartDate.setText("");
+        etT2Stir3EndDate.setText("");
+        etH2Stir3WorkerId.setText("");
+        etT2Stir3WorkerName.setText("");
+        etT2MixEndTime.setText("");
+        etH2OperationId.setText("");
+        etH2ModFlag.setText("");
+    }
+
     private void initializeToolbar() {
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
@@ -602,6 +628,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
 
         toolbar.getNavigationIcon().mutate().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
 

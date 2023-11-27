@@ -90,6 +90,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
     private String PowderPersonDesc = "";
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,6 +216,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 //사용자 스캔또는 터치 포커스              //값이 널이아니고           // locde가 null이어야만한다
                 if(getCurrentFocus() == t1TankScan && !s.toString().equals("") && t1TankLcode.getText().toString().equals("")) {
 
+
                     LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
                     lU_TANK_TYPE.execute(strIp, strSobId, strOrgId, t1TankScan.getText().toString());
 
@@ -245,6 +248,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty() && s != null && t1LiqidPersonId.getText().toString().equals("")){
 
+                    saveColorChange();
                     LU_RIQID_WORKER lU_RIQID_WORKER = new LU_RIQID_WORKER();
                     lU_RIQID_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1LiqidPersonDesc.getText().toString());
 
@@ -461,6 +465,14 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
         });
     }
 
+    //저장버튼 색 바꾸는 함수
+    public void saveColorChange() {
+        if (ScanModify==false) {
+            btnt1save.setBackgroundColor(Color.YELLOW);
+            btnt1save.setTextColor(Color.BLACK);
+        }
+    }
+
 
 
     private String getNowDate(){
@@ -482,13 +494,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
         return time3;
     }
 
-    //저장버튼 색 바꾸는 함수
-    private void saveColorChange() {
-        if (ScanModify==false) {
-            btnt1save.setBackgroundColor(Color.YELLOW);
-            btnt1save.setTextColor(Color.BLACK);
-        }
-    }
 
     private void ClearView(){
         t1FileNo.setText("");
@@ -921,7 +926,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                         t1TankLcode.setText(job.getString("ENTRY_CODE"));
                         t1TankScan.setText(job.getString("ENTRY_DESCRIPTION"));
-
                         saveColorChange();
                         TankDesc =job.getString("ENTRY_DESCRIPTION");
 
@@ -954,7 +958,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_WORKCENTER_ID=" + urls[3]
                     + "&W_BARCODE=" +urls[4]
                     ;
 
@@ -1023,6 +1027,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                         t1LiqidPersonId.setText(job.getString("USER_ID"));
                         t1LiqidPersonDesc.setText(job.getString("DESCRIPTION"));
                         RiqidWorkerDesc = job.getString("DESCRIPTION");
+                        saveColorChange();
                         t1PowderPersonDesc.requestFocus();
 
                     }
@@ -1120,6 +1125,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                         t1PowderPersonId.setText(job.getString("USER_ID"));
                         t1PowderPersonDesc.setText(job.getString("DESCRIPTION"));
+                        saveColorChange();
                         PowderPersonDesc = job.getString("DESCRIPTION");
 
 

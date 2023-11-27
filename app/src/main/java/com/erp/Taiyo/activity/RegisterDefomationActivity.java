@@ -906,6 +906,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                         etT7EquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
 
                         TpEqp = job.getString("TOP_EQUIPMENT_NAME");
+                        saveColorChange();
                     }
                     etT7WorkerName.requestFocus();
                 }
@@ -1004,6 +1005,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                         etT7WorkerName.setText(job.getString("DESCRIPTION"));
 
                         Worker = job.getString("DESCRIPTION");
+                        saveColorChange();
                     }
                     etT7WorkerName.requestFocus();
                 }

@@ -308,8 +308,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
 
-                t4FileNo.setText("");
-                t4JobId.setText("");
+                ClearView();
                 return false;
             }
         });
@@ -425,6 +424,29 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             btnt4save.setBackgroundColor(Color.YELLOW);
             btnt4save.setTextColor(Color.BLACK);
         }
+    }
+
+    private void ClearView(){
+        t4FileNo.setText("");
+        t4ItemDesc.setText("");
+        t4OperaionDesc.setText("");
+        t4OpOrderSeq.setText("");
+        t4Jojung1.setText("");
+        t4Jojung2.setText("");
+        t4OrderQty1.setText("");
+        t4OrderQty2 .setText("");
+        t4PoiseSubSeq .setText("");
+        t4EquipmentDesc.setText("");
+        t4WorkStartDate.setText("");
+        t4WorkEndDate.setText("");
+        t4WorkerDesc .setText("");
+        t4EquipmentId .setText("");
+        t4WorkerId.setText("");
+        t4OpOrderId.setText("");
+        t4JobId.setText("");
+        t4OperationId.setText("");
+        t4OpPoiseOrderId.setText("");
+        t4ModFlag.setText("");
     }
 
 
@@ -1024,6 +1046,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                         t4WorkerDesc.setText(job.getString("DESCRIPTION"));
 
                         Worker = job.getString("DESCRIPTION");
+                        saveColorChange();
 
                     }
                     t4WorkerDesc.requestFocus();

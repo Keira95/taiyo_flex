@@ -208,14 +208,33 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
     }
 
     //저장버튼 색 바꾸는 함수
-    private void saveColorChange() {
+    public void saveColorChange() {
         if (ScanModify==false) {
             btnSave.setBackgroundColor(Color.YELLOW);
             btnSave.setTextColor(Color.BLACK);
         }
     }
 
-
+    private void ClearView(){
+        t3FileNo.setText("");
+        t3ItemDesc.setText("");
+        t3OperaionDesc.setText("");
+        t3LastSurimiCount.setText("");
+        t3Surimi1StartTime.setText("");
+        t3TankScan.setText("");
+        t3OillerDesc.setText("");
+        t3LiqidPersonDesc .setText("");
+        t3Surimi1EndTime .setText("");
+        t3Surimi2StartTime.setText("");
+        t3Surimi2EndTime.setText("");
+        t3EquimentId.setText("");
+        t3OillerId .setText("");
+        t3IndicatorUserId .setText("");
+        t3TankCode.setText("");
+        t3JobId.setText("");
+        t3ModFlag.setText("");
+        t3OperationId.setText("");
+    }
 
     //Toolbar 정보
     private void initializeToolbar() {
@@ -482,8 +501,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
         t3FileNo.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                t3FileNo.setText("");
-                t3JobId.setText("");
+                ClearView();
                 return false;
             }
         });

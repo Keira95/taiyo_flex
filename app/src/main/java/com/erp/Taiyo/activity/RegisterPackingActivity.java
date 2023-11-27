@@ -218,7 +218,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 if(getCurrentFocus() == t5StirEquipmentDesc && !s.toString().isEmpty() && s != null && t5StirEquipmentId.getText().toString().equals("")){
 
                     LU_CH_C_S lU_CH_C_S = new LU_CH_C_S();
-                    lU_CH_C_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
+                    lU_CH_C_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5StirEquipmentDesc.getText().toString());
 
                 }else{
                     return;
@@ -243,7 +243,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 if(getCurrentFocus() == t5UnitEquipmentDesc && !s.toString().isEmpty() && s != null && t5UnitEquipmentId.getText().toString().equals("")){
 
                     LU_CH_G_S lU_CH_G_S = new LU_CH_G_S();
-                    lU_CH_G_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString());
+                    lU_CH_G_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5UnitEquipmentDesc.getText().toString());
 
                 }else{
                     return;
@@ -325,7 +325,11 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 t5UnitEquipmentId.setText("");
                 t5PumpNoCode.setText("");
                 t5WorkerDesc.setText("");
-
+                t5WorkerId.setText("");
+                t5JobId.setText("");
+                t5OperationId.setText("");
+                t5OpUnitOrderId.setText("");
+                t5OpUnitOrderSeq.setText("");
 
                 return false;
             }
@@ -704,7 +708,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                     return;
                 }else{
-                                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
                 if(job.getString("Status").equals("S")){
 
 
@@ -884,6 +888,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
                     + "&W_WORKCENTER_ID=" + urls[3]
+                    + "&W_BARCODE=" + urls[4]
                     ;
 
             try
@@ -938,25 +943,31 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    if(!ChCs.equals(t5StirEquipmentDesc.getText().toString()))
+                    if(!ChCs.equals(t5StirEquipmentDesc.getText().toString())){
                         t5StirEquipmentDesc.requestFocus();
                         t5StirEquipmentDesc.setText("");
+
+                    }
+
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t5StirOldEquipmentCode.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                        t5StirEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        t5StirEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                        t5StirEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                        ChCs = job.getString("TOP_EQUIPMENT_NAME");
+
+                        saveColorChange();
+                    }
+                    t5UnitEquipmentDesc.requestFocus();
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    t5StirOldEquipmentCode.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                    t5StirEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                    t5StirEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                    t5StirEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
 
-                    ChCs = job.getString("TOP_EQUIPMENT_NAME");
-
-                    saveColorChange();
-                }
-                t5UnitEquipmentDesc.requestFocus();
 
             }catch (JSONException e)
             {
@@ -981,6 +992,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
                     + "&W_WORKCENTER_ID=" + urls[3]
+                    + "&W_BARCODE=" + urls[4]
                     ;
 
             try
@@ -1041,20 +1053,22 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     }
 
                     return;
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
+
+                        t5OldUnitEquipmentDesc.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                        t5UnitEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        t5UnitEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                        t5UnitEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+
+                        ChGs = job.getString("TOP_EQUIPMENT_NAME");
+
+                        saveColorChange();
+                    }
                 }
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
 
-                    t5OldUnitEquipmentDesc.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                    t5UnitEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                    t5UnitEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                    t5UnitEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
-
-                    ChGs = job.getString("TOP_EQUIPMENT_NAME");
-
-                    saveColorChange();
-                }
                 t5WorkerDesc.requestFocus();
 
             }catch (JSONException e)
@@ -1079,8 +1093,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
-                    + "&W_BARCODE=" +urls[4]
+                    + "&W_WORKCENTER_ID=" + urls[3]
+                    + "&W_BARCODE=" +urls[4];
                     ;
 
             try
@@ -1136,24 +1150,25 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                 if(jarrayWorkLevel.length() < 1){
                     if(!Worker.equals(t5WorkerDesc.getText().toString())) {
-                        t5WorkerDesc.requestFocus();
                         t5WorkerDesc.setText("");
+                        t5WorkerDesc.requestFocus();
                     }
-
-
                     return;
-                }
+                }else{
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
 
-                JSONObject job = jarrayWorkLevel.getJSONObject(0);
-                if(job.getString("Status").equals("S")){
+                        t5WorkerId.setText(job.getString("USER_ID"));
+                        t5WorkerDesc.setText(job.getString("DESCRIPTION"));
 
-                    t5WorkerId.setText(job.getString("USER_ID"));
-                    t5WorkerDesc.setText(job.getString("DESCRIPTION"));
+                        Worker = job.getString("DESCRIPTION");
 
-                    Worker = job.getString("DESCRIPTION");
+                    }
 
                 }
                 t5PumpNoDes.requestFocus();
+
+
 
             }catch (JSONException e)
             {

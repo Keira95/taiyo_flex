@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.erp.Taiyo.Dialog.HoldingDialog;
 import com.erp.Taiyo.Dialog.LuOillerDialog;
 import com.erp.Taiyo.adapter.FileNoProcessAdapter;
 import com.erp.Taiyo.item.FileNoProcessListItem;
@@ -202,6 +203,21 @@ public class RegisterProcessActivity extends AppCompatActivity {
                 }else{
                     return;
                 }
+            }
+        });
+
+        btnT9Holding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(etT9FileNo.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                HoldingDialog holdingDialog = new HoldingDialog(RegisterProcessActivity.this);
+              //  holdingDialog.call_Level_Dialog(etT9FileNo, strIp , strUserId);
             }
         });
 

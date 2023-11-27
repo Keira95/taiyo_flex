@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.erp.Taiyo.Dialog.HoldingDialog;
 import com.erp.Taiyo.R;
 
 import org.json.JSONArray;
@@ -440,6 +441,22 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                 alert.show();
 
 
+            }
+        });
+
+
+        btnHolding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(etT7FileNoScan.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                HoldingDialog holdingDialog = new HoldingDialog(RegisterDefomationActivity.this);
+              //  holdingDialog.call_Level_Dialog(etT7FileNoScan, strIp , strUserId);
             }
         });
 

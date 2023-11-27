@@ -309,7 +309,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterWeighingWorkActivity.this);
-                holdingDialog.call_Level_Dialog(t1FileNo, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(t1FileNo, strIp , strUserId , t1OprationId , t1Job_id);
             }
         });
 
@@ -984,7 +984,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_WORKCENTER_ID=" + urls[3]
                     + "&W_BARCODE=" +urls[4]
                     ;
 
@@ -1082,7 +1082,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_WORKCENTER_ID=" + urls[3]
                     + "&W_BARCODE=" +urls[4]
                     ;
 

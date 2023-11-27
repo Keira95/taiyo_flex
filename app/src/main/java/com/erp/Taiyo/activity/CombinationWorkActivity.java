@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.erp.Taiyo.Dialog.HoldingDialog;
 import com.erp.Taiyo.Dialog.LuComLatelyDialog;
 import com.erp.Taiyo.R;
 
@@ -303,6 +304,8 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     luWorker2.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
 
 
+
+
                 }else{
                     return;
                 }
@@ -333,6 +336,21 @@ public class CombinationWorkActivity extends AppCompatActivity {
             }
         });
 
+
+        btnT2Holding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(etT2FileNoScan.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                HoldingDialog holdingDialog = new HoldingDialog(CombinationWorkActivity.this);
+                holdingDialog.call_Level_Dialog(etT2FileNoScan, strIp , strUserId);
+            }
+        });
 
         etT2FileNoScan.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

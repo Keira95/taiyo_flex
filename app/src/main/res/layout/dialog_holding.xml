@@ -93,9 +93,7 @@
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5sp"
-
             android:layout_marginRight="10sp"
-
             android:layout_weight="1.5"
             android:hint="홀딩 종료"
             android:background="@drawable/buttonshape2"
@@ -121,7 +119,39 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10sp"
+        android:background="@drawable/border"
+        android:backgroundTint="#ffffff"
+        android:orientation="horizontal">
 
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text=" 상태 : "
+            android:textSize="16sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+
+            android:layout_gravity="center_vertical"/>
+
+
+        <EditText
+            android:id="@+id/dialog_holding_status_code"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp"
+
+            android:enabled="false"
+            android:paddingLeft="5dp"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

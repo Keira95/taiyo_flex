@@ -187,6 +187,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 if(getCurrentFocus() == t1FileNo && !s.toString().isEmpty()  && t1Job_id.getText().toString().equals("")){
 
+
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t1FileNo.getText().toString(),t1WorkcenterId.getText().toString());
 
@@ -216,6 +217,8 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 //사용자 스캔또는 터치 포커스              //값이 널이아니고           // locde가 null이어야만한다
                 if(getCurrentFocus() == t1TankScan && !s.toString().equals("") && t1TankLcode.getText().toString().equals("")) {
 
+
+                    changeBtnColor();
                     LU_TANK_TYPE lU_TANK_TYPE = new LU_TANK_TYPE();
                     lU_TANK_TYPE.execute(strIp, strSobId, strOrgId, t1TankScan.getText().toString());
 
@@ -247,6 +250,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 if(getCurrentFocus() == t1LiqidPersonDesc && !s.toString().isEmpty() && s != null && t1LiqidPersonId.getText().toString().equals("")){
 
+                    changeBtnColor();
                     LU_RIQID_WORKER lU_RIQID_WORKER = new LU_RIQID_WORKER();
                     lU_RIQID_WORKER.execute(strIp, strSobId,strOrgId, t1WorkcenterId.getText().toString(), t1LiqidPersonDesc.getText().toString());
 
@@ -305,7 +309,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterWeighingWorkActivity.this);
-                holdingDialog.call_Level_Dialog(t1FileNo, strIp);
+                holdingDialog.call_Level_Dialog(t1FileNo, strIp , strUserId);
             }
         });
 
@@ -479,6 +483,14 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
         });
     }
 
+
+
+  public void changeBtnColor(){
+
+      btnt1save.setBackgroundColor(Color.YELLOW);
+      btnt1save.setTextColor(Color.BLACK);
+
+  }
 
 
     private String getNowDate(){

@@ -936,7 +936,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_WORKCENTER_ID=" + urls[3]
                     + "&W_BARCODE=" +urls[4]
                     ;
 

@@ -266,7 +266,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
 
                 if(getCurrentFocus() == t8FileNoScan && !s.toString().isEmpty() && s != null && t8JobId.getText().toString().equals("")) {
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
-                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t8FileNoScan.getText().toString(),t8WorkcenterId.getText().toString());
+                    fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t8FileNoScan.getText().toString().replaceAll("\n",""),t8WorkcenterId.getText().toString());
 
                 }else{
                     return;
@@ -360,9 +360,29 @@ public class RegisterAgingActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 t8FileNoScan.setText("");
-                t8OperaionDesc.setText("");
                 t8ItemDesc.setText("");
+                t8OperaionDesc.setText("");
+                t8StartDate.setText("");
+                t8TankDesc.setText("");
+
+                t8EquipmentName.setText("");
+                t8StirWorkerName.setText("");
+                t8EndDate.setText("");
+                t8TankCode.setText("");
+                t8EquipmentId.setText("");
+                t8StirWorker1Id.setText("");
                 t8JobId.setText("");
+
+
+//                t8OperationId.setText("");
+//                t8ModFlag.setText("");
+
+                t8TankId.setText("");
+//                t8OldEquipmentName.setText("");
+//                t8EquipmentCode.setText("");
+
+
+
 
                 return false;
             }
@@ -733,7 +753,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
             //서버로 보낼 데이터 설정
             String search_title = "W_SOB_ID=" + urls[1]
                     + "&W_ORG_ID=" + urls[2]
-                    + "&W_WORKCENTER_ID" + urls[3]
+                    + "&W_WORKCENTER_ID=" + urls[3]
                     + "&W_BARCODE=" +urls[4]
                     ;
 
@@ -793,7 +813,6 @@ public class RegisterAgingActivity extends AppCompatActivity {
                         t8StirWorkerName.setText("");
 
                     }
-                    t8FileNoScan.requestFocus();
                     return;
                 }else{
                     JSONObject job = jarrayWorkLevel.getJSONObject(0);
@@ -805,7 +824,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
                         Worker = job.getString("DESCRIPTION");
                         saveColorChange();
                     }
-                    t8FileNoScan.requestFocus();
+                 //   t8FileNoScan.requestFocus();
                 }
 
 

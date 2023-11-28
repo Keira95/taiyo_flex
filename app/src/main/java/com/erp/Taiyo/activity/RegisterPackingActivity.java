@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.erp.Taiyo.Dialog.HoldingDialog;
 import com.erp.Taiyo.R;
 
 import org.json.JSONArray;
@@ -332,6 +333,22 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 t5OpUnitOrderSeq.setText("");
 
                 return false;
+            }
+        });
+
+
+        btnHolding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(t5FileNo.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                HoldingDialog holdingDialog = new HoldingDialog(RegisterPackingActivity.this);
+             //   holdingDialog.call_Level_Dialog(t5FileNo, strIp , strUserId);
             }
         });
 

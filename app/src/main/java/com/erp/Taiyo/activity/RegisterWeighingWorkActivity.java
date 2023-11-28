@@ -309,7 +309,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterWeighingWorkActivity.this);
-                holdingDialog.call_Level_Dialog(t1FileNo, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(t1FileNo, strIp , strUserId , t1OprationId , t1Job_id);
             }
         });
 

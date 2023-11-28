@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.erp.Taiyo.Dialog.HoldingDialog;
 import com.erp.Taiyo.Dialog.LuOillerDialog;
 import com.erp.Taiyo.Dialog.LuYuRecntActualDialog;
 import com.erp.Taiyo.R;
@@ -380,6 +381,21 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 }else{
                     return;
                 }
+            }
+        });
+
+        btnHolding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(t3FileNo.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                HoldingDialog holdingDialog = new HoldingDialog(SurimiWeighingWorkActivity.this);
+              //  holdingDialog.call_Level_Dialog(t3FileNo, strIp , strUserId);
             }
         });
 

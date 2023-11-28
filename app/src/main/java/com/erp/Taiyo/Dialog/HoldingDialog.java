@@ -42,8 +42,8 @@ public class HoldingDialog {
    // ListView lvIssueListView;
     int Number;
 
-    String strIp, strSobId, strOrgId, strWorkOrderNo , strUserId;
-    EditText etFileNo, etStartTime, etEndTime , etJobId, etOperationId,etHoldingControlId , etStatusCode;
+    String strIp, strSobId, strOrgId, strWorkOrderNo , strUserId ,strOperationId, strJobId;
+    EditText etFileNo, etStartTime, etEndTime , etJobId, etOperationId,etHoldingControlId , etStatusCode ;
     Button btnStartTime, btnEndTime, btnSave, btnClose;
 
 
@@ -52,7 +52,7 @@ public class HoldingDialog {
     }
 
     // 호출할 다이얼로그 함수를 정의한다.
-    public void call_Level_Dialog(final TextView tvWorkOrderNo , String ip , String userId) {
+    public void call_Level_Dialog(final TextView tvWorkOrderNo , String ip , String userId , TextView tvOperationId , TextView tvJobId) {
 
         strIp = ip;
         strSobId = "70";
@@ -85,6 +85,9 @@ public class HoldingDialog {
         etHoldingControlId = (EditText) dialog.findViewById(R.id.holding_control_id);
         etStatusCode = (EditText) dialog.findViewById(R.id.dialog_holding_status_code);
         strWorkOrderNo = tvWorkOrderNo.getText().toString();
+        strOperationId  = tvOperationId.getText().toString();
+        strJobId = tvJobId.getText().toString();
+
 
         btnStartTime = (Button) dialog.findViewById(R.id.btn_holding_start_time);
         btnEndTime = (Button) dialog.findViewById(R.id.btn_holding_end_time);
@@ -93,8 +96,11 @@ public class HoldingDialog {
 
         dialog.show();
 
-        WIP_JOB_HOLDING_CONTROL_CHK wIP_JOB_HOLDING_CONTROL_CHK = new WIP_JOB_HOLDING_CONTROL_CHK();
-        wIP_JOB_HOLDING_CONTROL_CHK.execute(strIp ,strSobId ,strOrgId, tvWorkOrderNo.getText().toString());
+
+        etFileNo.setText(strWorkOrderNo);
+
+        HOLDING_CONTROL_SELECT hOLDING_CONTROL_SELECT = new HOLDING_CONTROL_SELECT();
+        hOLDING_CONTROL_SELECT.execute(strIp, strSobId, strOrgId,strOperationId,"","",etHoldingControlId.getText().toString());
 
 
         btnClose.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +114,12 @@ public class HoldingDialog {
             @Override
             public void onClick(View v) {
 
-                etStartTime.setText(getNowDate());
+                if( etStatusCode.getText().toString().equals("HOLDING")){
+                    Toast.makeText(context.getApplicationContext(), "홀딩상태에서는 변경이 불가능합니다.", Toast.LENGTH_SHORT).show();
+                      return;
+                }else{
+                    etStartTime.setText(getNowDate());
+                }
             }
         });
 
@@ -126,13 +137,11 @@ public class HoldingDialog {
             public void onClick(View view) {
                 try{
                     HOLDING_CONTROL_UPDATE hOLDING_CONTROL_UPDATE = new HOLDING_CONTROL_UPDATE();
-                    hOLDING_CONTROL_UPDATE.execute(strIp,etHoldingControlId.getText().toString() ,strSobId, strOrgId ,etJobId.getText().toString(), etOperationId.getText().toString()
+                    hOLDING_CONTROL_UPDATE.execute(strIp,"" ,strSobId, strOrgId ,etJobId.getText().toString(), etOperationId.getText().toString()
                     ,etStartTime.getText().toString().replaceAll(" ",""), etEndTime.getText().toString().replaceAll(" ","") ,strUserId);
-
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-
 
             }
         });

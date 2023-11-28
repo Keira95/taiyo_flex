@@ -350,7 +350,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(CombinationWorkActivity.this);
-                holdingDialog.call_Level_Dialog(etT2FileNoScan, strIp , strUserId);
+           //     holdingDialog.call_Level_Dialog(etT2FileNoScan, strIp , strUserId);
             }
         });
 
@@ -1103,11 +1103,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     etT2EquipmentScan.requestFocus();
             }
 
-
-
-
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
                etT2MixTankDescScan.setText("");
@@ -1213,9 +1208,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
 
 
-
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
                 etT2Stir1WorkerNameScan.requestFocus();
@@ -1309,12 +1301,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 }
                     etT2Stir2WorkerNameScan.requestFocus();
                 }
-
-
-
-
-
-
 
             } catch (JSONException e) {
                 e.printStackTrace();

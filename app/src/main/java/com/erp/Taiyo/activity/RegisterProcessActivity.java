@@ -210,14 +210,13 @@ public class RegisterProcessActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 if(etT9FileNo.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterProcessActivity.this);
-              //  holdingDialog.call_Level_Dialog(etT9FileNo, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(etT9FileNo, strIp , strUserId , etT9OperationId, etT9JobId);
             }
         });
 

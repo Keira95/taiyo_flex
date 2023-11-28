@@ -1553,7 +1553,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                     FILE_NO_SCAN fILE_NO_SCAN = new FILE_NO_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,etT6FileNoScan.getText().toString(),etT6WorkercenterId.getText().toString()); //다시 fill
 
-                    btnt6save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt6save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.button_color));
                     btnt6save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
 

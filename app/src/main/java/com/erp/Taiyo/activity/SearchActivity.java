@@ -107,7 +107,6 @@ public class SearchActivity extends AppCompatActivity {
         t10OperationId = (EditText) findViewById(R.id.et_t10_operation_id);
 
         btntsave = (Button) findViewById(R.id.btn_t10_search);
-        btnHolding = (Button) findViewById(R.id.btn_t10_holding);
 
         btnWorkcenteLu = (Button) findViewById(R.id.btn_t10_workcenter_lookup);
 

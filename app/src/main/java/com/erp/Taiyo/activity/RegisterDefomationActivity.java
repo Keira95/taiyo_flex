@@ -1136,7 +1136,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                     FILE_NO_TP_SCAN fILE_NO_TP_SCAN = new FILE_NO_TP_SCAN();
                     fILE_NO_TP_SCAN.execute(strIp, strSobId,strOrgId ,etT7FileNoScan.getText().toString(),etT7WorkcenterId.getText().toString()); //다시 fill
 
-                    btnt7save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt7save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.button_color));
                     btnt7save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
 

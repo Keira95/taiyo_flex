@@ -215,7 +215,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (getCurrentFocus() == etT2FileNoScan && !etT2FileNoScan.getText().toString().isEmpty() && s != null && etH2JobId.getText().toString().equals("")) {
-                    bT2Save.setBackgroundResource(R.color.dark_green);
+
                     FileNoScanBH fileNoScanBH = new FileNoScanBH();
                     //fileNoScanGR.execute(strSobId, strOrgId, edT2FileNoScan.getText().toString(), strUserId); 기존
                     fileNoScanBH.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString());
@@ -1584,7 +1584,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                             fileNoScanBH.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString()); //재조회
 
 
-                            bT2Save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                            bT2Save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.button_color));
                             bT2Save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                         }else{

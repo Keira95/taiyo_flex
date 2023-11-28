@@ -431,10 +431,21 @@
         android:layout_height="0dp" />
 
 
+    <EditText
+        android:id="@+id/et_t9_holding_job_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/et_t9_holding_operation_id"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
 
-
-
+    <EditText
+        android:id="@+id/et_t9_holding_file_no"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
 
 

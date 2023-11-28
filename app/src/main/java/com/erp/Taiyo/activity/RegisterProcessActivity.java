@@ -58,7 +58,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
 
     EditText etT9ItemDesc, etT9FileNo, etT9WorkcenterDesc,etT9OperaionDesc, etT9WorkcenterId, etT9WorkcenterCode, etT9MoveTrxType, etT9MoveTrxTypeId, etT9MoveTrxTypeDesc, etT9ReleaseDateId,
             etT9OpPoiseOrderSeq , etT9OpUnitOrderSeq, etT9OpActualQty ,etT9Remark, etT9SectionDesc, etT9SplitFlag, etT9OpPoiseOrderId, etT9OpUnitOrderId, etT9OperationId,
-            etT9JobId ,etT9HiddenFocus;
+            etT9JobId ,etT9HiddenFocus , etT9HoldingJobId , etT9HoldingOperationId , etT9HoldingFileNo;
     String strSobId = "70";
     String strOrgId = "701";
     String strAssembly = "PPMF2201";
@@ -130,6 +130,12 @@ public class RegisterProcessActivity extends AppCompatActivity {
         etT9OperationId = (EditText) findViewById(R.id.et_t9_operation_id);
         etT9JobId = (EditText) findViewById(R.id.et_t9_job_id);
         etT9HiddenFocus = (EditText) findViewById(R.id.et_t9_hidden_focus);
+
+        etT9HoldingJobId = (EditText) findViewById(R.id.et_t9_holding_job_id);
+        etT9HoldingOperationId = (EditText) findViewById(R.id.et_t9_holding_operation_id);
+
+        etT9HoldingFileNo = (EditText) findViewById(R.id.et_t9_holding_file_no);
+
 
         btnt9save = (Button) findViewById(R.id.btn_t9_save);
         btnT9WorkcenterLookup = (Button) findViewById(R.id.btn_t9_workcenter_lookup);
@@ -210,13 +216,29 @@ public class RegisterProcessActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(etT9FileNo.getText().toString().isEmpty()){
+                FileNoProcessAdapter adapter = (FileNoProcessAdapter) lvInput.getAdapter();
+                for(int x=0; x< lvInput.getCount(); x++){
+                    FileNoProcessListItem item = (FileNoProcessListItem) adapter.getItem(x);
+
+                    if(item.getStrChk().equals("√")){
+                        etT9HoldingJobId.setText(item.getStrJobId());
+                        etT9HoldingOperationId.setText(item.getStrOperationId());
+                        etT9HoldingFileNo.setText(item.getStrFileNo());
+
+                    }
+                }
+
+                if(etT9HoldingFileNo.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(), "File No는 필수입니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterProcessActivity.this);
-                holdingDialog.call_Level_Dialog(etT9FileNo, strIp , strUserId , etT9OperationId, etT9JobId);
+                holdingDialog.call_Level_Dialog(etT9HoldingFileNo, strIp , strUserId , etT9HoldingOperationId, etT9HoldingJobId);
+
+
+
             }
         });
 

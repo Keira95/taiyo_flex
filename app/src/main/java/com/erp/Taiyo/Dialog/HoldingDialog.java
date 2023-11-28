@@ -137,7 +137,7 @@ public class HoldingDialog {
             public void onClick(View view) {
                 try{
                     HOLDING_CONTROL_UPDATE hOLDING_CONTROL_UPDATE = new HOLDING_CONTROL_UPDATE();
-                    hOLDING_CONTROL_UPDATE.execute(strIp,"" ,strSobId, strOrgId ,strJobId, strOperationId
+                    hOLDING_CONTROL_UPDATE.execute(strIp,etHoldingControlId.getText().toString(),strSobId, strOrgId ,strJobId, strOperationId
                     ,etStartTime.getText().toString().replaceAll(" ",""), etEndTime.getText().toString().replaceAll(" ","") ,strUserId);
                 }catch (Exception e){
                     e.printStackTrace();

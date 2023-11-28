@@ -1138,7 +1138,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t8FileNoScan.getText().toString(),t8WorkcenterId.getText().toString()); //다시 fill
 
 
-                    btnt8Save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt8Save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.button_color));
                     btnt8Save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{

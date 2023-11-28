@@ -859,7 +859,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t4FileNo.getText().toString(),t4WorkcenterId.getText().toString()); //다시 fill
 
 
-                    btnt4save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnt4save.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.button_color));
                     btnt4save.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
                 }else{

@@ -1385,7 +1385,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     FILE_NO_CJ_SCAN fILE_NO_SCAN = new  FILE_NO_CJ_SCAN();
                     fILE_NO_SCAN.execute(strIp, strSobId,strOrgId ,t5FileNo.getText().toString(),t5WorkcenterId.getText().toString()); //다시 fill
 
-                    btnSave.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_green));
+                    btnSave.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.button_color));
                     btnSave.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
 

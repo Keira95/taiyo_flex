@@ -419,7 +419,7 @@ public class RegisterResponseActivity extends AppCompatActivity{
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterResponseActivity.this);
-              //  holdingDialog.call_Level_Dialog(etT6FileNoScan, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(etT6FileNoScan, strIp , strUserId, etT6OperationId, etT6JobId);
             }
         });
 

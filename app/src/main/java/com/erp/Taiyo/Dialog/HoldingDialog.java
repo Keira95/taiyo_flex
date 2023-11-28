@@ -137,7 +137,7 @@ public class HoldingDialog {
             public void onClick(View view) {
                 try{
                     HOLDING_CONTROL_UPDATE hOLDING_CONTROL_UPDATE = new HOLDING_CONTROL_UPDATE();
-                    hOLDING_CONTROL_UPDATE.execute(strIp,"" ,strSobId, strOrgId ,etJobId.getText().toString(), etOperationId.getText().toString()
+                    hOLDING_CONTROL_UPDATE.execute(strIp,etHoldingControlId.getText().toString(),strSobId, strOrgId ,strJobId, strOperationId
                     ,etStartTime.getText().toString().replaceAll(" ",""), etEndTime.getText().toString().replaceAll(" ","") ,strUserId);
                 }catch (Exception e){
                     e.printStackTrace();
@@ -307,6 +307,11 @@ public class HoldingDialog {
                 JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
 
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+                if(jarrayWorkLevel.length() < 1){
+                    etFileNo.setText(strWorkOrderNo);
+                    return;
+                }
+
                 JSONObject job = jarrayWorkLevel.getJSONObject(0);
 
                 if(job.getString("Status").equals("S")){

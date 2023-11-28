@@ -315,7 +315,7 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterAdjustmentActivity.this);
-             //   holdingDialog.call_Level_Dialog(t4FileNo, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(t4FileNo, strIp , strUserId,t4OperationId,t4JobId);
             }
         });
 

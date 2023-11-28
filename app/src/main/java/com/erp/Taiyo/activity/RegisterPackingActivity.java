@@ -348,7 +348,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterPackingActivity.this);
-             //   holdingDialog.call_Level_Dialog(t5FileNo, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(t5FileNo, strIp , strUserId, t5OperationId,t5JobId);
             }
         });
 
@@ -1179,7 +1179,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
                         t5WorkerDesc.setText(job.getString("DESCRIPTION"));
 
                         Worker = job.getString("DESCRIPTION");
-
+                        saveColorChange();
                     }
 
                 }

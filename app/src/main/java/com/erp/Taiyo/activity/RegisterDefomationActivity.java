@@ -189,6 +189,19 @@ public class RegisterDefomationActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 etT7FileNoScan.setText("");
                 etT7JobId.setText("");
+                etT7ItemDesc.setText("");
+                etT7OperaionDesc.setText("");
+                etT7OpOrderSeq.setText("");
+                etT7StartDate.setText("");
+                etT7TankLcode.setText("");
+                etT7TankDesc.setText("");
+                etT7EquipmentId.setText("");
+                etT7EquipmentName.setText("");
+                etT7WorkerId.setText("");
+                etT7WorkerName.setText("");
+                etT7EndDate.setText("");
+                etT7OperationId.setText("");
+                etT7ModFlag.setText("");
                 return false;
             }
         });

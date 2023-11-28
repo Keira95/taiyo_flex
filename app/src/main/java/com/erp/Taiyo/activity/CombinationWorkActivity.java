@@ -70,7 +70,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
     etH2SobId, etH2OrgId, etH2WipJobEntitiesSubId;
 
     Button bT2Recent, btnT2MixStartTime, btnT2Stir1StartDate, btnT2Stir1EndDate , btnT2Stir2StartDate, btnT2Stir2EndDate, btnT2Stir3StartDate,
-            btnT2Stir3EndDate, btnT2MixEndTime, bT2Save,btnT2Holding;
+            btnT2Stir3EndDate, btnT2MixEndTime, bT2Save,btnHolding;
 
 
 
@@ -182,7 +182,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         btnT2Stir3StartDate  = (Button) findViewById(R.id.btn_t2_stir_3_start_date	);
         btnT2Stir3EndDate  = (Button) findViewById(R.id.btn_t2_stir_3_end_date	);
         btnT2MixEndTime  = (Button) findViewById(R.id.btn_t2_mix_end_time	);
-        btnT2Holding = (Button) findViewById(R.id.btn_t2_holding);
+        btnHolding = (Button) findViewById(R.id.btn_t2_holding);
 
         bT2Save = (Button) findViewById(R.id.btn_t2_save);
 
@@ -339,7 +339,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         });
 
 
-        btnT2Holding.setOnClickListener(new View.OnClickListener() {
+        btnHolding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -350,7 +350,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(CombinationWorkActivity.this);
-           //     holdingDialog.call_Level_Dialog(etT2FileNoScan, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(etT2FileNoScan, strIp , strUserId, etH2OperationId,etH2JobId);
             }
         });
 

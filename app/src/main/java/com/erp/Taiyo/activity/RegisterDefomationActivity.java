@@ -469,7 +469,7 @@ public class RegisterDefomationActivity extends AppCompatActivity {
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterDefomationActivity.this);
-              //  holdingDialog.call_Level_Dialog(etT7FileNoScan, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(etT7FileNoScan, strIp , strUserId, etT7OperationId, etT7JobId);
             }
         });
 

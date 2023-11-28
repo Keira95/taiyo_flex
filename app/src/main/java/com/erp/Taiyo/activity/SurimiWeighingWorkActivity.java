@@ -395,7 +395,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(SurimiWeighingWorkActivity.this);
-              //  holdingDialog.call_Level_Dialog(t3FileNo, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(t3FileNo, strIp , strUserId, t3OperationId,t3JobId);
             }
         });
 

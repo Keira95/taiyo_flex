@@ -367,7 +367,7 @@ public class RegisterAgingActivity extends AppCompatActivity {
                 }
 
                 HoldingDialog holdingDialog = new HoldingDialog(RegisterAgingActivity.this);
-              //  holdingDialog.call_Level_Dialog(t8FileNoScan, strIp , strUserId);
+                holdingDialog.call_Level_Dialog(t8FileNoScan, strIp , strUserId, t8OperationId, t8JobId);
             }
         });
 

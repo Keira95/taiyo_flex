@@ -159,8 +159,8 @@ public class MenuActivity extends AppCompatActivity {
         //.setText(strUserName + "(" + strSabeon + ")");
         tvId.setText(strUserName);
 
-        tvUserName = (TextView) findViewById(R.id.tv_user_name);
-        tvUserName.setText(strUserName);
+//        tvUserName = (TextView) findViewById(R.id.tv_user_name);
+//        tvUserName.setText(strUserName);
 
         lvSearch = (ListView)  findViewById(R.id.lv_search);
         //Toolbar 설정

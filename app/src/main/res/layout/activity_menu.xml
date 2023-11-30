@@ -46,7 +46,12 @@
 
 
 
-
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="1dp"
+            android:background="#FFFFFF" />
 
        <!-- <LinearLayout
             android:layout_width="fill_parent"
@@ -68,26 +73,31 @@
                 android:visibility="visible" />
         </LinearLayout>-->
         <!--android:background="@drawable/menu_img"-->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="1dp"
+            android:background="#FFFFFF" />
 
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         >
 
         <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="5sp"
             android:gravity="right|center"
             android:layout_weight="8"
             android:enabled="false"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/login_edit_text"
             />
 
@@ -95,7 +105,7 @@
         <TextView
             android:id="@+id/tv_p2_file_no"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:gravity="left|center"
             android:layout_marginTop="5sp"
@@ -103,7 +113,7 @@
             android:enabled="false"
             android:hint="  님 환영합니다."
             android:textColorHint="@color/login_edit_text"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
 
     </LinearLayout>
@@ -128,7 +138,7 @@
         <ListView
             android:id="@+id/lv_search"
             android:layout_width="match_parent"
-            android:layout_height="500sp"
+            android:layout_height="250sp"
             android:descendantFocusability="blocksDescendants"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -325,6 +335,7 @@
             android:layout_weight="1"
             android:horizontalSpacing="10dp"
             android:numColumns="3" >
+
         </GridView>
         <TextView
             android:layout_width="fill_parent"

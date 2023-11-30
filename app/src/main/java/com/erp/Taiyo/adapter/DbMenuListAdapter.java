@@ -15,6 +15,8 @@ import com.erp.Taiyo.item.DbMenuListItem;
 
 import java.util.ArrayList;
 
+import androidx.core.content.ContextCompat;
+
 public class DbMenuListAdapter extends BaseAdapter implements Filterable {
     TextView tvTopName, tvAuthorityFlag, tvTopSeq, tvUserId, tvTopMenuId;
 
@@ -82,9 +84,16 @@ public class DbMenuListAdapter extends BaseAdapter implements Filterable {
         tvUserId.setText(FilterListArray.getStrUserId());
         tvTopMenuId.setText(FilterListArray.getStrTopMenuId());
 
-        if(FilterListArray != null){
-            convertView.setBackgroundColor((position & 1) == 1 ? Color.LTGRAY : Color.WHITE);
+        if (FilterListArray != null) {
+            int backgroundColor = (position & 1) == 1 ? ContextCompat.getColor(context, R.color.menu_list_color) : Color.WHITE;
+
+            convertView.setBackgroundColor(backgroundColor);
         }
+
+
+//        if(FilterListArray != null){
+//            convertView.setBackgroundColor((position & 1) == 1 ? Color.#C6D587 : Color.WHITE);
+//        }
 
         return convertView;
     }

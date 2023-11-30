@@ -7,7 +7,7 @@
         android:title="로그인 정보">
         <menu android:checkableBehavior="single">
     <item
-        android:id="@+id/user_id"
+        android:id="@+id/login_id"
         android:title="아이디"
         />
     <item

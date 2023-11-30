@@ -436,6 +436,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // 업데이트 불필요
                                     //토큰 저장
                                     Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                                    intent.putExtra("O_LOGIN_ID", userId.getText().toString());
                                     intent.putExtra("O_USER_ID", O_USER_ID);
                                     intent.putExtra("O_USER_NAME", O_USER_NAME);
                                     // intent.putExtra("Sabeon", j_ob.getString("Sabeon"));
@@ -449,6 +450,7 @@ public class LoginActivity extends AppCompatActivity {
                             // 업데이트 불필요
                             //토큰 저장
                             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                            intent.putExtra("O_LOGIN_ID", userId.getText().toString());
                             intent.putExtra("O_USER_ID", O_USER_ID);
                             intent.putExtra("O_USER_NAME", O_USER_NAME);
                             // intent.putExtra("Sabeon", j_ob.getString("Sabeon"));

@@ -147,7 +147,7 @@ public class MenuActivity extends AppCompatActivity {
         mNavigationView = findViewById(R.id.navigation_view);
 
 
-        btnGR = findViewById(R.id.btn_1); //계량
+      /*  btnGR = findViewById(R.id.btn_1); //계량
         btnBH = findViewById(R.id.btn_2); //배합
         btnYU = findViewById(R.id.btn_3); //연육
 
@@ -157,7 +157,7 @@ public class MenuActivity extends AppCompatActivity {
         btbBO = findViewById(R.id.btn_6); //반응
         btnAg = findViewById(R.id.btn_8); //에이징
         btnPr = findViewById(R.id.btn_9); //프로세스
-        btnSr = findViewById(R.id.btn_10); //프로세스
+        btnSr = findViewById(R.id.btn_10); //프로세스*/
 
         Menu menu =  mNavigationView.getMenu();
 

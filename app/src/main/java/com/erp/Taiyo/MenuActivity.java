@@ -24,8 +24,12 @@ import com.erp.Taiyo.activity.RegisterResponseActivity;
 import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
 import com.erp.Taiyo.activity.SearchActivity;
 import com.erp.Taiyo.activity.SurimiWeighingWorkActivity;
+import com.erp.Taiyo.adapter.DbMenuListAdapter;
+import com.erp.Taiyo.adapter.FileNoProcessAdapter;
 import com.erp.Taiyo.adapter.MenuButtonAdapter;
 import com.erp.Taiyo.adapter.MenuListAdapter;
+import com.erp.Taiyo.item.DbMenuListItem;
+import com.erp.Taiyo.item.FileNoProcessListItem;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
@@ -41,6 +45,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,8 +74,9 @@ public class MenuActivity extends AppCompatActivity {
     String strUserId, strUserPassword, strUserStatus, strUserName, strSabeon, strVerison, strIp, strUserAuthority;
     String strSobId = "70";
     String strOrgId = "701";
-
     TextView tvId, tvUserName;
+    ListView lvSearch;
+
     //버튼
 
     Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO,btnAg,btnPr,btnSr;
@@ -109,6 +115,9 @@ public class MenuActivity extends AppCompatActivity {
         strUserName = intent.getStringExtra("O_USER_NAME");
         strUserAuthority = intent.getStringExtra("O_USER_AUTHORITY_TYPE");
 
+        DbMenuListAdapter dbMenuListAdapter = new DbMenuListAdapter();
+        DbMenuListItem dbMenuListItem = new DbMenuListItem();
+
 //        final Intent = getIntent();
 //        sintenttrUserId = intent.getStringExtra("O_USER_ID");
 //        strUserName = intent.getStringExtra("O_USER_NAME");
@@ -143,6 +152,8 @@ public class MenuActivity extends AppCompatActivity {
 
         tvUserName = (TextView) findViewById(R.id.tv_user_name);
         tvUserName.setText(strUserName);
+
+        lvSearch = (ListView)  findViewById(R.id.lv_search);
         //Toolbar 설정
         mToolbar = findViewById(R.id.toolbar);
         mDrawerLayout = findViewById(R.id.drawer_layout);

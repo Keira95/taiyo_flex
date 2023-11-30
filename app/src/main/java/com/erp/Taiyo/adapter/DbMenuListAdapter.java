@@ -16,7 +16,7 @@ import com.erp.Taiyo.item.DbMenuListItem;
 import java.util.ArrayList;
 
 public class DbMenuListAdapter extends BaseAdapter implements Filterable {
-    TextView tvWorkOrderNo, tvWeekActualQty, tvEquipmentName, tvStir1Rpm, tvStir2Rpm, tvStir3Rpm, tvStir1MMinute, tvStir2MMinute, tvStir3MMinute;
+    TextView tvTopName, tvAuthorityFlag, tvTopSeq, tvUserId, tvTopMenuId;
 
     private ArrayList<DbMenuListItem> ListArray = new ArrayList<>();
     private ArrayList<DbMenuListItem> FilterListArray = ListArray;
@@ -66,31 +66,21 @@ public class DbMenuListAdapter extends BaseAdapter implements Filterable {
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_lu_com_lately, parent, false);
+            convertView = inflater.inflate(R.layout.list_menu, parent, false);
         }
-        tvWorkOrderNo = (TextView) convertView.findViewById(R.id.t2_work_order_no);
-        tvWeekActualQty = (TextView) convertView.findViewById(R.id.t2_week_actual_qty);
-        tvEquipmentName = (TextView) convertView.findViewById(R.id.t2_equipment_name);
-        tvStir1Rpm = (TextView) convertView.findViewById(R.id.t2_stir_1_rpm);
-        tvStir2Rpm = (TextView) convertView.findViewById(R.id.t2_stir_2_rpm);
-        tvStir3Rpm = (TextView) convertView.findViewById(R.id.t2_stir_3_rpm);
-        tvStir1MMinute = (TextView) convertView.findViewById(R.id.t2_stir_1_minute);
-        tvStir2MMinute = (TextView) convertView.findViewById(R.id.t2_stir_2_minute);
-        tvStir3MMinute = (TextView) convertView.findViewById(R.id.t2_stir_3_minute);
-
+        tvTopName = (TextView) convertView.findViewById(R.id.li_top_name);
+        tvAuthorityFlag = (TextView) convertView.findViewById(R.id.li_authority_flag);
+        tvTopSeq = (TextView) convertView.findViewById(R.id.li_top_seq);
+        tvUserId = (TextView) convertView.findViewById(R.id.li_user_id);
+        tvTopMenuId = (TextView) convertView.findViewById(R.id.li_top_menu_id);
 
         DbMenuListItem FilterListArray = getItem(position);
 
-//        tvWorkOrderNo.setText(FilterListArray.getStrWorkOrderNo());
-//        tvWeekActualQty.setText(FilterListArray.getStrWeekActualQty());
-//        tvEquipmentName.setText(FilterListArray.getStrEquipmentName());
-//        tvStir1Rpm.setText(FilterListArray.getStrStir1Rpm());
-//        tvStir2Rpm.setText(FilterListArray.getStrStir2Rpm());
-//        tvStir3Rpm.setText(FilterListArray.getStrStir3Rpm());
-//        tvStir1MMinute.setText(FilterListArray.getStrStir1MMinute());
-//        tvStir2MMinute.setText(FilterListArray.getStrStir2MMinute());
-//        tvStir3MMinute.setText(FilterListArray.getStrStir3MMinute());
-
+        tvTopName.setText(FilterListArray.getStrTopName());
+        tvAuthorityFlag.setText(FilterListArray.getStrAuthorityFlag());
+        tvTopSeq.setText(FilterListArray.getStrTopSeq());
+        tvUserId.setText(FilterListArray.getStrUserId());
+        tvTopMenuId.setText(FilterListArray.getStrTopMenuId());
 
         if(FilterListArray != null){
             convertView.setBackgroundColor((position & 1) == 1 ? Color.LTGRAY : Color.WHITE);
@@ -99,25 +89,18 @@ public class DbMenuListAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
 
-    public void addItem(CharSequence tvWorkOrderNo, CharSequence tvWeekActualQty, CharSequence tvEquipmentName, CharSequence tvStir1Rpm,
-                        CharSequence tvStir2Rpm, CharSequence tvStir3Rpm,
-                        CharSequence tvStir1MMinute, CharSequence tvStir2MMinute, CharSequence tvStir3MMinute
+    public void addItem(CharSequence tvTopName, CharSequence tvAuthorityFlag, CharSequence tvTopSeq, CharSequence tvUserId,
+                        CharSequence tvTopMenuId
     )
     {
         //ListArray.add(item);
-        CombinLatelyItem Item = new CombinLatelyItem();
+        DbMenuListItem Item = new DbMenuListItem();
 
-        Item.setStrWorkOrderNo((String) tvWorkOrderNo);
-        Item.setStrWeekActualQty((String) tvWeekActualQty);
-        Item.setStrEquipmentName((String) tvEquipmentName);
-        Item.setStrStir1Rpm((String) tvStir1Rpm);
-        Item.setStrStir2Rpm((String) tvStir2Rpm);
-        Item.setStrStir3Rpm((String) tvStir3Rpm);
-        Item.setStrStir1MMinute((String) tvStir1MMinute);
-        Item.setStrStir2MMinute((String) tvStir2MMinute);
-        Item.setStrStir3MMinute((String) tvStir3MMinute);
-
-
+        Item.setStrTopName((String) tvTopName);
+        Item.setStrAuthorityFlag((String) tvAuthorityFlag);
+        Item.setStrTopSeq((String) tvTopSeq);
+        Item.setStrUserId((String) tvUserId);
+        Item.setStrTopMenuId((String) tvTopMenuId);
 
 
         ListArray.add(Item);
@@ -134,7 +117,7 @@ public class DbMenuListAdapter extends BaseAdapter implements Filterable {
     }
 
 
-    public void addItem(CombinLatelyItem Item)
+    public void addItem(DbMenuListItem Item)
     {
         ListArray.add(Item);
     }
@@ -153,7 +136,7 @@ public class DbMenuListAdapter extends BaseAdapter implements Filterable {
             }
             else
             {
-                ArrayList<CombinLatelyItem> itemList = new ArrayList<CombinLatelyItem>();
+                ArrayList<DbMenuListItem> itemList = new ArrayList<DbMenuListItem>();
 
 
 
@@ -166,7 +149,7 @@ public class DbMenuListAdapter extends BaseAdapter implements Filterable {
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results)
         {
-            FilterListArray = (ArrayList<CombinLatelyItem>) results.values;
+            FilterListArray = (ArrayList<DbMenuListItem>) results.values;
 
             if(results.count > 0)
             {

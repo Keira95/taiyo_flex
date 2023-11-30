@@ -70,7 +70,7 @@ public class MenuActivity extends AppCompatActivity {
     String strSobId = "70";
     String strOrgId = "701";
 
-    TextView tvId;
+    TextView tvId, tvUserName;
     //버튼
 
     Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO,btnAg,btnPr,btnSr;
@@ -138,26 +138,28 @@ public class MenuActivity extends AppCompatActivity {
 
         //메인
         tvId = (TextView) findViewById(R.id.tv_main_id);
-        //tvId.setText(strUserName + "(" + strSabeon + ")");
+        //.setText(strUserName + "(" + strSabeon + ")");
         tvId.setText(strUserName);
 
+        tvUserName = (TextView) findViewById(R.id.tv_user_name);
+        tvUserName.setText(strUserName);
         //Toolbar 설정
         mToolbar = findViewById(R.id.toolbar);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.navigation_view);
 
 
-        btnGR = findViewById(R.id.btn_1); //계량
-        btnBH = findViewById(R.id.btn_2); //배합
-        btnYU = findViewById(R.id.btn_3); //연육
-
-        btnJJ = findViewById(R.id.btn_4); //조정
-        btnCJ = findViewById(R.id.btn_5); //충진
-        btnTP = findViewById(R.id.btn_7); //탈포
-        btbBO = findViewById(R.id.btn_6); //반응
-        btnAg = findViewById(R.id.btn_8); //에이징
-        btnPr = findViewById(R.id.btn_9); //프로세스
-        btnSr = findViewById(R.id.btn_10); //프로세스
+//        btnGR = findViewById(R.id.btn_1); //계량
+//        btnBH = findViewById(R.id.btn_2); //배합
+//        btnYU = findViewById(R.id.btn_3); //연육
+//
+//        btnJJ = findViewById(R.id.btn_4); //조정
+//        btnCJ = findViewById(R.id.btn_5); //충진
+//        btnTP = findViewById(R.id.btn_7); //탈포
+//        btbBO = findViewById(R.id.btn_6); //반응
+//        btnAg = findViewById(R.id.btn_8); //에이징
+//        btnPr = findViewById(R.id.btn_9); //프로세스
+//        btnSr = findViewById(R.id.btn_10); //프로세스
 
         Menu menu =  mNavigationView.getMenu();
 
@@ -249,123 +251,123 @@ public class MenuActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 
-        btnGR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
-                startActivity(intentMat);
-            }
-        });
-
-        btnBH.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
-                startActivity(intentMat);
-            }
-        });
-
-        btnYU.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
-                startActivity(intentMat);
-            }
-        });
-
-        btnJJ .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
-                startActivity(intentMat);
-            }
-        });
-
-        btnCJ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, RegisterPackingActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
-                startActivity(intentMat);
-            }
-        });
-
-        btbBO.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, RegisterResponseActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btbBO .getText().toString());
-                startActivity(intentMat);
-            }
-        });
-
-        btnTP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, RegisterDefomationActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnTP .getText().toString());
-                startActivity(intentMat);
-            }
-        });
-        btnAg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, RegisterAgingActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnAg .getText().toString());
-                startActivity(intentMat);
-            }
-        });
-
-        btnPr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, RegisterProcessActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnPr .getText().toString());
-                startActivity(intentMat);
-            }
-        });
-        btnSr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, SearchActivity.class);
-                intentMat.putExtra("O_USER_ID", strUserId);
-                intentMat.putExtra("O_USER_NAME", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                intentMat.putExtra("TOP_MENU_DESC", btnSr .getText().toString());
-                startActivity(intentMat);
-            }
-        });
+//        btnGR.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//
+//        btnBH.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//
+//        btnYU.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//
+//        btnJJ .setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//
+//        btnCJ.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, RegisterPackingActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//
+//        btbBO.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, RegisterResponseActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btbBO .getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//
+//        btnTP.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, RegisterDefomationActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnTP .getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//        btnAg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, RegisterAgingActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnAg .getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//
+//        btnPr.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, RegisterProcessActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnPr .getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
+//        btnSr.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intentMat = new Intent(MenuActivity.this, SearchActivity.class);
+//                intentMat.putExtra("O_USER_ID", strUserId);
+//                intentMat.putExtra("O_USER_NAME", strUserName);
+//                intentMat.putExtra("Ip", strIp);
+//                intentMat.putExtra("TOP_MENU_DESC", btnSr .getText().toString());
+//                startActivity(intentMat);
+//            }
+//        });
 
 
 

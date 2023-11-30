@@ -85,7 +85,7 @@ public class DbMenuListAdapter extends BaseAdapter implements Filterable {
         tvTopMenuId.setText(FilterListArray.getStrTopMenuId());
 
         if (FilterListArray != null) {
-            int backgroundColor = (position & 1) == 1 ? ContextCompat.getColor(context, R.color.menu_list_color) : Color.WHITE;
+            int backgroundColor = (position & 1) == 1 ? ContextCompat.getColor(context, R.color.light_green_1) : Color.WHITE;
 
             convertView.setBackgroundColor(backgroundColor);
         }

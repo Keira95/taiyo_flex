@@ -76,7 +76,7 @@ public class MenuActivity extends AppCompatActivity {
 
     ActionBarDrawerToggle mDrawerToggle;
 
-    String strUserId, strUserPassword, strUserStatus, strUserName, strSabeon, strVerison, strIp, strUserAuthority;
+    String strUserId, strUserPassword, strUserStatus, strUserName, strSabeon, strVerison, strIp, strUserAuthority,strloginId;
     String strSobId = "70";
     String strOrgId = "701";
     TextView tvId, tvUserName;
@@ -87,7 +87,7 @@ public class MenuActivity extends AppCompatActivity {
     Button btnGR ,btnBH ,btnYU ,btnJJ ,btnCJ ,btnTP,btbBO,btnAg,btnPr,btnSr;
     GridView gv;
 
-    MenuItem ItemId;
+    MenuItem loginId;
 
     String[] MENU_NAME ;
     String[] MENU_PROMPT ;
@@ -119,6 +119,8 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
+
+        strloginId = intent.getStringExtra("O_LOGIN_ID");
         strIp = intent.getStringExtra("Ip");
         strUserId = intent.getStringExtra("O_USER_ID");
         strUserName = intent.getStringExtra("O_USER_NAME");
@@ -159,8 +161,8 @@ public class MenuActivity extends AppCompatActivity {
         //.setText(strUserName + "(" + strSabeon + ")");
         tvId.setText(strUserName);
 
-        tvUserName = (TextView) findViewById(R.id.tv_user_name);
-        tvUserName.setText(strUserName);
+//        tvUserName = (TextView) findViewById(R.id.tv_user_name);
+//        tvUserName.setText(strUserName);
 
         lvSearch = (ListView)  findViewById(R.id.lv_search);
         //Toolbar 설정
@@ -169,30 +171,14 @@ public class MenuActivity extends AppCompatActivity {
         mNavigationView = findViewById(R.id.navigation_view);
 
 
-//        btnGR = findViewById(R.id.btn_1); //계량
-//        btnBH = findViewById(R.id.btn_2); //배합
-//        btnYU = findViewById(R.id.btn_3); //연육
-//
-//        btnJJ = findViewById(R.id.btn_4); //조정
-//        btnCJ = findViewById(R.id.btn_5); //충진
-//        btnTP = findViewById(R.id.btn_7); //탈포
-//        btbBO = findViewById(R.id.btn_6); //반응
-//        btnAg = findViewById(R.id.btn_8); //에이징
-//        btnPr = findViewById(R.id.btn_9); //프로세스
-//        btnSr = findViewById(R.id.btn_10); //프로세스
-
         Menu menu =  mNavigationView.getMenu();
 
-        ItemId = menu.findItem(R.id.user_id);
-        ItemId.setTitle(strUserId);
+        loginId = menu.findItem(R.id.login_id);
+        loginId.setTitle(strloginId);
 
         MenuItem ItemName = menu.findItem(R.id.user_name);
         ItemName.setTitle(strUserName);
 
-        //
-      //  MenuItem MOBF0001 = menu.findItem(R.id.MOBF0009);
-       // MenuItem MOBF0004 = menu.findItem(R.id.MOBF0010);
-       // MenuItem MOBF0007 = menu.findItem(R.id.MOBF0011);
 
 
         MenuItem logOut   = menu.findItem(R.id.log_out);
@@ -212,59 +198,6 @@ public class MenuActivity extends AppCompatActivity {
 
         DB_Menu_Header  dbMenuHeader = new DB_Menu_Header();
         dbMenuHeader.execute(strIp,strSobId,strOrgId,strUserId);
-       // DB_Menu_Detail dbMenuDetail = new DB_Menu_Detail();
-       // dbMenuDetail.execute(strUserId);
-
-     /*   mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.user_id:
-                        break;
-                    case R.id.user_name:
-                        break;
-
-                    case R.id.MOBF0009:
-                        Intent MOBF0001 = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
-                        MOBF0001.putExtra("O_USER_ID", strUserId);
-                        MOBF0001.putExtra("O_USER_NAME", strUserName);
-                        MOBF0001.putExtra("Ip", strIp);
-                        MOBF0001.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
-                        startActivity(MOBF0001);
-                        break;
-                  case R.id.MOBF0010:
-                        Intent MOBF0004 = new Intent(MenuActivity.this, CombinationWorkActivity.class);
-                        MOBF0004.putExtra("O_USER_ID", strUserId);
-                        MOBF0004.putExtra("O_USER_NAME", strUserName);
-                        MOBF0004.putExtra("Ip", strIp);
-                        MOBF0004.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
-                        startActivity(MOBF0004);
-                        break;
-                    case R.id.MOBF0011:
-                        Intent MOBF0007 = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
-                        MOBF0007.putExtra("O_USER_ID", strUserId);
-                        MOBF0007.putExtra("O_USER_NAME", strUserName);
-                        MOBF0007.putExtra("Ip", strIp);
-                        MOBF0007.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
-                        startActivity(MOBF0007);
-             *//*       case R.id.MOBF0011:
-                        Intent MOBF0011 = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
-                        MOBF0011.putExtra("O_USER_ID", strUserId);
-                        MOBF0011.putExtra("O_USER_NAME", strUserName);
-                        MOBF0011.putExtra("Ip", strIp);
-                        MOBF0011.putExtra("TOP_MENU_DESC", btnMobf0007.getText().toString());
-                        startActivity(MOBF0011);*//*
-
-
-
-                    default:
-                        break;
-                }
-
-                return false;
-            }
-        });*/
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open, R.string.close);
         mDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -288,126 +221,6 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
-
-
-//        btnGR.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnGR.getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//
-//        btnBH.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnBH.getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//
-//        btnYU.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnYU.getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//
-//        btnJJ .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//
-//        btnCJ.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, RegisterPackingActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnJJ .getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//
-//        btbBO.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, RegisterResponseActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btbBO .getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//
-//        btnTP.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, RegisterDefomationActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnTP .getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//        btnAg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, RegisterAgingActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnAg .getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//
-//        btnPr.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, RegisterProcessActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnPr .getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-//        btnSr.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentMat = new Intent(MenuActivity.this, SearchActivity.class);
-//                intentMat.putExtra("O_USER_ID", strUserId);
-//                intentMat.putExtra("O_USER_NAME", strUserName);
-//                intentMat.putExtra("Ip", strIp);
-//                intentMat.putExtra("TOP_MENU_DESC", btnSr .getText().toString());
-//                startActivity(intentMat);
-//            }
-//        });
-
 
 
         logOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -456,42 +269,6 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
-        //종합 상황판
-      /*  btnTotal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                  //sendMessage(new JSONArray(arrayListTokens), "h system utility", "test utility", "h system", "h system");
-                Intent intentMat = new Intent(MenuActivity.this, TotalMultiScreenActivity.class);
-                intentMat.putExtra("Sabeon", strSabeon);
-                intentMat.putExtra("UserName", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                startActivity(intentMat);
-            }
-        });*/
-
-        //LOG
- /*       btnLog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, LogActivity.class);
-                intentMat.putExtra("Sabeon", strSabeon);
-                intentMat.putExtra("UserName", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                startActivity(intentMat);
-            }
-        });
-
-        //Token
-        btnToken.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentMat = new Intent(MenuActivity.this, TokenActivity.class);
-                intentMat.putExtra("Sabeon", strSabeon);
-                intentMat.putExtra("UserName", strUserName);
-                intentMat.putExtra("Ip", strIp);
-                startActivity(intentMat);
-            }
-        });*/
 
         //버튼 로그아웃
         tvId.setOnClickListener(new View.OnClickListener() {
@@ -657,13 +434,6 @@ public class MenuActivity extends AppCompatActivity {
                 JSONObject RESULT = new JSONObject(result);
                 JSONArray arr = RESULT.getJSONArray("RESULT");
 
-                Menu menu =  mNavigationView.getMenu();
-
-                ItemId = menu.findItem(R.id.user_id);
-                ItemId.setTitle(strUserId);
-
-                MenuItem ItemName = menu.findItem(R.id.user_name);
-
                 for(int j=0; j< arr.length(); j++){
 
                 JSONObject obj = arr.getJSONObject(j);
@@ -677,104 +447,6 @@ public class MenuActivity extends AppCompatActivity {
                 }
                 overridePendingTransition(R.anim.silde_in_down, R.anim.silde_out_down);
                 lvSearch.setAdapter(dbMenuListAdapter);
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private List<String> generateMenuButtons() {
-        List<String> buttons = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            buttons.add("메뉴 버튼 " + i);
-        }
-        return buttons;
-    }
-
-
-    protected class DB_Menu_Detail extends AsyncTask<String, Void, String>
-    {
-        protected  String doInBackground(String... urls)
-        {
-            String URL = "http://" + strIp + "/DRK/MenuDetail.jsp"; //자신의 웹서버 주소를 저장합니다.
-            DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.
-
-            try
-            {
-                HttpPost post = new HttpPost(URL+ "?W_USER_ID=" + urls[0]);
-
-                HttpResponse response = client.execute(post);
-                BufferedReader bufreader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "utf-8"));
-
-                String line = null;
-                String result = "";
-
-                while ((line = bufreader.readLine()) != null) {
-                    result += line;
-                }
-
-
-                //tvLog.append();
-                return result;
-
-            }catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-            return ""; //결과값 리턴
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            try{
-                JSONObject RESULT = new JSONObject(result);
-                JSONArray arr = RESULT.getJSONArray("RESULT");
-
-
-                for(int i=0; i< arr.length(); i++)
-                {
-                    JSONObject j_ob = arr.getJSONObject(i);
-                    if(j_ob.getString("TOP_NAME").equals("MOBF0009"))
-                    {
-                        if(j_ob.getString("AUTHORITY_FLAG").equals("Y"))
-                        {
-
-                        }
-                        else
-                        {
-                          //  btnWait.setEnabled(false);
-                           // btnWait.setBackgroundColor(Color.GRAY);
-                        }
-                    }
-
-                    if(j_ob.getString("TOP_NAME").equals("MOBF0010"))
-                    {
-                        if(j_ob.getString("AUTHORITY_FLAG").equals("Y"))
-                        {
-                        }
-                        else
-                        {
-                            //btnMerger.setEnabled(false);
-                           // btnMerger.setBackgroundColor(Color.GRAY);
-                        }
-                    }
-
-
-                    if(j_ob.getString("TOP_NAME").equals("MOBF0011"))
-                    {
-                        if(j_ob.getString("AUTHORITY_FLAG").equals("Y"))
-                        {
-                        }
-                        else
-                        {
-                           // btnMobf0007.setEnabled(false);
-                           // btnMobf0007.setBackgroundColor(Color.GRAY);
-                        }
-                    }
-
-                }
-
 
             }catch (Exception e){
                 e.printStackTrace();

@@ -7,7 +7,7 @@
         android:title="로그인 정보">
         <menu android:checkableBehavior="single">
     <item
-        android:id="@+id/user_id"
+        android:id="@+id/login_id"
         android:title="아이디"
         />
     <item
@@ -16,50 +16,6 @@
         </menu>
     </item>
 
-    <item
-    android:title="메뉴 정보">
-    <menu android:checkableBehavior="single">
-        <item
-        android:id="@+id/WC801"
-        android:title="계량 작업장"
-        />
-
-        <item
-            android:id="@+id/WC802"
-            android:title="배합 작업장"
-            />
-        <item
-            android:id="@+id/WC803"
-            android:title="연육 작업장"
-            />
-        <item
-            android:id="@+id/WC804"
-            android:title="조정 작업장"
-            />
-        <item
-            android:id="@+id/WC805"
-            android:title="충진 작업장"
-            />
-        <item
-            android:id="@+id/WC807"
-            android:title="반응 작업장"
-            /> <item
-        android:id="@+id/WC808"
-        android:title="탈포 작업장"
-        /> <item
-        android:id="@+id/WC809"
-        android:title="Aging 작업장"
-        />
-        <item
-            android:id="@+id/PROCESS"
-            android:title="실적처리"
-            />
-
-
-
-
-    </menu>
-    </item>
 
      <!--item 내에 menu를 중첩해 넣어 서브 메뉴를 정의합니다　-->
     <item

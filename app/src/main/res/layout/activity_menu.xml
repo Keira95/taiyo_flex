@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/taiyo_background">
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -43,71 +43,6 @@
                 android:textSize="10sp"
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
-
-
-
-
-
-       <!-- <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="400sp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/image_desc"
-                android:cropToPadding="false"
-                android:scaleType="fitCenter"
-
-
-                android:visibility="visible" />
-        </LinearLayout>-->
-        <!--android:background="@drawable/menu_img"-->
-
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        >
-
-        <TextView
-            android:id="@+id/tv_user_name"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5sp"
-            android:gravity="right|center"
-            android:layout_weight="8"
-            android:enabled="false"
-            android:textSize="18sp"
-            android:textColor="@color/login_edit_text"
-            />
-
-
-        <TextView
-            android:id="@+id/tv_p2_file_no"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:gravity="left|center"
-            android:layout_marginTop="5sp"
-            android:layout_weight="1.5"
-            android:enabled="false"
-            android:hint="  님 환영합니다."
-            android:textColorHint="@color/login_edit_text"
-            android:textSize="18sp" />
-
-
-    </LinearLayout>
-
 
 
         <LinearLayout
@@ -325,6 +260,7 @@
             android:layout_weight="1"
             android:horizontalSpacing="10dp"
             android:numColumns="3" >
+
         </GridView>
         <TextView
             android:layout_width="fill_parent"

@@ -1,6 +1,7 @@
 package com.erp.Taiyo;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,6 +29,7 @@ import com.erp.Taiyo.adapter.DbMenuListAdapter;
 import com.erp.Taiyo.adapter.FileNoProcessAdapter;
 import com.erp.Taiyo.adapter.MenuButtonAdapter;
 import com.erp.Taiyo.adapter.MenuListAdapter;
+import com.erp.Taiyo.adapter.DbMenuListAdapter;
 import com.erp.Taiyo.item.DbMenuListItem;
 import com.erp.Taiyo.item.FileNoProcessListItem;
 import com.google.android.material.navigation.NavigationView;
@@ -54,6 +56,9 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,9 +106,13 @@ public class MenuActivity extends AppCompatActivity {
 
     private ArrayList<String> arrayListTokens = new ArrayList<>();
 
+    DbMenuListAdapter dbMenuListAdapter = new DbMenuListAdapter();
+    DbMenuListItem dbMenuListItem = new DbMenuListItem();
 
     private RecyclerView recyclerView;
     private MenuButtonAdapter adapter;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,7 +211,7 @@ public class MenuActivity extends AppCompatActivity {
         //매뉴
 
         DB_Menu_Header  dbMenuHeader = new DB_Menu_Header();
-        dbMenuHeader.execute();
+        dbMenuHeader.execute(strIp,strSobId,strOrgId,strUserId);
        // DB_Menu_Detail dbMenuDetail = new DB_Menu_Detail();
        // dbMenuDetail.execute(strUserId);
 
@@ -260,6 +269,29 @@ public class MenuActivity extends AppCompatActivity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open, R.string.close);
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                DbMenuListAdapter adapter = (DbMenuListAdapter) lvSearch.getAdapter();
+                for(int i =0; i< lvSearch.getCount(); i++){
+
+                    DbMenuListItem item = (DbMenuListItem) adapter.getItem(i);
+
+                    if( i == position){
+                        moveActivity(item.getStrTopMenuId() ,item.getStrTopName());
+
+                    }
+
+                }
+
+            }
+        });
+
+
+
+
 
 
 //        btnGR.setOnClickListener(new View.OnClickListener() {
@@ -496,6 +528,51 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
+    public void moveActivity(String TopMenuId , String TopMenuDesc){
+
+        Intent intentMat = new Intent();
+
+        if(TopMenuId.equals("10000")){ //계량
+            intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
+
+        }else if(TopMenuId.equals("10001")){ //배합
+            intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
+
+        }else if(TopMenuId.equals("10002")){ //연육
+            intentMat = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);
+
+        }else if(TopMenuId.equals("10003")){ //조정
+            intentMat = new Intent(MenuActivity.this, RegisterAdjustmentActivity.class);
+
+        }else if(TopMenuId.equals("10004")){ //충진
+            intentMat = new Intent(MenuActivity.this, RegisterPackingActivity.class);
+
+        }else if(TopMenuId.equals("10006")){ //반응
+            intentMat = new Intent(MenuActivity.this, RegisterResponseActivity.class);
+
+        }else if(TopMenuId.equals("10007")){ //탈포
+            intentMat = new Intent(MenuActivity.this, RegisterDefomationActivity.class);
+
+        }else if(TopMenuId.equals("10008")){ //aging
+            intentMat = new Intent(MenuActivity.this, RegisterAgingActivity.class);
+
+        }else if(TopMenuId.equals("10009")){ //실적처리
+            intentMat = new Intent(MenuActivity.this, RegisterProcessActivity.class);
+
+        }else if(TopMenuId.equals("10010")){ //작업등록조회
+            intentMat = new Intent(MenuActivity.this, SearchActivity.class);
+
+        }
+
+
+      intentMat.putExtra("O_USER_ID", strUserId);
+      intentMat.putExtra("O_USER_NAME", strUserName);
+      intentMat.putExtra("Ip", strIp);
+      intentMat.putExtra("TOP_MENU_DESC", TopMenuDesc);
+      startActivity(intentMat);
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -524,34 +601,58 @@ public class MenuActivity extends AppCompatActivity {
 
     protected class DB_Menu_Header extends AsyncTask<String, Void, String>
     {
+        final DbMenuListAdapter dbMenuListAdapter = new DbMenuListAdapter();
         protected  String doInBackground(String... urls)
         {
-            String URL = "http://" + strIp + "/TAIYO/DBMenu.jsp"; //자신의 웹서버 주소를 저장합니다.
-            DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "W_SOB_ID=" + urls[1]
+                    + "&W_ORG_ID=" + urls[2]
+                    + "&W_USER_ID=" + urls[3]
+                    ;
 
             try
             {
-                HttpPost post = new HttpPost(URL);
+                //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
 
-                HttpResponse response = client.execute(post);
-                BufferedReader bufreader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "utf-8"));
+                URL obj = new URL("http://" + urls[0] + "/TAIYO/DBMenu.jsp"); //주소 지정
 
-                String line = null;
-                String result = "";
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
 
-                while ((line = bufreader.readLine()) != null) {
-                    result += line;
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
                 }
-
-
-                //tvLog.append();
-                return result;
-
             }catch (Exception e)
             {
                 e.printStackTrace();
             }
-            return ""; //결과값 리턴
+            return  jsonHtml.toString(); //결과값 리턴
         }
 
         @Override
@@ -567,158 +668,19 @@ public class MenuActivity extends AppCompatActivity {
 
                 MenuItem ItemName = menu.findItem(R.id.user_name);
 
-
                 for(int j=0; j< arr.length(); j++){
 
                 JSONObject obj = arr.getJSONObject(j);
 
                     if(obj.getString("AUTHORITY_FLAG").equals("Y"))
                     {
-
-
+                        dbMenuListAdapter.addItem(obj.getString("TOP_NAME"),obj.getString("AUTHORITY_FLAG"),obj.getString("TOP_SEQ"),obj.getString("USER_ID"),
+                                obj.getString("TOP_MENU_ID"));
 
                     }
-
                 }
-
-                /*List<String> menuButtons = generateMenuButtons();
-                adapter = new MenuButtonAdapter(menuButtons);
-                recyclerView.setAdapter(adapter);*/
-
-
-            /*    Object[] objectArray = { btnGR, btnBH,btnYU , btnJJ, btnCJ, btnTP, btbBO,btnAg , btnPr,btnSr };
-
-                ArrayList[] objectArray2 = ;
-
-
-                JSONObject menuObject = new JSONObject(objectArray);
-
-                String meneArray = {};
-
-              //  Integer[] menuList = new Integer[objectArray.length];
-
-                  // 10번돌고
-
-                    for(int i=0; i< arr.length(); i++)
-                    {
-                       // for(int j =0; j< objectArray.length; j++ ){
-
-                        JSONObject j_ob = arr.getJSONObject(i);
-
-                        if(j_ob.getString("AUTHORITY_FLAG").equals("Y")){
-
-                            btnGR.setEnabled(true);
-                            btnGR.setText(j_ob.getString("TOP_NAME"));
-
-                      //  }
-                        }else{
-
-                            for(int j =0; j< objectArray.length; j++ ){
-                                Object Menu = String.valueOf(objectArray.length(j));
-
-
-                            }
-
-                        }
-
-
-
-                }*/
-
-                //
-/*                MenuItem WC801 = menu.findItem(R.id.WC801);
-                MenuItem WC802 = menu.findItem(R.id.WC802);
-                MenuItem WC803 = menu.findItem(R.id.WC803);
-                MenuItem WC804 = menu.findItem(R.id.WC804);
-                MenuItem WC805 = menu.findItem(R.id.WC805);
-                MenuItem WC807 = menu.findItem(R.id.WC807);
-                MenuItem WC808 = menu.findItem(R.id.WC808);
-                MenuItem WC809 = menu.findItem(R.id.WC809);
-                MenuItem PROCESS = menu.findItem(R.id.PROCESS);*/
-
-
-
-
-
-                  /*  JSONObject j_ob = arr.getJSONObject(i);
-                    if(j_ob.getString("TOP_MENU_NAME").equals("MOBF0009"))
-                    {
-                        if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
-                        {
-                            btnGR.setEnabled(true);
-                            btnGR.setText(j_ob.getString("TOP_MENU_DESC"));
-                            MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
-                        }
-                        else
-                        {
-                            btnBH.setEnabled(false);
-                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnBH.setBackgroundColor(Color.GRAY);
-                            MOBF0001.setTitle(j_ob.getString("TOP_MENU_DESC"));
-                        }
-                    }
-
-
-                    if(j_ob.getString("TOP_MENU_NAME").equals("MOBF0010"))
-                    {
-                        if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
-                        {
-                            btnBH.setEnabled(true);
-                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
-                            MOBF0004.setTitle(j_ob.getString("TOP_MENU_DESC"));
-                        }
-                        else
-                        {
-                            btnBH.setEnabled(false);
-                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnBH.setBackgroundColor(Color.GRAY);
-                            MOBF0004.setTitle(j_ob.getString("TOP_MENU_DESC"));
-                        }
-                    }
-
-
-                    if(j_ob.getString("TOP_MENU_NAME").equals("MOBF0011"))
-                    {
-                        if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
-                        {
-
-                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnBH.setEnabled(true);
-                            MOBF0007.setTitle(j_ob.getString("TOP_MENU_DESC"));
-                        }
-                        else
-                        {
-                            btnBH.setEnabled(false);
-                            btnBH.setText(j_ob.getString("TOP_MENU_DESC"));
-                            btnBH.setBackgroundColor(Color.GRAY);
-
-                            MOBF0007.setTitle(j_ob.getString("TOP_MENU_DESC"));
-                        }
-                    }*/
-
-               // }
-
-//                for(int i = 0; i < arr.length(); i++) {
-//                    JSONObject j_ob = arr.getJSONObject(i);
-//                    menuIListtem = new MenuIListtem();
-//
-//                    menuListAdapter.addItem(j_ob.getString("TOP_MENU_DESC"));
-//
-//                }
-
-                //gv.setAdapter(menuListAdapter);
-
-//                for(int i = 0; i < arr.length(); i++) {
-//                    JSONObject j_ob = arr.getJSONObject(i);
-//                    //MENU_NAME[i] = j_ob.getString("TOP_MENU_NAME");
-//                    //MENU_PROMPT[i] = j_ob.getString("TOP_MENU_PROMPT");
-//                    MENU_DESC[i] = j_ob.getString("TOP_MENU_DESC");
-//                    //MENU_SHOW_FLAG[i] = j_ob.getString("TOP_MENU_SHOW_FLAG");
-//
-//                }
-
-                //MenuButtonAdapter buttonAdapter = new MenuButtonAdapter(getApplicationContext(), MENU_DESC);
-                //gv.setAdapter(buttonAdapter);
+                overridePendingTransition(R.anim.silde_in_down, R.anim.silde_out_down);
+                lvSearch.setAdapter(dbMenuListAdapter);
 
             }catch (Exception e){
                 e.printStackTrace();

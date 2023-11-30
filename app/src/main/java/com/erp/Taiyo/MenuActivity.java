@@ -24,6 +24,7 @@ import com.erp.Taiyo.activity.RegisterResponseActivity;
 import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
 import com.erp.Taiyo.activity.SearchActivity;
 import com.erp.Taiyo.activity.SurimiWeighingWorkActivity;
+import com.erp.Taiyo.adapter.MenuButtonAdapter;
 import com.erp.Taiyo.adapter.MenuListAdapter;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.app.ActivityCompat;
@@ -52,6 +53,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
@@ -92,6 +95,9 @@ public class MenuActivity extends AppCompatActivity {
 
     private ArrayList<String> arrayListTokens = new ArrayList<>();
 
+
+    private RecyclerView recyclerView;
+    private MenuButtonAdapter adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +116,8 @@ public class MenuActivity extends AppCompatActivity {
 //        strVerison = intent.getStringExtra("versionString");
 //        strIp = intent.getStringExtra("Ip");
         overridePendingTransition(R.anim.silde_in_down, R.anim.silde_out_down);
+
+
 
 
         //로그인 정보
@@ -139,20 +147,17 @@ public class MenuActivity extends AppCompatActivity {
         mNavigationView = findViewById(R.id.navigation_view);
 
 
-        btnGR = findViewById(R.id.btn_gr); //계량
-        btnBH = findViewById(R.id.btn_bh); //배합
-        btnYU = findViewById(R.id.btn_yu); //연육
+        btnGR = findViewById(R.id.btn_1); //계량
+        btnBH = findViewById(R.id.btn_2); //배합
+        btnYU = findViewById(R.id.btn_3); //연육
 
-
-        btnJJ = findViewById(R.id.btn_jj); //조정
-        btnCJ = findViewById(R.id.btn_cj); //충진
-        btnTP = findViewById(R.id.btn_tp); //탈포
-        btbBO = findViewById(R.id.btn_bo); //반응
-        btnAg = findViewById(R.id.btn_ag); //에이징
-        btnPr = findViewById(R.id.btn_pr); //프로세스
-        btnSr = findViewById(R.id.btn_search); //프로세스
-
-
+        btnJJ = findViewById(R.id.btn_4); //조정
+        btnCJ = findViewById(R.id.btn_5); //충진
+        btnTP = findViewById(R.id.btn_7); //탈포
+        btbBO = findViewById(R.id.btn_6); //반응
+        btnAg = findViewById(R.id.btn_8); //에이징
+        btnPr = findViewById(R.id.btn_9); //프로세스
+        btnSr = findViewById(R.id.btn_10); //프로세스
 
         Menu menu =  mNavigationView.getMenu();
 
@@ -508,7 +513,7 @@ public class MenuActivity extends AppCompatActivity {
     {
         protected  String doInBackground(String... urls)
         {
-            String URL = "http://" + strIp + "/DRK/MenuHeader.jsp"; //자신의 웹서버 주소를 저장합니다.
+            String URL = "http://" + strIp + "/TAIYO/DBMenu.jsp"; //자신의 웹서버 주소를 저장합니다.
             DefaultHttpClient client = new DefaultHttpClient();//HttpClient 통신을 합니다.
 
             try
@@ -549,8 +554,57 @@ public class MenuActivity extends AppCompatActivity {
 
                 MenuItem ItemName = menu.findItem(R.id.user_name);
 
+
+
+                List<String> menuButtons = generateMenuButtons();
+                adapter = new MenuButtonAdapter(menuButtons);
+
+                recyclerView.setAdapter(adapter);
+
+
+
+
+            /*    Object[] objectArray = { btnGR, btnBH,btnYU , btnJJ, btnCJ, btnTP, btbBO,btnAg , btnPr,btnSr };
+
+                ArrayList[] objectArray2 = ;
+
+
+                JSONObject menuObject = new JSONObject(objectArray);
+
+                String meneArray = {};
+
+              //  Integer[] menuList = new Integer[objectArray.length];
+
+                  // 10번돌고
+
+                    for(int i=0; i< arr.length(); i++)
+                    {
+                       // for(int j =0; j< objectArray.length; j++ ){
+
+                        JSONObject j_ob = arr.getJSONObject(i);
+
+                        if(j_ob.getString("AUTHORITY_FLAG").equals("Y")){
+
+                            btnGR.setEnabled(true);
+                            btnGR.setText(j_ob.getString("TOP_NAME"));
+
+                      //  }
+                        }else{
+
+                            for(int j =0; j< objectArray.length; j++ ){
+                                Object Menu = String.valueOf(objectArray.length(j));
+
+
+                            }
+
+                        }
+
+
+
+                }*/
+
                 //
-                MenuItem WC801 = menu.findItem(R.id.WC801);
+/*                MenuItem WC801 = menu.findItem(R.id.WC801);
                 MenuItem WC802 = menu.findItem(R.id.WC802);
                 MenuItem WC803 = menu.findItem(R.id.WC803);
                 MenuItem WC804 = menu.findItem(R.id.WC804);
@@ -558,11 +612,13 @@ public class MenuActivity extends AppCompatActivity {
                 MenuItem WC807 = menu.findItem(R.id.WC807);
                 MenuItem WC808 = menu.findItem(R.id.WC808);
                 MenuItem WC809 = menu.findItem(R.id.WC809);
-                MenuItem PROCESS = menu.findItem(R.id.PROCESS);
-/*
-                for(int i=0; i< arr.length(); i++)
-                {
-                    JSONObject j_ob = arr.getJSONObject(i);
+                MenuItem PROCESS = menu.findItem(R.id.PROCESS);*/
+
+
+
+
+
+                  /*  JSONObject j_ob = arr.getJSONObject(i);
                     if(j_ob.getString("TOP_MENU_NAME").equals("MOBF0009"))
                     {
                         if(j_ob.getString("TOP_MENU_SHOW_FLAG").equals("Y"))
@@ -616,11 +672,9 @@ public class MenuActivity extends AppCompatActivity {
 
                             MOBF0007.setTitle(j_ob.getString("TOP_MENU_DESC"));
                         }
-                    }
+                    }*/
 
-
-
-                }*/
+               // }
 
 //                for(int i = 0; i < arr.length(); i++) {
 //                    JSONObject j_ob = arr.getJSONObject(i);
@@ -649,6 +703,15 @@ public class MenuActivity extends AppCompatActivity {
             }
         }
     }
+
+    private List<String> generateMenuButtons() {
+        List<String> buttons = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            buttons.add("메뉴 버튼 " + i);
+        }
+        return buttons;
+    }
+
 
     protected class DB_Menu_Detail extends AsyncTask<String, Void, String>
     {

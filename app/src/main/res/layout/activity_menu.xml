@@ -44,6 +44,8 @@
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
+
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="fill_parent"
@@ -78,6 +80,63 @@
             android:layout_marginTop="1dp"
             android:background="#FFFFFF" />
 
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <EditText
+            android:id="@+id/et_p2_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="60sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1.5"
+            android:hint="   님 환영합니다."
+            android:paddingLeft="dp"
+            android:enabled="false"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_search"
+            android:layout_width="match_parent"
+            android:layout_height="250sp"
+            android:descendantFocusability="blocksDescendants"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <LinearLayout
+
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/in_process_list"
+                layout="@layout/header_menulist" />
+
+
+        </LinearLayout>
+
+
+
+<!--
+
         <LinearLayout
 
             android:layout_width="match_parent"
@@ -87,7 +146,7 @@
             >
 
             <Button
-                android:id="@+id/btn_gr"
+                android:id="@+id/btn_1"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_margin="5sp"
@@ -100,7 +159,7 @@
 
 
             <Button
-                android:id="@+id/btn_bh"
+                android:id="@+id/btn_2"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -113,28 +172,6 @@
                 />
 
 
-            <!--       <Button
-                       android:layout_weight="1"
-                       android:id="@+id/btn_ware"
-                       android:text="MOBF0002"
-                       android:background="@drawable/buttonshape"
-                       android:textColor="#FFFFFF"
-                       android:textSize="15sp"
-                       android:layout_width="130dp"
-                       android:layout_height="80dp"
-                       android:layout_margin="5sp"
-                       />
-                   <Button
-                       android:layout_weight="1"
-                       android:id="@+id/btn_Oem"
-                       android:text="MOBF0003"
-                       android:textColor="#FFFFFF"
-                       android:textSize="15sp"
-                       android:background="@drawable/buttonshape"
-                       android:layout_width="130dp"
-                       android:layout_height="80dp"
-                       android:layout_margin="5sp"
-                       />-->
 
 
         </LinearLayout>
@@ -147,7 +184,7 @@
             >
 
             <Button
-                android:id="@+id/btn_yu"
+                android:id="@+id/btn_3"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_margin="5sp"
@@ -160,7 +197,7 @@
 
 
             <Button
-                android:id="@+id/btn_jj"
+                android:id="@+id/btn_4"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_margin="5sp"
@@ -170,30 +207,6 @@
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
-
-
-            <!--
-                        <Button
-                            android:id="@+id/btn_inventory"
-                            android:layout_width="130dp"
-                            android:layout_height="80dp"
-                            android:layout_margin="5sp"
-                            android:layout_weight="1"
-                            android:background="@drawable/buttonshape"
-                            android:text="MOBF0005"
-                            android:textColor="#FFFFFF"
-                            android:textSize="15sp" />
-                        <Button
-                            android:id="@+id/btn_Release"
-                            android:layout_width="130dp"
-                            android:layout_height="80dp"
-                            android:layout_margin="5sp"
-                            android:layout_weight="1"
-                            android:background="@drawable/buttonshape"
-                            android:text="MOBF0006"
-                            android:textColor="#FFFFFF"
-                            android:textSize="15sp" />
-            -->
 
 
         </LinearLayout>
@@ -206,7 +219,7 @@
             android:gravity="center_vertical"
             >
             <Button
-                android:id="@+id/btn_cj"
+                android:id="@+id/btn_5"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_margin="5sp"
@@ -221,7 +234,7 @@
 
 
             <Button
-                android:id="@+id/btn_bo"
+                android:id="@+id/btn_6"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_margin="5sp"
@@ -242,7 +255,7 @@
         >
 
         <Button
-            android:id="@+id/btn_tp"
+            android:id="@+id/btn_7"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_margin="5sp"
@@ -255,7 +268,7 @@
 
         <Button
 
-            android:id="@+id/btn_ag"
+            android:id="@+id/btn_8"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_margin="5sp"
@@ -276,7 +289,7 @@
             >
 
             <Button
-                android:id="@+id/btn_pr"
+                android:id="@+id/btn_9"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_margin="5sp"
@@ -286,7 +299,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp" />
             <Button
-                android:id="@+id/btn_search"
+                android:id="@+id/btn_10"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_margin="5sp"
@@ -298,6 +311,7 @@
 
         </LinearLayout>
 
+-->
 
 
         <GridView

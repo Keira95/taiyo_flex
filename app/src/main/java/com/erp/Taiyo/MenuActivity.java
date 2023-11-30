@@ -557,13 +557,22 @@ public class MenuActivity extends AppCompatActivity {
                 MenuItem ItemName = menu.findItem(R.id.user_name);
 
 
+                for(int j=0; j< arr.length(); j++){
 
-                List<String> menuButtons = generateMenuButtons();
+                JSONObject obj = arr.getJSONObject(j);
+
+                    if(obj.getString("AUTHORITY_FLAG").equals("Y"))
+                    {
+
+
+
+                    }
+
+                }
+
+                /*List<String> menuButtons = generateMenuButtons();
                 adapter = new MenuButtonAdapter(menuButtons);
-
-                recyclerView.setAdapter(adapter);
-
-
+                recyclerView.setAdapter(adapter);*/
 
 
             /*    Object[] objectArray = { btnGR, btnBH,btnYU , btnJJ, btnCJ, btnTP, btbBO,btnAg , btnPr,btnSr };

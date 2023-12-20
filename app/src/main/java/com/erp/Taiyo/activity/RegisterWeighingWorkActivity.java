@@ -581,9 +581,7 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
         // 유저 정보 삽입.
         tvUserName.setText(strUserName);
 
-
     }
-
 
     // WORKCENTER_IN_AUTHORITY
     protected class GET_WORKCENTER_IN_AUTHORITY extends AsyncTask<String, Void, String>
@@ -639,7 +637,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             return  jsonHtml.toString(); //결과값 리턴
         }
 
-
         protected void onPostExecute(String result)
         {
             //페이지 결과값 파싱
@@ -666,8 +663,6 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
             }
         }
     }
-
-
 
 
     // FILE_NO_SCAN

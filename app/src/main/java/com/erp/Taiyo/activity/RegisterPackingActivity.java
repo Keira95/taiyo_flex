@@ -201,7 +201,7 @@ public class RegisterPackingActivity extends AppCompatActivity {
             }
         });
 
-        t5StirEquipmentDesc.addTextChangedListener(new TextWatcher() {
+        t5StirEquipmentDesc.addTextChangedListener(new TextWatcher() { //교반
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -218,15 +218,16 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                 if(getCurrentFocus() == t5StirEquipmentDesc && !s.toString().isEmpty() && s != null && t5StirEquipmentId.getText().toString().equals("")){
 
-                    LU_CH_C_S lU_CH_C_S = new LU_CH_C_S();
-                    lU_CH_C_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5StirEquipmentDesc.getText().toString());
+                    LU_CH_G_S lU_CH_G_S = new LU_CH_G_S();
+                    lU_CH_G_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5StirEquipmentDesc.getText().toString());
 
                 }else{
                     return;
                 }
             }
         });
-        t5UnitEquipmentDesc.addTextChangedListener(new TextWatcher() {
+        t5UnitEquipmentDesc.addTextChangedListener(new TextWatcher() { //충진
+
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -243,8 +244,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                 if(getCurrentFocus() == t5UnitEquipmentDesc && !s.toString().isEmpty() && s != null && t5UnitEquipmentId.getText().toString().equals("")){
 
-                    LU_CH_G_S lU_CH_G_S = new LU_CH_G_S();
-                    lU_CH_G_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5UnitEquipmentDesc.getText().toString());
+                    LU_CH_C_S lU_CH_C_S = new LU_CH_C_S();
+                    lU_CH_C_S.execute(strIp, strSobId,strOrgId, t5WorkcenterId.getText().toString(), t5UnitEquipmentDesc.getText().toString());
 
                 }else{
                     return;
@@ -746,7 +747,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     if(job.getString("PACKING_UNIT").equals("null")){
                         t5PackingUnit.setText("");
                     }else{
-                        t5PackingUnit.setText(job.getString("PACKING_UNIT"));
+                        Double vPackingUnit = Double.parseDouble(job.getString("PACKING_UNIT"));
+                        t5PackingUnit.setText(String.valueOf(vPackingUnit));
                     }
                     if(job.getString("REQUEST_QTY").equals("null")){
                         t5Request_qty.setText("");
@@ -960,10 +962,9 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    if(!ChCs.equals(t5StirEquipmentDesc.getText().toString())){
-                        t5StirEquipmentDesc.requestFocus();
-                        t5StirEquipmentDesc.setText("");
-
+                    if(!ChGs.equals(t5UnitEquipmentDesc.getText().toString())){
+                        t5UnitEquipmentDesc.requestFocus();
+                        t5UnitEquipmentDesc.setText("");
                     }
 
                     return;
@@ -971,31 +972,31 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     JSONObject job = jarrayWorkLevel.getJSONObject(0);
                     if(job.getString("Status").equals("S")){
 
-                        t5StirOldEquipmentCode.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                        t5StirEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                        t5StirEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                        t5StirEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+                        t5OldUnitEquipmentDesc.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                        t5UnitEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        t5UnitEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                        t5UnitEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
 
-                        ChCs = job.getString("TOP_EQUIPMENT_NAME");
+                        ChGs = job.getString("TOP_EQUIPMENT_NAME");
 
                         saveColorChange();
                     }
-                    t5UnitEquipmentDesc.requestFocus();
                 }
 
 
-
+                t5WorkerDesc.requestFocus();
 
             }catch (JSONException e)
             {
                 e.printStackTrace();
-                t5UnitEquipmentDesc.requestFocus();
+                t5WorkerDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
-                t5UnitEquipmentDesc.requestFocus();
+                t5WorkerDesc.requestFocus();
             }
+          /* */
         }
     }
 
@@ -1064,9 +1065,10 @@ public class RegisterPackingActivity extends AppCompatActivity {
                 JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 if(jarrayWorkLevel.length() < 1){
-                    if(!ChGs.equals(t5UnitEquipmentDesc.getText().toString())){
-                        t5UnitEquipmentDesc.requestFocus();
-                        t5UnitEquipmentDesc.setText("");
+                    if(!ChCs.equals(t5StirEquipmentDesc.getText().toString())){
+                        t5StirEquipmentDesc.requestFocus();
+                        t5StirEquipmentDesc.setText("");
+
                     }
 
                     return;
@@ -1074,29 +1076,28 @@ public class RegisterPackingActivity extends AppCompatActivity {
                     JSONObject job = jarrayWorkLevel.getJSONObject(0);
                     if(job.getString("Status").equals("S")){
 
-                        t5OldUnitEquipmentDesc.setText(job.getString("OLD_EQUIPMENT_NAME"));
-                        t5UnitEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
-                        t5UnitEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
-                        t5UnitEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
+                        t5StirOldEquipmentCode.setText(job.getString("OLD_EQUIPMENT_NAME"));
+                        t5StirEquipmentDesc.setText(job.getString("TOP_EQUIPMENT_NAME"));
+                        t5StirEquipmentCode.setText(job.getString("TOP_EQUIPMENT_CODE"));
+                        t5StirEquipmentId.setText(job.getString("TOP_EQUIPMENT_ID"));
 
-                        ChGs = job.getString("TOP_EQUIPMENT_NAME");
+                        ChCs = job.getString("TOP_EQUIPMENT_NAME");
 
                         saveColorChange();
                     }
+                    t5UnitEquipmentDesc.requestFocus();
                 }
 
-
-                t5WorkerDesc.requestFocus();
 
             }catch (JSONException e)
             {
                 e.printStackTrace();
-                t5WorkerDesc.requestFocus();
+                t5UnitEquipmentDesc.requestFocus();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
-                t5WorkerDesc.requestFocus();
+                t5UnitEquipmentDesc.requestFocus();
             }
         }
     }

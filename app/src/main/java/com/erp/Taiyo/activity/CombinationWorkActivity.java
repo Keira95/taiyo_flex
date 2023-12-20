@@ -73,8 +73,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
             btnT2Stir3EndDate, btnT2MixEndTime, bT2Save,btnHolding;
 
 
-
-
     String strSobId = "70";
     String strOrgId = "701";
     String strAssemplyDeac ="";
@@ -91,8 +89,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
     private String Worker1 = "";
     private String Worker2 = "";
     private String Worker3 = "";
-
-
 
 
 
@@ -1374,7 +1370,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
 
 
-
                 if (resultArray.length() < 1) { //데이터 없을때
                     if (!Worker1.equals(etT2Stir2WorkerNameScan.getText().toString())) {
                         etT2Stir2WorkerNameScan.requestFocus();
@@ -1463,8 +1458,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
                 JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
                 //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
-
-
 
                 if (resultArray.length() < 1) { //데이터 없을때
                     if (!Worker1.equals(etT2Stir3WorkerNameScan.getText().toString())) {
@@ -1579,7 +1572,6 @@ public class CombinationWorkActivity extends AppCompatActivity {
                             //ClearListView();
                             Toast.makeText(getApplicationContext(), "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
-
                             FileNoScanBH fileNoScanBH = new FileNoScanBH();
                             fileNoScanBH.execute(strSobId, strOrgId, etT2FileNoScan.getText().toString(), etH2XworkId.getText().toString()); //재조회
 
@@ -1603,7 +1595,5 @@ public class CombinationWorkActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
 }

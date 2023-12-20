@@ -90,6 +90,7 @@ public class RegisterProcessActivity extends AppCompatActivity {
     private boolean ScanModify = true;
     private boolean Mod_Flag = true;
     private String JobNo = "";
+    private String updateJobNo ;
 
 
     @Override
@@ -314,18 +315,18 @@ public class RegisterProcessActivity extends AppCompatActivity {
                             FileNoProcessListItem item = (FileNoProcessListItem)adapter.getItem(a);
                             if(item.getStrChk().equals("√")){
 
-                                if(item.getStrSplitFlag().equals("Y")){
+                                if(item.getStrSplitFlag().equals("Y")){ //SPLIT_FLAG 가 Y 이면 분할
 
                                     JOB_SPLIT_INSERT job_split_insert = new JOB_SPLIT_INSERT();
                                     job_split_insert.execute(strIp, strSobId,strOrgId, "" ,strUserId, "", item.getStrJobId() , "", item.getStrOperationSeqNo() , item.getStrOperationId(),
                                             item.getStrActualQty() , item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty() ,item.getStrActualQty(),
                                             strUserId,item.getStrOpPoiseOrderId(), item.getStrOpUnitOrderId());
 
-                                }else{
+                                }else{ //JOB_NOT_SPLIT_UPDATE 아니면 UPDATE
+                                    updateJobNo = item.getStrJobNo();
 
-                                    JobNo = item.getStrJobNo();
-                                    PROCESS_UPDATE pROCESS_UPDATE = new PROCESS_UPDATE();
-                                    pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, JobNo, etT9WorkcenterId.getText().toString() ,etT9MoveTrxType.getText().toString());
+                                    JOB_NOT_SPLIT_UPDATE job_not_split_update = new JOB_NOT_SPLIT_UPDATE();
+                                    job_not_split_update.execute(strIp, strSobId,strOrgId,item.getStrOperationId(),item.getStrJobId(),strUserId,item.getStrOpPoiseOrderId(), item.getStrOpUnitOrderId());
 
                                 }
 
@@ -547,7 +548,6 @@ public class RegisterProcessActivity extends AppCompatActivity {
         }
     }
     ////11-20 다훈 추가 끝
-
 
 
     // FILE_NO_SCAN
@@ -899,6 +899,108 @@ public class RegisterProcessActivity extends AppCompatActivity {
             }
         }
     }
+
+    protected class JOB_NOT_SPLIT_UPDATE extends AsyncTask<String, Void, String>
+    {
+        //final LuLoctionListAdapter luLoctionListAdapter = new LuLoctionListAdapter();
+        protected  String doInBackground(String... urls)
+        {
+            StringBuffer jsonHtml = new StringBuffer();
+
+            //서버로 보낼 데이터 설정
+            String search_title = "P_SOB_ID=" + urls[1]
+                    + "&P_ORG_ID=" + urls[2]
+                    + "&P_OPERATION_ID=" + urls[3]
+                    + "&P_JOB_ID=" + urls[4]
+                    + "&P_USER_ID=" + urls[5]
+                    + "&P_OP_POISE_ORDER_ID=" + urls[6]
+                    + "&P_OP_UNIT_ORDER_ID=" + urls[7]
+                    ;
+
+            try
+            {
+                //String ip = context.getApplicationContext().getResources().getString(R.string.ip);
+
+                URL obj = new URL("http://" + urls[0] + "/TAIYO/JobNotSplitUpdate.jsp"); //주소 지정
+
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
+                {
+                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(10000);
+                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
+                    conn.setDoInput(true);
+                    conn.connect(); //???
+
+                    //서버에 데이터 전달
+                    OutputStream out = conn.getOutputStream();
+                    out.write(search_title.getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
+
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
+                        while (true)
+                        {
+                            String line = br.readLine();
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                                break;
+                            jsonHtml.append(line);// + "\n");
+                        }
+                        br.close();
+                    }
+                    conn.disconnect();
+                }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return  jsonHtml.toString(); //결과값 리턴
+        }
+
+        @SuppressLint("ResourceAsColor")
+        protected void onPostExecute(String result)
+        {
+            //페이지 결과값 파싱
+            try
+            {
+                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
+                JSONArray jarray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+                JSONObject job = jarray.getJSONObject(0); //JSON 오브젝트 파싱
+
+                if(job.getString("P_RESULT_STATUS").equals("S")){
+                    showDialoag("false");
+
+                    PROCESS_UPDATE pROCESS_UPDATE = new PROCESS_UPDATE();
+                    pROCESS_UPDATE.execute(strIp,strSobId,strOrgId, strUserId, updateJobNo, etT9WorkcenterId.getText().toString() ,etT9MoveTrxType.getText().toString());
+
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "오류입니다"+ result, Toast.LENGTH_SHORT).show();
+                    showDialoag("false");
+                    return;
+                }
+
+
+
+            }catch (JSONException e)
+            {
+                e.printStackTrace();
+                showDialoag("false");
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                showDialoag("false");
+            }
+        }
+    }
+
+
+
+
     public void showDialoag(String result) {
 
         //  AlertDialog.Builder alert = new AlertDialog.Builder(MainReleaseVerson2Activity.this);

@@ -95,7 +95,7 @@ public class RegisterCombinationActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.combination_weighing_work2);
+        setContentView(R.layout.register_combination_work2);
 
 
         Intent intent = getIntent();
@@ -365,17 +365,19 @@ public class RegisterCombinationActivity extends AppCompatActivity {
                 etT2EquipmentScan.setText("");
                 etT2Stir1StartDate.setText("");
                 etT2Stir1EndDate.setText("");
-                etT2Stir1WorkerName.setText("");
                 etT2Stir2StartDate.setText("");
                 etT2Stir2EndDate.setText("");
-                etT2Stir2WorkerName.setText("");
                 etT2Stir3StartDate.setText("");
                 etT2Stir3EndDate.setText("");
-                etT2Stir3WorkerName.setText("");
                 etT2MixEndTime.setText("");
                 etT2Stir1WorkerNameScan.setText("");
                 etT2Stir2WorkerNameScan.setText("");
                 etT2Stir3WorkerNameScan.setText("");
+                etH2Stir1WorkerId.setText("");
+                etH2Stir2WorkerId.setText("");
+                etH2Stir3WorkerId.setText("");
+                etH2TankLcode.setText("");
+                etH2EquipmentId.setText("");
                 return false;
             }
         });
@@ -964,38 +966,49 @@ public class RegisterCombinationActivity extends AppCompatActivity {
 
 
 
-                    FileScan = false;
 
-                    if(etH2ModFlag.equals("N")){  //수정이 가능하지않으면 tape_null
 
-                        etT2FileNoScan.setInputType(InputType.TYPE_NULL);
-                        etT2OperaionDesc.setInputType(InputType.TYPE_NULL);
-                        etT2MixStartTime.setInputType(InputType.TYPE_NULL);
-                        etH2TankLcode.setInputType(InputType.TYPE_NULL);
-                        etT2MixTankDescScan.setInputType(InputType.TYPE_NULL);
-                        etH2EquipmentId.setInputType(InputType.TYPE_NULL);
-                        etT2EquipmentScan.setInputType(InputType.TYPE_NULL);
-                        etT2Stir1StartDate.setInputType(InputType.TYPE_NULL);
-                        etT2Stir1EndDate.setInputType(InputType.TYPE_NULL);
-                        etH2Stir1WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT2Stir1WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT2Stir2StartDate.setInputType(InputType.TYPE_NULL);
-                        etT2Stir2EndDate.setInputType(InputType.TYPE_NULL);
-                        etH2Stir2WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT2Stir2WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT2Stir3StartDate.setInputType(InputType.TYPE_NULL);
-                        etT2Stir3EndDate.setInputType(InputType.TYPE_NULL);
-                        etH2Stir3WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT2Stir3WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT2MixEndTime.setInputType(InputType.TYPE_NULL);
-                        etH2OperationId.setInputType(InputType.TYPE_NULL);
-                        etH2ModFlag.setInputType(InputType.TYPE_NULL);
+                    if(etH2ModFlag.getText().toString().equals("N")){  //수정이 가능하지않으면 tape_null
+
+                        etT2FileNoScan.setEnabled(false);
+                        etT2OperaionDesc.setEnabled(false);
+                        etT2MixStartTime.setEnabled(false);
+                        etH2TankLcode.setEnabled(false);
+                        etT2MixTankDescScan.setEnabled(false);
+                        etH2EquipmentId.setEnabled(false);
+                        etT2EquipmentScan.setEnabled(false);
+                        etT2Stir1StartDate.setEnabled(false);
+                        etT2Stir1EndDate.setEnabled(false);
+                        etH2Stir1WorkerId.setEnabled(false);
+                        etT2Stir1WorkerNameScan.setEnabled(false);
+                        etT2Stir2StartDate.setEnabled(false);
+                        etT2Stir2EndDate.setEnabled(false);
+                        etH2Stir2WorkerId.setEnabled(false);
+                        etT2Stir2WorkerNameScan.setEnabled(false);
+                        etT2Stir3StartDate.setEnabled(false);
+                        etT2Stir3EndDate.setEnabled(false);
+                        etH2Stir3WorkerId.setEnabled(false);
+                        etT2Stir3WorkerNameScan.setEnabled(false);
+                        etT2MixEndTime.setEnabled(false);
+                        etH2OperationId.setEnabled(false);
+                        etH2ModFlag.setEnabled(false);
+                        btnT2MixStartTime.setEnabled(false);
+                        btnT2MixEndTime.setEnabled(false);
+                        btnT2Stir1StartDate.setEnabled(false);
+                        btnT2Stir1EndDate.setEnabled(false);
+                        btnT2Stir2StartDate.setEnabled(false);
+                        btnT2Stir2EndDate.setEnabled(false);
+                        btnT2Stir3StartDate.setEnabled(false);
+                        btnT2Stir3EndDate.setEnabled(false);
+                        bT2Save.setEnabled(false);
+
+
 
                     }
                     //etT2MixTankDescScan.requestFocus();
                     //etT2MixTankDescScan.setFocusableInTouchMode(true);
 
-
+                FileScan = false;
 
 
 

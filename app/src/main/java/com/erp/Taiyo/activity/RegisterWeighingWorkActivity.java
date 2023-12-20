@@ -834,26 +834,37 @@ public class RegisterWeighingWorkActivity extends AppCompatActivity{
 
                 ScanModify = false;
 
-                if(t1ModeFlag.equals("N")){
+                if(t1ModeFlag.getText().toString().equals("N")){
 
-                    t1FileNo.setInputType(InputType.TYPE_NULL);
-                    t1ItemDesc.setInputType(InputType.TYPE_NULL);
-                    t1OperaionDesc.setInputType(InputType.TYPE_NULL);
-                    t1WorkStartTiem.setInputType(InputType.TYPE_NULL);
-                    t1TankLcode.setInputType(InputType.TYPE_NULL);
-                    t1TankScan.setInputType(InputType.TYPE_NULL);
-                    t1LiqidPersonId.setInputType(InputType.TYPE_NULL);
-                    t1LiqidPersonDesc.setInputType(InputType.TYPE_NULL);
-                    t1RiqidStartTime.setInputType(InputType.TYPE_NULL);
-                    t1RiqidEndTime.setInputType(InputType.TYPE_NULL);
-                    t1PowderPersonId.setInputType(InputType.TYPE_NULL);
-                    t1PowderPersonDesc.setInputType(InputType.TYPE_NULL);
-                    t1PowderStartTime.setInputType(InputType.TYPE_NULL);
-                    t1PowderEndTime.setInputType(InputType.TYPE_NULL);
-                    t1WorkEndTime.setInputType(InputType.TYPE_NULL);
-                    t1Job_id.setInputType(InputType.TYPE_NULL);
-                    t1OprationId.setInputType(InputType.TYPE_NULL);
-                    t1ModeFlag.setInputType(InputType.TYPE_NULL);
+                    t1FileNo.setEnabled(false);
+                    t1ItemDesc.setEnabled(false);
+                    t1OperaionDesc.setEnabled(false);
+                    t1WorkStartTiem.setEnabled(false);
+                    t1TankLcode.setEnabled(false);
+                    t1TankScan.setEnabled(false);
+                    t1LiqidPersonId.setEnabled(false);
+                    t1LiqidPersonDesc.setEnabled(false);
+                    t1RiqidStartTime.setEnabled(false);
+                    t1RiqidEndTime.setEnabled(false);
+                    t1PowderPersonId.setEnabled(false);
+                    t1PowderPersonDesc.setEnabled(false);
+                    t1PowderStartTime.setEnabled(false);
+                    t1PowderEndTime.setEnabled(false);
+                    t1WorkEndTime.setEnabled(false);
+                    t1Job_id.setEnabled(false);
+                    t1OprationId.setEnabled(false);
+                    t1ModeFlag.setEnabled(false);
+                    btnWorkStartTiem.setEnabled(false);
+                    btnRiqidStartTime.setEnabled(false);
+                    btnRiqidEndTime.setEnabled(false);
+                    btnPowderStartTime.setEnabled(false);
+                    btnPowderEndTime.setEnabled(false);
+                    btnWorkEndTime.setEnabled(false);
+                    btnHolding.setEnabled(false);
+                    btnt1save.setEnabled(false);
+
+
+
 
                 }
 

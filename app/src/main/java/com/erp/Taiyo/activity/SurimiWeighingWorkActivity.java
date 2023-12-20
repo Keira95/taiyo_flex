@@ -215,6 +215,35 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
             btnSave.setTextColor(Color.BLACK);
         }
     }
+    private void setModeFlag(boolean enabled) {
+        t3FileNo.setEnabled(enabled);
+        t3ItemDesc.setEnabled(enabled);
+        t3OperaionDesc.setEnabled(enabled);
+        t3LastSurimiCount.setEnabled(enabled);
+        t3Surimi1StartTime.setEnabled(enabled);
+        t3TankScan.setEnabled(enabled);
+        t3OillerDesc.setEnabled(enabled);
+        t3LiqidPersonDesc.setEnabled(enabled);
+        t3Surimi1EndTime.setEnabled(enabled);
+        t3Surimi2StartTime.setEnabled(enabled);
+        t3Surimi2EndTime.setEnabled(enabled);
+        t3EquimentId.setEnabled(enabled);
+        t3OillerId.setEnabled(enabled);
+        t3IndicatorUserId.setEnabled(enabled);
+        t3TankCode.setEnabled(enabled);
+        t3JobId.setEnabled(enabled);
+        t3ModFlag.setEnabled(enabled);
+        t3OperationId.setEnabled(enabled);
+        btnLastSurimiCount.setEnabled(enabled);
+        btnSurimi1StartTime.setEnabled(enabled);
+        btnOillerLookup.setEnabled(enabled);
+        btnSurimi1EndTime.setEnabled(enabled);
+        btnSurimi2StartTime.setEnabled(enabled);
+        btnSurimi2EndTime.setEnabled(enabled);
+        btnSave.setEnabled(enabled);
+        btnHolding.setEnabled(enabled);
+    }
+
 
     private void ClearView(){
         t3FileNo.setText("");
@@ -834,37 +863,7 @@ public class SurimiWeighingWorkActivity extends AppCompatActivity {
                 ScanModify = false;
 
                 if(t3ModFlag.getText().toString().equals("N")){
-                    t3FileNo.setEnabled(false);
-                    t3ItemDesc.setEnabled(false);
-                    t3OperaionDesc.setEnabled(false);
-                    t3LastSurimiCount.setEnabled(false);
-                    t3Surimi1StartTime.setEnabled(false);
-                    t3TankScan.setEnabled(false);
-                    t3OillerDesc.setEnabled(false);
-                    t3LiqidPersonDesc.setEnabled(false);
-                    t3Surimi1EndTime.setEnabled(false);
-                    t3Surimi2StartTime.setEnabled(false);
-                    t3Surimi2EndTime.setEnabled(false);
-                    t3EquimentId.setEnabled(false);
-                    t3OillerId.setEnabled(false);
-                    t3IndicatorUserId.setEnabled(false);
-                    t3TankCode.setEnabled(false);
-                    t3JobId.setEnabled(false);
-                    t3ModFlag.setEnabled(false);
-                    t3OperationId.setEnabled(false);
-                    btnLastSurimiCount.setEnabled(false);
-                    btnSurimi1StartTime.setEnabled(false);
-                    btnOillerLookup.setEnabled(false);
-                    btnSurimi1EndTime.setEnabled(false);
-
-
-
-                    btnSurimi1EndTime = (Button) findViewById(R.id.btn_t3_surimi1_end_time);
-                    btnSurimi2StartTime = (Button) findViewById(R.id.btn_t3_surimi2_start_time);
-                    btnSurimi2EndTime= (Button) findViewById(R.id.btn_t3_surimi2_end_time);
-                    btnSave= (Button) findViewById(R.id.btn_t3_save);
-                    btnHolding = (Button) findViewById(R.id.btn_t3_holding);
-
+                    setModeFlag(false);
                 }
 
             }catch (JSONException e)

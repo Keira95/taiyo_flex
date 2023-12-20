@@ -440,7 +440,32 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
             btnt4save.setTextColor(Color.BLACK);
         }
     }
-
+    private void setModeFlag(boolean enabled) {
+        t4FileNo.setEnabled(enabled);
+        t4ItemDesc.setEnabled(enabled);
+        t4OperaionDesc.setEnabled(enabled);
+        t4OpOrderSeq.setEnabled(enabled);
+        t4Jojung1.setEnabled(enabled);
+        t4Jojung2.setEnabled(enabled);
+        t4OrderQty1.setEnabled(enabled);
+        t4OrderQty2.setEnabled(enabled);
+        t4PoiseSubSeq.setEnabled(enabled);
+        t4EquipmentDesc.setEnabled(enabled);
+        t4WorkStartDate.setEnabled(enabled);
+        t4WorkEndDate.setEnabled(enabled);
+        t4WorkerDesc.setEnabled(enabled);
+        t4EquipmentId.setEnabled(enabled);
+        t4WorkerId.setEnabled(enabled);
+        t4OpOrderId.setEnabled(enabled);
+        t4JobId.setEnabled(enabled);
+        t4OperationId.setEnabled(enabled);
+        t4OpPoiseOrderId.setEnabled(enabled);
+        t4ModFlag.setEnabled(enabled);
+        btnWorkStartDate.setEnabled(enabled);
+        btnWorkEndDate.setEnabled(enabled);
+        btnHolding.setEnabled(enabled);
+        btnt4save.setEnabled(enabled);
+    }
     private void ClearView(){
         t4FileNo.setText("");
         t4ItemDesc.setText("");
@@ -737,29 +762,8 @@ public class RegisterAdjustmentActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                if(t4ModFlag.equals("N")){
-
-                    t4FileNo.setInputType(InputType.TYPE_NULL);
-                    t4ItemDesc.setInputType(InputType.TYPE_NULL);
-                    t4OperaionDesc.setInputType(InputType.TYPE_NULL);
-                    t4OpOrderSeq.setInputType(InputType.TYPE_NULL);
-                    t4Jojung1.setInputType(InputType.TYPE_NULL);
-                    t4Jojung2.setInputType(InputType.TYPE_NULL);
-                    t4OrderQty1.setInputType(InputType.TYPE_NULL);
-                    t4OrderQty2.setInputType(InputType.TYPE_NULL);
-                    t4PoiseSubSeq.setInputType(InputType.TYPE_NULL);
-                    t4EquipmentDesc.setInputType(InputType.TYPE_NULL);
-                    t4WorkStartDate.setInputType(InputType.TYPE_NULL);
-                    t4WorkEndDate.setInputType(InputType.TYPE_NULL);
-                    t4WorkerDesc.setInputType(InputType.TYPE_NULL);
-                    t4EquipmentId.setInputType(InputType.TYPE_NULL);
-                    t4WorkerId.setInputType(InputType.TYPE_NULL);
-                    t4OpOrderId.setInputType(InputType.TYPE_NULL);
-                    t4JobId.setInputType(InputType.TYPE_NULL);
-                    t4OperationId.setInputType(InputType.TYPE_NULL);
-                    t4OpPoiseOrderId.setInputType(InputType.TYPE_NULL);
-                    t4ModFlag.setInputType(InputType.TYPE_NULL);
-
+                if(t4ModFlag.getText().toString().equals("N")){
+                    setModeFlag(false);
                 }
 
             }catch (JSONException e)

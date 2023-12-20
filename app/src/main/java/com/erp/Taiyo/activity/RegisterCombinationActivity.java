@@ -592,6 +592,41 @@ public class RegisterCombinationActivity extends AppCompatActivity {
         });
     }
 
+    private void setModeFlag(boolean enabled) {
+        etT2FileNoScan.setEnabled(enabled);
+        etT2OperaionDesc.setEnabled(enabled);
+        etT2MixStartTime.setEnabled(enabled);
+        etH2TankLcode.setEnabled(enabled);
+        etT2MixTankDescScan.setEnabled(enabled);
+        etH2EquipmentId.setEnabled(enabled);
+        etT2EquipmentScan.setEnabled(enabled);
+        etT2Stir1StartDate.setEnabled(enabled);
+        etT2Stir1EndDate.setEnabled(enabled);
+        etH2Stir1WorkerId.setEnabled(enabled);
+        etT2Stir1WorkerNameScan.setEnabled(enabled);
+        etT2Stir2StartDate.setEnabled(enabled);
+        etT2Stir2EndDate.setEnabled(enabled);
+        etH2Stir2WorkerId.setEnabled(enabled);
+        etT2Stir2WorkerNameScan.setEnabled(enabled);
+        etT2Stir3StartDate.setEnabled(enabled);
+        etT2Stir3EndDate.setEnabled(enabled);
+        etH2Stir3WorkerId.setEnabled(enabled);
+        etT2Stir3WorkerNameScan.setEnabled(enabled);
+        etT2MixEndTime.setEnabled(enabled);
+        etH2OperationId.setEnabled(enabled);
+        etH2ModFlag.setEnabled(enabled);
+        btnT2MixStartTime.setEnabled(enabled);
+        btnT2MixEndTime.setEnabled(enabled);
+        btnT2Stir1StartDate.setEnabled(enabled);
+        btnT2Stir1EndDate.setEnabled(enabled);
+        btnT2Stir2StartDate.setEnabled(enabled);
+        btnT2Stir2EndDate.setEnabled(enabled);
+        btnT2Stir3StartDate.setEnabled(enabled);
+        btnT2Stir3EndDate.setEnabled(enabled);
+        bT2Save.setEnabled(enabled);
+        btnHolding.setEnabled(enabled);
+    }
+
     private String getNowDate() {
 
         long now = System.currentTimeMillis();
@@ -962,51 +997,10 @@ public class RegisterCombinationActivity extends AppCompatActivity {
                     etT2MixTankDescScan.requestFocus();
                 }
 
-
-
-
-
-
-
-                    if(etH2ModFlag.getText().toString().equals("N")){  //수정이 가능하지않으면 tape_null
-
-                        etT2FileNoScan.setEnabled(false);
-                        etT2OperaionDesc.setEnabled(false);
-                        etT2MixStartTime.setEnabled(false);
-                        etH2TankLcode.setEnabled(false);
-                        etT2MixTankDescScan.setEnabled(false);
-                        etH2EquipmentId.setEnabled(false);
-                        etT2EquipmentScan.setEnabled(false);
-                        etT2Stir1StartDate.setEnabled(false);
-                        etT2Stir1EndDate.setEnabled(false);
-                        etH2Stir1WorkerId.setEnabled(false);
-                        etT2Stir1WorkerNameScan.setEnabled(false);
-                        etT2Stir2StartDate.setEnabled(false);
-                        etT2Stir2EndDate.setEnabled(false);
-                        etH2Stir2WorkerId.setEnabled(false);
-                        etT2Stir2WorkerNameScan.setEnabled(false);
-                        etT2Stir3StartDate.setEnabled(false);
-                        etT2Stir3EndDate.setEnabled(false);
-                        etH2Stir3WorkerId.setEnabled(false);
-                        etT2Stir3WorkerNameScan.setEnabled(false);
-                        etT2MixEndTime.setEnabled(false);
-                        etH2OperationId.setEnabled(false);
-                        etH2ModFlag.setEnabled(false);
-                        btnT2MixStartTime.setEnabled(false);
-                        btnT2MixEndTime.setEnabled(false);
-                        btnT2Stir1StartDate.setEnabled(false);
-                        btnT2Stir1EndDate.setEnabled(false);
-                        btnT2Stir2StartDate.setEnabled(false);
-                        btnT2Stir2EndDate.setEnabled(false);
-                        btnT2Stir3StartDate.setEnabled(false);
-                        btnT2Stir3EndDate.setEnabled(false);
-                        bT2Save.setEnabled(false);
-
-
-
+                    if(etH2ModFlag.getText().toString().equals("N")){
+                        setModeFlag(false);
                     }
-                    //etT2MixTankDescScan.requestFocus();
-                    //etT2MixTankDescScan.setFocusableInTouchMode(true);
+
 
                 FileScan = false;
 

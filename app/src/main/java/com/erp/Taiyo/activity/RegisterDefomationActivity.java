@@ -250,6 +250,29 @@ public class RegisterDefomationActivity extends AppCompatActivity {
         });
     }
 
+    private void setModeFlag(boolean enabled) {
+        etT7FileNoScan.setEnabled(enabled);
+        etT7ItemDesc.setEnabled(enabled);
+        etT7OpOrderSeq.setEnabled(enabled);
+        etT7StartDate.setEnabled(enabled);
+        etT7TankLcode.setEnabled(enabled);
+        etT7TankDesc.setEnabled(enabled);
+        etT7EquipmentId.setEnabled(enabled);
+        etT7EquipmentName.setEnabled(enabled);
+        etT7WorkerId.setEnabled(enabled);
+        etT7WorkerName.setEnabled(enabled);
+        etT7EndDate.setEnabled(enabled);
+        etT7JobId.setEnabled(enabled);
+        etT7OperationId.setEnabled(enabled);
+        etT7ModFlag.setEnabled(enabled);
+        btnT7StartDate.setEnabled(enabled);
+        btnT7EndDate.setEnabled(enabled);
+        btnt7save.setEnabled(enabled);
+        btnHolding.setEnabled(enabled);
+
+    }
+
+
     private void saveColorChange() {
         if (ScanModify==false) {
             btnt7save.setBackgroundColor(Color.YELLOW);
@@ -715,24 +738,8 @@ public class RegisterDefomationActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                if(etT7ModFlag.equals("N")){
-
-                    etT7FileNoScan.setInputType(InputType.TYPE_NULL);
-                    etT7ItemDesc.setInputType(InputType.TYPE_NULL);
-                    etT7OperaionDesc.setInputType(InputType.TYPE_NULL);
-                    etT7OpOrderSeq.setInputType(InputType.TYPE_NULL);
-                    etT7StartDate.setInputType(InputType.TYPE_NULL);
-                    etT7TankLcode.setInputType(InputType.TYPE_NULL);
-                    etT7TankDesc.setInputType(InputType.TYPE_NULL);
-                    etT7EquipmentId.setInputType(InputType.TYPE_NULL);
-                    etT7EquipmentName.setInputType(InputType.TYPE_NULL);
-                    etT7WorkerId.setInputType(InputType.TYPE_NULL);
-                    etT7WorkerName.setInputType(InputType.TYPE_NULL);
-                    etT7EndDate.setInputType(InputType.TYPE_NULL);
-                    etT7JobId.setInputType(InputType.TYPE_NULL);
-                    etT7OperationId.setInputType(InputType.TYPE_NULL);
-                    etT7ModFlag.setInputType(InputType.TYPE_NULL);
-
+                if(etT7ModFlag.getText().toString().equals("N")){
+                    setModeFlag(false);
                 }
             }catch (JSONException e)
             {

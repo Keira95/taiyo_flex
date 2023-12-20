@@ -492,7 +492,32 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
         });
     }
-
+    private void setModeFlag(boolean enabled) {
+        t5FileNo.setEnabled(enabled);
+        t5ItemDesc.setEnabled(enabled);
+        t5operaionDesc.setEnabled(enabled);
+        t5OpOrderSeq.setEnabled(enabled);
+        t5OpUnitOrderSeq.setEnabled(enabled);
+        t5PackingUnit.setEnabled(enabled);
+        t5Request_qty.setEnabled(enabled);
+        t5UnitQty.setEnabled(enabled);
+        t5LotNo.setEnabled(enabled);
+        t5StirEquipmentDesc.setEnabled(enabled);
+        t5StirStartDate.setEnabled(enabled);
+        t5StirEndDate.setEnabled(enabled);
+        t5UnitEquipmentDesc.setEnabled(enabled);
+        t5UnitStartDate.setEnabled(enabled);
+        t5UnitEndDate.setEnabled(enabled);
+        t5PumpNoDes.setEnabled(enabled);
+        t5WorkerDesc.setEnabled(enabled);
+        t5ModFlag.setEnabled(enabled);
+        btnStirStarDate.setEnabled(enabled);
+        btnStirEndDate.setEnabled(enabled);
+        btnUnitStartDate.setEnabled(enabled);
+        btnUnitEndDate.setEnabled(enabled);
+        btnSave.setEnabled(enabled);
+        btnHolding.setEnabled(enabled);
+    }
     //저장버튼 색 바꾸는 함수
     private void saveColorChange() {
         if (ScanModify==false) {
@@ -854,34 +879,8 @@ public class RegisterPackingActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                if(t5ModFlag.equals("N")){
-                    t5FileNo.setInputType(InputType.TYPE_NULL);
-                    t5ItemDesc.setInputType(InputType.TYPE_NULL);
-                    t5operaionDesc.setInputType(InputType.TYPE_NULL);
-                    t5OpOrderSeq.setInputType(InputType.TYPE_NULL);
-                    t5OpUnitOrderSeq.setInputType(InputType.TYPE_NULL);
-                    t5PackingUnit.setInputType(InputType.TYPE_NULL);
-                    t5Request_qty.setInputType(InputType.TYPE_NULL);
-                    t5UnitQty.setInputType(InputType.TYPE_NULL);
-                    t5LotNo.setInputType(InputType.TYPE_NULL);
-                    t5StirEquipmentDesc.setInputType(InputType.TYPE_NULL);
-                    t5StirStartDate.setInputType(InputType.TYPE_NULL);
-                    t5StirEndDate.setInputType(InputType.TYPE_NULL);
-                    t5UnitEquipmentDesc.setInputType(InputType.TYPE_NULL);
-                    t5UnitStartDate.setInputType(InputType.TYPE_NULL);
-                    t5UnitEndDate.setInputType(InputType.TYPE_NULL);
-                    t5PumpNoDes.setInputType(InputType.TYPE_NULL);
-                    t5StirEquipmentId.setInputType(InputType.TYPE_NULL);
-                    t5UnitEquipmentId.setInputType(InputType.TYPE_NULL);
-                    t5WorkerId.setInputType(InputType.TYPE_NULL);
-                    t5PumpNoCode.setInputType(InputType.TYPE_NULL);
-                    t5WorkerDesc.setInputType(InputType.TYPE_NULL);
-                    t5JobId.setInputType(InputType.TYPE_NULL);
-                    t5OperationId.setInputType(InputType.TYPE_NULL);
-                    t5OpUnitOrderId.setInputType(InputType.TYPE_NULL);
-                    t5ModFlag.setInputType(InputType.TYPE_NULL);
-
-
+                if(t5ModFlag.getText().toString().equals("N")){
+                    setModeFlag(false);
                 }
             }catch (JSONException e)
             {

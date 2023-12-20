@@ -652,6 +652,61 @@ public class RegisterResponseActivity extends AppCompatActivity{
         });
     }
 
+    private void setModeFlag(boolean enabled) {
+        etT6FileNoScan.setEnabled(enabled);
+        etT6StartTime.setEnabled(enabled);
+        etT6ItemDesc.setEnabled(enabled);
+        etT6OperaionDesc.setEnabled(enabled);
+        etT6TankDesc.setEnabled(enabled);
+        etT6EquipmentName.setEnabled(enabled);
+        etT6Stir1StartDate.setEnabled(enabled);
+        etT6Stir2StartDate.setEnabled(enabled);
+        etT6Stir3StartDate.setEnabled(enabled);
+        etT6Stir4StartDate.setEnabled(enabled);
+        etT6Stir5StartDate.setEnabled(enabled);
+        etT6Stir1EndDate.setEnabled(enabled);
+        etT6Stir2EndDate.setEnabled(enabled);
+        etT6Stir3EndDate.setEnabled(enabled);
+        etT6Stir4EndDate.setEnabled(enabled);
+        etT6Stir5EndDate.setEnabled(enabled);
+        etT6Stir1WorkerName.setEnabled(enabled);
+        etT6Stir2WorkerName.setEnabled(enabled);
+        etT6Stir3WorkerName.setEnabled(enabled);
+        etT6Stir4WorkerName.setEnabled(enabled);
+        etT6Stir5WorkerName.setEnabled(enabled);
+        etT6EndTime.setEnabled(enabled);
+        etT6WorkercenterId.setEnabled(enabled);
+        etT6WorkercenterCode.setEnabled(enabled);
+        etT6WorkercenterDesc.setEnabled(enabled);
+        etT6TankId.setEnabled(enabled);
+        etT6TankCode.setEnabled(enabled);
+        etT6EquipmentCode.setEnabled(enabled);
+        etT6OldEquipmentName.setEnabled(enabled);
+        etT6EquipmentId.setEnabled(enabled);
+        etT6WorkerHidden.setEnabled(enabled);
+        etT6Stir1WorkerId.setEnabled(enabled);
+        etT6Stir2WorkerId.setEnabled(enabled);
+        etT6Stir3WorkerId.setEnabled(enabled);
+        etT6Stir4WorkerId.setEnabled(enabled);
+        etT6Stir5WorkerId.setEnabled(enabled);
+        etT6ModFlag.setEnabled(enabled);
+        etT6JobId.setEnabled(enabled);
+        etT6OperationId.setEnabled(enabled);
+        btnT6StartTime.setEnabled(enabled);
+        btnT6Stir1StartDate.setEnabled(enabled);
+        btnT6Stir2StartDate.setEnabled(enabled);
+        btnT6Stir3StartDate.setEnabled(enabled);
+        btnT6Stir4StartDate.setEnabled(enabled);
+        btnT6Stir5StartDate.setEnabled(enabled);
+        btnT6Stir1EndDate.setEnabled(enabled);
+        btnT6Stir2EndDate.setEnabled(enabled);
+        btnT6Stir3EndDate.setEnabled(enabled);
+        btnT6Stir4EndDate.setEnabled(enabled);
+        btnT6Stir5EndDate.setEnabled(enabled);
+        btnT6EndTime.setEnabled(enabled);
+        btnt6save.setEnabled(enabled);
+        btnHolding.setEnabled(enabled);
+    }
     //저장버튼 색 바꾸는 함수
     private void saveColorChange() {
         if (ScanModify==false) {
@@ -1393,47 +1448,8 @@ public class RegisterResponseActivity extends AppCompatActivity{
 
                 etT6TankDesc.requestFocus();
 
-                    if(etT6ModFlag.equals("N")){
-
-                        etT6FileNoScan.setInputType(InputType.TYPE_NULL);
-                        etT6StartTime.setInputType(InputType.TYPE_NULL);
-                        etT6ItemDesc.setInputType(InputType.TYPE_NULL);
-                        etT6OperaionDesc.setInputType(InputType.TYPE_NULL);
-                        etT6TankDesc.setInputType(InputType.TYPE_NULL);
-                        etT6EquipmentName.setInputType(InputType.TYPE_NULL);
-                        etT6Stir1StartDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir2StartDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir3StartDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir4StartDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir5StartDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir1EndDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir2EndDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir3EndDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir4EndDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir5EndDate.setInputType(InputType.TYPE_NULL);
-                        etT6Stir1WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT6Stir2WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT6Stir3WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT6Stir4WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT6Stir5WorkerName.setInputType(InputType.TYPE_NULL);
-                        etT6EndTime.setInputType(InputType.TYPE_NULL);
-                        etT6WorkercenterId.setInputType(InputType.TYPE_NULL);
-                        etT6WorkercenterCode.setInputType(InputType.TYPE_NULL);
-                        etT6WorkercenterDesc.setInputType(InputType.TYPE_NULL);
-                        etT6TankId.setInputType(InputType.TYPE_NULL);
-                        etT6TankCode.setInputType(InputType.TYPE_NULL);
-                        etT6EquipmentCode.setInputType(InputType.TYPE_NULL);
-                        etT6OldEquipmentName.setInputType(InputType.TYPE_NULL);
-                        etT6EquipmentId.setInputType(InputType.TYPE_NULL);
-                        etT6WorkerHidden.setInputType(InputType.TYPE_NULL);
-                        etT6Stir1WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT6Stir2WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT6Stir3WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT6Stir4WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT6Stir5WorkerId.setInputType(InputType.TYPE_NULL);
-                        etT6ModFlag.setInputType(InputType.TYPE_NULL);
-                        etT6JobId.setInputType(InputType.TYPE_NULL);
-                        etT6OperationId.setInputType(InputType.TYPE_NULL);
+                    if(etT6ModFlag.getText().toString().equals("N")){
+                        setModeFlag(false);
                     }
 
 

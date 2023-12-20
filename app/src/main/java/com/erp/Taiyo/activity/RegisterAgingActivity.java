@@ -193,6 +193,34 @@ public class RegisterAgingActivity extends AppCompatActivity {
         });
     }
 
+    private void setModeFlag(boolean enabled) {
+        t8FileNoScan.setEnabled(enabled);
+        t8ItemDesc.setEnabled(enabled);
+        t8OperaionDesc.setEnabled(enabled);
+        t8StartDate.setEnabled(enabled);
+        t8TankDesc.setEnabled(enabled);
+        t8EquipmentName.setEnabled(enabled);
+        t8StirWorkerName.setEnabled(enabled);
+        t8EndDate.setEnabled(enabled);
+        t8TankCode.setEnabled(enabled);
+        t8EquipmentId.setEnabled(enabled);
+        t8StirWorker1Id.setEnabled(enabled);
+        t8JobId.setEnabled(enabled);
+        t8OperationId.setEnabled(enabled);
+        t8ModFlag.setEnabled(enabled);
+        t8WorkcenterDesc.setEnabled(enabled);
+        t8WorkcenterCode.setEnabled(enabled);
+        t8WorkcenterId.setEnabled(enabled);
+        t8TankId.setEnabled(enabled);
+        t8OldEquipmentName.setEnabled(enabled);
+        t8EquipmentCode.setEnabled(enabled);
+        btnt8StartDate.setEnabled(enabled);
+        btnt8EndDate.setEnabled(enabled);
+        btnt8Save.setEnabled(enabled);
+        btnHolding.setEnabled(enabled);
+    }
+
+
     private void saveColorChange() {
         if (ScanModify==false) {
             btnt8Save.setBackgroundColor(Color.YELLOW);
@@ -1018,28 +1046,8 @@ public class RegisterAgingActivity extends AppCompatActivity {
 
                 ScanModify = false;
 
-                if(t8ModFlag.equals("N")){
-                    t8FileNoScan.setInputType(InputType.TYPE_NULL);
-                    t8ItemDesc.setInputType(InputType.TYPE_NULL);
-                    t8OperaionDesc.setInputType(InputType.TYPE_NULL);
-                    t8StartDate.setInputType(InputType.TYPE_NULL);
-                    t8TankDesc.setInputType(InputType.TYPE_NULL);
-                    t8EquipmentName.setInputType(InputType.TYPE_NULL);
-                    t8StirWorkerName.setInputType(InputType.TYPE_NULL);
-                    t8EndDate.setInputType(InputType.TYPE_NULL);
-                    t8TankCode.setInputType(InputType.TYPE_NULL);
-                    t8EquipmentId.setInputType(InputType.TYPE_NULL);
-                    t8StirWorker1Id.setInputType(InputType.TYPE_NULL);
-                    t8JobId.setInputType(InputType.TYPE_NULL);
-                    t8OperationId.setInputType(InputType.TYPE_NULL);
-                    t8ModFlag.setInputType(InputType.TYPE_NULL);
-                    t8WorkcenterDesc.setInputType(InputType.TYPE_NULL);
-                    t8WorkcenterCode.setInputType(InputType.TYPE_NULL);
-                    t8WorkcenterId.setInputType(InputType.TYPE_NULL);
-                    t8TankId.setInputType(InputType.TYPE_NULL);
-                    t8OldEquipmentName.setInputType(InputType.TYPE_NULL);
-                    t8EquipmentCode.setInputType(InputType.TYPE_NULL);
-
+                if(t8ModFlag.getText().toString().equals("N")){
+                    setModeFlag(false);
                 }
 
             }catch (JSONException e)

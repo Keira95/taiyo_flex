@@ -1,20 +1,17 @@
 package com.erp.Taiyo;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 
-import com.erp.Taiyo.activity.CombinationWorkActivity;
+import com.erp.Taiyo.activity.RegisterCombinationActivity;
 
 import com.erp.Taiyo.activity.RegisterAdjustmentActivity;
 import com.erp.Taiyo.activity.RegisterAgingActivity;
@@ -26,12 +23,9 @@ import com.erp.Taiyo.activity.RegisterWeighingWorkActivity;
 import com.erp.Taiyo.activity.SearchActivity;
 import com.erp.Taiyo.activity.SurimiWeighingWorkActivity;
 import com.erp.Taiyo.adapter.DbMenuListAdapter;
-import com.erp.Taiyo.adapter.FileNoProcessAdapter;
 import com.erp.Taiyo.adapter.MenuButtonAdapter;
 import com.erp.Taiyo.adapter.MenuListAdapter;
-import com.erp.Taiyo.adapter.DbMenuListAdapter;
 import com.erp.Taiyo.item.DbMenuListItem;
-import com.erp.Taiyo.item.FileNoProcessListItem;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
@@ -63,11 +57,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import cz.msebera.android.httpclient.HttpResponse;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
 public class MenuActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
@@ -309,7 +299,7 @@ public class MenuActivity extends AppCompatActivity {
             intentMat = new Intent(MenuActivity.this, RegisterWeighingWorkActivity.class);
 
         }else if(TopMenuId.equals("10001")){ //배합
-            intentMat = new Intent(MenuActivity.this, CombinationWorkActivity.class);
+            intentMat = new Intent(MenuActivity.this, RegisterCombinationActivity.class);
 
         }else if(TopMenuId.equals("10002")){ //연육
             intentMat = new Intent(MenuActivity.this, SurimiWeighingWorkActivity.class);

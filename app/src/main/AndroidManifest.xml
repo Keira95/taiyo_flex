@@ -62,7 +62,7 @@
         <activity android:name="com.erp.Taiyo.activity.RegisterAdjustmentActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name="com.erp.Taiyo.activity.CombinationWorkActivity"
+        <activity android:name="com.erp.Taiyo.activity.RegisterCombinationActivity"
             android:screenOrientation="portrait"
             />
         <activity android:name="com.erp.Taiyo.activity.RegisterPackingActivity"

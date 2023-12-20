@@ -34,11 +34,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,7 +43,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 
-public class CombinationWorkActivity extends AppCompatActivity {
+public class RegisterCombinationActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     String strIp, strUserName, strUserId, SDate, strMenuDesc;
@@ -279,8 +276,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (getCurrentFocus() == etT2Stir1WorkerNameScan && !s.toString().isEmpty() && s != null && etH2Stir1WorkerId.getText().toString().equals("")) {
 
-                        LuWorker luWorker = new LuWorker();
-                        luWorker.execute(strSobId, strOrgId, etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
+                        LU_WORKER luWorker = new LU_WORKER();
+                        etH2HiddenWorker.setText("worker1");
+                        luWorker.execute(strIp, strSobId, strOrgId, etH2XworkId.getText().toString(), etT2Stir1WorkerNameScan.getText().toString());
 
                 }else{
                     return;
@@ -302,8 +300,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (getCurrentFocus() == etT2Stir2WorkerNameScan && !s.toString().isEmpty() && s != null && etH2Stir2WorkerId.getText().toString().equals("")) {
 
-                    LuWorker2 luWorker2 = new LuWorker2();
-                    luWorker2.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
+                    LU_WORKER luWorker = new LU_WORKER();
+                    etH2HiddenWorker.setText("worker2");
+                    luWorker.execute(strIp, strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir2WorkerNameScan.getText().toString());
 
 
 
@@ -328,9 +327,9 @@ public class CombinationWorkActivity extends AppCompatActivity {
 
                 if (getCurrentFocus() == etT2Stir3WorkerNameScan && !s.toString().isEmpty() && s != null && etH2Stir3WorkerId.getText().toString().equals("")) {
 
-                    LuWorker3 luWorker3 = new LuWorker3();
-                    luWorker3.execute(strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir3WorkerNameScan.getText().toString());
-
+                    LU_WORKER luWorker = new LU_WORKER();
+                    etH2HiddenWorker.setText("worker3");
+                    luWorker.execute(strIp, strSobId, strOrgId,etH2XworkId.getText().toString(), etT2Stir3WorkerNameScan.getText().toString());
 
                 }else{
                     return;
@@ -349,7 +348,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     return;
                 }
 
-                HoldingDialog holdingDialog = new HoldingDialog(CombinationWorkActivity.this);
+                HoldingDialog holdingDialog = new HoldingDialog(RegisterCombinationActivity.this);
                 holdingDialog.call_Level_Dialog(etT2FileNoScan, strIp , strUserId, etH2OperationId,etH2JobId);
             }
         });
@@ -530,7 +529,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                LuComLatelyDialog luComLatelyDialog = new LuComLatelyDialog(CombinationWorkActivity.this);
+                LuComLatelyDialog luComLatelyDialog = new LuComLatelyDialog(RegisterCombinationActivity.this);
                 luComLatelyDialog.call_Lately_Dialog(strIp, strSobId, strOrgId, etT2FileNoScan);  //가져오는거 다시 보기
             }
         });
@@ -539,7 +538,7 @@ public class CombinationWorkActivity extends AppCompatActivity {
         bT2Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(CombinationWorkActivity.this);
+                AlertDialog.Builder alert = new AlertDialog.Builder(RegisterCombinationActivity.this);
                 alert.setTitle("저장");
                 alert.setMessage("저장하시겠습니까?");
                 alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -1220,23 +1219,25 @@ public class CombinationWorkActivity extends AppCompatActivity {
         }
 
     }
-
-    protected class LuWorker extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... urls) {
+    protected class LU_WORKER extends AsyncTask<String, Void, String>
+    {
+        protected  String doInBackground(String... urls)
+        {
             StringBuffer jsonHtml = new StringBuffer();
 
             //서버로 보낼 데이터 설정
-            String search_title = "W_SOB_ID=" + urls[0]
-                    + "&W_ORG_ID=" + urls[1]
-                    + "&W_WORKCENTER_ID=" + urls[2]
-                    + "&W_BARCODE=" + urls[3];
-            try {
-                URL obj = new URL("http://"+strIp+"/TAIYO/LuWorker.jsp"); //주소 지정
+            String search_title = "W_SOB_ID=" + urls[1]
+                    + "&W_ORG_ID=" + urls[2]
+                    + "&W_WORKCENTER_ID=" + urls[3]
+                    + "&W_BARCODE=" +urls[4]
+                    ;
 
-                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
+            try
+            {  URL obj = new URL("http://" + urls[0] + "/TAIYO/LuWorker.jsp"); //주소 지정
 
-                if (conn != null) //
+                HttpURLConnection conn = (HttpURLConnection)obj.openConnection(); //지정된 주소로 연결
+
+                if(conn != null) //
                 {
                     conn.setReadTimeout(5000);
                     conn.setConnectTimeout(10000);
@@ -1250,12 +1251,13 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     out.flush();
                     out.close();
 
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
                     {
                         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
-                        while (true) {
+                        while (true)
+                        {
                             String line = br.readLine();
-                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
+                            if(line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
                                 break;
                             jsonHtml.append(line);// + "\n");
                         }
@@ -1263,226 +1265,76 @@ public class CombinationWorkActivity extends AppCompatActivity {
                     }
                     conn.disconnect();
                 }
-
-            } catch (Exception e) {
+            }catch (Exception e)
+            {
                 e.printStackTrace();
             }
-
-            return jsonHtml.toString(); //결과값 리턴
+            return  jsonHtml.toString(); //결과값 리턴
         }
 
-        protected void onPostExecute(String result) {
+
+        protected void onPostExecute(String result)
+        {
             //페이지 결과값 파싱
-
-
-            try {
-
+            try
+            {
                 JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
-                JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
+                JSONArray jarrayWorkLevel = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
 
-                //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
-
-
-
-                if (resultArray.length() < 1) { //데이터 없을때
-                    if (!Worker1.equals(etT2Stir1WorkerNameScan.getText().toString())) {
+                if(jarrayWorkLevel.length() < 1){
+                    if(etH2HiddenWorker.getText().toString().equals("worker1") && !Worker1.equals(etT2Stir1WorkerNameScan.getText().toString()))
+                    {
                         etT2Stir1WorkerNameScan.requestFocus();
                         etT2Stir1WorkerNameScan.setText("");
-                    }
-                }else{
-                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                    String status = job.getString("Status");
-
-                    if (status.equals("S")) {
-                        etH2Stir1WorkerId.setText(job.getString("USER_ID"));
-                        etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
-
-                        saveColorChange();
-                }
-                    etT2Stir2WorkerNameScan.requestFocus();
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    protected class LuWorker2 extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... urls) {
-            StringBuffer jsonHtml = new StringBuffer();
-
-            //서버로 보낼 데이터 설정
-            String search_title = "W_SOB_ID=" + urls[0]
-                    + "&W_ORG_ID=" + urls[1]
-                    + "&W_WORKCENTER_ID=" + urls[2]
-                    + "&W_BARCODE=" + urls[3];
-            try {
-                URL obj = new URL("http://"+strIp+"/TAIYO/LuWorker.jsp"); //주소 지정
-
-                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
-
-                if (conn != null) //
-                {
-                    conn.setReadTimeout(5000);
-                    conn.setConnectTimeout(10000);
-                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
-                    conn.setDoInput(true);
-                    conn.connect(); //???
-
-                    //서버에 데이터 전달
-                    OutputStream out = conn.getOutputStream();
-                    out.write(search_title.getBytes("UTF-8"));
-                    out.flush();
-                    out.close();
-
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    }else if(etH2HiddenWorker.getText().toString().equals("worker2") && !Worker2.equals(etT2Stir2WorkerNameScan.getText().toString()))
                     {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
-                        while (true) {
-                            String line = br.readLine();
-                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
-                                break;
-                            jsonHtml.append(line);// + "\n");
-                        }
-                        br.close();
-                    }
-                    conn.disconnect();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return jsonHtml.toString(); //결과값 리턴
-        }
-
-        protected void onPostExecute(String result) {
-            //페이지 결과값 파싱
-
-
-            try {
-
-                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
-                JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
-
-                //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
-
-
-
-                if (resultArray.length() < 1) { //데이터 없을때
-                    if (!Worker1.equals(etT2Stir2WorkerNameScan.getText().toString())) {
                         etT2Stir2WorkerNameScan.requestFocus();
                         etT2Stir2WorkerNameScan.setText("");
-                    }
-                }else{
-                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                    String status = job.getString("Status");
-
-                    if (status.equals("S")) {
-                        etH2Stir2WorkerId.setText(job.getString("USER_ID"));
-                        etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
-
-                        saveColorChange();
-                    }
-                    etT2Stir3WorkerNameScan.requestFocus();
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    protected class LuWorker3 extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... urls) {
-            StringBuffer jsonHtml = new StringBuffer();
-
-            //서버로 보낼 데이터 설정
-            String search_title = "W_SOB_ID=" + urls[0]
-                    + "&W_ORG_ID=" + urls[1]
-                    + "&W_WORKCENTER_ID=" + urls[2]
-                    + "&W_BARCODE=" + urls[3];
-            try {
-                URL obj = new URL("http://"+strIp+"/TAIYO/LuWorker.jsp"); //주소 지정
-
-                HttpURLConnection conn = (HttpURLConnection) obj.openConnection(); //지정된 주소로 연결
-
-                if (conn != null) //
-                {
-                    conn.setReadTimeout(5000);
-                    conn.setConnectTimeout(10000);
-                    conn.setRequestMethod("POST"); //메세지 전달 방식 POST로 설정
-                    conn.setDoInput(true);
-                    conn.connect(); //???
-
-                    //서버에 데이터 전달
-                    OutputStream out = conn.getOutputStream();
-                    out.write(search_title.getBytes("UTF-8"));
-                    out.flush();
-                    out.close();
-
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) //서버에서 응답을 받았을 경우
+                    }else if(etH2HiddenWorker.getText().toString().equals("worker3") && !Worker3.equals(etT2Stir3WorkerNameScan.getText().toString()))
                     {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); //받은 정보를 버퍼에 저장
-                        while (true) {
-                            String line = br.readLine();
-                            if (line == null) //라인이 없어질때까지 버퍼를 한줄씩 읽음
-                                break;
-                            jsonHtml.append(line);// + "\n");
-                        }
-                        br.close();
-                    }
-                    conn.disconnect();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return jsonHtml.toString(); //결과값 리턴
-        }
-
-        protected void onPostExecute(String result) {
-            //페이지 결과값 파싱
-
-
-            try {
-
-                JSONObject RESURT = new JSONObject(result); //JSON 오브젝트 받음
-                JSONArray resultArray = RESURT.getJSONArray("RESULT"); //JSONArray 파싱
-
-                //JSONObject job = resultArray.getJSONObject(0); //JSON 오브젝트 파싱
-
-
-
-                if (resultArray.length() < 1) { //데이터 없을때
-                    if (!Worker1.equals(etT2Stir3WorkerNameScan.getText().toString())) {
                         etT2Stir3WorkerNameScan.requestFocus();
                         etT2Stir3WorkerNameScan.setText("");
                     }
+
+                    return;
                 }else{
-                    JSONObject job = resultArray.getJSONObject(0); // JSON 오브젝트 파싱
-                    String status = job.getString("Status");
+                    JSONObject job = jarrayWorkLevel.getJSONObject(0);
+                    if(job.getString("Status").equals("S")){
 
-                    if (status.equals("S")) {
-                        etH2Stir3WorkerId.setText(job.getString("USER_ID"));
-                        etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
 
-                        saveColorChange();
+                        if(etH2HiddenWorker.getText().toString().equals("worker1")){ //작업자 스캔 1
+
+                            etH2Stir1WorkerId.setText(job.getString("USER_ID"));
+                            etT2Stir1WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                            Worker1 = job.getString("DESCRIPTION");
+                            saveColorChange();
+                            etT2Stir2WorkerNameScan.requestFocus();
+
+                        }else if(etH2HiddenWorker.getText().toString().equals("worker2")){ //작업자 스캔 2
+
+                            etH2Stir2WorkerId.setText(job.getString("USER_ID"));
+                            etT2Stir2WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                            Worker2 = job.getString("DESCRIPTION");
+                            saveColorChange();
+                            etT2Stir3WorkerNameScan.requestFocus();
+
+                        }else {                                                             //작업자 스캔 3
+
+                            etH2Stir3WorkerId.setText(job.getString("USER_ID"));
+                            etT2Stir3WorkerNameScan.setText(job.getString("DESCRIPTION"));
+
+                            Worker3 = job.getString("DESCRIPTION");
+                            saveColorChange();
+
+
+
+                        }
+
                     }
-                    etT2Stir3WorkerNameScan.requestFocus();
                 }
+
 
 
             } catch (JSONException e) {
